@@ -9,3 +9,15 @@ variable "instance-type" {
 variable "key-pair-path" { 
 	default = "../../awsKeyPairDir"
 }
+
+variable "project_name" { 
+	default = "simpleVPC"
+}
+
+variable "key_file_name" { 
+	default = "../../awsKeyPairDir/simpleVPC.pem"
+}
+
+variable "key_name" { 
+	default = "simpleVPC"
+}

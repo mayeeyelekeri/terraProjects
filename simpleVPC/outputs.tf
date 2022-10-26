@@ -27,7 +27,9 @@ output "EC2-KEY-NAME" {
   value       = module.ec2-module.EC2-KEY-NAME
 }
 
-output "EC2-KEY-FILENAME" {
-  description = "EC2 Instance Key File Name"
-  value       = module.ec2-module.EC2-KEY-FILENAME
+
+
+output "Project_Name" {
+  description = "Project Name"
+  value       = var.project_name
 }

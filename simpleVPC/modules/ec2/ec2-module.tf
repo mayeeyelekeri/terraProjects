@@ -9,42 +9,12 @@ data "aws_ssm_parameter" "webserver-ami" {
   name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
-# Create a key-pair and download it to local file system 
-resource "tls_private_key" "private-key" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-locals { 
-  timestamp = "${timestamp()}"
-  timestamp_no_hyphens = "${replace("${local.timestamp}", "-", "")}"
-  timestamp_no_spaces = "${replace("${local.timestamp_no_hyphens}", " ", "")}"
-  timestamp_no_t = "${replace("${local.timestamp_no_spaces}", "T", "")}"
-  timestamp_no_z = "${replace("${local.timestamp_no_t}", "Z", "")}"
-  timestamp_no_colons = "${replace("${local.timestamp_no_z}", ":", "")}"
-  timestamp_sanitized = "${local.timestamp_no_colons}"
-}
-
-output "timestamp" {
-  value = "${local.timestamp_sanitized}"
-}
-
-resource "aws_key_pair" "generated-key" {
-  key_name   = join("-", ["simpleVPC", local.timestamp_sanitized])
-  public_key = tls_private_key.private-key.public_key_openssh
-} 
-
-resource "local_file" "ssh_key" {
-  filename = join("/" , [ var.key-pair-path , "${aws_key_pair.generated-key.key_name}.pem"])
-  content = tls_private_key.private-key.private_key_pem
-}
-
 # Create EC2 web server
 resource "aws_instance" "webserver" {
   ami                         = "ami-09d3b3274b6c5d4aa"
   instance_type               = var.instance-type
   associate_public_ip_address = true
-  key_name                    = aws_key_pair.generated-key.key_name
+  key_name                    = var.key_name
   vpc_security_group_ids      = [module.vpc-module.PUBLIC-SECURIY-GROUP] # these values are exported from vpc-outputs.tf 
   subnet_id                   = module.vpc-module.PUBLIC-SUBNET-ID
   provisioner "remote-exec" {
@@ -56,8 +26,7 @@ resource "aws_instance" "webserver" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      #private_key = file("./${aws_key_pair.generated-key.key_name}.pem")
-      private_key = file(local_file.ssh_key.filename)
+      private_key = file(var.key_file_name)
       host        = self.public_ip
     }
   }
