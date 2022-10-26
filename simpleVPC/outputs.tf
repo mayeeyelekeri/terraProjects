@@ -10,7 +10,7 @@ output "PUBLIC-SECURIY-GROUP" {
 
 output "PRIVATE-SECURIY-GROUP" {
   description = "Private SG"
-  value       = module.vpc-module.PRIVATE-SECURIY-GROUP
+  value       = module.vpc-module.PRIVATE-SECURITY-GROUP
 }
 
 output "PUBLIC-EC2-INSTANCE-ID" {

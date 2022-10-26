@@ -8,7 +8,7 @@ output "PUBLIC-SECURIY-GROUP" {
   value       = aws_security_group.public-sg.id
 }
 
-output "PRIVATE-SECURIY-GROUP" {
+output "PRIVATE-SECURITY-GROUP" {
   description = "Private SG"
   value       = aws_security_group.private-sg.id
 }
@@ -16,4 +16,9 @@ output "PRIVATE-SECURIY-GROUP" {
 output "PUBLIC-SUBNET-ID" {
   description = "Public Subnet"
   value       = aws_subnet.public-subnet.id
+}
+
+output "PRIVATE-SUBNET-ID" {
+  description = "Private Subnet"
+  value       = aws_subnet.private-subnet.id
 }
