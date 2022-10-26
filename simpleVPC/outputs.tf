@@ -17,3 +17,17 @@ output "PUBLIC-EC2-INSTANCE-ID" {
   description = "Public instance ID"
   value       = module.ec2-module.EC2-INSTANCE-ID
 }
+
+output "EC2-INSTANCE-PUBLIC-IP" {
+  value     = module.ec2-module.EC2-INSTANCE-PUBLIC-IP
+}
+ 
+output "EC2-KEY-NAME" {
+  description = "EC2 Instance Key Name"
+  value       = module.ec2-module.EC2-KEY-NAME
+}
+
+output "EC2-KEY-FILENAME" {
+  description = "EC2 Instance Key File Name"
+  value       = module.ec2-module.EC2-KEY-FILENAME
+}

@@ -1,22 +1,14 @@
 provider "aws" {
-  region = var.region
+  region = "us-east-1"
 }
 
-module "vpc" {
+/*module "vpc" {
   source = "./modules/vpc"
-  region = var.region
-}
+} */
 
-#Create key-pair for logging into EC2 in us-east-1
-resource "aws_key_pair" "webserver-key" {
-  key_name   = "webserver-key"
-  public_key = file("~/.ssh/id_rsa.pub")
-}
-
-
-#Get Linux AMI ID using SSM Parameter endpoint in us-east-1
-data "aws_ssm_parameter" "webserver-ami" {
-  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+variable "vpc-cidr" {
+	type	= string
+	default = "10.0.0.0/16"
 }
 
 #Create VPC in us-east-1
@@ -28,6 +20,19 @@ resource "aws_vpc" "vpc" {
     Name = "terraform-vpc"
   }
 
+}
+
+
+#Create key-pair for logging into EC2 in us-east-1
+resource "aws_key_pair" "webserver-key" {
+  key_name   = "webserver-key"
+  public_key = file("~/.ssh/id_rsa.pub")
+}
+
+
+#Get Linux AMI ID using SSM Parameter endpoint in us-east-1
+data "aws_ssm_parameter" "webserver-ami" {
+  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
 resource "aws_vpc" "vpc2" {
@@ -106,4 +111,4 @@ resource "aws_security_group" "sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
+ 
