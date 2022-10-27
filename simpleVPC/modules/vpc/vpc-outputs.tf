@@ -3,7 +3,7 @@ output "VPC-ID" {
   value       = aws_vpc.myvpc.id
 }
 
-output "PUBLIC-SECURIY-GROUP" {
+output "PUBLIC-SECURITY-GROUP" {
   description = "Public SG"
   value       = aws_security_group.public-sg.id
 }

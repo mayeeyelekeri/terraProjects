@@ -21,3 +21,7 @@ variable "key_file_name" {
 variable "key_name" { 
 	default = "simpleVPC"
 }
+
+variable "ami_id" {
+	default = "ami-09d3b3274b6c5d4aa"
+}
