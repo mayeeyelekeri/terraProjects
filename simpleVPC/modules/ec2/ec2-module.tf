@@ -31,7 +31,7 @@ resource "aws_instance" "webserver" {
     }
   }
   tags = {
-    Name = "webserver"
+    Name = "${terraform.workspace}-webserver"
   }
 } 
 
@@ -45,6 +45,6 @@ resource "aws_instance" "dbserver" {
   subnet_id                   = module.vpc-module.PRIVATE-SUBNET-ID
   
   tags = {
-    Name = "dbserver"
+    Name = "${terraform.workspace}-dbserver"
   }
 }

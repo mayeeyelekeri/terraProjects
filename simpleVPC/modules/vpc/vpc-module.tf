@@ -4,7 +4,7 @@ resource "aws_vpc" "myvpc" {
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
-    Name = "terraform-vpc"
+    Name = "${terraform.workspace}-terraform-vpc"
   }
 }
 
@@ -13,7 +13,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.myvpc.id
 
   tags = { 
-    Name = "My IG"
+    Name = "${terraform.workspace}-My IG"
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_subnet" "public-subnet" {
   map_public_ip_on_launch = "true"
 
   tags = {
-    Name = var.public-subnet-name
+    Name = "${terraform.workspace}-${var.public-subnet-name}"
   }
 }
 
@@ -38,7 +38,7 @@ resource "aws_route_table" "internet-route" {
     gateway_id = aws_internet_gateway.igw.id
   }
   tags = {
-    Name = "Terraform-Public-RouteTable"
+    Name = "${terraform.workspace}-Terraform-Public-RouteTable"
   }
 }
 
@@ -71,7 +71,7 @@ resource "aws_nat_gateway" "nat-gateway" {
   subnet_id     = aws_subnet.public-subnet.id
   allocation_id = aws_eip.my-eip.id
   tags = {
-    Name = "My public NAT Gateway"
+    Name = "${terraform.workspace}-My public NAT Gateway"
   }
 
   # To ensure proper ordering, it is recommended to add an explicit dependency
@@ -87,7 +87,7 @@ resource "aws_route_table" "private-route" {
     gateway_id = aws_nat_gateway.nat-gateway.id
   }
   tags = {
-    Name = "Terraform-Private-RouteTable"
+    Name = "${terraform.workspace}-Terraform-Private-RouteTable"
   }
 }
 
@@ -99,7 +99,7 @@ resource "aws_route_table_association" "private-route-table-association" {
 
 # Create SG for allowing TCP/80 & TCP/22
 resource "aws_security_group" "public-sg" {
-  name        = "public-sg"
+  name        = "${terraform.workspace}-public-sg"
   description = "Allow TCP/80 & TCP/22"
   vpc_id      = aws_vpc.myvpc.id
   ingress {
@@ -126,7 +126,7 @@ resource "aws_security_group" "public-sg" {
 
 # Private Security Group
 resource "aws_security_group" "private-sg" {
-  name        = "private-sg"
+  name        = "${terraform.workspace}-private-sg"
   description = "Allow all access from public subnet"
   vpc_id      = aws_vpc.myvpc.id
   ingress {
