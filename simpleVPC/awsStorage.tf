@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "myterraprojects"
+    bucket = "myterraprojects1"
     key    = "simpleVPC.tfstate"
     region = "us-east-1"
   }
