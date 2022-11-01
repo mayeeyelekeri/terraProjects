@@ -22,3 +22,4 @@ output "PRIVATE-SUBNET-ID" {
   description = "Private Subnet"
   value       = aws_subnet.private-subnet.id
 }
+

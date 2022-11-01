@@ -32,6 +32,7 @@ resource "aws_instance" "webserver" {
   }
   tags = {
     Name = "${terraform.workspace}-webserver"
+    Environment = "${terraform.workspace}"
   }
 } 
 
@@ -39,12 +40,13 @@ resource "aws_instance" "webserver" {
 resource "aws_instance" "dbserver" {
   ami                         = var.ami_id
   instance_type               = var.instance-type
-  associate_public_ip_address = false
+  #associate_public_ip_address = no
   key_name                    = var.key_name
   vpc_security_group_ids      = [module.vpc-module.PRIVATE-SECURITY-GROUP] # these values are exported from vpc-outputs.tf 
   subnet_id                   = module.vpc-module.PRIVATE-SUBNET-ID
   
   tags = {
     Name = "${terraform.workspace}-dbserver"
+    Environment = "${terraform.workspace}"
   }
 }

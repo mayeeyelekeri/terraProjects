@@ -28,6 +28,10 @@ output "EC2-INSTANCE-PUBLIC-IP" {
   value     = module.ec2-module.EC2-INSTANCE-PUBLIC-IP
 }
  
+output "EC2-DB-INSTANCE-PRIVATE-IP" {
+  value     = module.ec2-module.EC2-DB-INSTANCE-PRIVATE-IP
+}
+
 output "EC2-KEY-NAME" {
   description = "EC2 Instance Key Name"
   value       = module.ec2-module.EC2-KEY-NAME
