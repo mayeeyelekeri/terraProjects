@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "myterraprojects2"
-    key    = "ec2PublicPrivate.tfstate"
+    bucket = "myterraprojects"
+    key    = "applicationLB.tfstate"
     region = "us-east-1"
   }
   required_version = ">= 1.3.3"
