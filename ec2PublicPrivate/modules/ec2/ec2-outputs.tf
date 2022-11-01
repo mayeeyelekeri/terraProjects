@@ -24,6 +24,21 @@ output "VPC-ID" {
   value       = module.vpc-module.VPC-ID
 }
 
+output "VPC-NAME" {
+  description = "VPC Name"
+  value       = module.vpc-module.VPC-NAME
+}
+
+output "PUBLIC-SUBNET-NAME" {
+  description = "VPC Name"
+  value       = module.vpc-module.PUBLIC-SUBNET-NAME
+}
+
+output "PRIVATE-SUBNET-NAME" {
+  description = "VPC Name"
+  value       = module.vpc-module.PRIVATE-SUBNET-NAME
+}
+
 output "PUBLIC-SECURITY-GROUP" {
   description = "VPC ID"
   value       = module.vpc-module.PUBLIC-SECURITY-GROUP

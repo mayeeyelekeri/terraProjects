@@ -3,6 +3,11 @@ output "VPC-ID" {
   value       = aws_vpc.myvpc.id
 }
 
+output "VPC-NAME" {
+  description = "VPC ID created"
+  value       = aws_vpc.myvpc.tags.Name
+}
+
 output "PUBLIC-SECURITY-GROUP" {
   description = "Public SG"
   value       = aws_security_group.public-sg.id
@@ -18,8 +23,17 @@ output "PUBLIC-SUBNET-ID" {
   value       = aws_subnet.public-subnet.id
 }
 
+output "PUBLIC-SUBNET-NAME" {
+  description = "Public Subnet"
+  value       = aws_subnet.public-subnet.tags.Name
+}
+
 output "PRIVATE-SUBNET-ID" {
   description = "Private Subnet"
   value       = aws_subnet.private-subnet.id
 }
 
+output "PRIVATE-SUBNET-NAME" {
+  description = "Private Subnet"
+  value       = aws_subnet.private-subnet.tags.Name
+}

@@ -28,7 +28,7 @@ resource "aws_subnet" "public-subnet" {
   map_public_ip_on_launch = "true"
 
   tags = {
-    Name = "${terraform.workspace}-${var.public-subnet-name}"
+    Name = "${terraform.workspace}-${var.public-subnet-name} - ${var.public-subnet-cidr}"
     Environment = "${terraform.workspace}"
   }
 }
@@ -80,7 +80,7 @@ resource "aws_subnet" "private-subnet" {
   map_public_ip_on_launch = "false"
 
   tags = {
-    Name = "${terraform.workspace}-${var.private-subnet-name}"
+    Name = "${terraform.workspace}-${var.private-subnet-name} - ${var.private-subnet-cidr}"
     Environment = "${terraform.workspace}"
   }
 }

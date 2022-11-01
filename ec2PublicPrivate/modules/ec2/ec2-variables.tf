@@ -11,15 +11,15 @@ variable "key-pair-path" {
 }
 
 variable "project_name" { 
-	default = "simpleVPC"
+	default = "ec2PublicPrivate"
 }
 
 variable "key_file_name" { 
-	default = "../../awsKeyPairDir/simpleVPC.pem"
+	default = "../../awsKeyPairDir/ec2PublicPrivate.pem"
 }
 
 variable "key_name" { 
-	default = "simpleVPC"
+	default = "ec2PublicPrivate"
 }
 
 variable "ami_id" {
