@@ -1,12 +1,3 @@
-output "ALB-DNS-Name" {
-  description = "ALB Dns name"
-  value       = aws_lb.alb.dns_name
-}
-
-output "ALB-DNS-Name-Private" {
-  description = "ALB Dns name"
-  value       = aws_lb.alb.dns_name
-}
 
 output "Web-Servers" {
   description = "Web Servers IPs"
