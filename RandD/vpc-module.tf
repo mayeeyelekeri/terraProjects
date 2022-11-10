@@ -49,3 +49,19 @@ resource "aws_subnet" "private-subnet2" {
     Environment = "${terraform.workspace}"
   }
 }
+
+# ---------------------------- PUBLIC --------------------------
+# Create Public Subnets 
+resource "aws_subnet" "public-subnets" {
+  for_each = var.public-subnet-map2 
+  vpc_id = aws_vpc.myvpc.id
+  cidr_block = each.value.cidr
+  availability_zone = each.value.zone
+  map_public_ip_on_launch = "true"
+
+  tags = {
+    Name = "${terraform.workspace}-${each.value.cidr} - ${each.value.zone}"
+    Environment = "${terraform.workspace}"
+  }
+}
+

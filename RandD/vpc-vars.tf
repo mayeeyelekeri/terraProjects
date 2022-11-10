@@ -4,3 +4,4 @@ variable "public-subnet-availability-zone-list" {type = list}
 
 variable "private-subnet-map" { type = map }
 variable "private-subnet2-map" { type = map }
+variable "public-subnet-map2" { }

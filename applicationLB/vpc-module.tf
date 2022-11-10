@@ -21,7 +21,7 @@ resource "aws_internet_gateway" "igw" {
 
 # ---------------------------- PUBLIC --------------------------
 # Create Public and Private Subnet 
-resource "aws_subnet" "mysubnet" {
+/* resource "aws_subnet" "mysubnet" {
   for_each = var.subnet-map 
   vpc_id = aws_vpc.myvpc.id
   cidr_block = each.value.cidr
@@ -30,6 +30,42 @@ resource "aws_subnet" "mysubnet" {
 
   tags = {
     Name = "${terraform.workspace}-${each.value.cidr} - ${each.value.zone}"
+    Environment = "${terraform.workspace}"
+  }
+} */ 
+
+resource "aws_subnet" "mysubnet1" {
+  vpc_id = aws_vpc.myvpc.id
+  cidr_block = var.subnet-map["subnet1"].cidr
+  availability_zone = var.subnet-map["subnet1"].zone
+  map_public_ip_on_launch = "true"
+
+  tags = {
+    Name = join ("-" , ["${terraform.workspace}", "${var.subnet-map["subnet3"].cidr}", "${var.subnet-map["subnet3"].zone}"])
+    Environment = "${terraform.workspace}"
+  }
+}
+
+resource "aws_subnet" "mysubnet2" {
+  vpc_id = aws_vpc.myvpc.id
+  cidr_block = var.subnet-map["subnet2"].cidr
+  availability_zone = var.subnet-map["subnet2"].zone
+  map_public_ip_on_launch = "true"
+
+  tags = {
+    Name = join ("-" , ["${terraform.workspace}", "${var.subnet-map["subnet3"].cidr}", "${var.subnet-map["subnet3"].zone}"])
+    Environment = "${terraform.workspace}"
+  }
+}
+
+resource "aws_subnet" "mysubnet3" {
+  vpc_id = aws_vpc.myvpc.id
+  cidr_block = var.subnet-map["subnet3"].cidr
+  availability_zone = var.subnet-map["subnet3"].zone
+  map_public_ip_on_launch = "true"
+
+  tags = {
+    Name = join ("-" , ["${terraform.workspace}", "${var.subnet-map["subnet3"].cidr}", "${var.subnet-map["subnet3"].zone}"])
     Environment = "${terraform.workspace}"
   }
 }
@@ -48,11 +84,21 @@ resource "aws_route_table" "internet-route" {
 }
 
 # Associate ALL public subnets to route table 
-resource "aws_route_table_association" "public-route-table-association" {
-  for_each = var.subnet-map
-  subnet_id      = aws_subnet.mysubnet[each.key].id
+resource "aws_route_table_association" "public-route-table-association1" {
+  subnet_id      = aws_subnet.mysubnet1.id
   route_table_id = aws_route_table.internet-route.id
 }
+
+resource "aws_route_table_association" "public-route-table-association2" {
+  subnet_id      = aws_subnet.mysubnet2.id
+  route_table_id = aws_route_table.internet-route.id
+}
+
+resource "aws_route_table_association" "public-route-table-association3" {
+  subnet_id      = aws_subnet.mysubnet3.id
+  route_table_id = aws_route_table.internet-route.id
+}
+
 
 # -------------------- Security Groups --------------
 # Create SG for allowing TCP/80 & TCP/22

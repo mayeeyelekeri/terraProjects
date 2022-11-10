@@ -13,12 +13,15 @@ output "PUBLIC-SECURITY-GROUP" {
   value       = aws_security_group.public-sg.id
 }
 
-output "PUBLIC1-SUBNET1-NAME" {
-  description = "Public Subnet"
-  value       = aws_subnet.mysubnet1.tags.Name
+output "public-subnets" {
+	value	  = values(aws_subnet.private-subnets)[*].tags_all.Name
 } 
 
-output "PUBLIC-SUBNET2-NAME" {
+output "public-subnet-names" {
+	value	  = keys(aws_subnet.public-subnets)[*]
+} 
+
+/* output "PUBLIC-SUBNET2-NAME" {
   description = "Private Subnet"
   value       = aws_subnet.mysubnet2.tags.Name
 } 
@@ -26,4 +29,4 @@ output "PUBLIC-SUBNET2-NAME" {
 output "PUBLIC-SUBNET3-NAME" {
   description = "Private Subnet"
   value       = aws_subnet.mysubnet3.tags.Name
-} 
+}  */ 
