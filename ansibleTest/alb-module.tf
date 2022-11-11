@@ -20,7 +20,6 @@ resource "aws_instance" "jenkins-server" {
   subnet_id                   = values(aws_subnet.public-subnets)[0].id  # get the first subnet id 
   
   provisioner "remote-exec" {
-    #inline = ["sudo yum update -y", "sudo yum install python3 -y", "echo Done!"]
     inline = ["echo Done!"]
 
     connection {
@@ -52,7 +51,9 @@ resource "aws_instance" "webservers" {
   key_name                    = var.key-name
   vpc_security_group_ids      = [aws_security_group.public-sg.id] 
   subnet_id                   = each.value.id
+  inline = ["sudo yum update -y", ""]
   provisioner "remote-exec" {
+    #inline = ["sudo yum update -y", "sudo yum install httpd -y", "sudo systemctl start httpd", "echo Done!"]
     inline = [
       "sudo yum -y install httpd && sudo systemctl start httpd",
       "echo '<html><body><h1><center> My public IP address is : </center></h1>' > index.html", 
@@ -73,6 +74,27 @@ resource "aws_instance" "webservers" {
 
   tags = {
     Name = join("-", ["${terraform.workspace}", "webserver" ])
+    Environment = "${terraform.workspace}"
+  }
+}   
+
+# Create EC2 web servers in different subnets 
+resource "aws_instance" "http-server" {
+  for_each                    = aws_subnet.public-subnets
+  ami                         = var.ami-id
+  instance_type               = var.instance-type
+  associate_public_ip_address = true
+  key_name                    = var.key-name
+  vpc_security_group_ids      = [aws_security_group.public-sg.id] 
+  subnet_id                   = each.value.id
+  provisioner "local-exec" {
+    command = <<EOF
+aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'passed_in_hosts=${self.public_ip}' ansible_templates/copy-data.yaml
+EOF
+  } # End of provisioner
+
+  tags = {
+    Name = join("-", ["${terraform.workspace}", "httpserver" ])
     Environment = "${terraform.workspace}"
   }
 }   

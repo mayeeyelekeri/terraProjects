@@ -1,0 +1,21 @@
+---
+- hosts: "{{ passed_in_hosts }}"
+  become: yes
+  remote_user: ec2-user
+  become_user: root
+  tasks:
+    - name: install httpd
+      yum:
+        name: "{{ package }} "
+        state: installed
+      vars:
+        package:
+        - httpd
+  
+    - name: httpd is running
+      service:
+        name: httpd
+        state: restarted
+
+    - name: copy main page
+       copy: src=files/index.html dest=/var/www/html/index.html
