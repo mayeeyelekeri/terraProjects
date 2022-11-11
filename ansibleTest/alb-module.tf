@@ -25,14 +25,14 @@ resource "aws_instance" "jenkins-server" {
     connection {
       host        = self.ipv4_address
       type        = "ssh"
-      user        = "root"
+      user        = "ec2-user"
       private_key = file("~/.ssh/id_rsa")
     }
   }
 
   provisioner "local-exec" {
     command = <<EOF
-aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'ANSIBLE_CONFIG=ansible.cfg passed_in_hosts=${self.tags.Name}' ansible_templates/install_jenkins.yaml
+aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'ANSIBLE_HOST_KEY_CHECKING=False  passed_in_hosts=${self.tags.Name}' ansible_templates/install_jenkins.yaml
 EOF
   }
   tags = {
