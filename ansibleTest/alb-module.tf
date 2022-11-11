@@ -23,7 +23,7 @@ resource "aws_instance" "jenkins-server" {
     inline = ["sudo apt update", "sudo apt install python3 -y", "echo Done!"]
 
     connection {
-      host        = self.ipv4_address
+      host        = self.public_ip
       type        = "ssh"
       user        = "ec2-user"
       private_key = file("~/.ssh/id_rsa")
