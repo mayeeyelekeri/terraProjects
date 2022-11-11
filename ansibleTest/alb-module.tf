@@ -33,7 +33,7 @@ resource "aws_instance" "jenkins-server" {
 
   provisioner "local-exec" {
     command = <<EOF
-aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'ANSIBLE_HOST_KEY_CHECKING=False  passed_in_hosts=${self.public_ip}' ansible_templates/install_jenkins.yaml
+aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'passed_in_hosts=${self.public_ip}' ansible_templates/install_jenkins.yaml
 EOF
   }
   tags = {
