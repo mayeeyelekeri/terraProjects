@@ -75,6 +75,13 @@ resource "aws_security_group" "public-sg" {
     cidr_blocks = [var.open-cidr]
   }
   ingress {
+    description = "allow traffic from TCP/8080"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = [var.open-cidr]
+  }
+  ingress {
     description = "allow traffic from MySql"
     from_port   = 3306
     to_port     = 3306
