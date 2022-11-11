@@ -19,6 +19,17 @@ resource "aws_instance" "jenkins-server" {
   vpc_security_group_ids      = [aws_security_group.public-sg.id] 
   subnet_id                   = values(aws_subnet.public-subnets)[0].id  # get the first subnet id 
   
+  provisioner "remote-exec" {
+    inline = ["sudo apt update", "sudo apt install python3 -y", "echo Done!"]
+
+    connection {
+      host        = self.ipv4_address
+      type        = "ssh"
+      user        = "root"
+      private_key = file("~/.ssh/id_rsa")
+    }
+  }
+
   provisioner "local-exec" {
     command = <<EOF
 aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'ANSIBLE_CONFIG=ansible.cfg passed_in_hosts=${self.tags.Name}' ansible_templates/install_jenkins.yaml
