@@ -20,7 +20,7 @@ resource "aws_instance" "jenkins-server" {
   subnet_id                   = values(aws_subnet.public-subnets)[0].id  # get the first subnet id 
   
   provisioner "remote-exec" {
-    inline = ["sudo apt update", "sudo apt install python3 -y", "echo Done!"]
+    inline = ["sudo yum update", "sudo yum install python3 -y", "echo Done!"]
 
     connection {
       host        = self.public_ip
@@ -32,7 +32,7 @@ resource "aws_instance" "jenkins-server" {
 
   provisioner "local-exec" {
     command = <<EOF
-aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'ANSIBLE_HOST_KEY_CHECKING=False  passed_in_hosts=${self.tags.Name}' ansible_templates/install_jenkins.yaml
+aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'ANSIBLE_HOST_KEY_CHECKING=False  passed_in_hosts=${self.public_ip}' ansible_templates/install_jenkins.yaml
 EOF
   }
   tags = {
