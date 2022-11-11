@@ -20,7 +20,8 @@ resource "aws_instance" "jenkins-server" {
   subnet_id                   = values(aws_subnet.public-subnets)[0].id  # get the first subnet id 
   
   provisioner "remote-exec" {
-    inline = ["sudo yum update -y", "sudo yum install python3 -y", "echo Done!"]
+    #inline = ["sudo yum update -y", "sudo yum install python3 -y", "echo Done!"]
+    inline = ["echo Done!"]
 
     connection {
       host        = self.public_ip
