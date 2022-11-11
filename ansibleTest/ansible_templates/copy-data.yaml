@@ -18,4 +18,4 @@
         state: restarted
 
     - name: copy main page
-       copy: src=files/index.html dest=/var/www/html/index.html
+      copy: src=files/index.html dest=/var/www/html/index.html
