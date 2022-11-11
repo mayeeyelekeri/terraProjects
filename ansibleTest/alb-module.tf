@@ -51,7 +51,6 @@ resource "aws_instance" "webservers" {
   key_name                    = var.key-name
   vpc_security_group_ids      = [aws_security_group.public-sg.id] 
   subnet_id                   = each.value.id
-  inline = ["sudo yum update -y", ""]
   provisioner "remote-exec" {
     #inline = ["sudo yum update -y", "sudo yum install httpd -y", "sudo systemctl start httpd", "echo Done!"]
     inline = [
