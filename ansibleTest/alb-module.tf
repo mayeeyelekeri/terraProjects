@@ -62,3 +62,25 @@ EOF
     Environment = "${terraform.workspace}"
   }
 }   
+
+# Create EC2 web servers in different subnets 
+resource "aws_instance" "tomcat-server" {
+  for_each                    = aws_subnet.public-subnets
+  ami                         = var.ami-id
+  instance_type               = var.instance-type
+  associate_public_ip_address = true
+  key_name                    = var.key-name
+  vpc_security_group_ids      = [aws_security_group.public-sg.id] 
+  subnet_id                   = each.value.id
+  provisioner "local-exec" {
+    command = <<EOF
+aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'passed_in_hosts=${self.public_ip}' ansible_templates/tomcat.yaml
+EOF
+  } # End of provisioner
+
+  tags = {
+    Name = join("-", ["${terraform.workspace}", "httpserver" ])
+    Environment = "${terraform.workspace}"
+  }
+}   
+
