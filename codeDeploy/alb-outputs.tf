@@ -20,7 +20,3 @@ output "private-subnets" {
 output "private-subnet-keys" {
 	value	  = keys(aws_subnet.private-subnets)[*]
 } 
-
-output "efs" {
-	value	  = aws_efs_file_system.myefs.dns_name
-}
