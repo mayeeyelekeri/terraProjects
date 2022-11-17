@@ -19,15 +19,15 @@ variable "key-pair-path" {
 }
 
 variable "project-name" { 
-	default = "codeDeploy"
+	default = "applicationLBPrivatePublic"
 }
 
 variable "key-file-name" { 
-	default = "../../awsKeyPairDir/codeDeploy.pem"
+	default = "../../awsKeyPairDir/applicationLBPrivatePublic.pem"
 }
 
 variable "key-name" { 
-	default = "codeDeploy"
+	default = "applicationLBPrivatePublic"
 }
 
 variable "ec2-data" {
