@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "terraProjects"
+    bucket = "terraprojects"
     key    = "codeDeploy.tfstate"
     region = "us-east-1"
   }
