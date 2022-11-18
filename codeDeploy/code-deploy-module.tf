@@ -125,7 +125,6 @@ EOF
   depends_on = [aws_s3_bucket.codebucket]
 } # end of "null_resource" "upload_file"
 
-
 #.................................................
 # Create Deployment and point to S3 object 
 resource "null_resource" "perform_deploy" { 
