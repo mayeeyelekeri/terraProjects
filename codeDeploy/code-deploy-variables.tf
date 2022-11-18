@@ -9,3 +9,7 @@ variable "zip-file" {
 variable "zip-path" {
   default = "ansible"
 }
+
+variable "app-name" {
+  default = "myapp"
+}
