@@ -29,6 +29,8 @@ resource "aws_iam_policy" "mys3policy" {
       }
     ]
   })
+
+  depends_on = [aws_security_group.public-sg]
 }
 
 # Create a role for EC2 
@@ -47,6 +49,8 @@ resource "aws_iam_role" "myec2role" {
      }
      ]
     })
+
+    depends_on = [aws_iam_policy.mys3policy]
 }
 
 # Create a instance profile 
@@ -82,5 +86,7 @@ EOF
     Name = join("-", ["${terraform.workspace}", "httpserver" ])
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_iam_role.myec2role]
 }   
 
