@@ -22,7 +22,7 @@
     - name: download codedeploy agent 
       ansible.builtin.get_url: 
         url: https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install 
-        dest: install
+        dest: /home/ec2-user/install
 
     - name: chmod on install file 
       file: 
