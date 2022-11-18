@@ -1,3 +1,3 @@
 output "bucket" {
-	value	  = aws_s3_bucket.codebucket
+	value	  = aws_s3_object.file_upload
 } 
