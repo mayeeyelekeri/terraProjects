@@ -123,7 +123,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   ec2_tag_set {
     ec2_tag_filter {
       key   = "Name"
-      type  = "Name"
+      type  = "KEY_AND_VALUE"
       value = "dev-httpserver"
     }
   }
