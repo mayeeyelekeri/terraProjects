@@ -18,14 +18,14 @@ resource "random_integer" "suffix" {
 #.................................................
 #  ***** This one is not being used because we want this to gets called all the time
 #.................................................
-# Upload webapp file to S3 
+/*# Upload webapp file to S3 
 resource "aws_s3_object" "file_upload" {
   bucket = aws_s3_bucket.codebucket.id
   key    = var.zip-file
   source = join("/", [var.zip-path, var.zip-file]) 
 
   depends_on = [aws_s3_bucket.codebucket]
-}
+} */
 
 #.................................................
 # Create a role for codedeploy 
@@ -141,7 +141,7 @@ aws deploy create-deployment \
   --application-name ${var.app-name} \
   --deployment-config-name CodeDeployDefault.OneAtATime \
   --deployment-group-name ${aws_codedeploy_deployment_group.mydeploygroup.deployment_group_name} \
-  --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=${var.zip-file}
+  --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=webapp
 EOF
   } # End of provisioner
 
