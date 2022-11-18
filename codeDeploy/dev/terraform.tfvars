@@ -32,3 +32,6 @@ ec2-data = {   "subnet1" = { color = "Red"},
 			   "subnet2" = { color = "Green"}, 
 			   "subnet3" = { color = "Blue"}
 			 }
+
+			 
+codebucket = "codeDeploy"
