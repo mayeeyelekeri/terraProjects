@@ -47,6 +47,12 @@ resource "aws_iam_role" "my_code_deploy_role" {
 EOF
 }
 
+# Attach codedeploy policy to code deploy role 
+resource "aws_iam_role_policy_attachment" "codedeploy_service" {
+  role       = aws_iam_role.my_code_deploy_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole"
+}
+
 # Create Code Deploy application 
 resource "aws_codedeploy_app" "myapp" {
   name = "myapp"
