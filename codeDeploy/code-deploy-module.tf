@@ -1,12 +1,18 @@
 # Create s3 bucket 
 resource "aws_s3_bucket" "codebucket" {
-  bucket = "${var.codebucket}"
+  bucket = "${var.codebucket}-${random_integer.suffix.result}"
 
   tags = {
     Name        = var.codebucket
     Environment = "Dev"
   }
 }
+
+resource "random_integer" "suffix" {
+  min = 100
+  max = 999
+}
+
 
 # Upload webapp file to S3 
 resource "aws_s3_object" "file_upload" {
@@ -75,3 +81,8 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
     enabled = true
   } */
 }
+
+# s3://codedeploy4321/webapp.zip
+
+# Create Deployment and point to S3 object 
+
