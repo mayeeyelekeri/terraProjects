@@ -52,7 +52,6 @@ resource "aws_iam_role" "my_code_deploy_role" {
 }
 EOF
 
-  depends_on = [aws_s3_object.file_upload]
 }
 
 #.................................................
