@@ -66,7 +66,7 @@ resource "aws_instance" "http-server" {
   for_each                    = aws_subnet.public-subnets
   ami                         = var.ami-id
   instance_type               = var.instance-type
-  iam_role_name               = aws_iam_role.myec2role.name
+  iam_instance_profile        = aws_iam_role.myec2role.name
   associate_public_ip_address = true
   key_name                    = var.key-name
   vpc_security_group_ids      = [aws_security_group.public-sg.id] 
