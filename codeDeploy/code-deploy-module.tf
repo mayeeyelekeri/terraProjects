@@ -22,6 +22,11 @@ resource "aws_s3_object" "file_upload" {
   key    = var.zip-file
   source = join("/", [var.zip-path, var.zip-file]) 
 
+  # This timestamps makes this resource to run all time, even if there is no change
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
   depends_on = [aws_s3_bucket.codebucket]
 }
 
