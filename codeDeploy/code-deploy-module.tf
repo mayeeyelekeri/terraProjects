@@ -16,6 +16,8 @@ resource "random_integer" "suffix" {
 }
 
 #.................................................
+#  ***** This one is not being used because we want this to gets called all the time
+#.................................................
 # Upload webapp file to S3 
 resource "aws_s3_object" "file_upload" {
   bucket = aws_s3_bucket.codebucket.id
@@ -114,7 +116,7 @@ resource "null_resource" "upload_file" {
   provisioner "local-exec" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
-    app_name=${var.app-name} \
+    app-name=${var.app-name} \
     bucket=${aws_s3_bucket.codebucket.id} \
     zip-file=${var.zip-file} \
     webapp-src-location=${var.webapp-src-location}" \
