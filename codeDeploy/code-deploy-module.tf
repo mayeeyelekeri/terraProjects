@@ -109,3 +109,38 @@ resource "aws_iam_role" "my_code_deploy_role" {
 }
 EOF
 }
+
+resource "aws_codedeploy_app" "myapp" {
+  name = "myapp"
+}
+
+# create Deployment group for EC2 machines 
+resource "aws_codedeploy_deployment_group" "mydeploygroup" {
+  app_name              = aws_codedeploy_app.example.name
+  deployment_group_name = "mydeploygroup"
+  service_role_arn      = aws_iam_role.myapp.arn
+
+  ec2_tag_set {
+    ec2_tag_filter {
+      key   = "Name"
+      type  = "Name"
+      value = "dev-httpserver"
+    }
+  }
+
+  /*trigger_configuration {
+    trigger_events     = ["DeploymentFailure"]
+    trigger_name       = "example-trigger"
+    trigger_target_arn = aws_sns_topic.example.arn
+  }
+
+  auto_rollback_configuration {
+    enabled = true
+    events  = ["DEPLOYMENT_FAILURE"]
+  }
+
+  alarm_configuration {
+    alarms  = ["my-alarm-name"]
+    enabled = true
+  } */
+}
