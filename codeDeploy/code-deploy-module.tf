@@ -116,10 +116,10 @@ resource "null_resource" "upload_file" {
   provisioner "local-exec" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
-    app-name=${var.app-name} \
+    app_name=${var.app-name} \
     bucket=${aws_s3_bucket.codebucket.id} \
-    zip-file=${var.zip-file} \
-    webapp-src-location=${var.webapp-src-location}" \
+    zip_file=${var.zip-file} \
+    webapp_src_location=${var.webapp-src-location}" \
   ansible_templates/aws_cmd_execution.yaml
 EOF
   } # End of provisioner
