@@ -1,0 +1,5 @@
+---
+- hosts: "{{ passed_in_hosts }}"
+  tasks:
+    - name: Execute install 
+      ansible.builtin.shell: echo hello
