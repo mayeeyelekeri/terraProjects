@@ -9,12 +9,13 @@ resource "aws_s3_bucket" "codebucket" {
   }
 }
 
+#.................................................
 resource "random_integer" "suffix" {
   min = 100
   max = 999
 }
 
-
+#.................................................
 # Upload webapp file to S3 
 resource "aws_s3_object" "file_upload" {
   bucket = aws_s3_bucket.codebucket.id
@@ -22,6 +23,7 @@ resource "aws_s3_object" "file_upload" {
   source = join("/", [var.zip-path, var.zip-file]) 
 }
 
+#.................................................
 # Create a role for codedeploy 
 resource "aws_iam_role" "my_code_deploy_role" {
   name = "MyCodeDeployRole"
@@ -47,17 +49,20 @@ resource "aws_iam_role" "my_code_deploy_role" {
 EOF
 }
 
+#.................................................
 # Attach codedeploy policy to code deploy role 
 resource "aws_iam_role_policy_attachment" "codedeploy_service" {
   role       = aws_iam_role.my_code_deploy_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole"
 }
 
+#.................................................
 # Create Code Deploy application 
 resource "aws_codedeploy_app" "myapp" {
   name = "myapp"
 }
 
+#.................................................
 # create Deployment group for EC2 machines 
 resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   app_name              = aws_codedeploy_app.myapp.name
@@ -91,13 +96,18 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
 
 # s3://codedeploy4321/webapp.zip
 
+#.................................................
 # Create Deployment and point to S3 object 
 resource "null_resource" "perform_deploy" { 
     provisioner "local-exec" {
     command = <<EOF
-aws deploy push \
+aws deploy create-deployment \
   --application-name myapp \
-  --s3-location s3://codedeploy4321/webapp.zip 
+  --deployment-config-name CodeDeployDefault.OneAtATime \
+  --deployment-group-name mydeploygroup \
+  --s3-location s3://codedeploy-116/webapp.zip 
 EOF
   } # End of provisioner
-} # end of "null_resource"
+
+  depends_on = [aws_codedeploy_deployment_group.mydeploygroup]
+} # end of "null_resource" "perform_deploy"
