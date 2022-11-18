@@ -50,7 +50,7 @@ resource "aws_iam_role" "myec2role" {
             }
       }
     ]
-  }
+  })
 } # end of resource aws_iam_role
 
 # Attach policy to role 
