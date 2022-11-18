@@ -118,7 +118,7 @@ resource "aws_codedeploy_app" "myapp" {
 resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   app_name              = aws_codedeploy_app.myapp.name
   deployment_group_name = "mydeploygroup"
-  service_role_arn      = aws_iam_role.myapp.arn
+  service_role_arn      = aws_iam_role.my_code_deploy_role.arn
 
   ec2_tag_set {
     ec2_tag_filter {
