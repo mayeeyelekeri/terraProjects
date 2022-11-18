@@ -10,9 +10,9 @@ resource "aws_s3_bucket" "codebucket" {
 
 # Upload webapp file to S3 
 resource "aws_s3_object" "file_upload" {
-  bucket = "${aws_s3_bucket.codebucket.id}"
-  key    = "webapp.zip"
-  source = "ansible_templates/files/webapp.zip"
+  bucket = aws_s3_bucket.codebucket.id
+  key    = var.zip-file
+  source = join("/", [var.zip-path, var.zip-file]) 
 }
 
 # Create a role for codedeploy 
