@@ -21,7 +21,7 @@ resource "aws_instance" "http-server" {
   subnet_id                   = each.value.id
   provisioner "local-exec" {
     command = <<EOF
-aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'passed_in_hosts=${self.public_ip}' ansible_templates/copy-data.yaml
+aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'passed_in_hosts=${self.public_ip}' ansible_templates/install_codedeploy_agent.yaml
 EOF
   } # End of provisioner
 
