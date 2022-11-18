@@ -117,7 +117,7 @@ resource "null_resource" "upload_file" {
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
     app_name=${var.app-name} \
     bucket=${aws_s3_bucket.codebucket.id} \
-    zip_file=${var.zip-file} \
+    zip_file=${var.app-name} \
     webapp_src_location=${var.webapp-src-location}" \
   ansible_templates/aws_cmd_execution.yaml
 EOF
