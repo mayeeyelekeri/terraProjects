@@ -11,7 +11,7 @@ data "aws_ssm_parameter" "linux-ami" {
 }
 
 # Create a policy for S3 access for EC2 
-resource "aws_iam_policy" "policy" {
+resource "aws_iam_policy" "mys3policy" {
   name        = "S3AccessPolicy"
   path        = "/"
   description = "My S3 access policy"
@@ -30,6 +30,37 @@ resource "aws_iam_policy" "policy" {
     ]
   })
 }
+
+# Create a role for EC2 
+resource "aws_iam_role" "myec2role" {
+  name = "EC2InstanceRole"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+            "Effect": "Allow",
+            "Action": [
+                "sts:AssumeRole"
+            ],
+            "Principal": {
+                "Service": [
+                    "ec2.amazonaws.com"
+                ]
+            }
+    }
+  ]
+}
+EOF
+}
+
+# Attach policy to role 
+resource "aws_iam_role_policy_attachment" "roll_attach_to_policy" {
+  role       = aws_iam_role.myec2role.name
+  policy_arn = aws_iam_policy.mys3policy.arn
+}
+
 
 # Create EC2 web servers in different subnets 
 resource "aws_instance" "http-server" {
