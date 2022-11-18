@@ -11,6 +11,8 @@
       vars:
         package:
         - httpd
+        - ruby 
+        - wget 
   
     - name: httpd is running
       service:
@@ -20,3 +22,15 @@
     - name: copy main page
       template: 
         src=files/index.html.j2   dest=/var/www/html/index.html
+
+   30  wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+   31  pwd
+   32  cd /tmp
+   33  wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+   34  ls -lrt 
+   35  chmod a+x install 
+   36  ./install auto 
+   37  sudo ./install auto 
+   38  aws s3 ls s3://aws-codedeploy-us-east-1/releases/ | grep '\.rpm$'
+   39  sudo ./install auto -v releases/codedeploy-agent-1.4.1-2244.noarch.rpm 
+   40  sudo service codedeploy-agent status 
