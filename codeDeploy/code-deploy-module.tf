@@ -128,7 +128,7 @@ EOF
 
 #.................................................
 # Create Deployment and point to S3 object 
-resource "null_resource" "perform_deploy" { 
+/* resource "null_resource" "perform_deploy" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
   triggers = {
@@ -145,4 +145,4 @@ EOF
   } # End of provisioner
 
   depends_on = [null_resource.upload_file]
-} # end of "null_resource" "perform_deploy"
+} # end of "null_resource" "perform_deploy" */
