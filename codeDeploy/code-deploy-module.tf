@@ -35,11 +35,10 @@ resource "aws_iam_policy" "mys3policy" {
 resource "aws_iam_role" "myec2role" {
   name = "EC2InstanceRole"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
+  policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+      {
             "Effect": "Allow",
             "Action": [
                 "sts:AssumeRole"
@@ -49,11 +48,10 @@ resource "aws_iam_role" "myec2role" {
                     "ec2.amazonaws.com"
                 ]
             }
-    }
-  ]
-}
-EOF
-}
+      }
+    ]
+  }
+} # end of resource aws_iam_role
 
 # Attach policy to role 
 resource "aws_iam_role_policy_attachment" "roll_attach_to_policy" {
