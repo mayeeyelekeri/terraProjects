@@ -9,3 +9,7 @@ aws s3 mb s3://terraprojects --region us-east-1
 
 --- Key-pair is from the local machine
 
+--- To execute 
+terraform init -reconfigure 
+terraform apply -var-file=dev/terraform.tfvars
+
