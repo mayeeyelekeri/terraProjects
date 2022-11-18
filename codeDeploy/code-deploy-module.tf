@@ -116,7 +116,7 @@ resource "aws_codedeploy_app" "myapp" {
 
 # create Deployment group for EC2 machines 
 resource "aws_codedeploy_deployment_group" "mydeploygroup" {
-  app_name              = aws_codedeploy_app.example.name
+  app_name              = aws_codedeploy_app.myapp.name
   deployment_group_name = "mydeploygroup"
   service_role_arn      = aws_iam_role.myapp.arn
 
