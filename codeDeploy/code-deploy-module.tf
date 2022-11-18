@@ -1,7 +1,7 @@
 # Create s3 bucket 
 resource "aws_s3_bucket" "codebucket" {
-  #bucket = "${var.codebucket}-${random_integer.suffix.result}"
-  bucket = "${var.codebucket}"
+  bucket = "${var.codebucket}-${random_integer.suffix.result}"
+  #bucket = "${var.codebucket}"
 
   tags = {
     Name        = var.codebucket
@@ -9,10 +9,10 @@ resource "aws_s3_bucket" "codebucket" {
   }
 }
 
-/* resource "random_integer" "suffix" {
+resource "random_integer" "suffix" {
   min = 100
   max = 999
-} */
+}
 
 
 # Upload webapp file to S3 
