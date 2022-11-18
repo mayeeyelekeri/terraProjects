@@ -140,7 +140,7 @@ aws deploy create-deployment \
   --application-name ${var.app-name} \
   --deployment-config-name CodeDeployDefault.OneAtATime \
   --deployment-group-name ${aws_codedeploy_deployment_group.mydeploygroup.deployment_group_name} \
-  --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=webapp
+  --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=${var.zip-file}
 EOF
   } # End of provisioner
 
