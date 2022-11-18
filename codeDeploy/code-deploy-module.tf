@@ -59,14 +59,14 @@ resource "aws_iam_role_policy_attachment" "codedeploy_service" {
 #.................................................
 # Create Code Deploy application 
 resource "aws_codedeploy_app" "myapp" {
-  name = "myapp"
+  name = var.app-name
 }
 
 #.................................................
 # create Deployment group for EC2 machines 
 resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   app_name              = aws_codedeploy_app.myapp.name
-  deployment_group_name = "mydeploygroup"
+  deployment_group_name = "${var.app-name}-deploygroup"
   service_role_arn      = aws_iam_role.my_code_deploy_role.arn
 
   ec2_tag_set {
@@ -102,10 +102,10 @@ resource "null_resource" "perform_deploy" {
     provisioner "local-exec" {
     command = <<EOF
 aws deploy create-deployment \
-  --application-name myapp \
+  --application-name ${var.app-name} \
   --deployment-config-name CodeDeployDefault.OneAtATime \
-  --deployment-group-name mydeploygroup \
-  --s3-location bucket=codedeploy-116,bundleType=zip,key=webapp.zip
+  --deployment-group-name ${aws_codedeploy_deployment_group.mydeploygroup.deployment_group_name} \
+  --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=${var.zip-file}
 EOF
   } # End of provisioner
 
