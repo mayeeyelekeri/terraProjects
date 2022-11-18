@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "codebucket" {
 
   tags = {
     Name        = var.codebucket
-    Environment = "Dev"
+    Environment = "dev"
   }
 }
 
@@ -21,6 +21,8 @@ resource "aws_s3_object" "file_upload" {
   bucket = aws_s3_bucket.codebucket.id
   key    = var.zip-file
   source = join("/", [var.zip-path, var.zip-file]) 
+
+  depends_on = [aws_s3_bucket.codebucket]
 }
 
 #.................................................
@@ -47,6 +49,8 @@ resource "aws_iam_role" "my_code_deploy_role" {
   ]
 }
 EOF
+
+  depends_on = [aws_s3_object.file_upload]
 }
 
 #.................................................
@@ -60,6 +64,8 @@ resource "aws_iam_role_policy_attachment" "codedeploy_service" {
 # Create Code Deploy application 
 resource "aws_codedeploy_app" "myapp" {
   name = var.app-name
+
+  depends_on = [aws_iam_role_policy_attachment.codedeploy_service]
 }
 
 #.................................................
@@ -92,12 +98,19 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
     alarms  = ["my-alarm-name"]
     enabled = true
   } */
+
+  depends_on = [aws_codedeploy_app.myapp]
 }
 
 #.................................................
 # Create Deployment and point to S3 object 
 resource "null_resource" "perform_deploy" { 
-    provisioner "local-exec" {
+
+  # This timestamps makes this resource to run all time, even if there is no change
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+  provisioner "local-exec" {
     command = <<EOF
 aws deploy create-deployment \
   --application-name ${var.app-name} \
