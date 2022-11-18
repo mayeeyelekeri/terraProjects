@@ -34,4 +34,4 @@ ec2-data = {   "subnet1" = { color = "Red"},
 			 }
 
 			 
-codebucket = "codeDeploy"
+codebucket = "codedeploy"
