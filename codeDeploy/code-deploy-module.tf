@@ -35,7 +35,7 @@ resource "aws_iam_policy" "mys3policy" {
 resource "aws_iam_role" "myec2role" {
   name = "EC2InstanceRole"
 
-  inline_policy = jsonencode({
+  assume_role_policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
       {
