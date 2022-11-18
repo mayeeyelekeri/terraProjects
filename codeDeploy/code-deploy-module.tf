@@ -10,6 +10,27 @@ data "aws_ssm_parameter" "linux-ami" {
     name        = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
+# Create a policy for S3 access for EC2 
+resource "aws_iam_policy" "policy" {
+  name        = "S3AccessPolicy"
+  path        = "/"
+  description = "My S3 access policy"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        "Action": [
+                "s3:Get*",
+                "s3:List*"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      }
+    ]
+  })
+}
+
 # Create EC2 web servers in different subnets 
 resource "aws_instance" "http-server" {
   for_each                    = aws_subnet.public-subnets
