@@ -113,10 +113,12 @@ resource "null_resource" "upload_file" {
   }
   provisioner "local-exec" {
     command = <<EOF
-cd /c/users/yelek/Downloads/test/webapp && \
-aws deploy push \
-  --application-name ${var.app-name} \
-  --s3-location s3://${aws_s3_bucket.codebucket.id}/${var.zip-file}
+ansible-playbook --extra-vars "passed_in_hosts=localhost \
+    app_name=${var.app-name} \
+    bucket=${aws_s3_bucket.codebucket.id} \
+    zip-file=${var.zip-file} \
+    webapp-src-location=${var.webapp-src-location} \
+  ansible_templates/aws_cmd_execution.yaml
 EOF
   } # End of provisioner
 

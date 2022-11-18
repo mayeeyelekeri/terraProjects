@@ -13,3 +13,8 @@ variable "zip-path" {
 variable "app-name" {
   default = "myapp"
 }
+
+variable "webapp-src-location" {
+  default = "myapp"
+}
+

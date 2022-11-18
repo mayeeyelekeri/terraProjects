@@ -2,4 +2,7 @@
 - hosts: "{{ passed_in_hosts }}"
   tasks:
     - name: Execute install 
-      ansible.builtin.shell: echo hello
+      ansible.builtin.shell: aws deploy push --application-name "{{ app-name }}" --s3-location s3://"{{bucket}}"/"{{zip-file}}".zip
+      args:
+        chdir: {{ webapp-src-location }}
+         
