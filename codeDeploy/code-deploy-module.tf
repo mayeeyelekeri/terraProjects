@@ -102,6 +102,28 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   depends_on = [aws_codedeploy_app.myapp]
 }
 
+
+#.................................................
+# upload zip file to S3 object 
+resource "null_resource" "upload_file" { 
+
+  # This timestamps makes this resource to run all time, even if there is no change
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+  provisioner "local-exec" {
+    command = <<EOF
+cd /c/users/yelek/Downloads/test/webapp; \
+aws deploy push \
+  --application-name ${var.app-name} \
+  --s3-location s3://${aws_s3_bucket.codebucket.id}/${var.zip-file}
+EOF
+  } # End of provisioner
+
+  depends_on = [aws_s3_bucket.codebucket]
+} # end of "null_resource" "upload_file"
+
+
 #.................................................
 # Create Deployment and point to S3 object 
 resource "null_resource" "perform_deploy" { 
@@ -117,12 +139,6 @@ aws deploy create-deployment \
   --deployment-config-name CodeDeployDefault.OneAtATime \
   --deployment-group-name ${aws_codedeploy_deployment_group.mydeploygroup.deployment_group_name} \
   --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=${var.zip-file}
-EOF
-  } # End of provisioner
-
-  provisioner "local-exec" {
-    command = <<EOF
-    echo hello--------------------------------------
 EOF
   } # End of provisioner
 
