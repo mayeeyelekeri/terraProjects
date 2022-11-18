@@ -94,8 +94,6 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   } */
 }
 
-# s3://codedeploy4321/webapp.zip
-
 #.................................................
 # Create Deployment and point to S3 object 
 resource "null_resource" "perform_deploy" { 
