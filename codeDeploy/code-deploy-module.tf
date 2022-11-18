@@ -61,12 +61,12 @@ resource "aws_iam_role_policy_attachment" "roll_attach_to_policy" {
   policy_arn = aws_iam_policy.mys3policy.arn
 }
 
-
 # Create EC2 web servers in different subnets 
 resource "aws_instance" "http-server" {
   for_each                    = aws_subnet.public-subnets
   ami                         = var.ami-id
   instance_type               = var.instance-type
+  iam_role_name               = aws_iam_role.myec2role.name
   associate_public_ip_address = true
   key_name                    = var.key-name
   vpc_security_group_ids      = [aws_security_group.public-sg.id] 
@@ -82,3 +82,29 @@ EOF
     Environment = "${terraform.workspace}"
   }
 }   
+
+
+# Create a role for codedeploy 
+resource "aws_iam_role" "my_code_deploy_role" {
+  name = "MyCodeDeployRole"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "codedeploy.amazonaws.com"
+                ]
+            },
+            "Action": [
+                "sts:AssumeRole"
+            ]
+    }
+  ]
+}
+EOF
+}
