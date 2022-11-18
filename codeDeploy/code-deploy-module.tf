@@ -92,4 +92,12 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
 # s3://codedeploy4321/webapp.zip
 
 # Create Deployment and point to S3 object 
-
+resource "null_resource" "perform_deploy" { 
+    provisioner "local-exec" {
+    command = <<EOF
+aws deploy push \
+  --application-name myapp \
+  --s3-location s3://codedeploy4321/webapp.zip 
+EOF
+  } # End of provisioner
+}  end of "null_resource"
