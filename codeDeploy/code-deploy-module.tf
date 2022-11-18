@@ -33,7 +33,9 @@ resource "aws_iam_policy" "mys3policy" {
 
 # Create a role for EC2 
 resource "aws_iam_instance_profile" "myinstanceprofile" {
-  name = "EC2InstanceProfile"
+  name = "myinstanceprofile"
+  role = "myinstanceprofile"
+  path = "/"
 } # end of resource aws_iam_role
 
 # Attach policy to role 
