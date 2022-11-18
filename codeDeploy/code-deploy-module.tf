@@ -34,6 +34,19 @@ resource "aws_iam_policy" "mys3policy" {
 # Create a role for EC2 
 resource "aws_iam_role" "myec2role" {
     name = "myec2role"
+    assume_role_policy = jsonencode({
+     "Version": "2012-10-17",
+     "Statement": [
+     {
+       "Action": "sts:AssumeRole",
+       "Principal": {
+         "Service": "ec2.amazonaws.com"
+       },
+       "Effect": "Allow",
+       "Sid": ""
+     }
+     ]
+    })
 }
 
 # Create a instance profile 
