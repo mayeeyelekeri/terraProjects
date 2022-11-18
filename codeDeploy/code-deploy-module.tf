@@ -105,7 +105,7 @@ aws deploy create-deployment \
   --application-name myapp \
   --deployment-config-name CodeDeployDefault.OneAtATime \
   --deployment-group-name mydeploygroup \
-  --s3-location s3://codedeploy-116/webapp.zip
+  --s3-location s3://codedeploy-116/webapp.zip \
 EOF
   } # End of provisioner
 
