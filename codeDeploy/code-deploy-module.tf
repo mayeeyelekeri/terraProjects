@@ -32,30 +32,13 @@ resource "aws_iam_policy" "mys3policy" {
 }
 
 # Create a role for EC2 
-resource "aws_iam_role" "myec2role" {
-  name = "EC2InstanceRole"
-
-  assume_role_policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-            "Effect": "Allow",
-            "Action": [
-                "sts:AssumeRole"
-            ],
-            "Principal": {
-                "Service": [
-                    "ec2.amazonaws.com"
-                ]
-            }
-      }
-    ]
-  })
+resource "aws_iam_instance_profile" "myinstanceprofile" {
+  name = "EC2InstanceProfile"
 } # end of resource aws_iam_role
 
 # Attach policy to role 
 resource "aws_iam_role_policy_attachment" "roll_attach_to_policy" {
-  role       = aws_iam_role.myec2role.name
+  role       = aws_iam_instance_profile.myinstanceprofile.name
   policy_arn = aws_iam_policy.mys3policy.arn
 }
 
@@ -64,7 +47,7 @@ resource "aws_instance" "http-server" {
   for_each                    = aws_subnet.public-subnets
   ami                         = var.ami-id
   instance_type               = var.instance-type
-  iam_instance_profile        = aws_iam_role.myec2role.name
+  iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
   associate_public_ip_address = true
   key_name                    = var.key-name
   vpc_security_group_ids      = [aws_security_group.public-sg.id] 
