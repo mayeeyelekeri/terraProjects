@@ -39,3 +39,5 @@ zip-file = "webapp.zip"
 zip-path = "ansible_templates/files"
 app-name = "webapp"
 webapp-src-location = "/home/vagrant/webapp"
+
+pipeline-bucket = "codepipeline"
