@@ -1,8 +1,7 @@
 # Create s3 bucket 
 resource "aws_s3_bucket" "codebucket" {
-  #bucket = "${var.codebucket}-${random_integer.suffix.result}"
-  bucket = "${var.codebucket}"
-
+  bucket = "${var.codebucket}-${random_integer.suffix.result}"
+  
   tags = {
     Name        = var.codebucket
     Environment = "dev"

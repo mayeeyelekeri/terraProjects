@@ -34,7 +34,7 @@ ec2-data = {   "subnet1" = { color = "Red"},
 			 }
 
 			 
-codebucket = "codePipeline"
+codebucket = "codepipeline"
 zip-file = "webapp.zip"
 zip-path = "ansible_templates/files"
 app-name = "webapp"
