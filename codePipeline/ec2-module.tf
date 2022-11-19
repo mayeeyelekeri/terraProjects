@@ -87,6 +87,6 @@ EOF
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_iam_role.myec2role]
+  depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy ]
 }   
 
