@@ -229,10 +229,10 @@ EOF
     location = aws_s3_bucket.pipelinebucket.bucket
     type     = "S3"
 
-    /*encryption_key {
+    encryption_key {
       id   = data.aws_kms_alias.s3kmskey.arn
       type = "KMS"
-    } */
+    } 
   }
 
   stage {
