@@ -221,3 +221,56 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
 EOF
 }
 
+/* resource "aws_codepipeline" "codepipeline" {
+  name     = "my-webapp_pipeline"
+  role_arn = aws_iam_role.my_code_pipeline_role.arn
+
+  artifact_store {
+    location = aws_s3_bucket.pipelinebucket.bucket
+    type     = "S3"
+
+    /*encryption_key {
+      id   = data.aws_kms_alias.s3kmskey.arn
+      type = "KMS"
+    } */
+  }
+
+  stage {
+    name = "Source"
+
+    action {
+      name             = "Source"
+      category         = "Source"
+      owner            = "AWS"
+      provider         = "S3"
+      output_artifacts = ["source_output"]
+
+      configuration = {
+        ConnectionArn    = aws_codestarconnections_connection.example.arn
+        FullRepositoryId = "my-organization/example"
+        BranchName       = "main"
+      }
+    }
+  }
+  
+  stage {
+    name = "Deploy"
+
+    action {
+      name            = "Deploy"
+      category        = "Deploy"
+      owner           = "AWS"
+      provider        = "CloudFormation"
+      input_artifacts = ["build_output"]
+      version         = "1"
+
+      configuration = {
+        ActionMode     = "REPLACE_ON_FAILURE"
+        Capabilities   = "CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM"
+        OutputFileName = "CreateStackOutput.json"
+        StackName      = "MyStack"
+        TemplatePath   = "build_output::sam-templated.yaml"
+      }
+    }
+  }
+} */ 
