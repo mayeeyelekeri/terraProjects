@@ -8,6 +8,14 @@ resource "aws_s3_bucket" "codebucket" {
   }
 }
 
+# Enable versioning for bucket
+resource "aws_s3_bucket_versioning" "versioning" {
+  bucket = aws_s3_bucket.codebucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
 #.................................................
 resource "random_integer" "suffix" {
   min = 100
