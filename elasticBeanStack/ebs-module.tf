@@ -81,3 +81,31 @@ EOF
 
   depends_on = [aws_s3_bucket.codebucket]
 } # end of "null_resource" "upload_file"
+
+
+#.................................................
+# Create a role for bean stack 
+resource "aws_iam_role" "beanstackrole" {
+  name = "beanstackrole"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "ec2.amazonaws.com"
+                ]
+            },
+            "Action": [
+                "sts:AssumeRole"
+            ]
+    }
+  ]
+}
+EOF
+} # end of my_code_pipeline_role
+
