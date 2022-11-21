@@ -1,4 +1,4 @@
-output "Elastic Bean Stack application" {
+output "elastic_Bean_Stack_application" {
 	value	  = aws_elastic_beanstalk_application.mywebapp
 } 
 
