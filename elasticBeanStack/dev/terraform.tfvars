@@ -10,12 +10,6 @@ public-subnets = { "subnet1" =  { cidr = "10.0.1.0/24",
 						   }
 			 }
 
-# EC2 Related variables 
-instance-type = "t2.micro"
-key-pair-path = "../../awsKeyPairDir"
-key-file-name = "../../awsKeyPairDir/elasticBeanStack.pem"
-key-name = "elasticBeanStack"
-
 # ALB Related variables 
 private-subnets = { "subnet1" =  { cidr = "10.0.4.0/24", 
 							 zone = "us-east-1a"
@@ -25,12 +19,7 @@ private-subnets = { "subnet1" =  { cidr = "10.0.4.0/24",
 						   } 
 			 }
 
-ec2-data = {   "subnet1" = { color = "Red"},  
-			   "subnet2" = { color = "Green"}, 
-			   "subnet3" = { color = "Blue"}
-			 }
-
-			 
+	 
 codebucket = "elasticbeanstack"
 file-name = "springdemo-0.0.1-SNAPSHOT.war"
 file-path = "ansible_templates/files"

@@ -6,6 +6,10 @@ variable "file-name" {
   default = "webapp.zip"
 }
 
+variable "file-path" {
+  default = "webapp.zip"
+}
+
 variable "app-name" {
   default = "myapp"
 }
