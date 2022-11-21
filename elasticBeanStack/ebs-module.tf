@@ -20,7 +20,7 @@ resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
 resource "aws_elastic_beanstalk_environment" "myapp-env" {
   name = "mywebapp-env"
   application = aws_elastic_beanstalk_application.mywebapp.name
-  solution_stack_name = "Corretto 17 running on 64bit Amazon Linux 2"
+  solution_stack_name = "64bit Amazon Linux 2 v3.4.1 running Corretto 17"
   version_label = aws_elastic_beanstalk_application_version.beanstalk_myapp_version.name
  
   setting {
