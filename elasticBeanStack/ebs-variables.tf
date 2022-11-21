@@ -14,3 +14,9 @@ variable "webapp-src-location" {
   default = "myapp"
 }
 
+variable "project-name" {
+  default = "myapp"
+}
+
+
+

@@ -20,7 +20,7 @@ resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
 resource "aws_elastic_beanstalk_environment" "myapp-env" {
   name = "mywebapp-env"
   application = aws_elastic_beanstalk_application.mywebapp.name
-  solution_stack_name = "64bit Amazon Linux 2 v3.1.7 running Corretto 11"
+  solution_stack_name = "Corretto 17 running on 64bit Amazon Linux 2"
   version_label = aws_elastic_beanstalk_application_version.beanstalk_myapp_version.name
  
   setting {
@@ -36,8 +36,6 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
   }
 
 }
-
-
 
 # Create s3 bucket 
 resource "aws_s3_bucket" "codebucket" {

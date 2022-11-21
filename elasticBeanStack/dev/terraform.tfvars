@@ -11,9 +11,6 @@ public-subnets = { "subnet1" =  { cidr = "10.0.1.0/24",
 			 }
 
 # EC2 Related variables 
-ami-id = "ami-09d3b3274b6c5d4aa"
-ami-id-ubuntu = "ami-08c40ec9ead489470"
-myimage = "ami-09d3b3274b6c5d4aa"
 instance-type = "t2.micro"
 key-pair-path = "../../awsKeyPairDir"
 key-file-name = "../../awsKeyPairDir/elasticBeanStack.pem"
