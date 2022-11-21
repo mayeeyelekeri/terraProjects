@@ -2,28 +2,40 @@
 resource "aws_elastic_beanstalk_application" "mywebapp" {
   name        = "mywebapp"
   description = "mywebapp"
+
+  depends_on = [null_resource.upload_file]
 }
 
-/*
+resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
+  application = aws_elastic_beanstalk_application.mywebapp.name
+  bucket = aws_s3_bucket.codebucket.id
+  key = aws_s3_bucket_object.codebucket.id
+  name = "${var.app-name}-1.0.0"
+
+  depends_on = [aws_elastic_beanstalk_application.mywebapp]
+}
+
+
 # Create environment 
-resource "aws_elastic_beanstalk_environment" "webapp-env" {
-  name                = "webapp-env"
-  application         = aws_elastic_beanstalk_application.mywebapp.name
-  solution_stack_name = "64bit Amazon Linux 2015.03 v2.0.3 running Go 1.4"
-
+resource "aws_elastic_beanstalk_environment" "myapp-env" {
+  name = "mywebapp-env"
+  application = aws_elastic_beanstalk_application.mywebapp.name
+  solution_stack_name = "64bit Amazon Linux 2 v3.1.7 running Corretto 11"
+  version_label = aws_elastic_beanstalk_application_version.beanstalk_myapp_version.name
+ 
   setting {
-    namespace = "aws:ec2:vpc"
-    name      = "VPCId"
-    value     = "vpc-xxxxxxxx"
+    namespace = "aws:ec2:instances"
+    name = "InstanceTypes"
+    value = "t2.micro"
   }
 
   setting {
-    namespace = "aws:ec2:vpc"
-    name      = "Subnets"
-    value     = "subnet-xxxxxxxx"
+   namespace = "aws:autoscaling:launchconfiguration"
+   name = "IamInstanceProfile"
+   value = "aws-elasticbeanstalk-ec2-role"
   }
+
 }
-*/
 
 
 
