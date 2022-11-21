@@ -69,5 +69,5 @@ ansible-playbook --extra-vars "passed_in_hosts=localhost \
 EOF
   } # End of provisioner
 
-  depends_on = [aws_s3_bucket.codebucket , aws_instance.http-server]
+  depends_on = [aws_s3_bucket.codebucket]
 } # end of "null_resource" "upload_file"
