@@ -2,12 +2,8 @@ variable "codebucket" {
   default = "somebucket"
 }
 
-variable "zip-file" {
+variable "file-name" {
   default = "webapp.zip"
-}
-
-variable "zip-path" {
-  default = "ansible"
 }
 
 variable "app-name" {
