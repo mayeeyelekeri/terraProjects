@@ -111,6 +111,15 @@ resource "aws_iam_role" "beanstackrole" {
 EOF
 } # end of my_code_pipeline_role
 
+# Create a instance profile 
+resource "aws_iam_instance_profile" "myinstanceprofile" {
+  name = "myinstanceprofile"
+  role = aws_iam_role.beanstackrole.name
+  path = "/"
+} # end of resource aws_iam_instance_profile
+
+
+# Attach policy to role
 resource "aws_iam_role_policy" "ebs_policy" {
   name = "ebs_policy"
   role = aws_iam_role.beanstackrole.id
