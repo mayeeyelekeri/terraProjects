@@ -9,7 +9,7 @@ resource "aws_elastic_beanstalk_application" "mywebapp" {
 resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
   application = aws_elastic_beanstalk_application.mywebapp.name
   bucket = aws_s3_bucket.codebucket.id
-  key = aws_s3_bucket_object.codebucket.id
+  key = ${var.file-name}
   name = "${var.app-name}-1.0.0"
 
   depends_on = [aws_elastic_beanstalk_application.mywebapp]
