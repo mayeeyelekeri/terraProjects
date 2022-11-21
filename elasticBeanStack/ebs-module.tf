@@ -3,7 +3,7 @@ resource "aws_elastic_beanstalk_application" "mywebapp" {
   name        = "mywebapp"
   description = "mywebapp"
 
-  depends_on = [null_resource.upload_file]
+  depends_on = [null_resource.upload_file, aws_iam_role_policy.ebs_policy]
 }
 
 resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
@@ -192,18 +192,6 @@ resource "aws_iam_role_policy" "ebs_policy" {
             "Resource": "*"
         },
         {
-            "Sid": "XRayAccess",
-            "Action": [
-                "xray:PutTraceSegments",
-                "xray:PutTelemetryRecords",
-                "xray:GetSamplingRules",
-                "xray:GetSamplingTargets",
-                "xray:GetSamplingStatisticSummaries"
-            ],
-            "Effect": "Allow",
-            "Resource": "*"
-        },
-        {
             "Sid": "QueueAccess",
             "Action": [
                 "sqs:ChangeMessageVisibility",
@@ -213,19 +201,6 @@ resource "aws_iam_role_policy" "ebs_policy" {
             ],
             "Effect": "Allow",
             "Resource": "*"
-        },
-        {
-            "Sid": "BucketAccess",
-            "Action": [
-                "s3:Get*",
-                "s3:List*",
-                "s3:PutObject"
-            ],
-            "Effect": "Allow",
-            "Resource": [
-                "arn:aws:s3:::elasticbeanstalk-*",
-                "arn:aws:s3:::elasticbeanstalk-*/*"
-            ]
         },
         {
             "Sid": "DynamoPeriodicTasks",
@@ -243,30 +218,10 @@ resource "aws_iam_role_policy" "ebs_policy" {
             "Resource": [
                 "arn:aws:dynamodb:*:*:table/*-stack-AWSEBWorkerCronLeaderRegistry*"
             ]
-        },
-        {
-            "Sid": "CloudWatchLogsAccess",
-            "Action": [
-                "logs:PutLogEvents",
-                "logs:CreateLogStream"
-            ],
-            "Effect": "Allow",
-            "Resource": [
-                "arn:aws:logs:*:*:log-group:/aws/elasticbeanstalk*"
-            ]
-        },
-        {
-            "Sid": "ElasticBeanstalkHealthAccess",
-            "Action": [
-                "elasticbeanstalk:PutInstanceStatistics"
-            ],
-            "Effect": "Allow",
-            "Resource": [
-                "arn:aws:elasticbeanstalk:*:*:application/*",
-                "arn:aws:elasticbeanstalk:*:*:environment/*"
-            ]
         }
     ]
   }
 EOF
+
+  depends_on = [aws_iam_role.beanstackrole]
 }
