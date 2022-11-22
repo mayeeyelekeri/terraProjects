@@ -1,7 +1,7 @@
 # Create bean stack docker application 
 resource "aws_elastic_beanstalk_application" "dockerapp" {
-  name        = "${var.dockerapp-name}
-  description = "${var.dockerapp-name}
+  name        = "${var.dockerapp-name}"
+  description = "${var.dockerapp-name}"
 
   depends_on = [null_resource.upload_file, aws_iam_role_policy.ebs_policy]
 }
