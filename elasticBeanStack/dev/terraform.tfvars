@@ -10,6 +10,6 @@ stack-name = "64bit Amazon Linux 2 v3.4.1 running Corretto 17"
 instance-profile = "myinstanceprofile"
 
 dockerapp-name = "dockerapp"
-dockerstack-name = "64bit Amazon Linux 2016.09 v2.5.2 running Docker 1.12.6"
+dockerstack-name = "Docker running on 64bit Amazon Linux"
 dockerwebapp-src-location = "ansible_templates/files"
 dockerfile-name = "Dockerrun.zip"
