@@ -18,5 +18,4 @@ variable "webapp-src-location" {
   default = "myapp"
 }
 
-variable "docker_file" {}
 
