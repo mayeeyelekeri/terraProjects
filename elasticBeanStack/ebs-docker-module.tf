@@ -36,7 +36,11 @@ resource "aws_elastic_beanstalk_environment" "dockerapp-env" {
    #value = "aws-elasticbeanstalk-ec2-role"  # **** this gets created automatically from aws console when an app is created 
   }
 
-
+  /* setting {
+    name = "SERVER_PORT"
+    namespace = "aws:elasticbeanstalk:application:environment"
+    value = "5000"
+  } */
 
   depends_on = [aws_iam_role.beanstackrole, aws_iam_instance_profile.myinstanceprofile]
 }

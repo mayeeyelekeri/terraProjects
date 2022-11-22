@@ -9,7 +9,12 @@ webapp-src-location = "/home/vagrant/springdemo/target"
 stack-name = "64bit Amazon Linux 2 v3.4.1 running Corretto 17"
 instance-profile = "myinstanceprofile"
 
-dockerapp-name = "dockerapp"
+
+#### beanstack platforms are located here 
+#### https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html
 dockerstack-name = "64bit Amazon Linux 2 v3.5.1 running Docker"
+
+
+dockerapp-name = "dockerapp"
 dockerwebapp-src-location = "ansible_templates/files"
 dockerfile-name = "Dockerrun.zip"
