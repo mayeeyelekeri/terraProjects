@@ -32,4 +32,5 @@ app-name = "webapp"
 webapp-src-location = "/home/vagrant/webapp"
 
 pipeline-bucket = "codepipeline"
-war_file = "/home/vagrant/springdemo/target/springdemo-0.0.1-SNAPSHOT.war"
+war_file = "/home/vagrant/springdemo/docker/springdemo.war"
+docker-file = ansible_templates/files/docker/Dockerfile

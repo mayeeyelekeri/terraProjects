@@ -81,7 +81,10 @@ resource "aws_instance" "web-server" {
   # Install java and copy springboot war file 
   provisioner "local-exec" {
     command = <<EOF
-aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars "passed_in_hosts=${self.public_ip} war_file=${var.war_file}" ansible_templates/install_java.yaml
+aws ec2 wait instance-status-ok --instance-ids ${self.id} && \
+ansible-playbook --extra-vars "passed_in_hosts=${self.public_ip} \
+war_file=${var.war_file} docker_file=${docker-file}" \
+ansible_templates/install_docker.yaml
 EOF
   } # End of provisioner
 
