@@ -4,9 +4,10 @@
     "Name": "flypenguin/test:latest",
     "Update": "true"
   },
-  "Ports": [
+  "portMappings": [
     {
-      "ContainerPort": "5000"
+      "hostPort": 8080,
+      "containerPort": 8080
     }
   ],
   "Volumes": [],
