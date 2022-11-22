@@ -83,7 +83,7 @@ resource "aws_instance" "web-server" {
     command = <<EOF
 aws ec2 wait instance-status-ok --instance-ids ${self.id} && \
 ansible-playbook --extra-vars "passed_in_hosts=${self.public_ip} \
-war_file=${var.war-file} docker_file=${var.docker-file} image_name=${image-name}" \
+war_file=${var.war-file} docker_file=${var.docker-file} image_name=${var.image-name}" \
 ansible_templates/install_docker.yaml
 EOF
   } # End of provisioner
