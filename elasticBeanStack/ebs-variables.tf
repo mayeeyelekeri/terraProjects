@@ -33,6 +33,13 @@ variable "instance-profile" {
 variable "stack-name" {
 }
 
+variable "dockerapp-name" {
+}
+
+variable "dockerfile-name" {} 
+variable "dockerstack-name" {} 
+variable "dockerfile-name" {} 
+variable "dockerwebapp-src-location" {}
 
 
 
