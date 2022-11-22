@@ -26,5 +26,13 @@ variable "project-name" {
   default = "myapp"
 }
 
+variable "instance-profile" {
+  default = "myapp"
+}
+
+variable "stack-name" {
+}
+
+
 
 
