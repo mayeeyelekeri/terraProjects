@@ -12,7 +12,7 @@ resource "aws_elastic_beanstalk_application_version" "beanstalk_dockerapp_versio
   key = var.dockerfile-name
   name = "${var.dockerapp-name}-1.0.0"
 
-  depends_on = [aws_elastic_beanstalk_application.mywebapp]
+  depends_on = [aws_elastic_beanstalk_application.dockerapp]
 }
 
 
