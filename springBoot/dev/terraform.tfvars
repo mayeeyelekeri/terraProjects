@@ -4,7 +4,10 @@ vpc-cidr = "10.0.0.0/16"
 open-cidr = "0.0.0.0/0"
 public-subnets = { "subnet1" =  { cidr = "10.0.1.0/24", 
 							 zone = "us-east-1a"
-						   }  
+						   }, 
+				   "subnet2" =  { cidr = "10.0.2.0/24", 
+							 zone = "us-east-1b"
+						   }
 			     }
 
 # EC2 Related variables 
@@ -22,7 +25,8 @@ private-subnets = { "subnet1" =  { cidr = "10.0.4.0/24",
 						   }
 				  }
 
-ec2-data = {   "subnet1" = { color = "Red"} }
+ec2-data = {   "subnet1" = { color = "Red"},
+			   "subnet2" = { color = "Blue"} }
 
 			 
 codebucket = "springboot"
