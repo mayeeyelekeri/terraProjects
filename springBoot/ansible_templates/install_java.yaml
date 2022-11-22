@@ -14,8 +14,8 @@
 
     - name: Copy war file
       ansible.builtin.copy:
-      src: {{ war_file }}
+      src: "{{ war_file }}"
       dest: /home/ec2-user
 
     - name: Run springboot application 
-      ansible.builtin.shell: java -jar {{ war_file }} 
+      ansible.builtin.shell: java -jar "{{ war_file }}" 
