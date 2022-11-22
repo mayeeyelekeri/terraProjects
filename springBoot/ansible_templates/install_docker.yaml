@@ -35,4 +35,4 @@
       ansible.builtin.shell: docker build -t springdemo:latest . 
     
     - name: Run springboot application 
-      ansible.builtin.shell: docker run springdemo:latest 
+      ansible.builtin.shell: docker run -p 8080:8080 -d springdemo:latest 
