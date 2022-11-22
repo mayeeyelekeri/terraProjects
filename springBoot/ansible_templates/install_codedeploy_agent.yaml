@@ -12,7 +12,8 @@
         package:
         - httpd
         - ruby 
-        - wget 
+        - wget
+        - java-1.8.0
   
     - name: httpd is running
       service:
@@ -34,3 +35,8 @@
 
     - name: Display log 
       ansible.builtin.shell: cat /var/log/aws/codedeploy-agent/codedeploy-agent.log  
+
+    - name: Copy war file
+      ansible.builtin.copy:
+      src: {{ war_file }}
+      dest: /home/ec2-user

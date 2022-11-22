@@ -66,6 +66,7 @@ resource "aws_iam_role_policy_attachment" "roll_attach_to_policy" {
   policy_arn = aws_iam_policy.mys3policy.arn
 }
 
+# Install Httpd and start at port 80 
 # Create EC2 web servers in different subnets 
 resource "aws_instance" "http-server" {
   for_each                    = aws_subnet.public-subnets
@@ -78,7 +79,7 @@ resource "aws_instance" "http-server" {
   subnet_id                   = each.value.id
   provisioner "local-exec" {
     command = <<EOF
-aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'passed_in_hosts=${self.public_ip}' ansible_templates/install_codedeploy_agent.yaml
+aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'passed_in_hosts=${self.public_ip} war_file=${war-file}' ansible_templates/install_codedeploy_agent.yaml
 EOF
   } # End of provisioner
 
