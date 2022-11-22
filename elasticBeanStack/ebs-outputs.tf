@@ -1,9 +1,9 @@
-output "elastic_Bean_Stack_application" {
-	value	  = aws_elastic_beanstalk_application.mywebapp
+output "aws_elastic_beanstalk_environment" {
+	value	  = aws_elastic_beanstalk_environment.myapp-env
 } 
 
-output "elastic_Bean_Stack_docker_application" {
-	value	  = aws_elastic_beanstalk_application.dockerapp
+output "aws_elastic_beanstalk_docker-environment" {
+	value	  = aws_elastic_beanstalk_environment.dockerapp-env
 } 
 
 output "bucket" {
