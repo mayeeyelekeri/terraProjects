@@ -31,4 +31,5 @@ variable "key-name" {
 }
 
 variable "ec2-data" {}
-variable "war_file" {}
+variable "war-file" {}
+variable "image-name" {}

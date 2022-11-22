@@ -32,7 +32,7 @@
       ansible.builtin.shell: systemctl start docker.service
 
     - name: run docker build    
-      ansible.builtin.shell: docker build -t springdemo:latest . 
+      ansible.builtin.shell: "docker build -t {{ image_name }} ." 
     
     - name: Run springboot application 
-      ansible.builtin.shell: docker run -p 8080:8080 -d springdemo:latest 
+      ansible.builtin.shell: "docker run -p 8080:8080 -d {{ image_name }}" 
