@@ -20,7 +20,7 @@ resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
 resource "aws_elastic_beanstalk_environment" "myapp-env" {
   name = "mywebapp-env"
   application = aws_elastic_beanstalk_application.mywebapp.name
-  solution_stack_name = "64bit Amazon Linux 2 v3.4.1 running Corretto 17"
+  solution_stack_name = var.stack-name
   version_label = aws_elastic_beanstalk_application_version.beanstalk_myapp_version.name
  
   setting {
@@ -32,7 +32,7 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
   setting {
    namespace = "aws:autoscaling:launchconfiguration"
    name = "IamInstanceProfile"
-   value = "myinstanceprofile"
+   value = var.instance-profile
    #value = "aws-elasticbeanstalk-ec2-role"  # **** this gets created automatically from aws console when an app is created 
   }
 
@@ -119,7 +119,7 @@ EOF
 
 # Create a instance profile 
 resource "aws_iam_instance_profile" "myinstanceprofile" {
-  name = "myinstanceprofile"
+  name = var.instance-profile
   role = aws_iam_role.beanstackrole.name
   path = "/"
 } # end of resource aws_iam_instance_profile
