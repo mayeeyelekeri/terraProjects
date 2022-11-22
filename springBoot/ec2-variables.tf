@@ -30,5 +30,5 @@ variable "key-name" {
 	default = "applicationLBPrivatePublic"
 }
 
-variable "ec2-data" {
-}
+variable "ec2-data" {}
+variable "war-file" {}
