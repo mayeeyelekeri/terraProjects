@@ -35,9 +35,9 @@ ec2-data = {   "subnet1" = { color = "Red"},
 
 			 
 codebucket = "springboot"
-zip-file = "springdemo-0.0.1-SNAPSHOT.war"
+zip-file = "webapp.zip"
 zip-path = "ansible_templates/files"
-app-name = "springdemo"
-webapp-src-location = "/home/vagrant/springdemo"
+app-name = "webapp"
+webapp-src-location = "/home/vagrant/webapp"
 
 pipeline-bucket = "codepipeline"
