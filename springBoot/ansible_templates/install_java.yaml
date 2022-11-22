@@ -18,4 +18,4 @@
         dest: /home/ec2-user
 
     - name: Run springboot application 
-      ansible.builtin.shell: java -jar /home/ec2-user/*.war
+      ansible.builtin.shell: java -jar /home/ec2-user/*.war &
