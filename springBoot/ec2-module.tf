@@ -77,12 +77,18 @@ resource "aws_instance" "http-server" {
   key_name                    = var.key-name
   vpc_security_group_ids      = [aws_security_group.public-sg.id] 
   subnet_id                   = each.value.id
+
+  # Install httpd 
   provisioner "local-exec" {
     command = <<EOF
-aws ec2 wait instance-status-ok --instance-ids ${self.id} && \
-ansible-playbook --extra-vars "passed_in_hosts=${self.public_ip} \
-war_file=${var.war_file}" \
-ansible_templates/install_codedeploy_agent.yaml
+aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars "passed_in_hosts=${self.public_ip}" ansible_templates/install_codedeploy_agent.yaml
+EOF
+  } # End of provisioner
+
+  # Install java and copy springboot war file 
+  provisioner "local-exec" {
+    command = <<EOF
+aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars "passed_in_hosts=${self.public_ip} war_file=${var.war_file}" ansible_templates/install_java.yaml
 EOF
   } # End of provisioner
 
