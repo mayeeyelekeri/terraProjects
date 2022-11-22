@@ -38,7 +38,6 @@ variable "dockerapp-name" {
 
 variable "dockerfile-name" {} 
 variable "dockerstack-name" {} 
-variable "dockerfile-name" {} 
 variable "dockerwebapp-src-location" {}
 
 
