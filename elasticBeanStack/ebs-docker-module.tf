@@ -55,11 +55,7 @@ resource "null_resource" "upload_dockerfile" {
   }
   provisioner "local-exec" {
     command = <<EOF
-ansible-playbook --extra-vars "passed_in_hosts=localhost \
-    bucket=${aws_s3_bucket.codebucket.id} \
-    file_name=${var.dockerfile-name} \
-    webapp_src_location=${var.dockerwebapp-src-location}" \
-  ansible_templates/aws_cmd_execution.yaml
+aws s3 cp "${var.dockerwebapp-src-location}/${var.dockerfile-name}" s3://"${aws_s3_bucket.codebucket.id}"
 EOF
   } # End of provisioner
 
