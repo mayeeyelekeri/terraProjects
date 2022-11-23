@@ -38,7 +38,7 @@ resource "aws_db_instance" "my_test_mysql" {
   parameter_group_name        = aws_db_parameter_group.mydb_param_group.name
   publicly_accessible         = true
 
-  provisioner "local-exec" {
+  /*provisioner "local-exec" {
     command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} < /home/vagrant/infodb/mysqldump_april282020.txt"
-  }
+  } */
 }
