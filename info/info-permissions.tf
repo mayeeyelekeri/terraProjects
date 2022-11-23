@@ -10,7 +10,7 @@ data "aws_ssm_parameter" "linux-ami" {
     name        = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
-# Create a policy for S3 access for EC2 
+/* # Create a policy for S3 access for EC2 
 resource "aws_iam_policy" "mys3policy" {
   name        = "S3AccessPolicy"
   path        = "/"
@@ -65,4 +65,4 @@ resource "aws_iam_role_policy_attachment" "roll_attach_to_policy" {
   role       = aws_iam_role.myec2role.name
   policy_arn = aws_iam_policy.mys3policy.arn
 }
-
+ */ 
