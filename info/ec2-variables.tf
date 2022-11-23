@@ -38,3 +38,4 @@ variable "war-file" {}
 variable "docker-file-client" {}
 variable "image-name-client" {}
 variable "war-file-client" {}
+variable "db-name" {} 

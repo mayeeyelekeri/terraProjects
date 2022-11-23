@@ -35,3 +35,5 @@ image-name = "springdatatest:latest"
 war-file-client = "/home/vagrant/Client/target/Client-0.0.1-SNAPSHOT.jar"
 docker-file-client = "docker/Dockerfile_client"
 image-name-client = "client:latest"
+
+db-name = "infodb"
