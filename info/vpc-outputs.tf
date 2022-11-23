@@ -18,5 +18,5 @@ output "public-subnet-names" {
 } 
 
 output "public-subnet-1" {
-	value	  = keys(aws_subnet.public-subnets)[1]
+	value	  = values(aws_subnet.public-subnets)[1].id
 } 
