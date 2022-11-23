@@ -21,7 +21,7 @@ resource "aws_db_parameter_group" "mydb_param_group" {
 }
 
 
-resource "aws_db_instance" "my_test_mysql" {
+resource "aws_db_instance" "infodb" {
   allocated_storage           = 20
   storage_type                = "gp2"
   engine                      = "mysql"
