@@ -1,4 +1,4 @@
-# Get database endpoint and update infoserver application-aws.properties 
+/* # Get database endpoint and update infoserver application-aws.properties 
 resource "null_resource" "update_server_ipaddress" {
     provisioner "local-exec" {
     command = <<EOF
@@ -49,5 +49,5 @@ EOF
   }
 
   depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy , aws_db_instance.infodb , aws_instance.info_server, null_resource.create_client_package]
-}   
+}   */ 
 
