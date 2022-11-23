@@ -9,7 +9,13 @@ aws s3 mb s3://terraprojects --region us-east-1
 
 --- Key-pair is from the local machine
 
---- Create "codepipeline" project by using existing service role with "s3" as source and "codedeploy" as target 
+--- This project is going to create 2 ec2s - one for server and other for client. 
+
+--- This project depends on "mysql" project 
+
+--- In Server module, update database host name at application-aws.properties 
+
+--- In Client module, update Servers IP address at application.properties 
 
 --- To execute 
 terraform init -reconfigure 
