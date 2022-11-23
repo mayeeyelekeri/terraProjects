@@ -36,7 +36,7 @@ war-file-client = "/home/vagrant/Client/target/Client-0.0.1-SNAPSHOT.jar"
 docker-file-client = "docker/Dockerfile_client"
 image-name-client = "client:latest"
 
-db-name = "infodb"
+db_name = "infodb"
 mysql-database ="infodb"
 mysql-port = "3306"
 mysql-user = "admin"

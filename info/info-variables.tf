@@ -38,7 +38,7 @@ variable "war-file" {}
 variable "docker-file-client" {}
 variable "image-nameclient" {}
 variable "war-file-client" {}
-variable "db_name" {} 
+variable "db_name" { default = "infodb"} 
 variable "mysql_port" {}
 variable "mysql_user" {}
 variable "mysql_password" {}
