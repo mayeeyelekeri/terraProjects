@@ -37,6 +37,8 @@ public_database_subnets = { "subnet1" =  { cidr = "10.0.3.0/24",
 							 zone = "us-east-1d"
 						   }
 			     }
+dbdump_file = "/home/vagrant/infodb/db_export_Nov_23_2022.sql"
+
 
 ## Info-Server properties 	
 war_file = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
@@ -46,7 +48,6 @@ src_properties_file = "files/application-aws.properties.j2"
 dest_properties_file = "/home/vagrant/SpringDataTest/src/main/resources/application-aws.properties"
 info_server_port = "8080"
 info_server_workspace = "/home/vagrant/SpringDataTest"
-dbdump_file = "/home/vagrant/infodb/mysqldump_april282020.txt"
 
 ## Client properties  
 info_client_workspace = "/home/vagrant/Client"
