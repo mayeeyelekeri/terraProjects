@@ -28,6 +28,6 @@ private-subnets = { "subnet1" =  { cidr = "10.0.4.0/24",
 ec2-data = {   "subnet1" = { color = "Red"},
 			   "subnet2" = { color = "Blue"} }
 	
-war-file = "/home/vagrant/springdemo/docker/SpringDataTest-0.0.1-SNAPSHOT.jar"
+war-file = "/home/vagrant/SpringDataTest/docker/SpringDataTest-0.0.1-SNAPSHOT.jar"
 docker-file = "docker/Dockerfile"
 image-name = "SpringDataTest:latest"
