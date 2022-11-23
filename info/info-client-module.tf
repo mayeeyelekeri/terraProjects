@@ -25,11 +25,11 @@ EOF
 
 # Install docker and install Info-Client 
 resource "aws_instance" "info-client" {
-  ami                         = var.ami-id
-  instance_type               = var.instance-type
+  ami                         = var.ami_id
+  instance_type               = var.instance_type
   iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
   associate_public_ip_address = true
-  key_name                    = var.key-name
+  key_name                    = var.key_name
   vpc_security_group_ids      = [aws_security_group.public_sg.id] 
   subnet_id                   = values(aws_subnet.public_subnets)[0].id
 
