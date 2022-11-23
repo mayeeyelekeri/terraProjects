@@ -17,6 +17,8 @@ resource "aws_internet_gateway" "igw" {
     Name = "${terraform.workspace}-My IG"
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_vpc.myvpc]
 }
 
 # ---------------------------- PUBLIC --------------------------
@@ -32,6 +34,8 @@ resource "aws_subnet" "public_subnets" {
     Name = "${terraform.workspace}-${each.value.cidr} - ${each.value.zone}"
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_vpc.myvpc]
 }
 
 # Create route table and attach IG to it
@@ -45,6 +49,8 @@ resource "aws_route_table" "internet_route" {
     Name = "${terraform.workspace}-Terraform-Public-RouteTable"
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_internet_gateway.igw]
 }
 
 # Associate ALL public subnets to route table 
@@ -52,6 +58,8 @@ resource "aws_route_table_association" "public_route_table_association1" {
   for_each       = aws_subnet.public_subnets
   subnet_id      = each.value.id
   route_table_id = aws_route_table.internet_route.id
+
+  depends_on = [aws_route_table.internet_route, aws_subnet.public_subnets ]
 }
 
 # -------------------- Security Groups --------------
@@ -99,4 +107,6 @@ resource "aws_security_group" "public_sg" {
     Name = "${terraform.workspace}-Public-Sec-Group"
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_vpc.myvpc , aws_route_table.internet_route, aws_subnet.public_subnets ]
 }

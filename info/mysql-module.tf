@@ -18,6 +18,8 @@ resource "aws_db_parameter_group" "mydb_param_group" {
     name  = "max_allowed_packet"
     value = "1073741824"
   }
+
+  depends_on = [aws_subnet.public_subnets , aws_db_subnet_group.rds_public_subnet]
 }
 
 
@@ -41,4 +43,6 @@ resource "aws_db_instance" "infodb" {
   provisioner "local-exec" {
     command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} ${var.db_name} < ${var.dbdump_file}"
   } 
+
+  depends_on = [aws_db_subnet_group.mydb_param_group]
 }

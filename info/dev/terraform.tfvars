@@ -27,14 +27,12 @@ private_subnets = { "subnet1" =  { cidr = "10.0.4.0/24",
 
 ec2_data = {   "subnet1" = { color = "Red"},
 			   "subnet2" = { color = "Blue"} }
-	
+
+
+## Info-Server properties 	
 war_file = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
 docker_file = "docker/Dockerfile"
 image_name = "springdatatest:latest"
-
-war_file_client = "/home/vagrant/Client/target/Client-0.0.1-SNAPSHOT.jar"
-docker_file_client = "docker/Dockerfile_client"
-image_name_client = "client:latest"
 
 db_name = "infodb"
 mysql_database ="infodb"
@@ -45,8 +43,14 @@ mysql_host = ""
 src_properties_file = "files/application-aws.properties.j2"
 dest_properties_file = "/home/vagrant/SpringDataTest/src/main/resources/application-aws.properties"
 info_server_port = "8080"
-info_client_workspace = "/home/vagrant/Client"
+
 info_server_workspace = "/home/vagrant/SpringDataTest"
 dbdump_file = "/home/vagrant/infodb/mysqldump_april282020.txt"
+
+## Client properties  
+info_client_workspace = "/home/vagrant/Client"
 src_properties_file_client = "files/application-aws.properties.client.j2"
 dest_properties_file_client = "/home/vagrant/Client/src/main/resources/application.properties"
+war_file_client = "/home/vagrant/Client/target/Client-0.0.1-SNAPSHOT.jar"
+docker_file_client = "docker/Dockerfile_client"
+image_name_client = "client:latest"
