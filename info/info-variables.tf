@@ -39,3 +39,10 @@ variable "docker-file-client" {}
 variable "image-name-client" {}
 variable "war-file-client" {}
 variable "db-name" {} 
+variable "mysql-port" {}
+variable "mysql-user" {}
+variable "mysql-password" {}
+variable "mysql-host" {}
+variable "mysql-database" {}
+variable "src-properties-file" {}
+variable "dest_properties_file" {}

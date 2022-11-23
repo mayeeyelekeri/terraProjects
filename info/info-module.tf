@@ -1,3 +1,33 @@
+# Get database endpoint and update infoserver application-aws.properties 
+resource "null_resource" "update_database_endpoint" {
+    provisioner "local-exec" {
+    command = <<EOF
+ansible-playbook --extra-vars "passed_in_hosts=localhost \
+mysql_host=${aws_db_instance.infodb.endpoint} \
+mysql_port=${var.mysql-port} \
+mysql_user=${var.mysql-user} \
+mysql_password=${var.mysql-password} \
+mysql_database=${var.mysql-database} \
+src_file=${var.src-properties-file} \
+dest_file=${var.dest-properties-file}"
+ansible_templates/replace_application_properties.yaml
+EOF
+  } # End of provisioner
+
+    depends_on = [aws_db_instance.infodb]
+}
+
+# Perform compilation of server 
+resource "null-resource" "create_package" {
+    provisioner "local-exec" {
+    command = <<EOF
+cd /home/vagrant; mvn clean package
+EOF
+  } # End of provisioner
+
+    depends_on = [null_resource.update_database_endpoint]
+}
+
 # Install docker and install Info-Server 
 resource "aws_instance" "info-server" {
   ami                         = var.ami-id
