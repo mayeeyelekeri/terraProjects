@@ -2,16 +2,16 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
-variable "open-cidr" {
+variable "open_cidr" {
 	default = "0.0.0.0/0"
 }
 
-variable "vpc-cidr" {
+variable "vpc_cidr" {
 	default = "10.0.0.0/16"
 }
 
-variable "public-subnets" {
+variable "public_subnets" {
 }
 
-variable "private-subnets" {
+variable "private_subnets" {
 }

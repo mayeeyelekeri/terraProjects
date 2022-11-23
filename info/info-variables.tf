@@ -1,8 +1,8 @@
-variable "ami-id" {
+variable "ami_id" {
   default = "ami-09d3b3274b6c5d4aa"
 }
 
-variable "ami-id-ubuntu" {
+variable "ami_id_ubuntu" {
   default = "ami-09d3b3274b6c5d4aa"
 }
 
@@ -10,34 +10,34 @@ variable "myimage" {
   default = "ami-09d3b3274b6c5d4aa"
 }
 
-variable "instance-type" {
+variable "instance_type" {
 	default = "t3.micro"
 }
 
-variable "key-pair-path" { 
+variable "key_pair_path" { 
 	default = "../../awsKeyPairDir"
 }
 
-variable "project-name" { 
+variable "project_name" { 
 	default = "applicationLBPrivatePublic"
 }
 
-variable "key-file-name" { 
+variable "key_file_name" { 
 	default = "../../awsKeyPairDir/applicationLBPrivatePublic.pem"
 }
 
-variable "key-name" { 
+variable "key_name" { 
 	default = "applicationLBPrivatePublic"
 }
 
-variable "ec2-data" {}
-variable "docker-file" {}
-variable "image-name" {}
-variable "war-file" {}
+variable "ec2_data" {}
+variable "docker_file" {}
+variable "image_name" {}
+variable "war_file" {}
 
-variable "docker-file-client" {}
-variable "image-nameclient" {}
-variable "war-file-client" {}
+variable "docker_file_client" {}
+variable "image_nameclient" {}
+variable "war_file_client" {}
 variable "db_name" { default = "infodb"} 
 variable "mysql_port" {}
 variable "mysql_user" {}
@@ -49,3 +49,4 @@ variable "dest_properties_file" {}
 variable "info_server_port" {}
 variable "info_client_workspace" {}
 variable "info_server_workspace" {}
+variable "dbdump_file" {}

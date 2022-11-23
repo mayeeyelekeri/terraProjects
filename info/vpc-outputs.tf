@@ -10,13 +10,13 @@ output "VPC-NAME" {
 
 output "PUBLIC-SECURITY-GROUP" {
   description = "Public SG"
-  value       = aws_security_group.public-sg.id
+  value       = aws_security_group.public_sg.id
 }
 
 output "public-subnet-names" {
-	value	  = keys(aws_subnet.public-subnets)[*]
+	value	  = keys(aws_subnet.public_subnets)[*]
 } 
 
-output "public-subnet-1" {
-	value	  = values(aws_subnet.public-subnets)[1].id
+output "public_subnet_1" {
+	value	  = values(aws_subnet.public_subnets)[1].id
 } 

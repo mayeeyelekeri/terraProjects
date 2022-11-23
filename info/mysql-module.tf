@@ -1,7 +1,7 @@
 # Create DB subnet group and add the public subnet 
-resource "aws_db_subnet_group" "rds-public-subnet" {
-  name = "rds-public-subnet-group"
-  subnet_ids = values(aws_subnet.public-subnets)[*].id
+resource "aws_db_subnet_group" "rds_public_subnet" {
+  name = "rds_public_subnet_group"
+  subnet_ids = values(aws_subnet.public_subnets)[*].id
 }
 
 # Create a new db parameter group
@@ -27,18 +27,18 @@ resource "aws_db_instance" "infodb" {
   engine                      = "mysql"
   engine_version              = "5.7"
   instance_class              = "db.t3.micro"
-  db_name                     = var.db-name
+  db_name                     = var.db_name
   username                    = "admin"
   password                    = "admin123"
   #parameter_group_name        = "default.mysql5.7"
-  db_subnet_group_name        = "${aws_db_subnet_group.rds-public-subnet.name}"
-  vpc_security_group_ids      = ["${aws_security_group.public-sg.id}"]
+  db_subnet_group_name        = "${aws_db_subnet_group.rds_public_subnet.name}"
+  vpc_security_group_ids      = ["${aws_security_group.public_sg.id}"]
   multi_az                    = false
   skip_final_snapshot         = true
   parameter_group_name        = aws_db_parameter_group.mydb_param_group.name
   publicly_accessible         = true
 
   provisioner "local-exec" {
-    command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} ${var.db-name} < /home/vagrant/infodb/mysqldump_april282020.txt"
+    command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} ${var.db-name} < ${var.dbdump_file}"
   } 
 }
