@@ -24,7 +24,9 @@ EOF
 resource "aws_instance" "info_server" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
-  iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
+  
+  ### instance profile is not required for this server 
+  #iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
   associate_public_ip_address = true
   key_name                    = var.key_name
   vpc_security_group_ids      = [aws_security_group.public_sg.id] 
@@ -45,6 +47,6 @@ EOF
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy , aws_db_instance.infodb]
+  depends_on = [aws_db_instance.infodb, null_resource.create_package]
 }
 
