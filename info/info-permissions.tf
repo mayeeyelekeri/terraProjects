@@ -1,6 +1,6 @@
 # Import public key to aws 
 resource "aws_key_pair" "mykeypair" {
-    key_name    = var.key-name
+    key_name    = var.key_name
     public_key  = file("~/.ssh/id_rsa.pub")
 }
 
@@ -30,7 +30,7 @@ resource "aws_iam_policy" "mys3policy" {
     ]
   })
 
-  depends_on = [aws_security_group.public-sg]
+  depends_on = [aws_security_group.public_sg]
 }
 
 # Create a role for EC2 

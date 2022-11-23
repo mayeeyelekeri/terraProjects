@@ -39,6 +39,6 @@ resource "aws_db_instance" "infodb" {
   publicly_accessible         = true
 
   provisioner "local-exec" {
-    command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} ${var.db-name} < ${var.dbdump_file}"
+    command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} ${var.db_name} < ${var.dbdump_file}"
   } 
 }
