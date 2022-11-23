@@ -2,7 +2,12 @@
 resource "null_resource" "update_server_ipaddress" {
     provisioner "local-exec" {
     command = <<EOF
-ansible-playbook --extra-vars "passed_in_hosts=localhost info_server_ipaddress=${aws_instance.info_server.public_ip} info_server_port=${var.info_server_port}" ansible_templates/replace_application_properties.yaml
+ansible-playbook --extra-vars "passed_in_hosts=localhost \
+info_server_ipaddress=${aws_instance.info_server.public_ip} \
+info_server_port=${var.info_server_port} \
+src_file=${var.src_properties_file_client} \
+dest_file=${var.dest_properties_file_client}" \
+ansible_templates/replace_application_properties.yaml
 EOF
   } # End of provisioner
 
