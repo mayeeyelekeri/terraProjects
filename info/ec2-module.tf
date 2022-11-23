@@ -102,7 +102,7 @@ resource "aws_instance" "client-server" {
   associate_public_ip_address = true
   key_name                    = var.key-name
   vpc_security_group_ids      = [aws_security_group.public-sg.id] 
-  subnet_id                   = values(aws_subnet.public-subnets)[2].id
+  subnet_id                   = values(aws_subnet.public-subnets)[0].id
 
   # Install java and copy springboot war file 
   provisioner "local-exec" {
