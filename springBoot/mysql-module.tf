@@ -6,7 +6,7 @@ resource "aws_db_subnet_group" "rds-public-subnet" {
 
 # Create a new db parameter group
 resource "aws_db_parameter_group" "mydb_param_group" {
-  name   = "mydb_param_group"
+  name   = "mydbparam"
   family = "mysql5.7"
 
   parameter {
