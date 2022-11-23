@@ -8,7 +8,7 @@ mysql_port=${var.mysql_port} \
 mysql_user=${var.mysql_user} \
 mysql_password=${var.mysql_password} \
 mysql_database=${var.mysql_database} \
-src_file=${var.src-properties-file} \
+src_file=${var.src_properties_file} \
 dest_file=${var.dest_properties_file}"
 ansible_templates/replace_application_properties.yaml
 EOF
