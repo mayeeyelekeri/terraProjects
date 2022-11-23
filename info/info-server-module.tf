@@ -20,7 +20,7 @@ EOF
     depends_on = [null_resource.update_database_endpoint]
 }
 
-# Install docker and install Info-Server 
+/* # Install docker and install Info-Server 
 resource "aws_instance" "info_server" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
@@ -46,5 +46,5 @@ EOF
   }
 
   depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy , aws_db_instance.infodb]
-} 
+}  */
 
