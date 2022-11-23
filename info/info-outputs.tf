@@ -7,7 +7,7 @@ output "info-server-ipaddress" {
 }
 
 output "info-server-dns" {
-	value = aws_instance.info_server.dns
+	value = aws_instance.info_server
 }
 
 output "info-client-ipaddress" {
