@@ -14,7 +14,9 @@ public_subnets = { "subnet1" =  { cidr = "10.0.1.0/24",
 
 
 
+#......................................
 # EC2 Related variables 
+#......................................
 ami_id = "ami-09d3b3274b6c5d4aa"
 ami_id_ubuntu = "ami-08c40ec9ead489470"
 myimage = "ami-09d3b3274b6c5d4aa"
@@ -23,7 +25,9 @@ key_pair_path = "../../awsKeyPairDir"
 key_file_name = "../../awsKeyPairDir/info.pem"
 key_name = "info"
 
-## Database properties 
+#......................................
+#  Database properties 
+#......................................
 db_name = "infodb"
 mysql_database ="infodb"
 mysql_port = "3306"
@@ -40,7 +44,9 @@ public_database_subnets = { "subnet1" =  { cidr = "10.0.3.0/24",
 dbdump_file = "/home/vagrant/infodb/db_export_Nov_23_2022.sql"
 
 
-## Info-Server properties 	
+#......................................
+#  Info-Server properties 	
+#......................................
 war_file = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
 docker_file = "docker/Dockerfile"
 image_name = "springdatatest:latest"
@@ -49,7 +55,9 @@ dest_properties_file = "/home/vagrant/SpringDataTest/src/main/resources/applicat
 info_server_port = "8080"
 info_server_workspace = "/home/vagrant/SpringDataTest"
 
-## Client properties  
+#......................................
+# Client properties  
+#......................................
 info_client_workspace = "/home/vagrant/Client"
 src_properties_file_client = "files/application-aws.properties.client.j2"
 dest_properties_file_client = "/home/vagrant/Client/src/main/resources/application.properties"
