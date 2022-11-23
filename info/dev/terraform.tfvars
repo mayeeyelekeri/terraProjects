@@ -41,7 +41,7 @@ public_database_subnets = { "subnet1" =  { cidr = "10.0.3.0/24",
 							 zone = "us-east-1d"
 						   }
 			     }
-dbdump_file = "/home/vagrant/infodb/db_export_Nov_23_2022.sql"
+dbdump_file = "/home/vagrant/infodb/db_export_Nov_23_2022.txt"
 
 
 #......................................
