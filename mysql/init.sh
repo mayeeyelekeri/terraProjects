@@ -2,14 +2,13 @@
 --- Create an S3 bucket for strong terraform state 
 aws s3 mb s3://terraprojects --region us-east-1
 
---- Make sure the web application source directory exists at this location where the terraform is running from 
-/home/vagrant/webapp 
-
---- Make sure "ansible" is installed 
-
 --- Key-pair is from the local machine
 
---- Create "codepipeline" project by using existing service role with "s3" as source and "codedeploy" as target 
+--- Create database schema called "info" and import data 
+mysql -uadmin -p -h<db_name> 
+  create database info; 
+
+mysql -uadmin -p -h<db_name> info < import_data.txt 
 
 --- To execute 
 terraform init -reconfigure 
