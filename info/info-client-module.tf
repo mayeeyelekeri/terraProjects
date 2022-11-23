@@ -13,7 +13,7 @@ EOF
 }
 
 # Perform compilation of server 
-resource "null-resource" "create_client_package" {
+resource "null_resource" "create_client_package" {
     provisioner "local-exec" {
     command = <<EOF
 cd ${var.info_server_workspace}; mvn clean package
