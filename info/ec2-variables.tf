@@ -34,3 +34,7 @@ variable "ec2-data" {}
 variable "docker-file" {}
 variable "image-name" {}
 variable "war-file" {}
+
+variable "docker-file-client" {}
+variable "image-name-client" {}
+variable "war-file-client" {}

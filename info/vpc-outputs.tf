@@ -16,3 +16,7 @@ output "PUBLIC-SECURITY-GROUP" {
 output "public-subnet-names" {
 	value	  = keys(aws_subnet.public-subnets)[*]
 } 
+
+output "public-subnet-1" {
+	value	  = keys(aws_subnet.public-subnets)[1]
+} 
