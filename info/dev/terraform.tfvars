@@ -30,4 +30,4 @@ ec2-data = {   "subnet1" = { color = "Red"},
 	
 war-file = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
 docker-file = "docker/Dockerfile"
-image-name = "SpringDataTest:latest"
+image-name = "springdatatest:latest"
