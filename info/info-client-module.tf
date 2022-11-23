@@ -35,7 +35,7 @@ resource "aws_instance" "info_client" {
   vpc_security_group_ids      = [aws_security_group.public_sg.id] 
   subnet_id                   = values(aws_subnet.public_subnets)[0].id
 
-  # Install java and copy springboot war file 
+  # Install java and copy info-client war file 
   provisioner "local-exec" {
     command = <<EOF
 aws ec2 wait instance-status-ok --instance-ids ${self.id} && \
@@ -46,7 +46,7 @@ EOF
   } # End of provisioner
 
   tags = {
-    Name = join("-", ["${terraform.workspace}", "clientserver" ])
+    Name = join("-", ["${terraform.workspace}", "client" ])
     Environment = "${terraform.workspace}"
   }
 
