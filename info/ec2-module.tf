@@ -67,7 +67,7 @@ resource "aws_iam_role_policy_attachment" "roll_attach_to_policy" {
 }
 
 # Install docker and install Info-Server 
-resource "aws_instance" "web-server" {
+resource "aws_instance" "info-server" {
   ami                         = var.ami-id
   instance_type               = var.instance-type
   iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
@@ -94,8 +94,8 @@ EOF
   depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy ]
 }   
 
-# Install docker and install Info-Server 
-resource "aws_instance" "client-server" {
+# Install docker and install Info-Client 
+resource "aws_instance" "info-client" {
   ami                         = var.ami-id
   instance_type               = var.instance-type
   iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name

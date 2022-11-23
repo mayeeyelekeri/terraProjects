@@ -26,7 +26,7 @@
     - name: Copy Docker file
       ansible.builtin.copy:
         src: "{{ docker_file }}"
-        dest: /home/ec2-user
+        dest: /home/ec2-user/Dockerfile
 
     - name: start docker daemon   
       ansible.builtin.shell: systemctl start docker.service
