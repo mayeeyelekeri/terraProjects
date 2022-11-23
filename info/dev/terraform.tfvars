@@ -2,6 +2,8 @@ project_name = "info"
 aws_region = "us-east-1"
 vpc_cidr = "10.0.0.0/16"
 open_cidr = "0.0.0.0/0"
+
+
 public_subnets = { "subnet1" =  { cidr = "10.0.1.0/24", 
 							 zone = "us-east-1a"
 						   }, 
@@ -9,6 +11,8 @@ public_subnets = { "subnet1" =  { cidr = "10.0.1.0/24",
 							 zone = "us-east-1b"
 						   }
 			     }
+
+
 
 # EC2 Related variables 
 ami_id = "ami-09d3b3274b6c5d4aa"
@@ -19,31 +23,28 @@ key_pair_path = "../../awsKeyPairDir"
 key_file_name = "../../awsKeyPairDir/springBoot.pem"
 key_name = "springBoot"
 
-# ALB Related variables 
-private_subnets = { "subnet1" =  { cidr = "10.0.4.0/24", 
-							 zone = "us-east-1a"
-						   }
-				  }
-
-ec2_data = {   "subnet1" = { color = "Red"},
-			   "subnet2" = { color = "Blue"} }
-
-
-## Info-Server properties 	
-war_file = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
-docker_file = "docker/Dockerfile"
-image_name = "springdatatest:latest"
-
+## Database properties 
 db_name = "infodb"
 mysql_database ="infodb"
 mysql_port = "3306"
 mysql_user = "admin"
 mysql_password = "admin123"
 mysql_host = ""
+public_database_subnets = { "subnet1" =  { cidr = "10.0.3.0/24", 
+							 zone = "us-east-1c"
+						   }, 
+				   "subnet2" =  { cidr = "10.0.4.0/24", 
+							 zone = "us-east-1d"
+						   }
+			     }
+
+## Info-Server properties 	
+war_file = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
+docker_file = "docker/Dockerfile"
+image_name = "springdatatest:latest"
 src_properties_file = "files/application-aws.properties.j2"
 dest_properties_file = "/home/vagrant/SpringDataTest/src/main/resources/application-aws.properties"
 info_server_port = "8080"
-
 info_server_workspace = "/home/vagrant/SpringDataTest"
 dbdump_file = "/home/vagrant/infodb/mysqldump_april282020.txt"
 

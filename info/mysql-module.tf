@@ -1,7 +1,7 @@
 # Create DB subnet group and add the public subnet 
 resource "aws_db_subnet_group" "rds_public_subnet" {
   name = "rds_public_subnet_group"
-  subnet_ids = values(aws_subnet.public_subnets)[*].id
+  subnet_ids = values(aws_subnet.public_database_subnets)[*].id
 }
 
 # Create a new db parameter group
@@ -19,7 +19,7 @@ resource "aws_db_parameter_group" "mydb_param_group" {
     value = "1073741824"
   }
 
-  depends_on = [aws_subnet.public_subnets , aws_db_subnet_group.rds_public_subnet]
+  depends_on = [aws_subnet.public_database_subnets , aws_db_subnet_group.rds_public_subnet]
 }
 
 
@@ -34,7 +34,7 @@ resource "aws_db_instance" "infodb" {
   password                    = "admin123"
   #parameter_group_name        = "default.mysql5.7"
   db_subnet_group_name        = "${aws_db_subnet_group.rds_public_subnet.name}"
-  vpc_security_group_ids      = ["${aws_security_group.public_sg.id}"]
+  vpc_security_group_ids      = ["${aws_security_group.public_database_sg.id}"]
   multi_az                    = false
   skip_final_snapshot         = true
   parameter_group_name        = aws_db_parameter_group.mydb_param_group.name

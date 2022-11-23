@@ -28,7 +28,7 @@ resource "aws_instance" "info_server" {
   associate_public_ip_address = true
   key_name                    = var.key_name
   vpc_security_group_ids      = [aws_security_group.public_sg.id] 
-  subnet_id                   = values(aws_subnet.public_subnets)[1].id
+  subnet_id                   = values(aws_subnet.public_subnets)[0].id
 
   # Install java and copy info-server war file 
   provisioner "local-exec" {

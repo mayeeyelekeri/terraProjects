@@ -38,6 +38,23 @@ resource "aws_subnet" "public_subnets" {
   depends_on = [aws_vpc.myvpc]
 }
 
+# Create Public Subnets 
+resource "aws_subnet" "public_database_subnets" {
+  for_each = var.public_database_subnets 
+  vpc_id = aws_vpc.myvpc.id
+  cidr_block = each.value.cidr
+  availability_zone = each.value.zone
+  map_public_ip_on_launch = "true"
+
+  tags = {
+    Name = "${terraform.workspace}-${each.value.cidr} - ${each.value.zone}"
+    Environment = "${terraform.workspace}"
+  }
+
+  depends_on = [aws_vpc.myvpc]
+}
+
+
 # Create route table and attach IG to it
 resource "aws_route_table" "internet_route" {
   vpc_id = aws_vpc.myvpc.id
@@ -60,6 +77,15 @@ resource "aws_route_table_association" "public_route_table_association1" {
   route_table_id = aws_route_table.internet_route.id
 
   depends_on = [aws_route_table.internet_route, aws_subnet.public_subnets ]
+}
+
+# Associate ALL public database subnets to route table 
+resource "aws_route_table_association" "public_route_table_association2" {
+  for_each       = aws_subnet.public_database_subnets
+  subnet_id      = each.value.id
+  route_table_id = aws_route_table.internet_route.id
+
+  depends_on = [aws_route_table.internet_route, aws_subnet.public_database_subnets ]
 }
 
 # -------------------- Security Groups --------------
@@ -89,6 +115,27 @@ resource "aws_security_group" "public_sg" {
     protocol    = "tcp"
     cidr_blocks = [var.open_cidr]
   }
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  tags = {
+    Name = "${terraform.workspace}-Public-Sec-Group"
+    Environment = "${terraform.workspace}"
+  }
+
+  depends_on = [aws_vpc.myvpc , aws_route_table.internet_route, aws_subnet.public_subnets ]
+}
+
+# -------------------- Security Groups --------------
+# Create SG for allowing 3306 only
+resource "aws_security_group" "public_database_sg" {
+  name        = "${terraform.workspace}-public-database-sg"
+  description = "Allow TCP/80 & TCP/22"
+  vpc_id      = aws_vpc.myvpc.id
   ingress {
     description = "allow traffic from MySql"
     from_port   = 3306
@@ -104,9 +151,9 @@ resource "aws_security_group" "public_sg" {
     ipv6_cidr_blocks = ["::/0"]
   }
   tags = {
-    Name = "${terraform.workspace}-Public-Sec-Group"
+    Name = "${terraform.workspace}-Public-Database-Group"
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_vpc.myvpc , aws_route_table.internet_route, aws_subnet.public_subnets ]
+  depends_on = [aws_vpc.myvpc , aws_route_table.internet_route, aws_subnet.public_database_subnets ]
 }
