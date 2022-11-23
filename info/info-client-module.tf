@@ -1,5 +1,5 @@
 # Get database endpoint and update infoserver application-aws.properties 
-resource "null_resource" "update_server_ipaddress" {
+resource "null_resource" "update_server_dns" {
     provisioner "local-exec" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
@@ -18,11 +18,11 @@ EOF
 resource "null_resource" "create_client_package" {
     provisioner "local-exec" {
     command = <<EOF
-cd ${var.info_server_workspace}; mvn clean package
+cd ${var.info_client_workspace}; mvn clean package
 EOF
   } # End of provisioner
 
-    depends_on = [null_resource.update_server_ipaddress]
+    depends_on = [null_resource.update_server_dns]
 } 
 
 # Install docker and install Info-Client 
