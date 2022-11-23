@@ -26,7 +26,7 @@ EOF
 } 
 
 # Install docker and install Info-Client 
-resource "aws_instance" "info-client" {
+resource "aws_instance" "info_client" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
   iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
