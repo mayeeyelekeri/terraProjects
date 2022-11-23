@@ -9,7 +9,7 @@ ansible_templates/replace_application_properties.yaml
 EOF
   } # End of provisioner
 
-    depends_on = [aws_db_instance.infodb, aws_instance.info-server]
+    depends_on = [aws_db_instance.infodb, aws_instance.info_server]
 }
 
 # Perform compilation of server 

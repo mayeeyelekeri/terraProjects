@@ -29,7 +29,7 @@ EOF
 }
 
 # Install docker and install Info-Server 
-resource "aws_instance" "info-server" {
+resource "aws_instance" "info_server" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
   iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
