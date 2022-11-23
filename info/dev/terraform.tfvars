@@ -20,8 +20,8 @@ ami_id_ubuntu = "ami-08c40ec9ead489470"
 myimage = "ami-09d3b3274b6c5d4aa"
 instance_type = "t2.micro"
 key_pair_path = "../../awsKeyPairDir"
-key_file_name = "../../awsKeyPairDir/springBoot.pem"
-key_name = "springBoot"
+key_file_name = "../../awsKeyPairDir/info.pem"
+key_name = "info"
 
 ## Database properties 
 db_name = "infodb"
