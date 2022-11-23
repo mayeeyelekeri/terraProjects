@@ -69,14 +69,14 @@ resource "aws_iam_role_policy_attachment" "roll_attach_to_policy" {
 # Install Httpd and start at port 80 
 # Create EC2 web servers in different subnets 
 resource "aws_instance" "web-server" {
-  for_each                    = aws_subnet.public-subnets
+  #for_each                    = aws_subnet.public-subnets
   ami                         = var.ami-id
   instance_type               = var.instance-type
   iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
   associate_public_ip_address = true
   key_name                    = var.key-name
   vpc_security_group_ids      = [aws_security_group.public-sg.id] 
-  subnet_id                   = each.value.id
+  subnet_id                   = values(aws_subnet.public-subnets)[1].id
 
   # Install java and copy springboot war file 
   provisioner "local-exec" {
