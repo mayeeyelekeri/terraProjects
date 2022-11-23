@@ -40,6 +40,5 @@ resource "aws_db_instance" "my_test_mysql" {
 
   provisioner "local-exec" {
     command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} < /home/vagrant/infodb/mysqldump_april282020.txt"
-    }
   }
 }
