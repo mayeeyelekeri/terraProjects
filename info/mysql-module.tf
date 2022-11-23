@@ -44,5 +44,5 @@ resource "aws_db_instance" "infodb" {
     command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} ${var.db_name} < ${var.dbdump_file}"
   } 
 
-  depends_on = [aws_db_subnet_group.mydb_param_group]
+  depends_on = [aws_db_parameter_group.mydb_param_group]
 }
