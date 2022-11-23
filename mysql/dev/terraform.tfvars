@@ -25,3 +25,4 @@ private-subnets = { "subnet1" =  { cidr = "10.0.4.0/24",
 						   }
 				  }
 
+db-name = "infodb"

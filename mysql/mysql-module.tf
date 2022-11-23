@@ -27,7 +27,7 @@ resource "aws_db_instance" "infodb" {
   engine                      = "mysql"
   engine_version              = "5.7"
   instance_class              = "db.t3.micro"
-  db_name                     = "infodb"
+  db_name                     = var.db-name
   username                    = "admin"
   password                    = "admin123"
   #parameter_group_name        = "default.mysql5.7"
@@ -38,7 +38,7 @@ resource "aws_db_instance" "infodb" {
   parameter_group_name        = aws_db_parameter_group.mydb_param_group.name
   publicly_accessible         = true
 
-  /*provisioner "local-exec" {
-    command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} < /home/vagrant/infodb/mysqldump_april282020.txt"
-  } */
+  provisioner "local-exec" {
+    command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} ${var.db-name} < /home/vagrant/infodb/mysqldump_april282020.txt"
+  } 
 }
