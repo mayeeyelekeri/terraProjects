@@ -30,7 +30,6 @@ variable "key_name" {
 	default = "applicationLBPrivatePublic"
 }
 
-variable "ec2_data" {}
 variable "docker_file" {}
 variable "image_name" {}
 variable "war_file" {}
