@@ -4,13 +4,30 @@ resource "aws_db_subnet_group" "rds-public-subnet" {
   subnet_ids = values(aws_subnet.public-subnets)[*].id
 }
 
+# Create a new db parameter group
+resource "aws_db_parameter_group" "mydb_param_group" {
+  name   = "mydb_param_group"
+  family = "mysql5.7"
+
+  parameter {
+    name  = "net_buffer_length"
+    value = "1048576"
+  }
+
+  parameter {
+    name  = "max_allowed_packet"
+    value = "1073741824"
+  }
+}
+
+
 resource "aws_db_instance" "my_test_mysql" {
   allocated_storage           = 20
   storage_type                = "gp2"
   engine                      = "mysql"
   engine_version              = "5.7"
   instance_class              = "db.t3.micro"
-  name                        = "myrdstestmysql"
+  name                        = "infodb"
   username                    = "admin"
   password                    = "admin123"
   parameter_group_name        = "default.mysql5.7"
@@ -23,4 +40,5 @@ resource "aws_db_instance" "my_test_mysql" {
   maintenance_window          = "Sat:00:00-Sat:03:00" */
   multi_az                    = false
   skip_final_snapshot         = true
+  parameter_group_name        = aws_db_parameter_group.mydb_param_group.name
 }
