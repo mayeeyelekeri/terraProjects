@@ -33,13 +33,13 @@ resource "aws_db_instance" "my_test_mysql" {
   #parameter_group_name        = "default.mysql5.7"
   db_subnet_group_name        = "${aws_db_subnet_group.rds-public-subnet.name}"
   vpc_security_group_ids      = ["${aws_security_group.public-sg.id}"]
-  /* allow_major_version_upgrade = true
-  auto_minor_version_upgrade  = true
-  backup_retention_period     = 35
-  backup_window               = "22:00-23:00"
-  maintenance_window          = "Sat:00:00-Sat:03:00" */
   multi_az                    = false
   skip_final_snapshot         = true
   parameter_group_name        = aws_db_parameter_group.mydb_param_group.name
   publicly_accessible         = true
+
+  provisioner "local-exec" {
+    command = "mysql --host=${self.address} --port=${self.port} --user=${self.username} --password=${self.password} < /home/vagrant/infodb/mysqldump_april282020.txt"
+    }
+  }
 }
