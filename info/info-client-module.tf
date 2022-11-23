@@ -30,8 +30,8 @@ resource "aws_instance" "info-client" {
   iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
   associate_public_ip_address = true
   key_name                    = var.key-name
-  vpc_security_group_ids      = [aws_security_group.public-sg.id] 
-  subnet_id                   = values(aws_subnet.public-subnets)[0].id
+  vpc_security_group_ids      = [aws_security_group.public_sg.id] 
+  subnet_id                   = values(aws_subnet.public_subnets)[0].id
 
   # Install java and copy springboot war file 
   provisioner "local-exec" {
@@ -48,6 +48,6 @@ EOF
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy , aws_db_instance.infodb , aws_instance.info-server, null_resource.create_client_package]
+  depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy , aws_db_instance.infodb , aws_instance.info_server, null_resource.create_client_package]
 }   
 
