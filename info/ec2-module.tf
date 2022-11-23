@@ -23,7 +23,7 @@ EOF
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy ]
+  depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy , aws_db_instance.infodb]
 }   
 
 # Install docker and install Info-Client 
@@ -51,6 +51,6 @@ EOF
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy ]
+  depends_on = [aws_iam_role.myec2role , aws_iam_role_policy_attachment.roll_attach_to_policy , aws_db_instance.infodb , aws_instance.info-server]
 }   
 
