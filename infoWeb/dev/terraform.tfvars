@@ -29,7 +29,7 @@ key_name = "info"
 #  Database properties 
 #......................................
 # All the information coming from TF_VAR variables
-mysql_creds = "mysql_creds"
+mysql_creds = "infodb_creds"
 
 #......................................
 #  Info-Server properties 	
