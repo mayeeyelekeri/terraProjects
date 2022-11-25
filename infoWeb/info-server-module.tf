@@ -4,11 +4,7 @@ data "aws_secretsmanager_secret_version" "creds" {
   secret_id = var.mysql_creds 
 }
 
-locals {
-  mysql_creds = jsondecode(
-    data.aws_secretsmanager_secret_version.creds.secret_string
-  )
-}
+locals {mysql_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)}
 
 # Get database endpoint and update infoserver application-aws.properties 
 resource "null_resource" "update_database_endpoint" {
