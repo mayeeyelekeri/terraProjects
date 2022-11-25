@@ -50,3 +50,4 @@ variable "info_client_workspace" {}
 variable "info_server_workspace" {}
 variable "src_properties_file_client" {} 
 variable "dest_properties_file_client" {}
+variable "database_endpoing" {}
