@@ -37,11 +37,9 @@ variable "war_file" {}
 variable "docker_file_client" {}
 variable "image_name_client" {}
 variable "war_file_client" {}
-variable "db_name" { default = "infodb"} 
 variable "mysql_port" {}
 variable "mysql_user" {}
 variable "mysql_password" {}
-variable "mysql_host" {}
 variable "mysql_database" {}
 variable "src_properties_file" {}
 variable "dest_properties_file" {}
