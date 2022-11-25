@@ -46,6 +46,6 @@ EOF
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_db_instance.infodb, null_resource.create_package]
+  depends_on = [null_resource.create_package]
 }
 
