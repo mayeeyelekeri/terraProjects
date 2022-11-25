@@ -3,7 +3,7 @@ resource "null_resource" "update_server_dns" {
     provisioner "local-exec" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
-info_server_ipaddress=${var.infodb_endpoint} \
+info_server_ipaddress=${aws_instance.infoserver.public_ip} \
 info_server_port=${var.info_server_port} \
 src_file=${var.src_properties_file_client} \
 dest_file=${var.dest_properties_file_client}" \

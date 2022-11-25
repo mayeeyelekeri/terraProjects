@@ -28,13 +28,7 @@ key_name = "info"
 #......................................
 #  Database properties 
 #......................................
-db_name = "infodb"
-mysql_database ="infodb"
-mysql_port = "3306"
-mysql_user = "admin"
-mysql_password = "admin123"
-mysql_host = ""
-
+# All the information coming from TF_VAR variables
 
 #......................................
 #  Info-Server properties 	
