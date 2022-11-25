@@ -16,8 +16,8 @@ resource "null_resource" "update_database_endpoint" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost mysql_host=${var.infodb_endpoint} \
 mysql_port=${var.mysql_port} \
-mysql_user="" \
-mysql_password="" \
+mysql_user=${local.mysql_creds.mysql_user} \
+mysql_password=${local.mysql_creds.mysql_password} \
 mysql_database=${var.mysql_database} \
 src_file=${var.src_properties_file} \
 dest_file=${var.dest_properties_file}" \
