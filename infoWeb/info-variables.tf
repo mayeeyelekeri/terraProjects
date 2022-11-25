@@ -49,3 +49,4 @@ variable "info_server_workspace" {}
 variable "src_properties_file_client" {} 
 variable "dest_properties_file_client" {}
 variable "infodb_endpoint" {}
+variable "mysql_creds" {}
