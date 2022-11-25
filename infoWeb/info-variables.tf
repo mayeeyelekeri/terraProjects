@@ -48,6 +48,5 @@ variable "dest_properties_file" {}
 variable "info_server_port" {}
 variable "info_client_workspace" {}
 variable "info_server_workspace" {}
-variable "dbdump_file" {}
 variable "src_properties_file_client" {} 
 variable "dest_properties_file_client" {}
