@@ -5,14 +5,23 @@ data "aws_secretsmanager_secret_version" "creds" {
 }
 
 locals {
-  mysql_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.mysql_creds)
+  mysql_creds = jsondecode(
+    data.aws_secretsmanager_secret_version.creds.secret_string
+  )
 }
 
 # Get database endpoint and update infoserver application-aws.properties 
 resource "null_resource" "update_database_endpoint" {
     provisioner "local-exec" {
     command = <<EOF
-ansible-playbook --extra-vars "passed_in_hosts=localhost mysql_host=${var.infodb_endpoint} mysql_port=${var.mysql_port} mysql_user=${local.mysql_creds.mysql_user} mysql_password=${local.mysql_creds.mysql_password} mysql_database=${var.mysql_database} src_file=${var.src_properties_file} dest_file=${var.dest_properties_file}" ansible_templates/replace_application_properties.yaml
+ansible-playbook --extra-vars "passed_in_hosts=localhost mysql_host=${var.infodb_endpoint} \
+mysql_port=${var.mysql_port} \
+mysql_user=${local.mysql_creds.mysql_user} \
+mysql_password=${local.mysql_creds.mysql_password} \
+mysql_database=${var.mysql_database} \
+src_file=${var.src_properties_file} \
+dest_file=${var.dest_properties_file}" \
+ansible_templates/replace_application_properties.yaml
 EOF
   } # End of provisioner
 
