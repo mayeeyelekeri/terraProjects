@@ -34,14 +34,6 @@ mysql_port = "3306"
 mysql_user = "admin"
 mysql_password = "admin123"
 mysql_host = ""
-public_database_subnets = { "subnet1" =  { cidr = "10.0.3.0/24", 
-							 zone = "us-east-1c"
-						   }, 
-				   "subnet2" =  { cidr = "10.0.4.0/24", 
-							 zone = "us-east-1d"
-						   }
-			     }
-dbdump_file = "/home/vagrant/infodb/nov24.txt"
 
 
 #......................................
