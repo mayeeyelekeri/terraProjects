@@ -1,5 +1,5 @@
 # Install docker and install Info-Client_template 
-resource "aws_instance" "info_client_from_template" {
+/*resource "aws_instance" "info_client_from_template" {
   ami                         = var.client_image
   instance_type               = var.instance_type
   associate_public_ip_address = true
@@ -28,4 +28,4 @@ EOF
   }
 
   depends_on = [aws_instance.info_server, null_resource.create_client_package]
-} 
+}  */
