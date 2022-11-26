@@ -1,3 +1,5 @@
+####  database ID/pasword coming from AWS Secrets Manager 
+####  "mysql_user" and "mysql_password"
 # Get db secrets from AWS Secret Manager 
 data "aws_secretsmanager_secret_version" "creds" {
   # Fill in the name you gave to your secret
@@ -6,21 +8,36 @@ data "aws_secretsmanager_secret_version" "creds" {
 
 locals {mysql_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)}
 
+####  database endpoint and database name coming from AWS KMS 
+####  "mysql_endpoint" and "mysql_database"
+# We first read the secrets from AWS KMS
+data "aws_kms_secrets" "secrets" {
+  secret {
+    name    = "db"
+    payload = file("~/INFO/secrets/${var.mysql.info}")
+  }
+}
+
+# parse the yaml file
+locals {
+  db_info = yamldecode(data.aws_kms_secrets.secrets.plaintext["db"])
+}
+
+
 # Get database endpoint and update infoserver application-aws.properties 
 resource "null_resource" "update_database_endpoint" {
     provisioner "local-exec" {
     command = <<EOF
-ansible-playbook --extra-vars "passed_in_hosts=localhost mysql_host=${var.infodb_endpoint} \
+ansible-playbook --extra-vars "passed_in_hosts=localhost mysql_host=${local.db_info.mysql_endpoint} \
 mysql_port=${var.mysql_port} \
 mysql_user=${local.mysql_creds.mysql_user} \
 mysql_password=${local.mysql_creds.mysql_password} \
-mysql_database=${var.mysql_database} \
+mysql_database=${local.db_info.mysql_database} \
 src_file=${var.src_properties_file} \
 dest_file=${var.dest_properties_file}" \
 ansible_templates/replace_application_properties.yaml
 EOF
   } # End of provisioner
-
 }
 
 # Perform compilation of server 
