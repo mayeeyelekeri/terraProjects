@@ -37,10 +37,10 @@ variable "war_file" {}
 variable "docker_file_client" {}
 variable "image_name_client" {}
 variable "war_file_client" {}
-variable "mysql_port" {}
-variable "mysql_user" {}
-variable "mysql_password" {}
-variable "mysql_database" {}
+#variable "mysql_port" {}
+#variable "mysql_user" {}
+#variable "mysql_password" {}
+#variable "mysql_database" {}
 variable "src_properties_file" {}
 variable "dest_properties_file" {}
 variable "info_server_port" {}
@@ -48,5 +48,6 @@ variable "info_client_workspace" {}
 variable "info_server_workspace" {}
 variable "src_properties_file_client" {} 
 variable "dest_properties_file_client" {}
-variable "infodb_endpoint" {}
+#variable "infodb_endpoint" {}
 variable "mysql_creds" {}
+variable "mysql_info" {}
