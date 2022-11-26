@@ -1,0 +1,24 @@
+---
+- hosts: "{{ passed_in_hosts }}"
+  become: yes
+  remote_user: ec2-user
+  become_user: root
+  tasks:
+    - name: Copy war file
+      ansible.builtin.copy:
+        src: "{{ war_file }}"
+        dest: /home/ec2-user
+
+    - name: Copy Docker file
+      ansible.builtin.copy:
+        src: "{{ docker_file }}"
+        dest: /home/ec2-user/Dockerfile
+
+    - name: start docker daemon   
+      ansible.builtin.shell: systemctl start docker.service
+
+    - name: run docker build    
+      ansible.builtin.shell: "docker build -t {{ image_name }} ." 
+    
+    - name: Run springboot application 
+      ansible.builtin.shell: "docker run -p 8080:8080 -d {{ image_name }}" 

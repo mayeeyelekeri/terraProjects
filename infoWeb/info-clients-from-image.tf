@@ -8,15 +8,15 @@ resource "aws_instance" "info_client_from_image" {
   subnet_id                   = values(aws_subnet.public_subnets)[1].id
 
   # Install java and copy info-client war file 
-  /*provisioner "local-exec" {
+  provisioner "local-exec" {
     command = <<EOF
 aws ec2 wait instance-status-ok --instance-ids ${self.id} && \
 ansible-playbook --extra-vars "passed_in_hosts=${self.public_ip} \
 war_file=${var.war_file_client} docker_file=${var.docker_file_client} image_name=${var.image_name_client}" \
-ansible_templates/install_docker.yaml
+ansible_templates/copy_and_start_docker.yaml
 EOF
   } # End of provisioner
-  */
+  
   tags = {
     Name = join("-", ["${terraform.workspace}", "client_from_image" ])
     Environment = "${terraform.workspace}"
