@@ -1,6 +1,7 @@
 variable "ami_id" {
   default = "ami-09d3b3274b6c5d4aa"
 }
+variable "client_image" { default = "ami-0a38b61fdbcd06e9b"} 
 
 variable "ami_id_ubuntu" {
   default = "ami-09d3b3274b6c5d4aa"
