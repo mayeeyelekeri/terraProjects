@@ -29,7 +29,7 @@ resource "null_resource" "update_database_endpoint" {
     provisioner "local-exec" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost mysql_host=${local.db_info.mysql_endpoint} \
-mysql_port=${var.mysql_port} \
+mysql_port=3306 \
 mysql_user=${local.mysql_creds.mysql_user} \
 mysql_password=${local.mysql_creds.mysql_password} \
 mysql_database=${local.db_info.mysql_database} \
