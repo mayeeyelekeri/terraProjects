@@ -14,7 +14,7 @@ locals {mysql_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.se
 data "aws_kms_secrets" "secrets" {
   secret {
     name    = "db"
-    payload = file("~/INFO/secrets/${var.mysql.info}")
+    payload = file("~/INFO/secrets/${var.mysql_info}")
   }
 }
 
