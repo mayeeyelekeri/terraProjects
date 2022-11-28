@@ -38,12 +38,23 @@ EOF
 }
 
 
+resource "template_file" "user_data" {
+  template = "install_app.tpl"
+  vars {
+    application = "docker"
+  }
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
 resource "aws_launch_configuration" "al_conf" {
   name_prefix   = "my_lc"
   image_id      = var.docker_image_id
   instance_type = var.instance_type
   key_name      = var.key_name
   security_groups = [aws_security_group.public_sg.id] 
+  user_data = "${template_file.user_data.rendered}"
 
   lifecycle {
     create_before_destroy = true
