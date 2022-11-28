@@ -9,7 +9,7 @@ data "aws_secretsmanager_secret_version" "creds" {
 locals {mysql_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)}
 
 
-/* 
+
 # Get database endpoint and update infoserver application-aws.properties 
 resource "null_resource" "update_database_endpoint" {
     provisioner "local-exec" {
@@ -37,6 +37,7 @@ EOF
     depends_on = [null_resource.update_database_endpoint]
 }
 
+/* 
 # Install docker and install Info-Server 
 resource "aws_instance" "info_server" {
   ami                         = var.ami_id
