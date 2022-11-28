@@ -39,7 +39,7 @@ EOF
 
 
 data "template_file" "user_data" {
-  template = "install_app.tpl"
+  template = "${file("install_app.tpl")}"
   vars = {
     application = "docker"
   }
@@ -51,7 +51,7 @@ resource "aws_launch_configuration" "al_conf" {
   instance_type = var.instance_type
   key_name      = var.key_name
   security_groups = [aws_security_group.public_sg.id] 
-  user_data = "${template_file.user_data.rendered}"
+  user_data = "${data.template_file.user_data.rendered}"
 
   lifecycle {
     create_before_destroy = true
