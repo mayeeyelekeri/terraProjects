@@ -1,15 +1,3 @@
-# Import public key to aws 
-resource "aws_key_pair" "mykeypair" {
-    key_name    = var.key-name
-    public_key  = file("~/.ssh/id_rsa.pub")
-}
-
-# Get Linux AMI ID 
-data "aws_ssm_parameter" "linux-ami" {
-    #provider    = "aws" 
-    name        = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
-}
-
 # Create a policy for S3 access for EC2 
 resource "aws_iam_policy" "mys3policy" {
   name        = "S3AccessPolicy"
