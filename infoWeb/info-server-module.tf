@@ -38,9 +38,27 @@ EOF
 }
 
 
+resource "aws_launch_configuration" "al_conf" {
+  name_prefix   = "my_lc"
+  image_id      = var.docker_image_id
+  instance_type = var.instance_type
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_autoscaling_group" "sc_group" {
+  name                 = "my_asg"
+  launch_configuration = aws_launch_configuration.al_conf.name
+  min_size             = 1
+  max_size             = 2
+}
+
+
 # Create EC2 from docker image and copy software
 resource "aws_instance" "info_server" {
-  ami                         = "ami-01f30e7b4edf0bc38"
+  ami                         = var.docker_image_id
   instance_type               = var.instance_type
   
   ### instance profile is not required for this server 

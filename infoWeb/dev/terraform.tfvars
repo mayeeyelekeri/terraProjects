@@ -19,7 +19,7 @@ public_subnets = { "subnet1" =  { cidr = "10.0.1.0/24",
 #......................................
 ami_id = "ami-09d3b3274b6c5d4aa"
 ami_id_ubuntu = "ami-08c40ec9ead489470"
-myimage = "ami-09d3b3274b6c5d4aa"
+docker_image_id = "ami-01f30e7b4edf0bc38"
 instance_type = "t2.micro"
 key_pair_path = "../../awsKeyPairDir"
 key_file_name = "../../awsKeyPairDir/info.pem"

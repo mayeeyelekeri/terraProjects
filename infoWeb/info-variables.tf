@@ -52,3 +52,4 @@ variable "dest_properties_file_client" {}
 #variable "infodb_endpoint" {}
 variable "mysql_creds" {}
 variable "mysql_info" {}
+variable "docker_image_id" {}
