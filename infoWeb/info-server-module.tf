@@ -40,7 +40,7 @@ EOF
 
 data "template_file" "user_data" {
   template = "install_app.tpl"
-  vars {
+  vars = {
     application = "docker"
   }
 }
