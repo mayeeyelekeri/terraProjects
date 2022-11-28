@@ -52,8 +52,8 @@ resource "aws_autoscaling_group" "sc_group" {
   name                 = "my_asg"
   launch_configuration = aws_launch_configuration.al_conf.name
   availability_zones   = ["us-east-1a" , "us-east-1b"]
-  min_size             = 1
-  max_size             = 2
+  min_size             = 2
+  max_size             = 3
 }
 
 
