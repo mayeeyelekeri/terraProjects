@@ -43,9 +43,6 @@ data "template_file" "user_data" {
   vars {
     application = "docker"
   }
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 resource "aws_launch_configuration" "al_conf" {
