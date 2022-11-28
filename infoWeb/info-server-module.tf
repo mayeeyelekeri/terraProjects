@@ -38,10 +38,10 @@ EOF
 }
 
 
-resource "template_file" "user_data" {
+data "template_file" "user_data" {
   template = "install_app.tpl"
   vars {
-    cluster = "docker"
+    application = "docker"
   }
   lifecycle {
     create_before_destroy = true
