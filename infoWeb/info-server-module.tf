@@ -51,7 +51,8 @@ resource "aws_launch_configuration" "al_conf" {
 resource "aws_autoscaling_group" "sc_group" {
   name                 = "my_asg"
   launch_configuration = aws_launch_configuration.al_conf.name
-  availability_zones   = ["us-east-1a" , "us-east-1b"]
+  # availability_zones   = ["us-east-1a" , "us-east-1b"]
+  vpc_zone_identifier       = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
   min_size             = 2
   max_size             = 3
 }
