@@ -8,22 +8,8 @@ data "aws_secretsmanager_secret_version" "creds" {
 
 locals {mysql_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)}
 
-####  database endpoint and database name coming from AWS KMS 
-####  "mysql_endpoint" and "mysql_database"
-# We first read the secrets from AWS KMS
-/* data "aws_kms_secrets" "secrets" {
-  secret {
-    name    = "db"
-    payload = file("~/INFO/secrets/${var.mysql_info}")
-  }
-}
 
-# parse the yaml file
-locals {
-  db_info = yamldecode(data.aws_kms_secrets.secrets.plaintext["db"])
-} */ 
-
-
+/* 
 # Get database endpoint and update infoserver application-aws.properties 
 resource "null_resource" "update_database_endpoint" {
     provisioner "local-exec" {
@@ -80,4 +66,4 @@ EOF
 
   depends_on = [null_resource.create_package]
 }
-
+*/ 

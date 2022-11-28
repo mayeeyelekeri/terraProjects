@@ -1,4 +1,4 @@
-# Get database endpoint and update infoserver application-aws.properties 
+/* # Get database endpoint and update infoserver application-aws.properties 
 resource "null_resource" "update_server_dns" {
     provisioner "local-exec" {
     command = <<EOF
@@ -53,3 +53,4 @@ EOF
   depends_on = [aws_instance.info_server, null_resource.create_client_package]
 } 
 
+*/ 
