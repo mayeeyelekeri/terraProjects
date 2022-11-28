@@ -46,12 +46,11 @@ data "template_file" "user_data" {
 }
 
 resource "aws_launch_configuration" "al_conf" {
-  name_prefix   = "my_lc"
-  image_id      = var.docker_image_id
-  instance_type = var.instance_type
-  key_name      = var.key_name
+  name_prefix     = var.docker_image_id
+  instance_type   = var.instance_type
+  key_name        = var.key_name
   security_groups = [aws_security_group.public_sg.id] 
-  user_data = "${data.template_file.user_data.rendered}"
+  user_data       = "${data.template_file.user_data.rendered}"
 
   lifecycle {
     create_before_destroy = true
