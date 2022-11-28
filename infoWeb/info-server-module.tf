@@ -42,6 +42,7 @@ resource "aws_launch_configuration" "al_conf" {
   name_prefix   = "my_lc"
   image_id      = var.docker_image_id
   instance_type = var.instance_type
+  key_name      = var.key_name
 
   lifecycle {
     create_before_destroy = true
