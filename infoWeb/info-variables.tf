@@ -53,3 +53,4 @@ variable "dest_properties_file_client" {}
 variable "mysql_creds" {}
 variable "mysql_info" {}
 variable "docker_image_id" {}
+variable "ami_id_codedeploy_agent" {}
