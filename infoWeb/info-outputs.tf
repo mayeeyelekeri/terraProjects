@@ -1,4 +1,4 @@
-output "info-server-ipaddress" {
+/*output "info-server-ipaddress" {
 	value = aws_instance.info_server.public_ip
 }
 
@@ -9,4 +9,4 @@ output "info-server-dns" {
 output "info-client-ipaddress" {
 	value = aws_instance.info_client.public_ip
 }
-
+*/
