@@ -37,7 +37,7 @@ EOF
     depends_on = [null_resource.update_database_endpoint]
 }
 
-/* 
+
 # Install docker and install Info-Server 
 resource "aws_instance" "info_server" {
   ami                         = var.ami_id
@@ -67,4 +67,4 @@ EOF
 
   depends_on = [null_resource.create_package]
 }
-*/ 
+
