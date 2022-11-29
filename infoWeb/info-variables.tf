@@ -58,3 +58,4 @@ variable "ami_id_codedeploy_agent" {}
 variable "codebucket" {}
 variable "app_name" {}
 variable "webapp_src_location" {}
+variable "zip_file" {}

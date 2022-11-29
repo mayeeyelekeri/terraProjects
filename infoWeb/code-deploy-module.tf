@@ -118,7 +118,6 @@ EOF
   depends_on = [aws_s3_bucket.codebucket , aws_codedeploy_deployment_group.mydeploygroup]
 } # end of "null_resource" "upload_file"
 
-/* 
 #.................................................
 # Create Deployment and point to S3 object 
 resource "null_resource" "perform_deploy" { 
@@ -130,13 +129,13 @@ resource "null_resource" "perform_deploy" {
   provisioner "local-exec" {
     command = <<EOF
 aws deploy create-deployment \
-  --application-name ${var.app-name} \
+  --application-name ${var.app_name} \
   --deployment-config-name CodeDeployDefault.OneAtATime \
   --deployment-group-name ${aws_codedeploy_deployment_group.mydeploygroup.deployment_group_name} \
-  --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=${var.zip-file}
+  --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=${var.zip_file}
 EOF
   } # End of provisioner
 
   depends_on = [null_resource.upload_file]
 } # end of "null_resource" "perform_deploy" 
-*/ 
+ 
