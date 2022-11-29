@@ -71,7 +71,7 @@ resource "aws_autoscaling_group" "sc_group" {
   depends_on = [aws_launch_configuration.al_conf]
 }
 
-
+/*
 # Create EC2 from docker image and copy software
 resource "aws_instance" "info_server" {
   ami                         = var.docker_image_id
@@ -100,7 +100,7 @@ EOF
   }
 
   depends_on = [null_resource.create_package]
-}
+} */
 
 
 /* # Install docker and install Info-Server 

@@ -120,6 +120,8 @@ EOF
 
 #.................................................
 # Create Deployment and point to S3 object 
+# Deployment log located at /opt/codedeploy-agent/deployment-root/deployment-logs/codedeploy-agent-deployments.log on ec2 server 
+#.................................................
 resource "null_resource" "perform_deploy" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
