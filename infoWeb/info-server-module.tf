@@ -56,6 +56,8 @@ resource "aws_launch_configuration" "al_conf" {
   lifecycle {
     create_before_destroy = true
   }
+
+  depends_on = [aws_security_group.public_sg, aws_iam_instance_profile.myinstanceprofile]
 }
 
 resource "aws_autoscaling_group" "sc_group" {
@@ -65,6 +67,8 @@ resource "aws_autoscaling_group" "sc_group" {
   vpc_zone_identifier       = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
   min_size             = 2
   max_size             = 3
+
+  depends_on = [aws_launch_configuration.al_conf]
 }
 
 
