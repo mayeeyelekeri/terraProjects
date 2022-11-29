@@ -53,3 +53,5 @@ dest_properties_file_client = "/home/vagrant/Client/src/main/resources/applicati
 war_file_client = "/home/vagrant/Client/target/Client-0.0.1-SNAPSHOT.jar"
 docker_file_client = "docker/Dockerfile_client"
 image_name_client = "client:latest"
+
+codebucket = "codedeploy"
