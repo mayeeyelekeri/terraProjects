@@ -69,22 +69,15 @@ resource "aws_codedeploy_app" "myapp" {
   depends_on = [aws_iam_role_policy_attachment.codedeploy_service]
 }
 
-/* #.................................................
+#.................................................
 # create Deployment group for EC2 machines 
 resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   app_name              = aws_codedeploy_app.myapp.name
   deployment_group_name = "${var.app_name}-deploygroup"
   service_role_arn      = aws_iam_role.my_code_deploy_role.arn
+  autoscaling_groups    = [aws_autoscaling_group.sc_group ]
 
-  ec2_tag_set {
-    ec2_tag_filter {
-      key   = "Name"
-      type  = "KEY_AND_VALUE"
-      value = "dev-httpserver"
-    }
-  }
-
-  trigger_configuration {
+  /*trigger_configuration {
     trigger_events     = ["DeploymentFailure"]
     trigger_name       = "example-trigger"
     trigger_target_arn = aws_sns_topic.example.arn
@@ -98,12 +91,12 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   alarm_configuration {
     alarms  = ["my-alarm-name"]
     enabled = true
-  } 
+  } */ 
 
-  depends_on = [aws_codedeploy_app.myapp]
+  depends_on = [aws_codedeploy_app.myapp , aws_autoscaling_group.sc_group ]
 }
 
-
+/* 
 #.................................................
 # upload zip file to S3 object 
 resource "null_resource" "upload_file" { 
