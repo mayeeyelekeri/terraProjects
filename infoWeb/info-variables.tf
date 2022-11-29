@@ -54,3 +54,6 @@ variable "mysql_creds" {}
 variable "mysql_info" {}
 variable "docker_image_id" {}
 variable "ami_id_codedeploy_agent" {}
+
+variable "codebucket" {}
+variable "app_name" {}
