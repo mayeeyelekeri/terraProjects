@@ -75,7 +75,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   app_name              = aws_codedeploy_app.myapp.name
   deployment_group_name = "${var.app_name}-deploygroup"
   service_role_arn      = aws_iam_role.my_code_deploy_role.arn
-  autoscaling_groups    = [aws_autoscaling_group.sc_group ]
+  autoscaling_groups    = [aws_autoscaling_group.sc_group.name ]
 
   /*trigger_configuration {
     trigger_events     = ["DeploymentFailure"]
