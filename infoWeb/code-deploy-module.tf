@@ -64,7 +64,7 @@ resource "aws_iam_role_policy_attachment" "codedeploy_service" {
 #.................................................
 # Create Code Deploy application 
 resource "aws_codedeploy_app" "myapp" {
-  name = var.app-name
+  name = var.app_name
 
   depends_on = [aws_iam_role_policy_attachment.codedeploy_service]
 }
@@ -73,7 +73,7 @@ resource "aws_codedeploy_app" "myapp" {
 # create Deployment group for EC2 machines 
 resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   app_name              = aws_codedeploy_app.myapp.name
-  deployment_group_name = "${var.app-name}-deploygroup"
+  deployment_group_name = "${var.app_name}-deploygroup"
   service_role_arn      = aws_iam_role.my_code_deploy_role.arn
 
   ec2_tag_set {

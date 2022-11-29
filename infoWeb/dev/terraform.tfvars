@@ -55,3 +55,4 @@ docker_file_client = "docker/Dockerfile_client"
 image_name_client = "client:latest"
 
 codebucket = "codedeploy"
+app_name = "info"
