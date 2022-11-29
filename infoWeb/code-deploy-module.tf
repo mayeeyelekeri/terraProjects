@@ -95,8 +95,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
 
   depends_on = [aws_codedeploy_app.myapp , aws_autoscaling_group.sc_group ]
 }
-
-/* 
+ 
 #.................................................
 # upload zip file to S3 object 
 resource "null_resource" "upload_file" { 
@@ -108,10 +107,10 @@ resource "null_resource" "upload_file" {
   provisioner "local-exec" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
-    app_name=${var.app-name} \
+    app_name=${var.app_name} \
     bucket=${aws_s3_bucket.codebucket.id} \
-    zip_file=${var.app-name} \
-    webapp_src_location=${var.webapp-src-location}" \
+    zip_file=${var.app_name} \
+    webapp_src_location=${var.webapp_src_location}" \
   ansible_templates/aws_cmd_execution.yaml
 EOF
   } # End of provisioner
@@ -119,6 +118,7 @@ EOF
   depends_on = [aws_s3_bucket.codebucket , aws_instance.http-server]
 } # end of "null_resource" "upload_file"
 
+/* 
 #.................................................
 # Create Deployment and point to S3 object 
 resource "null_resource" "perform_deploy" { 
