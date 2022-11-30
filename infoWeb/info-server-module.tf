@@ -9,7 +9,7 @@ data "aws_secretsmanager_secret_version" "creds" {
 locals {mysql_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)}
 
 
-
+/* 
 # Get database endpoint and update infoserver application-aws.properties 
 resource "null_resource" "update_database_endpoint" {
     provisioner "local-exec" {
@@ -36,12 +36,13 @@ EOF
 
     depends_on = [null_resource.update_database_endpoint]
 }
-
+*/
 
 data "template_file" "user_data" {
-  template = "${file("install_app.tpl")}"
+  template = "${file("install_httpd.tpl")}"
   vars = {
-    application = "docker"
+    application = "httpd"
+    file        = "/var/www/html/index.html"
   }
 }
 

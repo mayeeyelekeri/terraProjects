@@ -1,6 +1,6 @@
 # ------------- Create ALB Target Group ----------
 resource "aws_lb_target_group" "tg" {
-  port     = 8080
+  port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.myvpc.id
   health_check { 
@@ -8,7 +8,7 @@ resource "aws_lb_target_group" "tg" {
     healthy_threshold = 3 
     interval = 10 
     matcher = 200
-    path = "/"
+    path = "/infos"
 
     timeout = 3
     unhealthy_threshold = 2
@@ -40,7 +40,7 @@ resource "aws_lb" "alb" {
 # ------- Create a Listener and attach it to ALB -----------------------
 resource "aws_lb_listener" "listener" {
     load_balancer_arn = aws_lb.alb.arn 
-    port = "8080"
+    port = "80"
     protocol = "HTTP"
 
     default_action { 
