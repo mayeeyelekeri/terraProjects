@@ -12,9 +12,9 @@ locals {mysql_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.se
 # Get database endpoint and update infoserver application-aws.properties 
 resource "null_resource" "update_database_endpoint" {
   # This timestamps makes this resource to run all time, even if there is no change
-  /*triggers = {
+  triggers = {
     always_run = "${timestamp()}"
-  } */
+  }
 
     provisioner "local-exec" {
     command = <<EOF
@@ -34,9 +34,9 @@ EOF
 resource "null_resource" "create_package" {
 
   # This timestamps makes this resource to run all time, even if there is no change
-  /*triggers = {
+  triggers = {
     always_run = "${timestamp()}"
-  }*/
+  }
   provisioner "local-exec" {
     command = <<EOF
 cd ${var.info_server_workspace}; mvn clean package; cp target/${var.jar_file} ${var.webapp_src_location}

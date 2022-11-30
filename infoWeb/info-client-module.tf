@@ -1,5 +1,9 @@
 # Get ALB dns name of info-server and update application.properties 
 resource "null_resource" "update_server_dns" {
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
     provisioner "local-exec" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
