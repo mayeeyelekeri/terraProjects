@@ -15,17 +15,19 @@ resource "random_integer" "suffix" {
   max = 999
 }
 
-#.................................................
+/* #.................................................
 #  ***** This one is not being used because we want this to gets called all the time
 #.................................................
-/*# Upload webapp file to S3 
+# Upload webapp file to S3 
 resource "aws_s3_object" "file_upload" {
   bucket = aws_s3_bucket.codebucket.id
   key    = var.zip-file
   source = join("/", [var.zip-path, var.zip-file]) 
 
   depends_on = [aws_s3_bucket.codebucket]
-} */
+} 
+*/ 
+
 
 #.................................................
 # Create a role for codedeploy 
@@ -75,7 +77,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   app_name              = aws_codedeploy_app.myapp.name
   deployment_group_name = "${var.app_name}-deploygroup"
   service_role_arn      = aws_iam_role.my_code_deploy_role.arn
-  autoscaling_groups    = [aws_autoscaling_group.sc_group.name ]
+  autoscaling_groups    = [aws_autoscaling_group.auto_scale_group.name ]
 
   /*trigger_configuration {
     trigger_events     = ["DeploymentFailure"]
@@ -93,10 +95,10 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
     enabled = true
   } */ 
 
-  depends_on = [aws_codedeploy_app.myapp , aws_autoscaling_group.sc_group ]
+  depends_on = [aws_codedeploy_app.myapp , aws_autoscaling_group.auto_scale_group ]
 }
  
-/*#.................................................
+#.................................................
 # upload zip file to S3 object 
 resource "null_resource" "upload_file" { 
 
@@ -139,5 +141,5 @@ EOF
   } # End of provisioner
 
   depends_on = [null_resource.upload_file]
-} # end of "null_resource" "perform_deploy"  */
+} # end of "null_resource" "perform_deploy"
  
