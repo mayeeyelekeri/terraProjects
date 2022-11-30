@@ -70,7 +70,7 @@ resource "aws_autoscaling_group" "auto_scale_group" {
   # availability_zones = ["us-east-1a" , "us-east-1b"]
   vpc_zone_identifier  = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
   health_check_type    = "EC2"
-  min_size             = 2
+  min_size             = 1
   max_size             = 3
 
 
