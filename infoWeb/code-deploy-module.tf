@@ -96,7 +96,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   depends_on = [aws_codedeploy_app.myapp , aws_autoscaling_group.sc_group ]
 }
  
-#.................................................
+/*#.................................................
 # upload zip file to S3 object 
 resource "null_resource" "upload_file" { 
 
@@ -139,5 +139,5 @@ EOF
   } # End of provisioner
 
   depends_on = [null_resource.upload_file]
-} # end of "null_resource" "perform_deploy" 
+} # end of "null_resource" "perform_deploy"  */
  
