@@ -1,9 +1,9 @@
-/* # Get database endpoint and update infoserver application-aws.properties 
+# Get ALB dns name of info-server and update application.properties 
 resource "null_resource" "update_server_dns" {
     provisioner "local-exec" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
-info_server_ipaddress=${aws_instance.info_server.public_ip} \
+info_server_ipaddress=${aws_lb.alb.dns_name} \
 info_server_port=${var.info_server_port} \
 src_file=${var.src_properties_file_client} \
 dest_file=${var.dest_properties_file_client}" \
@@ -11,7 +11,7 @@ ansible_templates/replace_application_properties.yaml
 EOF
   } # End of provisioner
 
-    depends_on = [aws_instance.info_server]
+    depends_on = [aws_lb.alb]
 }
 
 # Perform compilation of server 
@@ -24,7 +24,7 @@ EOF
 
     depends_on = [null_resource.update_server_dns]
 } 
-
+*/ 
 # Install docker and install Info-Client 
 resource "aws_instance" "info_client" {
   ami                         = var.ami_id
