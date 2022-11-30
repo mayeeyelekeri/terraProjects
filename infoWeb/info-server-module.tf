@@ -68,8 +68,10 @@ resource "aws_autoscaling_group" "auto_scale_group" {
   target_group_arns    = [aws_lb_target_group.tg.arn]
   # availability_zones = ["us-east-1a" , "us-east-1b"]
   vpc_zone_identifier  = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
+  health_check_type    = "ELB"
   min_size             = 2
   max_size             = 3
+
 
   depends_on = [aws_launch_configuration.al_conf]
 }
