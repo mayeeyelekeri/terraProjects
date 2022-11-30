@@ -1,12 +1,9 @@
-/*output "info-server-ipaddress" {
-	value = aws_instance.info_server.public_ip
+output "aws_autoscaling_group" {
+	value = aws_autoscaling_group.sc_group
 }
 
-output "info-server-dns" {
-	value = aws_instance.info_server.public_dns
+
+output "aws_lb" {
+	value = aws_lb.alb
 }
 
-output "info-client-ipaddress" {
-	value = aws_instance.info_client.public_ip
-}
-*/
