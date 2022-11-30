@@ -82,6 +82,11 @@ resource "aws_autoscaling_group" "auto_scale_group" {
   min_size             = 2
   max_size             = 3
 
+  tag {
+    key                 = "Name"
+    value               = "${terraform.workspace}_${var.app_name}"
+    propagate_at_launch = true
+  }
 
   depends_on = [aws_launch_configuration.al_conf]
 }
