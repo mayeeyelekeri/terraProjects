@@ -63,3 +63,4 @@ variable "zip_file" {}
 variable "zip_file_client" {}
 variable "jar_file" {}
 variable "jar_file_client" {}
+variable "app_name_client" {}

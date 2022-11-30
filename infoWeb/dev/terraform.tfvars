@@ -60,5 +60,6 @@ war_file_client = "/home/vagrant/Client/target/Client-0.0.1-SNAPSHOT.jar"
 
 codebucket = "codedeploy"
 app_name = "info"
+app_name_client = "client"
 webapp_src_location_client = "/home/vagrant/Client/codedeploy"
 zip_file_client = "client.zip"
