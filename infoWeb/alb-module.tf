@@ -23,8 +23,8 @@ resource "aws_lb_target_group" "tg" {
 resource "aws_lb" "alb" {
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.public-sg.id]
-  subnets            = [aws_subnet.mysubnet1.id, aws_subnet.mysubnet2.id, aws_subnet.mysubnet3.id]
+  security_groups    = [aws_security_group.public_sg.id]
+  subnets            = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
   #subnets            =  aws_subnet.mysubnet.*
   enable_deletion_protection = false
 
