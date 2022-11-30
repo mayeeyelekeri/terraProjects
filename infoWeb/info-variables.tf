@@ -59,3 +59,4 @@ variable "codebucket" {}
 variable "app_name" {}
 variable "webapp_src_location" {}
 variable "zip_file" {}
+variable "jar_file" {}

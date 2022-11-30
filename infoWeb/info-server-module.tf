@@ -9,7 +9,6 @@ data "aws_secretsmanager_secret_version" "creds" {
 locals {mysql_creds = jsondecode(data.aws_secretsmanager_secret_version.creds.secret_string)}
 
 
-/* 
 # Get database endpoint and update infoserver application-aws.properties 
 resource "null_resource" "update_database_endpoint" {
     provisioner "local-exec" {
@@ -30,13 +29,13 @@ EOF
 resource "null_resource" "create_package" {
     provisioner "local-exec" {
     command = <<EOF
-cd ${var.info_server_workspace}; mvn clean package
+cd ${var.info_server_workspace}; mvn clean package; cp target/${var.jar_file} ${var.webapp_src_location}
 EOF
   } # End of provisioner
 
     depends_on = [null_resource.update_database_endpoint]
 }
-*/
+
 
 data "template_file" "user_data" {
   template = "${file("install_app.tpl")}"
