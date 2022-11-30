@@ -15,10 +15,6 @@ resource "aws_launch_configuration" "al_conf" {
   user_data            = "${data.template_file.user_data.rendered}"
   iam_instance_profile = "myinstanceprofile" 
 
-  tags {
-    Name               = "${terraform.workspace}_${var.app_name}"
-  }
-
   lifecycle {
     create_before_destroy = true
   }
