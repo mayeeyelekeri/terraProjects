@@ -56,5 +56,5 @@ image_name_client = "client:latest"
 
 codebucket = "codedeploy"
 app_name = "info"
-webapp_src_location = "/home/vagrant/webapp"
+webapp_src_location = "/home/vagrant/SpringDataTest/codedeploy"
 zip_file = "info.zip"

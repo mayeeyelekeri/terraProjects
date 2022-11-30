@@ -39,9 +39,9 @@ EOF
 */
 
 data "template_file" "user_data" {
-  template = "${file("install_httpd.tpl")}"
+  template = "${file("install_app.tpl")}"
   vars = {
-    application = "httpd"
+    application = "docker"
     file        = "/var/www/html/index.html"
   }
 }
