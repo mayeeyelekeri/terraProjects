@@ -1,7 +1,7 @@
 #.................................................
 # Create Code Deploy application 
 resource "aws_codedeploy_app" "myapp_client" {
-  name = "${var.app_name}_client"
+  name = var.my_app_client
 
   depends_on = [aws_iam_role_policy_attachment.codedeploy_service]
 }
