@@ -44,6 +44,8 @@ dest_properties_file = "/home/vagrant/SpringDataTest/src/main/resources/applicat
 info_server_port = "8080"
 info_server_workspace = "/home/vagrant/SpringDataTest"
 jar_file = "SpringDataTest-0.0.1-SNAPSHOT.jar"
+webapp_src_location = "/home/vagrant/SpringDataTest/codedeploy"
+zip_file = "info.zip"
 
 #......................................
 # Client properties  
@@ -51,11 +53,11 @@ jar_file = "SpringDataTest-0.0.1-SNAPSHOT.jar"
 info_client_workspace = "/home/vagrant/Client"
 src_properties_file_client = "files/application-aws.properties.client.j2"
 dest_properties_file_client = "/home/vagrant/Client/src/main/resources/application.properties"
-war_file_client = "/home/vagrant/Client/target/Client-0.0.1-SNAPSHOT.jar"
+jar_file_client = "/home/vagrant/Client/target/Client-0.0.1-SNAPSHOT.jar"
 docker_file_client = "docker/Dockerfile_client"
 image_name_client = "client:latest"
 
 codebucket = "codedeploy"
 app_name = "info"
-webapp_src_location = "/home/vagrant/SpringDataTest/codedeploy"
-zip_file = "info.zip"
+webapp_src_location_client = "/home/vagrant/Client/codedeploy"
+zip_file_client = "client.zip"

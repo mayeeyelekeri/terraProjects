@@ -58,5 +58,8 @@ variable "ami_id_codedeploy_agent" {}
 variable "codebucket" {}
 variable "app_name" {}
 variable "webapp_src_location" {}
+variable "webapp_src_location_client" {}
 variable "zip_file" {}
+variable "zip_file_client" {}
 variable "jar_file" {}
+variable "jar_file_client" {}
