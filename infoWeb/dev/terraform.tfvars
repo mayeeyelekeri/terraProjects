@@ -30,7 +30,7 @@ key_name = "info"
 #  Database properties 
 #......................................
 # All the information coming from TF_VAR variables
-mysql_creds = "db_creds1"
+mysql_creds = "db_creds2"
 mysql_info  = "mysql_info.yml.encrypted"
 
 #......................................

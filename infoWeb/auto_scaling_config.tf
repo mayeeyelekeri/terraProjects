@@ -24,7 +24,7 @@ resource "aws_launch_configuration" "al_conf" {
 
 # Create Auto Scaling group 
 resource "aws_autoscaling_group" "auto_scale_group" {
-  name                 = "my_asg"
+  name                 = var.app_name
   launch_configuration = aws_launch_configuration.al_conf.name
   #load_balancers      = [aws_lb.alb.id]
   target_group_arns    = [aws_lb_target_group.tg.arn]
