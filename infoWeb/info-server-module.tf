@@ -57,7 +57,7 @@ resource "aws_launch_configuration" "al_conf" {
     create_before_destroy = true
   }
 
-  depends_on = [aws_security_group.public_sg, aws_iam_instance_profile.myinstanceprofile]
+  depends_on = [aws_security_group.public_sg, aws_iam_instance_profile.myinstanceprofile , aws_lb_listener.listener]
 }
 
 resource "aws_autoscaling_group" "sc_group" {
