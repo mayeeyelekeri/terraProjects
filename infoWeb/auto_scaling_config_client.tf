@@ -1,7 +1,7 @@
 # Create Auto Scaling group 
 resource "aws_autoscaling_group" "auto_scale_group_client" {
   name                 = "asg_client"
-  launch_configuration = aws_launch_configuration.al_conf_client.name
+  launch_configuration = aws_launch_configuration.al_conf.name
   #load_balancers      = [aws_lb.alb_client.id]
   target_group_arns    = [aws_lb_target_group.tg_client.arn]
   vpc_zone_identifier  = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
