@@ -1,7 +1,6 @@
 # Create s3 bucket 
 resource "aws_s3_bucket" "codebucket" {
   bucket = "${var.codebucket}-${random_integer.suffix.result}"
-  #bucket = "${var.codebucket}"
 
   tags = {
     Name        = var.codebucket
@@ -64,6 +63,11 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   deployment_group_name = "${var.app_name}-deploygroup"
   service_role_arn      = aws_iam_role.my_code_deploy_role.arn
   autoscaling_groups    = [aws_autoscaling_group.auto_scale_group.name ]
+
+  tags = {
+    Name = "${terraform.workspace}-deploygroup"
+    Environment = "${terraform.workspace}"
+  }
 
   /*trigger_configuration {
     trigger_events     = ["DeploymentFailure"]

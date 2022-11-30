@@ -17,6 +17,8 @@ resource "aws_lb_target_group" "tg" {
     Name = "${terraform.workspace}-albTargetGroup"
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_vpc.myvpc]
 }
 
 # -------- Create application load balancer -------------
@@ -25,7 +27,6 @@ resource "aws_lb" "alb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.public_sg.id]
   subnets            = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
-  #subnets            =  aws_subnet.mysubnet.*
   enable_deletion_protection = false
 
   tags = {
@@ -33,7 +34,7 @@ resource "aws_lb" "alb" {
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_lb_target_group.tg]
+  depends_on = [aws_lb_target_group.tg, aws_security_group.public_sg, aws_subnet.public_subnets]
 
 }
 
@@ -48,5 +49,10 @@ resource "aws_lb_listener" "listener" {
         target_group_arn = aws_lb_target_group.tg.arn
     }
 
-    depends_on = [aws_lb.alb]
+    tags = {
+      Name = "${terraform.workspace}-listener"
+      Environment = "${terraform.workspace}"
+    }
+
+    depends_on = [aws_lb.alb , aws_lb_target_group.tg]
 }

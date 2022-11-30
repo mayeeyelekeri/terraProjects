@@ -46,35 +46,14 @@ resource "aws_iam_instance_profile" "myinstanceprofile" {
   name = "myinstanceprofile"
   role = aws_iam_role.myec2role.name
   path = "/"
+
+  depends_on = [aws_iam_role.myec2role]
 } # end of resource aws_iam_role
 
 # Attach policy to role 
 resource "aws_iam_role_policy_attachment" "roll_attach_to_policy" {
   role       = aws_iam_role.myec2role.name
   policy_arn = aws_iam_policy.mys3policy.arn
+
+  depends_on = [aws_iam_policy.mys3policy, aws_iam_role.myec2role]
 }
-
-# Create EC2 web servers in different subnets 
-/* resource "aws_instance" "http-server" {
-  for_each                    = aws_subnet.public-subnets
-  ami                         = var.ami-id
-  instance_type               = var.instance-type
-  iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
-  associate_public_ip_address = true
-  key_name                    = var.key-name
-  vpc_security_group_ids      = [aws_security_group.public-sg.id] 
-  subnet_id                   = each.value.id
-  provisioner "local-exec" {
-    command = <<EOF
-aws ec2 wait instance-status-ok --instance-ids ${self.id} && ansible-playbook --extra-vars 'passed_in_hosts=${self.public_ip}' ansible_templates/install_codedeploy_agent.yaml
-EOF
-  } # End of provisioner
-
-  tags = {
-    Name = join("-", ["${terraform.workspace}", "httpserver" ])
-    Environment = "${terraform.workspace}"
-  }
-
-  depends_on = [aws_iam_role.myec2role]
-}   */  
-

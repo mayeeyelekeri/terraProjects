@@ -1,7 +1,0 @@
-echo '<html><body><h1><center> My public IP address is : </center></h1>' > index.html
-echo '<h2 style=\"background-color:' >> index.html
-echo blue >> index.html
-echo ';\"><center>'' >> index.html
-curl http://169.254.169.254/latest/meta-data/local-ipv4 >> index.html
-echo '</h2></center></body></html>' >> index.html
-sudo mv index.html /var/www/html/
