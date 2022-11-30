@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "codebucket" {
 
   tags = {
     Name        = var.codebucket
-    Environment = "dev"
+    Environment = "${terraform.workspace}"
   }
 }
 
@@ -14,20 +14,6 @@ resource "random_integer" "suffix" {
   min = 100
   max = 999
 }
-
-/* #.................................................
-#  ***** This one is not being used because we want this to gets called all the time
-#.................................................
-# Upload webapp file to S3 
-resource "aws_s3_object" "file_upload" {
-  bucket = aws_s3_bucket.codebucket.id
-  key    = var.zip-file
-  source = join("/", [var.zip-path, var.zip-file]) 
-
-  depends_on = [aws_s3_bucket.codebucket]
-} 
-*/ 
-
 
 #.................................................
 # Create a role for codedeploy 

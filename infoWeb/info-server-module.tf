@@ -51,11 +51,12 @@ data "template_file" "user_data" {
   template = "${file("install_app.tpl")}"
   vars = {
     application = "docker"
-    file        = "/var/www/html/index.html"
   }
 }
 
+# Create Launch configuration 
 resource "aws_launch_configuration" "al_conf" {
+  name_prefix          = "${terraform.workspace}_"
   image_id             = var.ami_id
   instance_type        = var.instance_type
   key_name             = var.key_name
@@ -70,81 +71,17 @@ resource "aws_launch_configuration" "al_conf" {
   depends_on = [aws_security_group.public_sg, aws_iam_instance_profile.myinstanceprofile , aws_lb_listener.listener]
 }
 
-
+# Create Auto Scaling group 
 resource "aws_autoscaling_group" "auto_scale_group" {
   name                 = "my_asg"
   launch_configuration = aws_launch_configuration.al_conf.name
   #load_balancers      = [aws_lb.alb.id]
   target_group_arns    = [aws_lb_target_group.tg.arn]
-  # availability_zones = ["us-east-1a" , "us-east-1b"]
   vpc_zone_identifier  = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
-  health_check_type    = "EC2"
-  min_size             = 1
+  health_check_type    = "EC2" 
+  min_size             = 2
   max_size             = 3
 
 
   depends_on = [aws_launch_configuration.al_conf]
 }
-
-/*
-# Create EC2 from docker image and copy software
-resource "aws_instance" "info_server" {
-  ami                         = var.docker_image_id
-  instance_type               = var.instance_type
-  
-  ### instance profile is not required for this server 
-  #iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
-  associate_public_ip_address = true
-  key_name                    = var.key_name
-  vpc_security_group_ids      = [aws_security_group.public_sg.id] 
-  subnet_id                   = values(aws_subnet.public_subnets)[0].id
-
-  # Install java and copy info-server war file 
-  provisioner "local-exec" {
-    command = <<EOF
-aws ec2 wait instance-status-ok --instance-ids ${self.id} && \
-ansible-playbook --extra-vars "passed_in_hosts=${self.public_ip} \
-war_file=${var.war_file} docker_file=${var.docker_file} image_name=${var.image_name}" \
-ansible_templates/copy_and_start_docker.yaml
-EOF
-  } # End of provisioner
-
-  tags = {
-    Name = join("-", ["${terraform.workspace}", "infoserver" ])
-    Environment = "${terraform.workspace}"
-  }
-
-  depends_on = [null_resource.create_package]
-} */
-
-
-/* # Install docker and install Info-Server 
-resource "aws_instance" "info_server" {
-  ami                         = var.ami_id
-  instance_type               = var.instance_type
-  
-  ### instance profile is not required for this server 
-  #iam_instance_profile        = aws_iam_instance_profile.myinstanceprofile.name
-  associate_public_ip_address = true
-  key_name                    = var.key_name
-  vpc_security_group_ids      = [aws_security_group.public_sg.id] 
-  subnet_id                   = values(aws_subnet.public_subnets)[0].id
-
-  # Install java and copy info-server war file 
-  provisioner "local-exec" {
-    command = <<EOF
-aws ec2 wait instance-status-ok --instance-ids ${self.id} && \
-ansible-playbook --extra-vars "passed_in_hosts=${self.public_ip} \
-war_file=${var.war_file} docker_file=${var.docker_file} image_name=${var.image_name}" \
-ansible_templates/install_docker.yaml
-EOF
-  } # End of provisioner
-
-  tags = {
-    Name = join("-", ["${terraform.workspace}", "infoserver" ])
-    Environment = "${terraform.workspace}"
-  }
-
-  depends_on = [null_resource.create_package]
-} */ 
-
