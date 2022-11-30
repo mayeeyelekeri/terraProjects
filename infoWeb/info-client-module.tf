@@ -16,6 +16,10 @@ EOF
 
 # Perform compilation of client package 
 resource "null_resource" "create_client_package" {
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
     provisioner "local-exec" {
     command = <<EOF
 cd ${var.info_client_workspace}; mvn clean package; cp target/${var.jar_file_client} ${var.webapp_src_location_client}
