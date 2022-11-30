@@ -24,7 +24,7 @@ EOF
 
     depends_on = [null_resource.update_server_dns]
 } 
-*/ 
+/*
 # Install docker and install Info-Client 
 resource "aws_instance" "info_client" {
   ami                         = var.ami_id
