@@ -65,7 +65,7 @@ resource "aws_autoscaling_group" "sc_group" {
   name                 = "my_asg"
   launch_configuration = aws_launch_configuration.al_conf.name
   #load_balancers      = [aws_lb.alb.id]
-  #target_group_arns    = [aws_lb.alb.target_group_arns]
+  target_group_arns    = [aws_lb_target_group.tg.arn]
   # availability_zones = ["us-east-1a" , "us-east-1b"]
   vpc_zone_identifier  = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
   min_size             = 2
