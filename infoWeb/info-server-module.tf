@@ -60,11 +60,12 @@ resource "aws_launch_configuration" "al_conf" {
   depends_on = [aws_security_group.public_sg, aws_iam_instance_profile.myinstanceprofile , aws_lb_listener.listener]
 }
 
+/*
 resource "aws_autoscaling_group" "sc_group" {
   name                 = "my_asg"
   launch_configuration = aws_launch_configuration.al_conf.name
   load_balancers       = [aws_lb.alb.name]
-  #target_group_arns    = aws_lb_target_group.tg
+  #target_group_arns   = aws_lb_target_group.tg
   # availability_zones = ["us-east-1a" , "us-east-1b"]
   vpc_zone_identifier  = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
   min_size             = 2
@@ -73,7 +74,7 @@ resource "aws_autoscaling_group" "sc_group" {
   depends_on = [aws_launch_configuration.al_conf]
 }
 
-/*
+
 # Create EC2 from docker image and copy software
 resource "aws_instance" "info_server" {
   ami                         = var.docker_image_id
