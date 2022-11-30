@@ -11,9 +11,9 @@ resource "aws_autoscaling_group" "auto_scale_group_client" {
 
   tag {
     key                 = "Name"
-    value               = "${terraform.workspace}_${var.app_name_client}"
+    value               = "${terraform.workspace}_${var.app_name}_client"
     propagate_at_launch = true
   }
 
-  depends_on = [aws_launch_configuration.al_conf_client]
+  depends_on = [aws_launch_configuration.al_conf]
 }
