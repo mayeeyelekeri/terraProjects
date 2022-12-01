@@ -2,7 +2,7 @@
 resource "aws_lb_target_group" "tg_client" {
   port     = 8080
   protocol = "HTTP"
-  vpc_id   = aws_vpc.myvpc.id
+  vpc_id   = module.vpc.vpc_id
   health_check { 
     enabled = true 
     healthy_threshold = 3 

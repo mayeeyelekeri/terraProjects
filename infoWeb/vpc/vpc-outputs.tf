@@ -1,9 +1,9 @@
-output "VPC-ID" {
+output "vpc_id" {
   description = "VPC ID created"
   value       = aws_vpc.myvpc.id
 }
 
-output "VPC-NAME" {
+output "vpc_name" {
   description = "VPC ID created"
   value       = aws_vpc.myvpc.tags.Name
 }
