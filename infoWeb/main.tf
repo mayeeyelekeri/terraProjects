@@ -11,6 +11,7 @@ module "vpc" {
     # vpc_id, public_subnets, vpc_name, public_sg 
 }
 
+/*
 module "alb" {
     source = "./alb"
 
@@ -22,7 +23,7 @@ module "alb" {
     # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
 }
 
-/* 
+ 
 module "autoscale" {
     source = "./autoscale"
 
