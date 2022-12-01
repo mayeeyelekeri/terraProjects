@@ -58,5 +58,8 @@ module "codedeploy" {
 module "build" {
     source     = "./build"
 
-
+    mysql_creds          = var.mysql_creds
+    src_properties_file_server   = var.src_properties_file_server
+    dest_properties_file_server  = var.dest_properties_file_server
+    webapp_src_location_server   = var.webapp_src_location_server
 }

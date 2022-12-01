@@ -23,8 +23,8 @@ mysql_port=${local.mysql_creds.mysql_port} \
 mysql_user=${local.mysql_creds.mysql_user} \
 mysql_password=${local.mysql_creds.mysql_password} \
 mysql_database=${local.mysql_creds.mysql_database} \
-src_file=${var.src_properties_file} \
-dest_file=${var.dest_properties_file}" \
+src_file=${var.src_properties_file_server} \
+dest_file=${var.dest_properties_file_server}" \
 ansible_templates/replace_application_properties.yaml
 EOF
   } # End of provisioner
@@ -39,7 +39,7 @@ resource "null_resource" "create_package" {
   }
   provisioner "local-exec" {
     command = <<EOF
-cd ${var.info_server_workspace}; mvn clean package; cp target/${var.jar_file} ${var.webapp_src_location}
+cd ${var.info_server_workspace}; mvn clean package; cp target/${var.jar_file_server} ${var.webapp_src_location_server}
 EOF
   } # End of provisioner
 
