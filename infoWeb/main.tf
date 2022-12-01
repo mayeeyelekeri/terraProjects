@@ -8,22 +8,21 @@ module "vpc" {
     public_subnet_map = var.public_subnet_map
 
     # ----- OUTPUTS ------ 
-    # vpc_id, public_subnets, vpc_name, public_sg 
+    # vpc_id, public_subnets, vpc_name, public_sg_id 
 }
 
-/*
 module "alb" {
     source = "./alb"
 
     vpc_id         = module.vpc.vpc_id
-    public_sg      = module.vpc.public_sg
+    public_sg_id   = module.vpc.public_sg_id
     public_subnets = module.vpc.public_subnets
 
     # ------ OUTPUTS ------ 
     # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
 }
 
- 
+/*
 module "autoscale" {
     source = "./autoscale"
 
