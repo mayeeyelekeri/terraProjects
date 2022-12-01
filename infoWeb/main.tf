@@ -42,7 +42,8 @@ module "autoscale" {
 module "codedeploy" { 
     source      = "./codedeploy"
 
-    auto_scale_group_name  = module.autoscale.aws_autoscaling_group.auto_scale_group.name
+    auto_scale_group_name_client  = module.autoscale.aws_autoscaling_group.auto_scale_group_client.name
+    auto_scale_group_name_server  = module.autoscale.aws_autoscaling_group.auto_scale_group_server.name
     codebucket             = var.codebucket 
     app_name_server        = var.app_name_server 
     app_name_client        = var.app_name_client 
