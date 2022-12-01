@@ -39,7 +39,7 @@ module "autoscale" {
     #  
 }
 
-/*
+
 module "codedeploy" { 
     source      = "./codedeploy"
 
@@ -53,4 +53,4 @@ module "codedeploy" {
     webapp_src_location_server    = var.webapp_src_location
     webapp_src_location_client    = var.webapp_src_location_client
     
-} */ 
+} 
