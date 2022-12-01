@@ -18,7 +18,7 @@ resource "aws_lb_target_group" "tg" {
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_vpc.myvpc]
+  #depends_on = [aws_vpc.myvpc]
 }
 
 # -------- Create application load balancer -------------
