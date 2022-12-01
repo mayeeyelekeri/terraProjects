@@ -40,7 +40,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
  
 #.................................................
 # upload zip file to S3 object 
-resource "null_resource" "upload_file" { 
+resource "null_resource" "upload_file_server" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
   triggers = {
@@ -64,7 +64,7 @@ EOF
 # Create Deployment and point to S3 object 
 # Deployment log located at /opt/codedeploy-agent/deployment-root/deployment-logs/codedeploy-agent-deployments.log on ec2 server 
 #.................................................
-resource "null_resource" "perform_deploy" { 
+resource "null_resource" "perform_deploy_server" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
   triggers = {
@@ -80,6 +80,6 @@ aws deploy create-deployment \
 EOF
   } # End of provisioner
 
-  depends_on = [null_resource.upload_file]
+  depends_on = [null_resource.upload_file_server]
 } # end of "null_resource" "perform_deploy"
  
