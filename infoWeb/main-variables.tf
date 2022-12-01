@@ -33,6 +33,7 @@ variable "war_file_server" {}
 variable "docker_file_server" {}
 variable "dest_properties_file_server" {}
 variable "jar_file_server" {}
+variable "info_server_workspace" {} 
 
 variable "war_file_client" {}
 #variable "app_name_client" {}
