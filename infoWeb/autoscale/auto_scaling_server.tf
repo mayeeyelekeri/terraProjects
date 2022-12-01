@@ -5,6 +5,17 @@ data "template_file" "user_data" {
   }
 }
 
+# Import public key to aws 
+resource "aws_key_pair" "mykeypair" {
+    key_name    = var.key_name
+    public_key  = file("~/.ssh/id_rsa.pub")
+}
+
+# Get Linux AMI ID 
+data "aws_ssm_parameter" "linux-ami" {
+    name        = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+}
+
 # Create Launch configuration 
 resource "aws_launch_configuration" "al_conf" {
   name_prefix          = "${terraform.workspace}_"
