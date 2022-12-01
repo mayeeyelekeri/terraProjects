@@ -34,7 +34,7 @@ resource "aws_lb" "alb_client" {
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_lb_target_group.tg_client, aws_security_group.public_sg, aws_subnet.public_subnets]
+  depends_on = [aws_lb_target_group.tg_client]
 
 }
 

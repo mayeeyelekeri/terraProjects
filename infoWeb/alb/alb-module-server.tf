@@ -22,7 +22,7 @@ resource "aws_lb_target_group" "tg" {
 }
 
 # -------- Create application load balancer -------------
-resource "aws_lb" "alb" {
+resource "aws_lb" "alb_server" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.public_sg]
@@ -54,5 +54,5 @@ resource "aws_lb_listener" "listener" {
       Environment = "${terraform.workspace}"
     }
 
-    depends_on = [aws_lb.alb , aws_lb_target_group.tg]
+    depends_on = [aws_lb.alb_server , aws_lb_target_group.tg]
 }
