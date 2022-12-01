@@ -13,3 +13,4 @@ variable "src_properties_file_client" {}
 variable "info_client_workspace" {}
 variable "jar_file_client" {} 
 variable "alb_server_dns" {}
+variable "info_client_port" {}
