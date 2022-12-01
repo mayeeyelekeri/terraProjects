@@ -25,6 +25,10 @@ instance_type = "t2.micro"
 key_pair_path = "../../awsKeyPairDir"
 key_file_name = "../../awsKeyPairDir/info.pem"
 key_name = "info"
+app_name_server = "info"
+app_name_client = "client"
+
+
 
 #......................................
 #  Database properties 
@@ -59,7 +63,6 @@ war_file_client = "Client-0.0.1-SNAPSHOT.jar"
 jar_file_client = "Client-0.0.1-SNAPSHOT.jar"
 
 codebucket = "codedeploy"
-app_name = "info"
-app_name_client = "client"
+
 webapp_src_location_client = "/home/vagrant/Client/codedeploy"
 zip_file_client = "client.zip"
