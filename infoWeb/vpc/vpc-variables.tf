@@ -10,5 +10,5 @@ variable "vpc_cidr" {
 	default = "10.0.0.0/16"
 }
 
-variable "public_subnets" {
+variable "public_subnet_map" {
 }

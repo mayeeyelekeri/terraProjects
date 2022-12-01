@@ -4,7 +4,7 @@ vpc_cidr = "10.0.0.0/16"
 open_cidr = "0.0.0.0/0"
 
 
-public_subnets = { "subnet1" =  { cidr = "10.0.1.0/24", 
+public_subnet_map = { "subnet1" =  { cidr = "10.0.1.0/24", 
 							 zone = "us-east-1a"
 						   }, 
 				   "subnet2" =  { cidr = "10.0.2.0/24", 

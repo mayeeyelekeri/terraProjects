@@ -24,7 +24,7 @@ resource "aws_internet_gateway" "igw" {
 # ---------------------------- PUBLIC --------------------------
 # Create Public Subnets 
 resource "aws_subnet" "public_subnets" {
-  for_each = var.public_subnets 
+  for_each = var.public_subnet_map
   vpc_id = aws_vpc.myvpc.id
   cidr_block = each.value.cidr
   availability_zone = each.value.zone

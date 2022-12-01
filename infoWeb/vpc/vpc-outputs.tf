@@ -8,6 +8,10 @@ output "VPC-NAME" {
   value       = aws_vpc.myvpc.tags.Name
 }
 
-output "public_subnet_1" {
-	value	  = values(aws_subnet.public_subnets)[1].id
+output "public_subnets" {
+	value	  = values(aws_subnet.public_subnets)
 } 
+
+output "public_sg" {
+	value = "aws_security_group.public_sg"
+}
