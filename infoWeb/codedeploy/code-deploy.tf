@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "codebucket" {
   bucket = "${var.codebucket}-${random_integer.suffix.result}"
 
   tags = {
-    Name        = var.codebucket
+    Name        = var.codebucket_name
     Environment = "${terraform.workspace}"
   }
 }

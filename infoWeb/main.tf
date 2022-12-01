@@ -43,7 +43,7 @@ module "autoscale" {
 module "codedeploy" { 
     source      = "./codedeploy"
 
-    codebucket                    = var.codebucket 
+    codebucket                    = var.codebucket_name
     app_name_server               = var.app_name_server 
     app_name_client               = var.app_name_client 
     zip_file_server               = var.zip_file_server

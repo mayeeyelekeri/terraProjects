@@ -62,7 +62,7 @@ image_name_client = "client:latest"
 war_file_client = "Client-0.0.1-SNAPSHOT.jar"
 jar_file_client = "Client-0.0.1-SNAPSHOT.jar"
 
-codebucket = "codedeploy"
+codebucket_name = "codedeploy"
 
 webapp_src_location_client = "/home/vagrant/Client/codedeploy"
 zip_file_client = "client.zip"

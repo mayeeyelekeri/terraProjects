@@ -16,7 +16,7 @@ variable "ami_id" {}
 variable "instance_type" {}
 
 # Code Deploy 
-variable "codebucket" {}
+variable "codebucket_name" {}
 #variable "app_name_server" {}
 #variable "app_name_client" {}
 variable "zip_file_server" {}
