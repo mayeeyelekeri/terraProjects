@@ -30,6 +30,9 @@ module "autoscale" {
     app_name_server  = var.app_name
     app_name_client  = var.app_name_client 
     alb_tg_arn       = module.alb.alb_tg_arn 
+    key_name         = var.key_name 
+    ami_id           = var.ami_id 
+    instance_type    = var.instance_type 
 
     # ------ OUTPUTS ------ 
     # alb_client, alb_server
