@@ -28,15 +28,15 @@ variable "webapp_src_location_client" {}
 
 # Build 
 variable "war_file_server" {}
-variable "app_name_server" {}
-variable "zip_file_server" {}
+#variable "app_name_server" {}
+#variable "zip_file_server" {}
 variable "docker_file_server" {}
 variable "dest_properties_file_server" {}
 variable "jar_file_server" {}
 
 variable "war_file_client" {}
-variable "app_name_client" {}
-variable "zip_file_client" {}
+#variable "app_name_client" {}
+#variable "zip_file_client" {}
 variable "docker_file_client" {}
 variable "dest_properties_file_client" {}
 variable "jar_file_client" {}
