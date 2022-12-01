@@ -60,6 +60,7 @@ variable "app_name" {}
 variable "webapp_src_location" {}
 variable "webapp_src_location_client" {}
 variable "zip_file_client" {}
+variable "zip_file_server" {}
 variable "jar_file" {}
 variable "jar_file_client" {}
 variable "app_name_client" {}
