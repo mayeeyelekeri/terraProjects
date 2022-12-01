@@ -45,3 +45,4 @@ variable "info_client_workspace" {}
 variable "src_properties_file_client" {}
 variable "src_properties_file_server" {}
 variable "mysql_creds" {}
+variable "info_client_port" {}

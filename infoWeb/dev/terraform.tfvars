@@ -61,6 +61,7 @@ docker_file_client = "docker/Dockerfile_client"
 image_name_client = "client:latest"
 war_file_client = "Client-0.0.1-SNAPSHOT.jar"
 jar_file_client = "Client-0.0.1-SNAPSHOT.jar"
+info_client_port = "8080"
 
 codebucket_name = "codedeploy"
 

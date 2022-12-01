@@ -48,11 +48,13 @@ module "codedeploy" {
     app_name_client               = var.app_name_client 
     zip_file_server               = var.zip_file_server
     zip_file_client               = var.zip_file_client
-    auto_scale_group_name_client  = module.autoscale.auto_scale_group_name_client
-    auto_scale_group_name_server  = module.autoscale.auto_scale_group_name_server
+
     webapp_src_location_server    = var.webapp_src_location_server
     webapp_src_location_client    = var.webapp_src_location_client
-    
+
+    # This information coming from autoscaling module 
+    auto_scale_group_name_client  = module.autoscale.auto_scale_group_name_client
+    auto_scale_group_name_server  = module.autoscale.auto_scale_group_name_server    
 } 
 
 module "build" {
@@ -70,5 +72,8 @@ module "build" {
     webapp_src_location_client   = var.webapp_src_location_client
     info_client_workspace        = var.info_client_workspace
     jar_file_client              = var.jar_file_client 
+    info_client_port             = var.info_client_port
+
+    # This information coming from ALB module 
     alb_server_dns               = module.alb.alb_server_dns
 }
