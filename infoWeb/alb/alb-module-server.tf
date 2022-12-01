@@ -40,7 +40,7 @@ resource "aws_lb" "alb_server" {
 
 # ------- Create a Listener and attach it to ALB -----------------------
 resource "aws_lb_listener" "listener" {
-    load_balancer_arn = aws_lb.alb.arn 
+    load_balancer_arn = aws_lb.alb_server.arn 
     port = "8080"
     protocol = "HTTP"
 
