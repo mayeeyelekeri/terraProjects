@@ -1,8 +1,8 @@
-output "alb_server_dns" {
+output "alb_client_dns" {
   value       = aws_lb.alb_client.dns_name
 }
 
-output "alb_client_dns" {
+output "alb_server_dns" {
   value       = aws_lb.alb_server.dns_name
 }
 
