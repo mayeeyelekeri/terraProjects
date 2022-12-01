@@ -21,3 +21,5 @@ variable "key-file-name" {
 variable "key-name" { 
 	default = "ec2PublicPrivate"
 }
+
+variable "subnet-map" {}
