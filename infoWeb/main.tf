@@ -70,5 +70,5 @@ module "build" {
     webapp_src_location_client   = var.webapp_src_location_client
     info_client_workspace        = var.info_client_workspace
     jar_file_client              = var.jar_file_client 
-    alb_server_dns               = var.alb_server_dns
+    alb_server_dns               = module.alb.alb_server_dns
 }
