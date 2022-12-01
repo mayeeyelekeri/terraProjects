@@ -17,8 +17,8 @@ variable "instance_type" {}
 
 # Code Deploy 
 variable "codebucket" {}
-variable "app_name_server" {}
-variable "app_name_client" {}
+#variable "app_name_server" {}
+#variable "app_name_client" {}
 variable "zip_file_server" {}
 variable "zip_file_client" {}
 variable "webapp_src_location_server" {}

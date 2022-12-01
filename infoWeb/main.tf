@@ -44,7 +44,7 @@ module "codedeploy" {
     source      = "./codedeploy"
 
     codebucket                    = var.codebucket 
-    app_name_server               = var.app_name 
+    app_name_server               = var.app_name_server 
     app_name_client               = var.app_name_client 
     zip_file_server               = var.zip_file_server
     zip_file_client               = var.zip_file_client
