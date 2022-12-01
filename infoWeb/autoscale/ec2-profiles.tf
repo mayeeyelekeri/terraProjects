@@ -17,8 +17,6 @@ resource "aws_iam_policy" "mys3policy" {
       }
     ]
   })
-
-  #depends_on = [aws_security_group.public_sg]
 }
 
 # Create a role for EC2 

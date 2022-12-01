@@ -1,9 +1,11 @@
 project_name = "info"
 aws_region = "us-east-1"
+
+#......................................
+# EC2 Related variables 
+#......................................
 vpc_cidr = "10.0.0.0/16"
 open_cidr = "0.0.0.0/0"
-
-
 public_subnet_map = { "subnet1" =  { cidr = "10.0.1.0/24", 
 							 zone = "us-east-1a"
 						   }, 
@@ -12,17 +14,15 @@ public_subnet_map = { "subnet1" =  { cidr = "10.0.1.0/24",
 						   }
 			     }
 
-
-
 #......................................
 # EC2 Related variables 
 #......................................
 ami_id = "ami-09d3b3274b6c5d4aa"
-ami_id_ubuntu = "ami-08c40ec9ead489470"
-docker_image_id = "ami-01f30e7b4edf0bc38"
-ami_id_codedeploy_agent = "i-073cfa1a08e5c71f0"
+#ami_id_ubuntu = "ami-08c40ec9ead489470"
+#docker_image_id = "ami-01f30e7b4edf0bc38"
+#ami_id_codedeploy_agent = "i-073cfa1a08e5c71f0"
 instance_type = "t2.micro"
-key_pair_path = "../../awsKeyPairDir"
+#key_pair_path = "../../awsKeyPairDir"
 key_file_name = "../../awsKeyPairDir/info.pem"
 key_name = "info"
 app_name_server = "info"
@@ -33,7 +33,7 @@ app_name_client = "client"
 #......................................
 #  Database properties 
 #......................................
-# All the information coming from TF_VAR variables
+# All the information coming from AWS Secrets variables
 mysql_creds = "db_creds1"
 mysql_info  = "mysql_info.yml.encrypted"
 

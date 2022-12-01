@@ -1,5 +1,13 @@
 
-# Create VPC, subnet and security group for HTTP public access 
+/* --------------------------------------------
+ Following actions are perfomed in "VPC" module
+ 1) Create VPC  
+ 2) Crete Internet gateway and attach it to VPC  
+ 3) Create Public subnets (by default its private)
+ 4) Create Route table and attach IG to it 
+ 5) Associate all public subnets to Route table 
+ 6) Create security group for public access 
+-------------------------------------------------------- */ 
 module "vpc" {
     source = "./vpc"
 
@@ -13,6 +21,12 @@ module "vpc" {
     # vpc_id, public_subnets, vpc_name, public_sg_id 
 }
 
+/* --------------------------------------------
+ Following actions are perfomed in "ALB"" module for both client and server 
+ 1) Create Load balancer target group 
+ 2) Create Application Load Balancer 
+ 3) Create Listener and attach it to ALB 
+-------------------------------------------------------- */ 
 # Create Application Load Balancer 
 module "alb" {
     source = "./alb"
@@ -26,6 +40,17 @@ module "alb" {
     # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
 }
 
+/* --------------------------------------------
+ Following actions are perfomed in "autoscaling" module 
+ 1) Import local key to AWS 
+ 2) Create Launch configuration based on Amazon Linux ami
+    Attach instanceprofile 
+    Add "user_data" to install docker and codedeploy agent 
+
+ 3) Create Auto-scaling group (**** for both client and server)
+    Attach launch configuration
+    Attach target group create in ALB module 
+-------------------------------------------------------- */ 
 module "autoscale" {
     source = "./autoscale"
 
