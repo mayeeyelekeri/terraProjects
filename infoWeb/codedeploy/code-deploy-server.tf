@@ -50,7 +50,7 @@ resource "null_resource" "upload_file" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
     app_name=${var.app_name_server} \
-    bucket=${var.codebucket.id} \
+    bucket=${var.codebucket} \
     zip_file=${var.app_name_server} \
     webapp_src_location=${var.webapp_src_location_server}" \
   ansible_templates/aws_cmd_execution.yaml
