@@ -62,4 +62,5 @@ module "build" {
     src_properties_file_server   = var.src_properties_file_server
     dest_properties_file_server  = var.dest_properties_file_server
     webapp_src_location_server   = var.webapp_src_location_server
+    info_server_workspace        = var.info_server_workspace
 }
