@@ -47,6 +47,6 @@ module "codedeploy" {
     codebucket             = var.codebucket 
     app_name_server        = var.app_name_server 
     app_name_client        = var.app_name_client 
-    webapp_src_location    = var.webapp_src_location
-    webapp_src_location_client = var.webapp_src_location_client
+    webapp_src_location_server    = var.webapp_src_location
+    webapp_src_location_client    = var.webapp_src_location_client
 }
