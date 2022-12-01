@@ -47,3 +47,5 @@ resource "aws_subnet" "mysubnet" {
     Environment = "${terraform.workspace}"
   }
 }
+
+outputs "vpc-id" { value = aws_vpc.myvpc.id}
