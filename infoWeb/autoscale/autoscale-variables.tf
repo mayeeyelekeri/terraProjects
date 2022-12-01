@@ -1,4 +1,6 @@
-variable "alb_tg_arn" {}
+variable "alb_tg_client_arn" {}
+
+variable "alb_tg_server_arn" {}
 
 variable "public_sg" {}
 
