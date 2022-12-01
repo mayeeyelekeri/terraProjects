@@ -2,7 +2,7 @@ variable "alb_tg_client_arn" {}
 
 variable "alb_tg_server_arn" {}
 
-variable "public_sg" {}
+variable "public_sg_id" {}
 
 variable "public_subnets" {}
 
