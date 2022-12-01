@@ -1,2 +1,1 @@
-variable "vpc-id" {} 
-output "vpc" { value = var.vpc-id}
+output "vpc" { value = module.vpc-module.vpc-id}
