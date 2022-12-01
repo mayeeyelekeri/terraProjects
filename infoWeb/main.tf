@@ -1,3 +1,5 @@
+
+# Create VPC, subnet and security group for HTTP public access 
 module "vpc" {
     source = "./vpc"
 
@@ -11,9 +13,11 @@ module "vpc" {
     # vpc_id, public_subnets, vpc_name, public_sg_id 
 }
 
+# Create Application Load Balancer 
 module "alb" {
     source = "./alb"
 
+    # all these information coming VPC module 
     vpc_id         = module.vpc.vpc_id
     public_sg_id   = module.vpc.public_sg_id
     public_subnets = module.vpc.public_subnets
@@ -25,21 +29,36 @@ module "alb" {
 module "autoscale" {
     source = "./autoscale"
 
-    public_sg_id      = module.vpc.public_sg_id
-    public_subnets    = module.vpc.public_subnets
     app_name_server   = var.app_name_server
     app_name_client   = var.app_name_client 
-    alb_tg_server_arn = module.alb.alb_tg_server_arn 
-    alb_tg_client_arn = module.alb.alb_tg_client_arn 
     key_name          = var.key_name 
     ami_id            = var.ami_id 
     instance_type     = var.instance_type 
 
+    # from VPC module 
+    public_sg_id      = module.vpc.public_sg_id
+    public_subnets    = module.vpc.public_subnets
+    
+    # from ALB module 
+    alb_tg_server_arn = module.alb.alb_tg_server_arn 
+    alb_tg_client_arn = module.alb.alb_tg_client_arn     
+
     # ------ OUTPUTS ------ 
-    #  
+    #  auto_scale_group_name_client, auto_scale_group_name_server 
 }
 
+/* --------------------------------------------
+ Following actions are perfomed in "codedeploy"" module 
+ 1) New codedeploy bucket (random postfix)
+ 2) Instance profile for codedeploy 
 
+ **** Below tasks are performed for both client and server 
+
+ 3) Create codedeploy application 
+ 4) Create codedeploy deployment group 
+ 5) Upload file to bucket 
+ 6) Initiate deploy 
+-------------------------------------------------------- */ 
 module "codedeploy" { 
     source      = "./codedeploy"
 
@@ -52,15 +71,28 @@ module "codedeploy" {
     webapp_src_location_server    = var.webapp_src_location_server
     webapp_src_location_client    = var.webapp_src_location_client
 
-    # This information coming from autoscaling module 
+    # from autoscaling module 
     auto_scale_group_name_client  = module.autoscale.auto_scale_group_name_client
     auto_scale_group_name_server  = module.autoscale.auto_scale_group_name_server    
 } 
 
+/* --------------------------------------------
+ Following actions are perfomed in "build"" module 
+ 1) Get DB secrets from aws secrets manager 
+
+ **** Below tasks are performed for both client and server 
+
+ 2) Update application properties file 
+ 3) Create package 
+ 4) Copy package to codedeploy location to create zip file 
+ 5) Upload zip file to codedeploy bucket 
+ 6) Initiate deploy 
+-------------------------------------------------------- */ 
+# Perform build of both info-server and info-client and initiate deploy through codedeploy  
 module "build" {
     source     = "./build"
 
-    mysql_creds          = var.mysql_creds
+    mysql_creds                  = var.mysql_creds
     src_properties_file_server   = var.src_properties_file_server
     dest_properties_file_server  = var.dest_properties_file_server
     webapp_src_location_server   = var.webapp_src_location_server
@@ -74,6 +106,6 @@ module "build" {
     jar_file_client              = var.jar_file_client 
     info_client_port             = var.info_client_port
 
-    # This information coming from ALB module 
+    #  from ALB module 
     alb_server_dns               = module.alb.alb_server_dns
 }
