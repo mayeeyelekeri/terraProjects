@@ -6,7 +6,7 @@ variable "vpc_cidr" {}
 variable "public_subnet_map" {}
 
 # ALB related 
-
+#variable "public_subnets" {}
 
 # 
 
