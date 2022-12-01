@@ -57,7 +57,7 @@ ansible-playbook --extra-vars "passed_in_hosts=localhost \
 EOF
   } # End of provisioner
 
-  depends_on = [aws_s3_bucket.codebucket , aws_codedeploy_deployment_group.mydeploygroup_client, null_resource.create_client_package]
+  depends_on = [aws_s3_bucket.codebucket ] #, aws_codedeploy_deployment_group.mydeploygroup_client, null_resource.create_client_package]
 } # end of "null_resource" "upload_file"
 
 #.................................................
