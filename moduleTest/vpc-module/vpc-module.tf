@@ -48,4 +48,4 @@ resource "aws_subnet" "mysubnet" {
   }
 }
 
-outputs "vpc-id" { value = aws_vpc.myvpc.id}
+output "vpc-id" { value = aws_vpc.myvpc.id}
