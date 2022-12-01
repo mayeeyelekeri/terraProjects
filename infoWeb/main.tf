@@ -22,11 +22,10 @@ module "alb" {
     # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
 }
 
-/*
 module "autoscale" {
     source = "./autoscale"
 
-    public_sg         = module.vpc.public_sg
+    public_sg_id      = module.vpc.public_sg_id
     public_subnets    = module.vpc.public_subnets
     app_name_server   = var.app_name
     app_name_client   = var.app_name_client 
@@ -40,6 +39,7 @@ module "autoscale" {
     #  
 }
 
+/*
 module "codedeploy" { 
     source      = "./codedeploy"
 
