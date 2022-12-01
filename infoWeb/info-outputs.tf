@@ -1,8 +1,8 @@
 output "server_load_balancer" {
-	value = aws_lb.alb.dns_name
+	value = module.alb.alb_server
 }
 
 output "client_load_balancer" {
-	value = aws_lb.alb_client.dns_name
+	value = module.alb.alb_server.client
 }
 

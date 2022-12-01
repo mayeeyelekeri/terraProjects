@@ -14,7 +14,10 @@ module "vpc" {
 module "alb" {
     source = "./alb"
 
-    vpc_id         = "${module.vpc.vpc_id}" 
-    public_sg      = "${module.vpc.public_sg}" 
-    public_subnets = "${module.vpc.public_subnets}"
+    vpc_id         = module.vpc.vpc_id
+    public_sg      = module.vpc.public_sg
+    public_subnets = module.vpc.public_subnets
+
+    # ------ OUTPUTS ------ 
+    # alb_client, alb_server
 }
