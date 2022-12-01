@@ -15,3 +15,9 @@ variable "key_name" {}
 variable "instance_type" {}
 
 variable "ami_id" {} 
+
+variable "instance_profile_name" {}
+
+variable "auto_scale_min" {} 
+
+variable "auto_scale_max" {}

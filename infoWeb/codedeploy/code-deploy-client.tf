@@ -61,6 +61,25 @@ EOF
 } # end of "null_resource" "upload_file"
 
 #.................................................
+# This resource is to make wait for build of client to complete 
+#.................................................
+resource "null_resource" "wait_on_client_build" { 
+
+  # This timestamps makes this resource to run all time, even if there is no change
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+  provisioner "local-exec" {
+    command = <<EOF
+echo ${var.create_client_package_id}
+EOF
+  } # End of provisioner
+
+  
+} # end of "null_resource" 
+
+
+#.................................................
 # Create Deployment and point to S3 object 
 # Deployment log located at /opt/codedeploy-agent/deployment-root/deployment-logs/codedeploy-agent-deployments.log on ec2 server 
 #.................................................
@@ -80,6 +99,6 @@ aws deploy create-deployment \
 EOF
   } # End of provisioner
 
-  depends_on = [null_resource.upload_file_client] #, aws_autoscaling_group.auto_scale_group_client]
+  depends_on = [null_resource.upload_file_client, null_resource.wait_on_client_build]
 } # end of "null_resource" "perform_deploy_client"
  

@@ -55,19 +55,22 @@ module "alb" {
 module "autoscale" {
     source = "./autoscale"
 
-    app_name_server   = var.app_name_server
-    app_name_client   = var.app_name_client 
-    key_name          = var.key_name 
-    ami_id            = var.ami_id 
-    instance_type     = var.instance_type 
+    app_name_server       = var.app_name_server
+    app_name_client       = var.app_name_client 
+    key_name              = var.key_name 
+    ami_id                = var.ami_id 
+    instance_type         = var.instance_type 
+    instance_profile_name = var.instance_profile_name
+    auto_scale_min        = var.auto_scale_min 
+    auto_scale_max        = var.auto_scale_max 
 
     # from VPC module 
-    public_sg_id      = module.vpc.public_sg_id
-    public_subnets    = module.vpc.public_subnets
+    public_sg_id          = module.vpc.public_sg_id
+    public_subnets        = module.vpc.public_subnets
     
     # from ALB module 
-    alb_tg_server_arn = module.alb.alb_tg_server_arn 
-    alb_tg_client_arn = module.alb.alb_tg_client_arn     
+    alb_tg_server_arn     = module.alb.alb_tg_server_arn 
+    alb_tg_client_arn     = module.alb.alb_tg_client_arn     
 
     # ------ OUTPUTS ------ 
     #  auto_scale_group_name_client, auto_scale_group_name_server 

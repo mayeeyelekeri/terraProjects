@@ -24,7 +24,7 @@ resource "aws_launch_configuration" "al_conf" {
   key_name             = var.key_name
   security_groups      = [var.public_sg_id] 
   user_data            = "${data.template_file.user_data.rendered}"
-  iam_instance_profile = "myinstanceprofile" 
+  iam_instance_profile = var.instance_profile_name 
 
   lifecycle {
     create_before_destroy = true
@@ -40,8 +40,8 @@ resource "aws_autoscaling_group" "auto_scale_group" {
   target_group_arns    = [var.alb_tg_server_arn]
   vpc_zone_identifier  = [var.public_subnets[0].id, var.public_subnets[1].id]
   health_check_type    = "EC2" 
-  min_size             = 2
-  max_size             = 3
+  min_size             = var.autoscale_min
+  max_size             = var.autoscale_max
 
   tag {
     key                 = "Name"
