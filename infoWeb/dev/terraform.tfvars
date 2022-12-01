@@ -24,7 +24,7 @@ app_name_server = "info"
 app_name_client = "client"
 instance_profile_name =  "myinstanceprofile"
 auto_scale_min = 2
-auto_scale_min = 3
+auto_scale_max = 3
 
 #......................................
 #  Database properties 
