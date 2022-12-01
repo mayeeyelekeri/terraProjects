@@ -45,7 +45,7 @@ info_server_port = "8080"
 info_server_workspace = "/home/vagrant/SpringDataTest"
 jar_file = "SpringDataTest-0.0.1-SNAPSHOT.jar"
 webapp_src_location = "/home/vagrant/SpringDataTest/codedeploy"
-zip_file = "info.zip"
+zip_file_server = "info.zip"
 
 #......................................
 # Client properties  

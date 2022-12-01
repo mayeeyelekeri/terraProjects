@@ -11,3 +11,7 @@ variable "auto_scale_group_name_server" {}
 variable "webapp_src_location_server" {} 
 
 variable "webapp_src_location_client" {}
+
+variable "zip_file_server" {} 
+
+variable "zip_file_client" {}

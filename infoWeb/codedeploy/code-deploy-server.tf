@@ -80,6 +80,6 @@ aws deploy create-deployment \
 EOF
   } # End of provisioner
 
-  depends_on = [null_resource.upload_file, aws_autoscaling_group.auto_scale_group]
+  depends_on = [null_resource.upload_file]
 } # end of "null_resource" "perform_deploy"
  
