@@ -18,6 +18,6 @@ variable "ami_id" {}
 
 variable "instance_profile_name" {}
 
-variable "auto_scale_min" {} 
+variable "autoscale_min" {} 
 
-variable "auto_scale_max" {}
+variable "autoscale_max" {}
