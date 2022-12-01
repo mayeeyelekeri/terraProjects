@@ -38,3 +38,14 @@ module "autoscale" {
     # ------ OUTPUTS ------ 
     # alb_client, alb_server
 }
+
+module "codedeploy" { 
+    source      = "./codedeploy"
+
+    auto_scale_group_name  = module.autoscale.aws_autoscaling_group.auto_scale_group.name
+    codebucket             = var.codebucket 
+    app_name_server        = var.app_name_server 
+    app_name_client        = var.app_name_client 
+    webapp_src_location    = var.webapp_src_location
+    webapp_src_location_client = var.webapp_src_location_client
+}

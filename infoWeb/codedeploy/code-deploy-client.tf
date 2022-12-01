@@ -1,21 +1,21 @@
 #.................................................
 # Create Code Deploy application 
-resource "aws_codedeploy_app" "myapp" {
-  name = var.app_name
+resource "aws_codedeploy_app" "myapp_client" {
+  name = var.app_name_client
 
   depends_on = [aws_iam_role_policy_attachment.codedeploy_service]
 }
 
 #.................................................
 # create Deployment group for EC2 machines 
-resource "aws_codedeploy_deployment_group" "mydeploygroup" {
-  app_name              = aws_codedeploy_app.myapp.name
-  deployment_group_name = "${var.app_name}-deploygroup"
+resource "aws_codedeploy_deployment_group" "mydeploygroup_client" {
+  app_name              = aws_codedeploy_app.myapp_client.name
+  deployment_group_name = "${var.app_name_client}-deploygroup-client"
   service_role_arn      = aws_iam_role.my_code_deploy_role.arn
-  autoscaling_groups    = [aws_autoscaling_group.auto_scale_group.name ]
+  autoscaling_groups    = [aws_autoscaling_group.auto_scale_group_client.name ]
 
   tags = {
-    Name = "${terraform.workspace}-deploygroup"
+    Name = "${terraform.workspace}-deploygroup-client"
     Environment = "${terraform.workspace}"
   }
 
@@ -35,12 +35,12 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
     enabled = true
   } */ 
 
-  depends_on = [aws_codedeploy_app.myapp , aws_autoscaling_group.auto_scale_group ]
+  depends_on = [aws_codedeploy_app.myapp_client , aws_autoscaling_group.auto_scale_group_client ]
 }
  
 #.................................................
 # upload zip file to S3 object 
-resource "null_resource" "upload_file" { 
+resource "null_resource" "upload_file_client" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
   triggers = {
@@ -49,22 +49,22 @@ resource "null_resource" "upload_file" {
   provisioner "local-exec" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
-    app_name=${var.app_name} \
+    app_name=${var.app_name_client} \
     bucket=${aws_s3_bucket.codebucket.id} \
-    zip_file=${var.app_name} \
-    webapp_src_location=${var.webapp_src_location}" \
+    zip_file=${var.app_name_client} \
+    webapp_src_location=${var.webapp_src_location_client}" \
   ansible_templates/aws_cmd_execution.yaml
 EOF
   } # End of provisioner
 
-  depends_on = [aws_s3_bucket.codebucket , aws_codedeploy_deployment_group.mydeploygroup, null_resource.create_package]
+  depends_on = [aws_s3_bucket.codebucket , aws_codedeploy_deployment_group.mydeploygroup_client, null_resource.create_client_package]
 } # end of "null_resource" "upload_file"
 
 #.................................................
 # Create Deployment and point to S3 object 
 # Deployment log located at /opt/codedeploy-agent/deployment-root/deployment-logs/codedeploy-agent-deployments.log on ec2 server 
 #.................................................
-resource "null_resource" "perform_deploy" { 
+resource "null_resource" "perform_deploy_client" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
   triggers = {
@@ -73,13 +73,13 @@ resource "null_resource" "perform_deploy" {
   provisioner "local-exec" {
     command = <<EOF
 aws deploy create-deployment \
-  --application-name ${var.app_name} \
+  --application-name ${var.app_name_client} \
   --deployment-config-name CodeDeployDefault.OneAtATime \
-  --deployment-group-name ${aws_codedeploy_deployment_group.mydeploygroup.deployment_group_name} \
-  --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=${var.zip_file}
+  --deployment-group-name ${aws_codedeploy_deployment_group.mydeploygroup_client.deployment_group_name} \
+  --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=${var.zip_file_client}
 EOF
   } # End of provisioner
 
-  depends_on = [null_resource.upload_file, aws_autoscaling_group.auto_scale_group]
-} # end of "null_resource" "perform_deploy"
+  depends_on = [null_resource.upload_file_client, aws_autoscaling_group.auto_scale_group_client]
+} # end of "null_resource" "perform_deploy_client"
  
