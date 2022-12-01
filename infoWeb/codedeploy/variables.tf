@@ -15,3 +15,5 @@ variable "webapp_src_location_client" {}
 variable "zip_file_server" {} 
 
 variable "zip_file_client" {}
+
+variable "alb_server_dns" {}

@@ -4,4 +4,3 @@ variable "public_sg_id" {}
 
 variable "public_subnets" {}
 
-variable "alb_server_dns" {}
