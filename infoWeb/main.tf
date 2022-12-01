@@ -25,14 +25,15 @@ module "alb" {
 module "autoscale" {
     source = "./autoscale"
 
-    public_sg        = module.vpc.public_sg
-    public_subnets   = module.vpc.public_subnets
-    app_name_server  = var.app_name
-    app_name_client  = var.app_name_client 
-    alb_tg_arn       = module.alb.alb_tg_arn 
-    key_name         = var.key_name 
-    ami_id           = var.ami_id 
-    instance_type    = var.instance_type 
+    public_sg         = module.vpc.public_sg
+    public_subnets    = module.vpc.public_subnets
+    app_name_server   = var.app_name
+    app_name_client   = var.app_name_client 
+    alb_tg_server_arn = module.alb.alb_tg_server_arn 
+    alb_tg_client_arn = module.alb.alb_tg_client_arn 
+    key_name          = var.key_name 
+    ami_id            = var.ami_id 
+    instance_type     = var.instance_type 
 
     # ------ OUTPUTS ------ 
     # alb_client, alb_server
