@@ -1,6 +1,7 @@
 
-variable "vpc-cidr" { default = "10.0.0.0/16" } 
+#variable "vpc-cidr" { default = "10.0.0.0/16" } 
 
+variable "vpc-cidr" {}
 variable "subnet-map" {
 	default = { "public" =  { cidr = "10.0.1.0/24", 
 							 zone = "us-east-1a"
