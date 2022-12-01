@@ -24,7 +24,7 @@ resource "aws_launch_configuration" "al_conf" {
 
 # Create Auto Scaling group 
 resource "aws_autoscaling_group" "auto_scale_group" {
-  name                 = var.app_name
+  name                 = var.app_name_server
   launch_configuration = aws_launch_configuration.al_conf.name
   target_group_arns    = [var.alb_tg_server_arn]
   vpc_zone_identifier  = [var.public_subnets[0].id, var.public_subnets[1].id]
