@@ -13,6 +13,5 @@ provider "aws" {
 
 module "vpc-module" {
     source = "./vpc-module"
-
-    vpc-cidr = var.vpc-cidr
+       
 }

@@ -1,3 +1,6 @@
+
+variable "vpc-cidr" { default = "10.0.0.0/16" } 
+
 # Create VPC 
 resource "aws_vpc" "myvpc" {
   cidr_block           = var.vpc-cidr
