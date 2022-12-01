@@ -1,1 +1,1 @@
-output "vpc" { value = vpc-id}
+output "vpc" { value = "vpc-id"}
