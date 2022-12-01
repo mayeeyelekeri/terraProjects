@@ -1,4 +1,4 @@
-variable "codebucket" {}
+variable "codebucket_name" {}
 
 variable "app_name_server" {} 
 
