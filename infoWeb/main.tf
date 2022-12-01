@@ -43,11 +43,12 @@ module "alb" {
 /* --------------------------------------------
  Following actions are perfomed in "autoscaling" module 
  1) Import local key to AWS 
- 2) Create Launch configuration based on Amazon Linux ami
+ 2) Create an Instance profile for EC2 
+ 3) Create Launch configuration based on Amazon Linux ami
     Attach instanceprofile 
     Add "user_data" to install docker and codedeploy agent 
 
- 3) Create Auto-scaling group (**** for both client and server)
+ 4) Create Auto-scaling group (**** for both client and server)
     Attach launch configuration
     Attach target group create in ALB module 
 -------------------------------------------------------- */ 

@@ -1,4 +1,4 @@
-project_name = "info"
+# project_name = "info"
 aws_region = "us-east-1"
 
 #......................................
@@ -35,7 +35,7 @@ app_name_client = "client"
 #......................................
 # All the information coming from AWS Secrets variables
 mysql_creds = "db_creds1"
-mysql_info  = "mysql_info.yml.encrypted"
+#mysql_info  = "mysql_info.yml.encrypted"
 
 #......................................
 #  Info-Server properties 	
