@@ -26,7 +26,7 @@ resource "aws_lb" "alb_server" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.public_sg]
-  subnets            = [(var.public_subnets)[0].id, (var.public_subnets)[1].id]
+  subnets            = [var.public_subnets[0].id, var.public_subnets[1].id]
   enable_deletion_protection = false
 
   tags = {
