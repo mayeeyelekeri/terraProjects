@@ -42,3 +42,4 @@ variable "dest_properties_file_client" {}
 variable "jar_file_client" {}
 variable "src_properties_file_client" {}
 variable "src_properties_file_server" {}
+variable "mysql_creds" {}
