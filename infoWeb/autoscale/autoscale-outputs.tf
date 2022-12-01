@@ -5,7 +5,3 @@ output "alb_server" {
 output "alb_client" {
   value       = aws_lb.alb_server.dns_name
 }
-
-output "alb_tg_arn" {
-  value       = aws_lb_target_group.tg.arn
-}

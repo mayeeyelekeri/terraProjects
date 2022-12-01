@@ -11,7 +11,7 @@ resource "aws_launch_configuration" "al_conf" {
   image_id             = var.ami_id
   instance_type        = var.instance_type
   key_name             = var.key_name
-  security_groups      = [aws_security_group.public_sg.id] 
+  security_groups      = [var.public_sg] 
   user_data            = "${data.template_file.user_data.rendered}"
   iam_instance_profile = "myinstanceprofile" 
 
@@ -19,16 +19,15 @@ resource "aws_launch_configuration" "al_conf" {
     create_before_destroy = true
   }
 
-  depends_on = [aws_security_group.public_sg, aws_iam_instance_profile.myinstanceprofile , aws_lb_listener.listener]
+  #depends_on = [aws_iam_instance_profile.myinstanceprofile , aws_lb_listener.listener]
 }
 
 # Create Auto Scaling group 
 resource "aws_autoscaling_group" "auto_scale_group" {
   name                 = var.app_name
   launch_configuration = aws_launch_configuration.al_conf.name
-  #load_balancers      = [aws_lb.alb.id]
-  target_group_arns    = [aws_lb_target_group.tg.arn]
-  vpc_zone_identifier  = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
+  target_group_arns    = [var.alb_tg_arn]
+  vpc_zone_identifier  = [var.public_subnets[0].id, var.public_subnets[1].id]
   health_check_type    = "EC2" 
   min_size             = 2
   max_size             = 3

@@ -21,3 +21,15 @@ module "alb" {
     # ------ OUTPUTS ------ 
     # alb_client, alb_server
 }
+
+module "autoscale" {
+    source = "./autoscale"
+
+    public_subnets   = module.vpc.public_subnets
+    app_name_server  = var.app_name
+    app_name_client  = var.app_name_client 
+    alb_tg_arn       = module.alb.alb_tg_arn 
+
+    # ------ OUTPUTS ------ 
+    # alb_client, alb_server
+}
