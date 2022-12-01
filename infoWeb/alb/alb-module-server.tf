@@ -1,5 +1,5 @@
 # ------------- Create ALB Target Group ----------
-resource "aws_lb_target_group" "tg" {
+resource "aws_lb_target_group" "tg_server" {
   port     = 8080
   protocol = "HTTP"
   vpc_id   = var.vpc_id
@@ -14,7 +14,7 @@ resource "aws_lb_target_group" "tg" {
     unhealthy_threshold = 2
   }
   tags = {
-    Name = "${terraform.workspace}-albTargetGroup"
+    Name = "${terraform.workspace}-tg-server"
     Environment = "${terraform.workspace}"
   }
 
@@ -30,7 +30,7 @@ resource "aws_lb" "alb_server" {
   enable_deletion_protection = false
 
   tags = {
-    Name = "${terraform.workspace}-albTargetGroup"
+    Name = "${terraform.workspace}-alb-server"
     Environment = "${terraform.workspace}"
   }
 
@@ -39,7 +39,7 @@ resource "aws_lb" "alb_server" {
 }
 
 # ------- Create a Listener and attach it to ALB -----------------------
-resource "aws_lb_listener" "listener" {
+resource "aws_lb_listener" "listener_server" {
     load_balancer_arn = aws_lb.alb_server.arn 
     port = "8080"
     protocol = "HTTP"
@@ -50,9 +50,9 @@ resource "aws_lb_listener" "listener" {
     }
 
     tags = {
-      Name = "${terraform.workspace}-listener"
+      Name = "${terraform.workspace}-listener-server"
       Environment = "${terraform.workspace}"
     }
 
-    depends_on = [aws_lb.alb_server , aws_lb_target_group.tg]
+    depends_on = [aws_lb.alb_server , aws_lb_target_group.tg_server]
 }

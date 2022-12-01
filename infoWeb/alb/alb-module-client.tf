@@ -14,7 +14,7 @@ resource "aws_lb_target_group" "tg_client" {
     unhealthy_threshold = 2
   }
   tags = {
-    Name = "${terraform.workspace}-albTargetGroup-client"
+    Name = "${terraform.workspace}-tg-client"
     Environment = "${terraform.workspace}"
   }
 

@@ -11,7 +11,7 @@ module "vpc" {
     # vpc_id, public_subnets, vpc_name, public_sg 
 }
 
-/* module "alb" {
+module "alb" {
     source = "./alb"
 
     vpc_id         = module.vpc.vpc_id
@@ -19,9 +19,10 @@ module "vpc" {
     public_subnets = module.vpc.public_subnets
 
     # ------ OUTPUTS ------ 
-    # alb_client, alb_server
+    # alb_tg_server_arn, alb_tg_client_arn, alb_server, alb_client
 }
 
+/* 
 module "autoscale" {
     source = "./autoscale"
 
@@ -36,7 +37,7 @@ module "autoscale" {
     instance_type     = var.instance_type 
 
     # ------ OUTPUTS ------ 
-    # alb_client, alb_server
+    #  
 }
 
 module "codedeploy" { 
