@@ -34,7 +34,7 @@ resource "aws_autoscaling_group" "auto_scale_group" {
 
   tag {
     key                 = "Name"
-    value               = "${terraform.workspace}_${var.app_name}"
+    value               = "${terraform.workspace}_${var.app_name_server}"
     propagate_at_launch = true
   }
 
