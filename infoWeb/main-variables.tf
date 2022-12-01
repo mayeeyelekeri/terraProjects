@@ -14,6 +14,9 @@ variable "app_name_client" {}
 variable "key_name" {}
 variable "ami_id" {}
 variable "instance_type" {}
+variable "instance_profile_name" {}
+variable "auto_scale_min" {} 
+variable "auto_scale_max" {}
 
 # Code Deploy 
 variable "codebucket_name" {}
