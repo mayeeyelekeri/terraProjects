@@ -61,8 +61,8 @@ module "autoscale" {
     ami_id                = var.ami_id 
     instance_type         = var.instance_type 
     instance_profile_name = var.instance_profile_name
-    auto_scale_min        = var.auto_scale_min 
-    auto_scale_max        = var.auto_scale_max 
+    autoscale_min        = var.autoscale_min 
+    autoscale_max        = var.autoscale_max 
 
     # from VPC module 
     public_sg_id          = module.vpc.public_sg_id
