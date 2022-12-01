@@ -1,1 +1,1 @@
-output "vpc" { value = var.vpc-id}
+output "vpc" { value = vpc-id}
