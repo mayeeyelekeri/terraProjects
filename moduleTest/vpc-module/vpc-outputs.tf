@@ -10,7 +10,7 @@ output "VPC-NAME" {
 
 output "public-sg" {
   description = "Public SG"
-  value       = aws_security_group.public-sg
+  value       = aws_security_group.public-sg.id
 }
 
 output "PRIVATE-SECURITY-GROUP" {
