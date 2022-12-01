@@ -19,7 +19,7 @@ module "alb" {
     public_subnets = module.vpc.public_subnets
 
     # ------ OUTPUTS ------ 
-    # alb_tg_server_arn, alb_tg_client_arn, alb_server, alb_client
+    # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
 }
 
 /* 

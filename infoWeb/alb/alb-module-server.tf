@@ -34,7 +34,7 @@ resource "aws_lb" "alb_server" {
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_lb_target_group.tg]
+  depends_on = [aws_lb_target_group.tg_server]
 
 }
 
