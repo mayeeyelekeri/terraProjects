@@ -8,9 +8,9 @@ output "VPC-NAME" {
   value       = aws_vpc.myvpc.tags.Name
 }
 
-output "PUBLIC-SECURITY-GROUP" {
+output "public-sg" {
   description = "Public SG"
-  value       = aws_security_group.public-sg.id
+  value       = aws_security_group.public-sg
 }
 
 output "PRIVATE-SECURITY-GROUP" {

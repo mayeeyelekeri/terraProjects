@@ -10,7 +10,7 @@ resource "aws_instance" "webserver" {
   instance_type               = var.instance-type
   associate_public_ip_address = true
   key_name                    = var.key-name
-  vpc_security_group_ids      = [aws_security_group.public-sg.id] # these values are exported from vpc-outputs.tf 
+  vpc_security_group_ids      = [public-sg.id] # these values are exported from vpc-outputs.tf 
   subnet_id                   = aws_subnet.mysubnet["public"].id
   provisioner "remote-exec" {
     inline = [

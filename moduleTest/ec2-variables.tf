@@ -23,3 +23,4 @@ variable "key-name" {
 }
 
 variable "subnet-map" {}
+variable "public-sg" {}
