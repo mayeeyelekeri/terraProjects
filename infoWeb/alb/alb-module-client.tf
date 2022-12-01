@@ -2,7 +2,7 @@
 resource "aws_lb_target_group" "tg_client" {
   port     = 8080
   protocol = "HTTP"
-  vpc_id   = module.vpc.vpc_id
+  vpc_id   = var.vpc_id
   health_check { 
     enabled = true 
     healthy_threshold = 3 
@@ -25,8 +25,8 @@ resource "aws_lb_target_group" "tg_client" {
 resource "aws_lb" "alb_client" {
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.public_sg.id]
-  subnets            = [values(aws_subnet.public_subnets)[0].id, values(aws_subnet.public_subnets)[1].id]
+  security_groups    = [public_sg.id]
+  subnets            = [values(public_subnets)[0].id, values(public_subnets)[1].id]
   enable_deletion_protection = false
 
   tags = {
