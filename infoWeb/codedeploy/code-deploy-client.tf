@@ -12,7 +12,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup_client" {
   app_name              = aws_codedeploy_app.myapp_client.name
   deployment_group_name = "${var.app_name_client}-deploygroup-client"
   service_role_arn      = aws_iam_role.my_code_deploy_role.arn
-  autoscaling_groups    = [aws_autoscaling_group.auto_scale_group_client.name ]
+  autoscaling_groups    = [var.auto_scale_group_client_name ]
 
   tags = {
     Name = "${terraform.workspace}-deploygroup-client"
@@ -35,7 +35,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup_client" {
     enabled = true
   } */ 
 
-  depends_on = [aws_codedeploy_app.myapp_client , aws_autoscaling_group.auto_scale_group_client ]
+  depends_on = [aws_codedeploy_app.myapp_client ]
 }
  
 #.................................................
