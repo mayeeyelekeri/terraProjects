@@ -54,3 +54,9 @@ module "codedeploy" {
     webapp_src_location_client    = var.webapp_src_location_client
     
 } 
+
+module "build" {
+    source     = "./build"
+
+
+}
