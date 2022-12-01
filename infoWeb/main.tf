@@ -11,7 +11,7 @@ module "vpc" {
     # vpc_id, public_subnets, vpc_name, public_sg 
 }
 
-module "alb" {
+/* module "alb" {
     source = "./alb"
 
     vpc_id         = module.vpc.vpc_id
@@ -52,4 +52,4 @@ module "codedeploy" {
     webapp_src_location_server    = var.webapp_src_location
     webapp_src_location_client    = var.webapp_src_location_client
     
-}
+} */ 
