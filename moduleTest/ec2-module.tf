@@ -1,0 +1,1 @@
+output "vpc" { value = var.vpc-id}
