@@ -41,7 +41,7 @@ mysql_info  = "mysql_info.yml.encrypted"
 #  Info-Server properties 	
 #......................................
 war_file_server = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
-docker_file = "docker/Dockerfile"
+docker_file_server = "docker/Dockerfile"
 image_name = "springdatatest:latest"
 src_properties_file = "files/application-aws.properties.j2"
 dest_properties_file_server = "/home/vagrant/SpringDataTest/src/main/resources/application-aws.properties"
