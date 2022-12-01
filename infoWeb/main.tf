@@ -93,13 +93,14 @@ module "codedeploy" {
     app_name_client               = var.app_name_client 
     zip_file_server               = var.zip_file_server
     zip_file_client               = var.zip_file_client
-
     webapp_src_location_server    = var.webapp_src_location_server
     webapp_src_location_client    = var.webapp_src_location_client
 
     # from autoscaling module 
     auto_scale_group_name_client  = module.autoscale.auto_scale_group_name_client
     auto_scale_group_name_server  = module.autoscale.auto_scale_group_name_server    
+    alb_server_dns                = module.alb.alb_server_dns
+    
 } 
 
 /* --------------------------------------------
