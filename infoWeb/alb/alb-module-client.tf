@@ -25,7 +25,7 @@ resource "aws_lb_target_group" "tg_client" {
 resource "aws_lb" "alb_client" {
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [public_sg.id]
+  security_groups    = [var.public_sg]
   subnets            = [values(public_subnets)[0].id, values(public_subnets)[1].id]
   enable_deletion_protection = false
 
