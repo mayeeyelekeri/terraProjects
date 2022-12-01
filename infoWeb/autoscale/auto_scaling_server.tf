@@ -11,7 +11,7 @@ resource "aws_launch_configuration" "al_conf" {
   image_id             = var.ami_id
   instance_type        = var.instance_type
   key_name             = var.key_name
-  security_groups      = [var.public_sg] 
+  security_groups      = [var.public_sg_id] 
   user_data            = "${data.template_file.user_data.rendered}"
   iam_instance_profile = "myinstanceprofile" 
 
