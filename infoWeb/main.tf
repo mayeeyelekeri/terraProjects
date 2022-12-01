@@ -25,6 +25,7 @@ module "alb" {
 module "autoscale" {
     source = "./autoscale"
 
+    public_sg        = module.vpc.public_sg
     public_subnets   = module.vpc.public_subnets
     app_name_server  = var.app_name
     app_name_client  = var.app_name_client 
