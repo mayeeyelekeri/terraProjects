@@ -13,6 +13,4 @@ provider "aws" {
 
 module "vpc-module" {
     source = "./vpc-module"
-
-    subnet-map = var.subnet-map
 }
