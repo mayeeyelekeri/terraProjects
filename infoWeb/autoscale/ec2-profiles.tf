@@ -41,7 +41,7 @@ resource "aws_iam_role" "myec2role" {
 
 # Create a instance profile 
 resource "aws_iam_instance_profile" "myinstanceprofile" {
-  name = var.aws_instance_profile
+  name = var.instance_profile_name
   role = aws_iam_role.myec2role.name
   path = "/"
 
