@@ -46,7 +46,7 @@ resource "aws_lb_listener" "listener_server" {
 
     default_action { 
         type = "forward"
-        target_group_arn = aws_lb_target_group.tg.arn
+        target_group_arn = aws_lb_target_group.tg_server.arn
     }
 
     tags = {
