@@ -99,6 +99,6 @@ aws deploy create-deployment \
 EOF
   } # End of provisioner
 
-  depends_on = [null_resource.upload_file_client, null_resource.wait_on_client_build]
+  depends_on = [null_resource.upload_file_client]
 } # end of "null_resource" "perform_deploy_client"
  
