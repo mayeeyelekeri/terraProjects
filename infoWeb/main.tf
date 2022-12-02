@@ -9,8 +9,9 @@
  6) Create security group for public access 
 -------------------------------------------------------- */ 
 module "vpc" {
-    source = "../modules/vpc"
-
+    #source = "../modules/vpc"
+    source = "git::https://github.com/mayeeyelekeri/terraVpcModule.git"
+    
     # Pass all the variable values to the vpc module 
     aws_region        = var.aws_region
     open_cidr         = var.open_cidr 
