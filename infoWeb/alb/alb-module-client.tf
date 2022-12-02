@@ -1,12 +1,5 @@
  # some junk
- /* -------- Create application load balancer (client)-------------
- Inputs: 
- 1) security group from VPC module 
- 2) Public subnet IDs from VPC module 
- Outputs: 
- 1) arn name  (used in "Listener") 
- 2) dns_name is exported outside the module 
------------------------------------------------------------/*
+
 
 resource "aws_lb" "alb_client" {
   internal           = false
