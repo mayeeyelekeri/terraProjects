@@ -11,21 +11,21 @@ resource "aws_vpc" "vpc" {
 
 # Create IGW and attach it to our VPC
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.myvpc.id
+  vpc_id = aws_vpc.vpc.id
 
   tags = { 
     Name = "${terraform.workspace}-My IG"
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_vpc.myvpc]
+  depends_on = [aws_vpc.vpc]
 }
 
 # ---------------------------- PUBLIC --------------------------
 # Create Public Subnets 
 resource "aws_subnet" "public" {
   for_each = var.public_subnet_map
-  vpc_id = aws_vpc.myvpc.id
+  vpc_id = aws_vpc.vpc.id
   cidr_block = each.value.cidr
   availability_zone = each.value.zone
   map_public_ip_on_launch = "true"
@@ -35,7 +35,7 @@ resource "aws_subnet" "public" {
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_vpc.myvpc]
+  depends_on = [aws_vpc.vpc]
 }
 
 # Create route table and attach IG to it
@@ -66,7 +66,7 @@ resource "aws_route_table_association" "public_route_table_association1" {
 # Create Public Subnets 
 resource "aws_subnet" "private" {
   for_each = var.private_subnet_map
-  vpc_id = aws_vpc.myvpc.id
+  vpc_id = aws_vpc.vpc.id
   cidr_block = each.value.cidr
   availability_zone = each.value.zone
   map_public_ip_on_launch = "true"
