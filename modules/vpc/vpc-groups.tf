@@ -37,7 +37,7 @@ resource "aws_security_group" "public_sg" {
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_vpc.myvpc , aws_route_table.internet_route, aws_subnet.public_subnets ]
+  depends_on = [aws_vpc.vpc , aws_route_table.internet_route, aws_subnet.public ]
 }
 
 /* 

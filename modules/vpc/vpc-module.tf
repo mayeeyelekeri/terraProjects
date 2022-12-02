@@ -1,5 +1,5 @@
 # Create VPC 
-resource "aws_vpc" "myvpc" {
+resource "aws_vpc" "vpc" {
   cidr_block           = var.vpc_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
@@ -23,7 +23,7 @@ resource "aws_internet_gateway" "igw" {
 
 # ---------------------------- PUBLIC --------------------------
 # Create Public Subnets 
-resource "aws_subnet" "public_subnets" {
+resource "aws_subnet" "public" {
   for_each = var.public_subnet_map
   vpc_id = aws_vpc.myvpc.id
   cidr_block = each.value.cidr
@@ -59,12 +59,12 @@ resource "aws_route_table_association" "public_route_table_association1" {
   subnet_id      = each.value.id
   route_table_id = aws_route_table.internet_route.id
 
-  depends_on = [aws_route_table.internet_route, aws_subnet.public_subnets ]
+  depends_on = [aws_route_table.internet_route, aws_subnet.public ]
 }
 
 # ---------------------------- PRIVATE --------------------------
 # Create Public Subnets 
-resource "aws_subnet" "private_subnets" {
+resource "aws_subnet" "private" {
   for_each = var.private_subnet_map
   vpc_id = aws_vpc.myvpc.id
   cidr_block = each.value.cidr
@@ -76,5 +76,5 @@ resource "aws_subnet" "private_subnets" {
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_vpc.myvpc]
+  depends_on = [aws_vpc.vpc]
 }
