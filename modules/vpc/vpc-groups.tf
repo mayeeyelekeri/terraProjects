@@ -3,7 +3,7 @@
 resource "aws_security_group" "public_sg" {
   name        = "${terraform.workspace}-public-sg"
   description = "Allow TCP/80 & TCP/22"
-  vpc_id      = aws_vpc.myvpc.id
+  vpc_id      = aws_vpc.vpc.id
   ingress {
     description = "Allow SSH traffic"
     from_port   = 22
