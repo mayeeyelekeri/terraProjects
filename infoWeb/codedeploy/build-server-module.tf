@@ -31,7 +31,7 @@ EOF
 }
 
 # Perform compilation of server 
-resource "null_resource" "create_client_package" {
+resource "null_resource" "create_server_package" {
 
   # This timestamps makes this resource to run all time, even if there is no change
   triggers = {
