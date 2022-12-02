@@ -112,19 +112,19 @@ module "codedeploy" {
     mysql_creds                  = var.mysql_creds
     src_properties_file_server   = var.src_properties_file_server
     dest_properties_file_server  = var.dest_properties_file_server
-    webapp_src_location_server   = var.webapp_src_location_server
+    #webapp_src_location_server   = var.webapp_src_location_server
     info_server_workspace        = var.info_server_workspace
     jar_file_server              = var.jar_file_server 
 
     src_properties_file_client   = var.src_properties_file_client
     dest_properties_file_client  = var.dest_properties_file_client
-    webapp_src_location_client   = var.webapp_src_location_client
+    #webapp_src_location_client   = var.webapp_src_location_client
     info_client_workspace        = var.info_client_workspace
     jar_file_client              = var.jar_file_client 
     info_client_port             = var.info_client_port
 
     #  from ALB module 
-    alb_server_dns               = module.alb.alb_server_dns
+    #alb_server_dns               = module.alb.alb_server_dns
 
 } 
 
