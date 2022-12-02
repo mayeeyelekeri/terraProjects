@@ -1,4 +1,4 @@
-/* -------- Create application load balancer (server) -------------
+ /* -------- Create application load balancer (server) -------------
  Inputs: 
  1) security group from VPC module 
  2) Public subnet IDs from VPC module 
