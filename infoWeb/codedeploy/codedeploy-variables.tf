@@ -17,5 +17,3 @@ variable "zip_file_server" {}
 variable "zip_file_client" {}
 
 variable "alb_server_dns" {}
-
-variable "create_client_package_id" {} 

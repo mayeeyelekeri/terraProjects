@@ -107,7 +107,7 @@ module "codedeploy" {
     # These variables are not being used in the module, created to make a dependency on "alb" and "build" module 
     # Because, deploy to client is happening before the "mvm package", so its picking up old client.jar file 
     alb_server_dns                = module.alb.alb_server_dns
-    create_client_package_id      = module.build.create_client_package_id
+    #create_client_package_id      = module.build.create_client_package_id
 
     mysql_creds                  = var.mysql_creds
     src_properties_file_server   = var.src_properties_file_server
