@@ -14,6 +14,9 @@ resource "aws_lb" "alb_server" {
 }
 
 
+# comsasdfdsa
+/* asdfsaf 
+*/
 resource "aws_lb_target_group" "tg_server" {
   protocol = "HTTP"
 
@@ -46,6 +49,7 @@ resource "aws_lb_listener" "listener_server" {
     port = "80"
     
     load_balancer_arn = aws_lb.alb_server.arn 
+    
     default_action { 
         type = "forward"
         target_group_arn = aws_lb_target_group.tg_server.arn

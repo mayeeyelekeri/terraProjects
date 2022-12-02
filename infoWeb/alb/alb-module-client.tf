@@ -45,7 +45,7 @@ resource "aws_lb_listener" "listener_client" {
     # Port where Application Load balancer is listening at 
     port = "80"
     
-    load_balancer_arn = aws_lb.alb_server.arn
+    load_balancer_arn = aws_lb.alb_client.arn
 
     default_action { 
         type = "forward"
