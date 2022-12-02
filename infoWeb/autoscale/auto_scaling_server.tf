@@ -32,7 +32,7 @@ resource "aws_launch_template" "docker_template" {
 }
 
 # Create Launch configuration (This one is common for both client and server)
-/*resource "aws_launch_configuration" "al_conf" {
+resource "aws_launch_configuration" "al_conf" {
   name_prefix          = "${terraform.workspace}_"
   image_id             = var.ami_id
   instance_type        = var.instance_type
@@ -47,7 +47,7 @@ resource "aws_launch_template" "docker_template" {
 
   #depends_on = [aws_iam_instance_profile.myinstanceprofile , aws_lb_listener.listener]
 }
-*/ 
+ 
 
 # Create Auto Scaling group 
 resource "aws_autoscaling_group" "auto_scale_group" {
