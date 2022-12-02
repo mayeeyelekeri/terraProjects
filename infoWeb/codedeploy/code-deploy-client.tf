@@ -63,7 +63,7 @@ EOF
 #.................................................
 # This resource is to make wait for build of client to complete 
 #.................................................
-resource "null_resource" "wait_on_client_build" { 
+/*resource "null_resource" "wait_on_client_build" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
   triggers = {
@@ -77,7 +77,7 @@ EOF
 
   
 } # end of "null_resource" 
-
+*/ 
 
 #.................................................
 # Create Deployment and point to S3 object 
