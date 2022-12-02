@@ -12,6 +12,18 @@ public_subnet_map = { "subnet1" =  { cidr = "10.0.0.0/28",
 				   "subnet2" =  { cidr = "10.0.0.16/28", 
 							 zone = "us-east-1b"
 						   }
+				   "subnet3" =  { cidr = "10.0.0.32/28", 
+							 zone = "us-east-1c"
+						   }
+				   "subnet4" =  { cidr = "10.0.0.48/28", 
+							 zone = "us-east-1d"
+						   }
+				   "subnet5" =  { cidr = "10.0.0.64/28", 
+							 zone = "us-east-1e"
+						   }
+				   "subnet6" =  { cidr = "10.0.0.80/28", 
+							 zone = "us-east-1f"
+						   }
 			     }
 
 #......................................
