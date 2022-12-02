@@ -41,7 +41,9 @@ resource "aws_launch_template" "docker_template" {
   key_name                = var.key_name
   vpc_security_group_ids  = [var.public_sg_id] 
   user_data               = "${data.template_file.user_data.rendered}"
-  iam_instance_profile    = var.instance_profile_name 
+  iam_instance_profile  {
+        name =  var.instance_profile_name 
+  }
 
   lifecycle {
     create_before_destroy = true
@@ -52,7 +54,7 @@ resource "aws_launch_template" "docker_template" {
 resource "aws_autoscaling_group" "auto_scale_group" {
   name                 = var.app_name_server
   #launch_configuration = aws_launch_configuration.al_conf.name
-  launch_template      = {
+  launch_template  {
         id      = aws_launch_template.docker_template.id 
         version = "$$Latest" 
   } 
