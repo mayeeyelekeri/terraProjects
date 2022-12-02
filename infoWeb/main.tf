@@ -34,9 +34,10 @@ module "alb" {
     source = "./alb"
 
     # all these information coming VPC module 
-    vpc_id         = module.vpc.vpc_id
-    public_sg_id   = module.vpc.public_sg_id
-    public_subnets = module.vpc.public_subnets
+    vpc_id           = module.vpc.vpc_id
+    public_sg_id     = module.vpc.public_sg_id
+    public_subnets   = module.vpc.public_subnets
+    application_port = var.info_client_port
 
     # ------ OUTPUTS ------ 
     # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
