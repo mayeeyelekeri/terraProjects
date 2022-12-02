@@ -16,7 +16,7 @@ data "aws_ssm_parameter" "linux-ami" {
     name        = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
-/*  ****** This is sunsetted by AWS itself, using launch template instead 
+# ****** This is sunsetted by AWS itself, using launch template instead 
 # Create Launch configuration (This one is common for both client and server)
 resource "aws_launch_configuration" "al_conf" {
   name_prefix          = "${terraform.workspace}_"
