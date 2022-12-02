@@ -22,6 +22,8 @@ resource "aws_lb" "alb_client" {
 /* ------------- Create ALB Target Group -------------------
 Inputs: 
  1) VPC ID from VPC module 
+  2) Port where application is running 
+  3) Path for health check 
 Outputs: 
  1) arn name  (used in "Listener") 
 -----------------------------------------------------------*/ 
@@ -37,7 +39,7 @@ resource "aws_lb_target_group" "tg_client" {
     healthy_threshold = 3 
     interval = 10 
     matcher = 200
-    path = "/infos"
+    path = var.app_health_check_path
 
     timeout = 3
     unhealthy_threshold = 2

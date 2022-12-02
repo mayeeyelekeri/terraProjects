@@ -1,4 +1,4 @@
-/* -------- Create application load balancer (client)-------------
+/* -------- Create application load balancer (server)-------------
  Inputs: 
  1) security group from VPC module 
  2) Public subnet IDs from VPC module 
@@ -23,6 +23,8 @@ resource "aws_lb" "alb_server" {
 /* ------------- Create ALB Target Group -------------------
 Inputs: 
  1) VPC ID from VPC module 
+ 2) Port where application is running 
+ 3) Path for health check 
 Outputs: 
  1) arn name  (used in "Listener") 
 -----------------------------------------------------------*/ 
@@ -39,7 +41,7 @@ resource "aws_lb_target_group" "tg_server" {
     healthy_threshold = 3 
     interval = 10 
     matcher = 200
-    path = "/infos"
+    path = var.app_health_check_path
 
     timeout = 3
     unhealthy_threshold = 2
