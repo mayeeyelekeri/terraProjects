@@ -11,12 +11,8 @@ resource "aws_lb" "alb_client" {
   }
 }
 
-/* ------------- Create ALB Target Group -------------------
-Inputs: 
- 1) VPC ID from VPC module 
-Outputs: 
- 1) arn name  (used in "Listener") 
------------------------------------------------------------/*
+/*adsf asfdsa dsaf
+*/
 resource "aws_lb_target_group" "tg_client" {
   protocol = "HTTP"
 
