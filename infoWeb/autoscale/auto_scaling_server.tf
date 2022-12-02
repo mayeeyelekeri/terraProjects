@@ -22,7 +22,7 @@ resource "aws_launch_template" "docker_template" {
   image_id             = var.ami_id
   instance_type        = var.instance_type
   key_name             = var.key_name
-  security_groups      = [var.public_sg_id] 
+  #security_groups      = [var.public_sg_id] 
   user_data            = "${data.template_file.user_data.rendered}"
   iam_instance_profile = var.instance_profile_name 
 
@@ -62,6 +62,7 @@ resource "aws_autoscaling_group" "auto_scale_group" {
   health_check_type    = "EC2" 
   min_size             = var.autoscale_min
   max_size             = var.autoscale_max
+  security_groups      = [var.public_sg_id] 
 
   tag {
     key                 = "Name"
