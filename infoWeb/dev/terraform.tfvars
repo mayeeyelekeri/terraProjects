@@ -6,7 +6,7 @@ aws_region = "us-east-1"
 #......................................
 vpc_cidr = "10.0.0.0/24"
 open_cidr = "0.0.0.0/0"
-public_subnet_map = { "subnet1" =  { cidr = "10.0.0.1/28", 
+public_subnet_map = { "subnet1" =  { cidr = "10.0.0.0/28", 
 							 zone = "us-east-1a"
 						   }, 
 				   "subnet2" =  { cidr = "10.0.0.16/28", 
