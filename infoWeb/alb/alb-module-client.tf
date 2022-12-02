@@ -1,5 +1,6 @@
 
- /* -------- Create application load balancer (client)-------------
+ /* 
+ -------- Create application load balancer (client)-------------
  Inputs: 
  1) security group from VPC module 
  2) Public subnet IDs from VPC module 
