@@ -18,7 +18,7 @@ data "aws_ssm_parameter" "linux-ami" {
 
 # ****** This is sunsetted by AWS itself, using launch template instead 
 # Create Launch configuration (This one is common for both client and server)
-resource "aws_launch_configuration" "al_conf" {
+/*resource "aws_launch_configuration" "al_conf" {
   name_prefix          = "${terraform.workspace}_"
   image_id             = var.ami_id
   instance_type        = var.instance_type
@@ -32,7 +32,7 @@ resource "aws_launch_configuration" "al_conf" {
   }
 
   #depends_on = [aws_iam_instance_profile.myinstanceprofile , aws_lb_listener.listener]
-}
+} */
  
 # Create Launch template (This one is common for both client and server)
 resource "aws_launch_template" "docker_template" {
