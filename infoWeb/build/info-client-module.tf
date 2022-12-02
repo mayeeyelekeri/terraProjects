@@ -4,7 +4,7 @@ resource "null_resource" "update_server_dns" {
     always_run = "${timestamp()}"
   }
 
-    provisioner "local-exec" {
+  provisioner "local-exec" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
 info_server_ipaddress=${var.alb_server_dns} \
@@ -24,7 +24,7 @@ resource "null_resource" "create_client_package" {
     always_run = "${timestamp()}"
   }
 
-    provisioner "local-exec" {
+  provisioner "local-exec" {
     command = <<EOF
 cd ${var.info_client_workspace}; mvn clean package; cp target/${var.jar_file_client} ${var.webapp_src_location_client}
 EOF
