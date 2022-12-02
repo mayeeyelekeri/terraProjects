@@ -17,5 +17,5 @@ resource "aws_autoscaling_group" "auto_scale_group_client" {
     propagate_at_launch = true
   }
 
-  depends_on = [aws_launch_configuration.al_conf]
+  depends_on = [aws_launch_template.docker_template]
 }

@@ -7,10 +7,9 @@ variable "public_subnet_map" {}
 variable "private_subnet_map" {}
 
 # ALB related 
-#variable "public_subnets" {}
-variable "app_health_check_path" {} 
+#variable "app_health_check_path" {} 
 
-# Autoscaling 
+/* # Autoscaling 
 variable "app_name_server" {}
 variable "app_name_client" {}
 variable "key_name" {}
@@ -50,4 +49,4 @@ variable "info_client_workspace" {}
 variable "src_properties_file_client" {}
 variable "src_properties_file_server" {}
 variable "mysql_creds" {}
-variable "info_client_port" {}
+variable "info_client_port" {} */ 

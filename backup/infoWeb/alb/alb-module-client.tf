@@ -1,27 +1,11 @@
-# ------------- Create ALB Target Group for Client ----------
-resource "aws_lb_target_group" "tg_client" {
-  port     = 8080
-  protocol = "HTTP"
-  vpc_id   = var.vpc_id
-  health_check { 
-    enabled = true 
-    healthy_threshold = 3 
-    interval = 10 
-    matcher = 200
-    path = "/infos"
-
-    timeout = 3
-    unhealthy_threshold = 2
-  }
-  tags = {
-    Name = "${terraform.workspace}-tg-client"
-    Environment = "${terraform.workspace}"
-  }
-
-  #depends_on = [aws_vpc.myvpc]
-}
-
-# -------- Create application load balancer -------------
+/* -------- Create application load balancer (client)-------------
+ Inputs: 
+ 1) security group from VPC module 
+ 2) Public subnet IDs from VPC module 
+ Outputs: 
+ 1) arn name  (used in "Listener") 
+ 2) dns_name is exported outside the module 
+----------------------------------------------------------- */ 
 resource "aws_lb" "alb_client" {
   internal           = false
   load_balancer_type = "application"
@@ -33,16 +17,53 @@ resource "aws_lb" "alb_client" {
     Name = "${terraform.workspace}-alb-client"
     Environment = "${terraform.workspace}"
   }
-
-  depends_on = [aws_lb_target_group.tg_client]
-
 }
 
-# ------- Create a Listener and attach it to ALB -----------------------
+/* ------------- Create ALB Target Group -------------------
+Inputs: 
+ 1) VPC ID from VPC module 
+  2) Port where application is running 
+  3) Path for health check 
+Outputs: 
+ 1) arn name  (used in "Listener") 
+-----------------------------------------------------------*/ 
+resource "aws_lb_target_group" "tg_client" {
+  protocol = "HTTP"
+
+  # The port where application is running on EC2 
+  port     = var.application_port
+
+  vpc_id   = var.vpc_id
+  health_check { 
+    enabled = true 
+    healthy_threshold = 3 
+    interval = 10 
+    matcher = 200
+    path = var.app_health_check_path
+
+    timeout = 3
+    unhealthy_threshold = 2
+  }
+  tags = {
+    Name = "${terraform.workspace}-tg-client"
+    Environment = "${terraform.workspace}"
+  }
+}
+
+/* ------- Create a Listener and attach it to ALB ----------
+Inputs: 
+ 1) Load Balancer arn name 
+ 2) target group arn name 
+Outputs: 
+ 1) arn name exported outside the module 
+-----------------------------------------------------------*/
 resource "aws_lb_listener" "listener_client" {
-    load_balancer_arn = aws_lb.alb_client.arn 
-    port = "8080"
     protocol = "HTTP"
+
+    # Port where Application Load balancer is listening at 
+    port = "80"
+    
+    load_balancer_arn = aws_lb.alb_client.arn
 
     default_action { 
         type = "forward"

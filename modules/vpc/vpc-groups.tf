@@ -40,7 +40,6 @@ resource "aws_security_group" "public_sg" {
   depends_on = [aws_vpc.vpc , aws_route_table.internet_route, aws_subnet.public ]
 }
 
-/* 
 # Private Security Group
 resource "aws_security_group" "private-sg" {
   name        = "${terraform.workspace}-private-sg"
@@ -90,4 +89,4 @@ resource "aws_security_group" "private-sg" {
   }
 
   depends_on = [aws_vpc.myvpc , aws_route_table.internet_route, aws_subnet.private_subnets ]
-} */ 
+} 

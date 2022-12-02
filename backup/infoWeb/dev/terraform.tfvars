@@ -34,6 +34,7 @@ app_name_client = "client"
 instance_profile_name =  "myinstanceprofile"
 autoscale_min = 2
 autoscale_max = 3
+app_health_check_path = "/infos"
 
 #......................................
 #  Database properties 
