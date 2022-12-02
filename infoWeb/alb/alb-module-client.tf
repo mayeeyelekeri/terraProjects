@@ -5,8 +5,7 @@
  Outputs: 
  1) arn name  (used in "Listener") 
  2) dns_name is exported outside the module 
------------------------------------------------------------
-*/
+----------------------------------------------------------- */ 
 resource "aws_lb" "alb_client" {
   internal           = false
   load_balancer_type = "application"
@@ -20,8 +19,12 @@ resource "aws_lb" "alb_client" {
   }
 }
 
-/*adsf asfdsa dsaf
-*/
+/* ------------- Create ALB Target Group -------------------
+Inputs: 
+ 1) VPC ID from VPC module 
+Outputs: 
+ 1) arn name  (used in "Listener") 
+-----------------------------------------------------------*/ 
 resource "aws_lb_target_group" "tg_client" {
   protocol = "HTTP"
 
@@ -51,7 +54,7 @@ Inputs:
  2) target group arn name 
 Outputs: 
  1) arn name exported outside the module 
------------------------------------------------------------/*
+-----------------------------------------------------------*/
 resource "aws_lb_listener" "listener_client" {
     protocol = "HTTP"
 
