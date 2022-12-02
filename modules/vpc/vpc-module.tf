@@ -55,7 +55,7 @@ resource "aws_route_table" "internet_route" {
 
 # Associate ALL public subnets to route table 
 resource "aws_route_table_association" "public_route_table_association1" {
-  for_each       = aws_subnet.public_subnets
+  for_each       = aws_subnet.public
   subnet_id      = each.value.id
   route_table_id = aws_route_table.internet_route.id
 
