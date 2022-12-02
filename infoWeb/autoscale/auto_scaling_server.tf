@@ -16,6 +16,7 @@ data "aws_ssm_parameter" "linux-ami" {
     name        = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }
 
+/*  ****** This is sunsetted by AWS itself, using launch template instead 
 # Create Launch configuration (This one is common for both client and server)
 resource "aws_launch_configuration" "al_conf" {
   name_prefix          = "${terraform.workspace}_"
@@ -33,6 +34,7 @@ resource "aws_launch_configuration" "al_conf" {
   #depends_on = [aws_iam_instance_profile.myinstanceprofile , aws_lb_listener.listener]
 }
  
+# Create Launch template (This one is common for both client and server)
 resource "aws_launch_template" "docker_template" {
   name                    = "docker_and_codedeploy_agent"
   #name_prefix             = "${terraform.workspace}_"
@@ -53,7 +55,6 @@ resource "aws_launch_template" "docker_template" {
 # Create Auto Scaling group 
 resource "aws_autoscaling_group" "auto_scale_group" {
   name                 = var.app_name_server
-  #launch_configuration = aws_launch_configuration.al_conf.name
   launch_template  {
         id      = aws_launch_template.docker_template.id 
         version = "$$Latest" 
