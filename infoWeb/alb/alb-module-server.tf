@@ -1,4 +1,11 @@
-
+ /* -------- Create application load balancer (client)-------------
+ Inputs: 
+ 1) security group from VPC module 
+ 2) Public subnet IDs from VPC module 
+ Outputs: 
+ 1) arn name  (used in "Listener") 
+ 2) dns_name is exported outside the module 
+-----------------------------------------------------------/*
 resource "aws_lb" "alb_server" {
   internal           = false
   load_balancer_type = "application"
@@ -13,10 +20,12 @@ resource "aws_lb" "alb_server" {
   }
 }
 
-
-# comsasdfdsa
-/* asdfsaf 
-*/
+/* ------------- Create ALB Target Group -------------------
+Inputs: 
+ 1) VPC ID from VPC module 
+Outputs: 
+ 1) arn name  (used in "Listener") 
+-----------------------------------------------------------/*
 resource "aws_lb_target_group" "tg_server" {
   protocol = "HTTP"
 
@@ -41,7 +50,13 @@ resource "aws_lb_target_group" "tg_server" {
   }
 }
 
-
+/* ------- Create a Listener and attach it to ALB ----------
+Inputs: 
+ 1) Load Balancer arn name 
+ 2) target group arn name 
+Outputs: 
+ 1) arn name exported outside the module 
+-----------------------------------------------------------/*
 resource "aws_lb_listener" "listener_server" {
     protocol = "HTTP"
 
