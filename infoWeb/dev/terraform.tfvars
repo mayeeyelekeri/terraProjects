@@ -12,13 +12,16 @@ public_subnet_map = { "subnet1" =  { cidr = "10.0.0.0/28",
 				   "subnet2" =  { cidr = "10.0.0.16/28", 
 							 zone = "us-east-1b"
 						   }
+			     } # end of subnet_map 
+
+private_subnet_map = { 
 				   "subnet3" =  { cidr = "10.0.0.32/28", 
-							 zone = "us-east-1c"
+							 zone = "us-east-1a"
 						   }
 				   "subnet4" =  { cidr = "10.0.0.48/28", 
-							 zone = "us-east-1d"
+							 zone = "us-east-1b"
 						   }
-			     } # end of subnet_map 
+			     } # end of subnet_map private 
 
 #......................................
 # EC2 Related variables 

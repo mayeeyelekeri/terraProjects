@@ -13,10 +13,11 @@ module "vpc" {
     #source = "git::https://github.com/mayeeyelekeri/terraVpcModule.git"
     
     # Pass all the variable values to the vpc module 
-    aws_region        = var.aws_region
-    open_cidr         = var.open_cidr 
-    vpc_cidr          = var.vpc_cidr 
-    public_subnet_map = var.public_subnet_map
+    aws_region         = var.aws_region
+    open_cidr          = var.open_cidr 
+    vpc_cidr           = var.vpc_cidr 
+    public_subnet_map  = var.public_subnet_map
+    private_subnet_map = var.private_subnet_map
 
     # ----- OUTPUTS ------ 
     # vpc_id, public_subnets, vpc_name, public_sg_id 

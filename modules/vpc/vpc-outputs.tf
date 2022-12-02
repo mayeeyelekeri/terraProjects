@@ -12,6 +12,10 @@ output "public_subnets" {
 	value	  = values(aws_subnet.public_subnets)
 } 
 
+output "private_subnets" {
+	value	  = values(aws_subnet.private_subnets)
+
+} 
 output "public_sg_id" {
 	value = aws_security_group.public_sg.id
 }

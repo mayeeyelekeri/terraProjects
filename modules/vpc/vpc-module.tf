@@ -62,6 +62,23 @@ resource "aws_route_table_association" "public_route_table_association1" {
   depends_on = [aws_route_table.internet_route, aws_subnet.public_subnets ]
 }
 
+# ---------------------------- PRIVATE --------------------------
+# Create Public Subnets 
+resource "aws_subnet" "private_subnets" {
+  for_each = var.private_subnet_map
+  vpc_id = aws_vpc.myvpc.id
+  cidr_block = each.value.cidr
+  availability_zone = each.value.zone
+  map_public_ip_on_launch = "true"
+
+  tags = {
+    Name = "${terraform.workspace}-${each.value.cidr} - ${each.value.zone} - private"
+    Environment = "${terraform.workspace}"
+  }
+
+  depends_on = [aws_vpc.myvpc]
+}
+
 # -------------------- Security Groups --------------
 # Create SG for allowing TCP/80 & TCP/22
 resource "aws_security_group" "public_sg" {
