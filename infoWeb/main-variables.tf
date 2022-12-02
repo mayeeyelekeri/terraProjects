@@ -8,7 +8,7 @@ variable "private_subnet_map" {}
 
 # ALB related 
 #variable "public_subnets" {}
-var "app_health_check_path" {} 
+variable "app_health_check_path" {} 
 
 # Autoscaling 
 variable "app_name_server" {}
