@@ -2,7 +2,7 @@
 aws_region = "us-east-1"
 
 #......................................
-# EC2 Related variables 
+# VPC Related variables 
 #......................................
 vpc_cidr = "10.0.0.0/24"
 open_cidr = "0.0.0.0/0"
