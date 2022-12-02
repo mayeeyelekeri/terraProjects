@@ -52,3 +52,15 @@ variable "dest_properties_file_client" {}
 #variable "infodb_endpoint" {}
 variable "mysql_creds" {}
 variable "mysql_info" {}
+variable "docker_image_id" {}
+variable "ami_id_codedeploy_agent" {}
+
+variable "codebucket" {}
+variable "app_name" {}
+variable "webapp_src_location" {}
+variable "webapp_src_location_client" {}
+variable "zip_file_client" {}
+variable "zip_file_server" {}
+variable "jar_file" {}
+variable "jar_file_client" {}
+variable "app_name_client" {}
