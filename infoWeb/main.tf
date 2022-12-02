@@ -9,7 +9,7 @@
  6) Create security group for public access 
 -------------------------------------------------------- */ 
 module "vpc" {
-    source = "./vpc"
+    source = "../nodules/vpc"
 
     # Pass all the variable values to the vpc module 
     aws_region        = var.aws_region
