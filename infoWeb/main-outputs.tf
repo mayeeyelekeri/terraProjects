@@ -9,7 +9,7 @@ output "vpc-public_sg_id" {
 }
 
 output "public-subnet-ids" { 
-	value = (module.vpc.public_subnets)["id"][0]
+	value = (module.vpc.public_subnets)[0]
 }
 
 # ------------ ALB outputs -------------------
