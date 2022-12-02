@@ -35,7 +35,7 @@ resource "aws_launch_configuration" "al_conf" {
  
 resource "aws_launch_template" "docker_template" {
   name                    = "docker_and_codedeploy_agent"
-  name_prefix             = "${terraform.workspace}_"
+  #name_prefix             = "${terraform.workspace}_"
   image_id                = var.ami_id
   instance_type           = var.instance_type
   key_name                = var.key_name
