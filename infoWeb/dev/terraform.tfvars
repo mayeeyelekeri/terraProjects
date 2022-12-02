@@ -18,13 +18,7 @@ public_subnet_map = { "subnet1" =  { cidr = "10.0.0.0/28",
 				   "subnet4" =  { cidr = "10.0.0.48/28", 
 							 zone = "us-east-1d"
 						   }
-				   "subnet5" =  { cidr = "10.0.0.64/28", 
-							 zone = "us-east-1e"
-						   }
-				   "subnet6" =  { cidr = "10.0.0.80/28", 
-							 zone = "us-east-1f"
-						   }
-			     }
+			     } # end of subnet_map 
 
 #......................................
 # EC2 Related variables 
