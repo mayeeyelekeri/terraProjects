@@ -1,3 +1,4 @@
+ # some junk
  /* -------- Create application load balancer (client)-------------
  Inputs: 
  1) security group from VPC module 
