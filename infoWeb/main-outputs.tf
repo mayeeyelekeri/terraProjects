@@ -9,8 +9,9 @@ output "vpc-public_sg_id" {
 }
 
 output "public-subnet-ids" { 
-	value = module.vpc.public_subnets
+	value = (module.vpc.public_subnets)["id"]
 }
+
 # ------------ ALB outputs -------------------
 
 /* output "alb_tg_server_arn" { 
