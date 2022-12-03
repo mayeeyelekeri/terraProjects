@@ -7,6 +7,11 @@
  4) Create Route table and attach IG to it 
  5) Associate all public subnets to Route table 
  6) Create security group for public access 
+ 7) Create Private Subnets 
+ 8) Create Nat Gateway 
+ 9) Create Route table for private route 
+ 10) Associate route table to all Private subnets 
+ 11) Attach NAT gateway to all private route  
 -------------------------------------------------------- */ 
 module "vpc" {
     source = "../modules/vpc"
@@ -31,16 +36,17 @@ module "vpc" {
 -------------------------------------------------------- */ 
 # Create Application Load Balancer 
 module "alb" {
-    source = "./alb"
+    source = "../modules/alb"
 
+    application_port      = var.info_client_port
+    app_health_check_path = var.app_health_check_path
+    
     # all these information coming VPC module 
     vpc_id                = module.vpc.vpc_id
     public_sg_id          = module.vpc.public_sg_id
     private_sg_id         = module.vpc.private_sg_id
     public_subnets        = module.vpc.public_subnets
     private_subnets       = module.vpc.private_subnets
-    application_port      = var.info_client_port
-    app_health_check_path = var.app_health_check_path
     nat_gateway_id        = module.vpc.nat_gateway_id
 
     # ------ OUTPUTS ------ 

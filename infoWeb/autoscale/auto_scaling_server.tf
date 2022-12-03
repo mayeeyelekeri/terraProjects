@@ -1,3 +1,22 @@
+/* -------- Create Public Key -------------
+ Inputs: 
+ 1) Location of local public key 
+ 2) key name  
+ Outputs: 
+ 1) key-pair 
+----------------------------------------------------------- */ 
+resource "aws_key_pair" "mykeypair" {
+    key_name    = var.key_name
+    public_key  = file("~/.ssh/id_rsa.pub")
+}
+
+/* -------- Create Template for user-data (for installing docker and codedeploy agent)-------------
+ Inputs: 
+ 1) template file name 
+ 2) application name 
+ Outputs: 
+ 1) user_data, basically a text formatted string 
+----------------------------------------------------------- */ 
 data "template_file" "user_data" {
   template = "${file("install_docker_and_agent.tpl")}"
   vars = {
@@ -5,16 +24,16 @@ data "template_file" "user_data" {
   }
 }
 
-# Import public key to aws 
-resource "aws_key_pair" "mykeypair" {
-    key_name    = var.key_name
-    public_key  = file("~/.ssh/id_rsa.pub")
-}
-
-# Get Linux AMI ID 
-data "aws_ssm_parameter" "linux-ami" {
+/* -------- Get Linux AMI name -------------
+ Inputs: 
+ 1) template file name 
+ 2) application name 
+ Outputs: 
+ 1) user_data, basically a text formatted string 
+----------------------------------------------------------- */ 
+/*data "aws_ssm_parameter" "linux-ami" {
     name        = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
-}
+} */ 
 
 # ****** This is sunsetted by AWS itself, using launch template instead 
 # Create Launch configuration (This one is common for both client and server)
@@ -60,6 +79,8 @@ resource "aws_autoscaling_group" "auto_scale_group" {
         version = "$Latest" 
   } 
   target_group_arns    = [var.alb_tg_server_arn]
+
+  # Pickup all the private subnets 
   vpc_zone_identifier  = var.private_subnets[*].id
   health_check_type    = "EC2" 
   min_size             = var.autoscale_min
