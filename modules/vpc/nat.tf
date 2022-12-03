@@ -7,7 +7,7 @@ resource "aws_eip" "eip" {
 resource "aws_nat_gateway" "nat_gateway" {
   # get the first public subnet ID 
   subnet_id     = values(aws_subnet.public)[0].id 
-  allocation_id = aws_eip.my-eip.id
+  allocation_id = aws_eip.eip.id
 
   tags = {
     Name = "${terraform.workspace}-My public NAT Gateway"
