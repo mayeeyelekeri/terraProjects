@@ -36,7 +36,7 @@ resource "aws_default_route_table" "private_route" {
 
 # Associate private subnet to route table 
 resource "aws_route_table_association" "private_route_table_association" {
-  subnet_id      = values(aws_subnet.private)[*].id
+  subnet_id      = values(values(aws_subnet.private)[*].id)
   route_table_id = aws_default_route_table.private_route.id
 
   depends_on = [aws_subnet.private,  aws_default_route_table.private_route]
