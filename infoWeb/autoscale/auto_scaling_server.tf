@@ -101,5 +101,5 @@ resource "aws_autoscaling_group" "auto_scale_group" {
     propagate_at_launch = true
   }
 
-  depends_on = [aws_launch_template.docker_template]
+  depends_on = [aws_launch_template.docker_template_server]
 }
