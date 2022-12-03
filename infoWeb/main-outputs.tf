@@ -17,7 +17,7 @@ output "public" {
 }
 
 output "array" { 
-	value = { for s in values(module.vpc.public)[*] }
+	value = { for s in values(module.vpc.public) }
 }
 
 # ------------ ALB outputs -------------------
