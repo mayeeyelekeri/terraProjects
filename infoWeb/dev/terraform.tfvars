@@ -40,7 +40,7 @@ app_health_check_path = "/infos"
 #  Database properties 
 #......................................
 # All the information coming from AWS Secrets variables
-mysql_creds = "db_creds"
+mysql_creds = "db_creds1"
 
 #......................................
 #  Info-Server properties 	
