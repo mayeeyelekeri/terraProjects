@@ -18,6 +18,7 @@ variable "instance_type" {}
 variable "instance_profile_name" {}
 variable "autoscale_min" {} 
 variable "autoscale_max" {}
+variable "app_health_check_path" {}
 
 # Code Deploy 
 variable "codebucket_name" {}
