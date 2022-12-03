@@ -23,3 +23,7 @@ output "private_subnets" {
 output "public_sg_id" {
 	value = aws_security_group.public_sg.id
 }
+
+output "nat_gateway_id" {
+	value = aws_nat_gateway.nat_gateway.id
+}

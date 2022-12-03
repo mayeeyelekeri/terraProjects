@@ -16,10 +16,10 @@ output "public" {
 	value = values(module.vpc.public)[*].cidr_block
 }
 
-/*
-output "array" { 
-	value = { for s in values(module.vpc.public) }
-} */
+
+output "nat_gateway_id" { 
+	value = module.vpc.nat_gateway_id
+} 
 
 # ------------ ALB outputs -------------------
 
