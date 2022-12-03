@@ -60,7 +60,7 @@ resource "aws_autoscaling_group" "auto_scale_group" {
         version = "$Latest" 
   } 
   target_group_arns    = [var.alb_tg_server_arn]
-  vpc_zone_identifier  = [var.private_subnets[0].id, var.private_subnets[1].id]
+  vpc_zone_identifier  = values(var.private_subnets)[*].id
   health_check_type    = "EC2" 
   min_size             = var.autoscale_min
   max_size             = var.autoscale_max
