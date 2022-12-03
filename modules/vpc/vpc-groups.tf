@@ -44,7 +44,7 @@ resource "aws_security_group" "public_sg" {
 resource "aws_security_group" "private-sg" {
   name        = "${terraform.workspace}-private-sg"
   description = "Allow all access from public subnet"
-  vpc_id      = aws_vpc.myvpc.id
+  vpc_id      = aws_vpc.vpc.id
   ingress {
     description = "Allow http from public subnet"
     from_port   = 80
