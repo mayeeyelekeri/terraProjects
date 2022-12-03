@@ -12,7 +12,6 @@ variable "dest_properties_file_client" {}
 variable "src_properties_file_client" {}
 variable "info_client_workspace" {}
 variable "jar_file_client" {} 
-#variable "alb_server_dns" {}
 variable "info_client_port" {}
 variable "alb_server_dns" {}
 variable "alb_client_dns" {}
