@@ -26,4 +26,6 @@ variable "autoscale_min" {}
 
 variable "autoscale_max" {}
 
-variable "template_name" {}
+variable "template_name_server" {}
+
+variable "template_name_client" {}

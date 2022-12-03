@@ -10,7 +10,7 @@ Create Launch template (This one is common client only, needs to have public acc
  7) instance profile name 
 ----------------------------------------------------------- */ 
 resource "aws_launch_template" "docker_template_client" {
-  name                    = var.template_name
+  name                    = var.template_name_client
   image_id                = var.ami_id
   instance_type           = var.instance_type
   key_name                = var.key_name

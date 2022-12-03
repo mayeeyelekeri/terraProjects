@@ -55,7 +55,7 @@ Create Launch template (This one is common for both client and server)
  7) instance profile name 
 ----------------------------------------------------------- */ 
 resource "aws_launch_template" "docker_template_server" {
-  name                    = var.template_name
+  name                    = var.template_name_server
   image_id                = var.ami_id
   instance_type           = var.instance_type
   key_name                = var.key_name
