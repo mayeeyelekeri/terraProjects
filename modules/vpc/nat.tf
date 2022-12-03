@@ -38,7 +38,7 @@ resource "aws_default_route_table" "private_route" {
 resource "aws_route_table_association" "private_route_table_association" {
   for_each       = aws_subnet.private
 
-  subnet_id      = each.key
+  subnet_id      = each.value.id
   route_table_id = aws_default_route_table.private_route.id
 
   depends_on = [aws_subnet.private,  aws_default_route_table.private_route]
