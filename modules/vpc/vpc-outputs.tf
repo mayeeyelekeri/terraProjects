@@ -12,6 +12,10 @@ output "public_subnets" {
 	value	  = values(aws_subnet.public)
 } 
 
+output "public" {
+	value	  = aws_subnet.public
+} 
+
 output "private_subnets" {
 	value	  = values(aws_subnet.private)
 

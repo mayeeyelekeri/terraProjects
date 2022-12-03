@@ -41,7 +41,7 @@ resource "aws_security_group" "public_sg" {
 }
 
 # Private Security Group
-resource "aws_security_group" "private-sg" {
+/*resource "aws_security_group" "private-sg" {
   name        = "${terraform.workspace}-private-sg"
   description = "Allow all access from public subnet"
   vpc_id      = aws_vpc.vpc.id
@@ -89,4 +89,4 @@ resource "aws_security_group" "private-sg" {
   }
 
   depends_on = [aws_vpc.vpc , aws_route_table.internet_route, aws_subnet.private]
-}  
+}  */
