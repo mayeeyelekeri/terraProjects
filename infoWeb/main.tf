@@ -112,6 +112,7 @@ module "codedeploy" {
     auto_scale_group_name_client  = module.autoscale.auto_scale_group_name_client
     auto_scale_group_name_server  = module.autoscale.auto_scale_group_name_server 
     
+    
     # Not sure it works 
     # These variables are not being used in the module, created to make a dependency on "alb" and "build" module 
     # Because, deploy to client is happening before the "mvm package", so its picking up old client.jar file 
@@ -133,7 +134,8 @@ module "codedeploy" {
     info_client_port             = var.info_client_port
 
     #  from ALB module 
-    #alb_server_dns               = module.alb.alb_server_dns
+    alb_server_dns               = module.alb.alb_server_dns
+    alb_client_dns               = module.alb.alb_client_dns
 
 } 
  

@@ -15,7 +15,11 @@ ansible_templates/replace_application_properties.yaml
 EOF
   } # End of provisioner
 
-    #depends_on = [aws_lb.alb]
+   tags = {
+    Name = "${terraform.workspace}-client+deploy-group"
+    ALB  = var.alb_client_dns
+    Environment = "${terraform.workspace}"
+  }
 }
 
 # Perform compilation of client package 
