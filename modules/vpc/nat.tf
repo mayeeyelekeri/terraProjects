@@ -23,7 +23,7 @@ resource "aws_nat_gateway" "nat_gateway" {
 resource "aws_default_route_table" "private_route" {
   default_route_table_id = aws_vpc.vpc.default_route_table_id  
   route {
-    cidr_block = var.open-cidr
+    cidr_block = var.open_cidr
     nat_gateway_id = aws_nat_gateway.nat_gateway.id
   }
   tags = {
