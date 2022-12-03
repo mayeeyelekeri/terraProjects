@@ -54,7 +54,7 @@ Create Launch template (This one is common for both client and server)
  6) user data 
  7) instance profile name 
 ----------------------------------------------------------- */ 
-resource "aws_launch_template" "docker_template" {
+resource "aws_launch_template" "docker_template_server" {
   name                    = var.template_name
   image_id                = var.ami_id
   instance_type           = var.instance_type
@@ -84,7 +84,7 @@ resource "aws_launch_template" "docker_template" {
 resource "aws_autoscaling_group" "auto_scale_group" {
   name                 = var.app_name_server
   launch_template  {
-        id      = aws_launch_template.docker_template.id 
+        id      = aws_launch_template.docker_template_server.id 
         version = "$Latest" 
   } 
   target_group_arns    = [var.alb_tg_server_arn]

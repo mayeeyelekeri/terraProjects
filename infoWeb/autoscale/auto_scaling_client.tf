@@ -1,3 +1,30 @@
+/* --------------------------------------------------------
+Create Launch template (This one is common client only, needs to have public access)
+ Inputs: 
+ 1) template name  
+ 2) ami_id 
+ 3) instance type 
+ 4) key_name 
+ 5) private security group ID  
+ 6) user data 
+ 7) instance profile name 
+----------------------------------------------------------- */ 
+resource "aws_launch_template" "docker_template_client" {
+  name                    = var.template_name
+  image_id                = var.ami_id
+  instance_type           = var.instance_type
+  key_name                = var.key_name
+  vpc_security_group_ids  = [var.public_sg_id] 
+  user_data               = "${base64encode(data.template_file.user_data.rendered)}"
+  iam_instance_profile  {
+        name =  var.instance_profile_name 
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  } 
+}
+
 /* --------- Create Auto Scaling group for info-client  -----
  Inputs: 
  1) Application name  
@@ -11,7 +38,7 @@
 resource "aws_autoscaling_group" "auto_scale_group_client" {
   name                 = var.app_name_client
   launch_template  {
-        id      = aws_launch_template.docker_template.id 
+        id      = aws_launch_template.docker_template_client.id 
         version = "$Latest" 
   } 
   target_group_arns    = [var.alb_tg_client_arn]
