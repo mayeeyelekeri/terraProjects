@@ -15,11 +15,11 @@ ansible_templates/replace_application_properties.yaml
 EOF
   } # End of provisioner
 
-   tags = {
-    Name = "${terraform.workspace}-client+deploy-group"
-    ALB  = var.alb_client_dns
-    Environment = "${terraform.workspace}"
-  }
+  provisioner "local-exec" {
+    command = <<EOF
+   echo ${var.alb_client_dns}
+   EOF
+  } # End of provisioner
 }
 
 # Perform compilation of client package 

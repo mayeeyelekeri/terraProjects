@@ -16,6 +16,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
 
   tags = {
     Name = "${terraform.workspace}-deploygroup"
+    ALB  = var.alb_dns_server
     Environment = "${terraform.workspace}"
   }
 
