@@ -20,7 +20,7 @@ module "vpc" {
     private_subnet_map = var.private_subnet_map
 
     # ----- OUTPUTS ------ 
-    # vpc_id, public_subnets, vpc_name, public_sg_id 
+    # vpc_id,vpc_name, public_subnets, private_subnets, public_sg_id, private_sg_id, nat_gateway_id
 }
 
 /* --------------------------------------------
@@ -36,7 +36,9 @@ module "alb" {
     # all these information coming VPC module 
     vpc_id                = module.vpc.vpc_id
     public_sg_id          = module.vpc.public_sg_id
+    private_sg_id         = module.vpc.private_sg_id
     public_subnets        = module.vpc.public_subnets
+    private_subnets       = module.vpc.private_subnets
     application_port      = var.info_client_port
     app_health_check_path = var.app_health_check_path
 
