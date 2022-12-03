@@ -36,7 +36,7 @@ resource "aws_default_route_table" "private_route" {
 
 # Associate private subnet to route table 
 resource "aws_route_table_association" "private_route_table_association" {
-  for_each       = values(aws_subnet.private)
+  for_each       = aws_subnet.private
 
   subnet_id      = each.key
   route_table_id = aws_default_route_table.private_route.id
