@@ -73,7 +73,7 @@ module "autoscale" {
 
     # from VPC module 
     public_sg_id          = module.vpc.public_sg_id
-    private_sg_id         = module.vpc.rivate_sg_id
+    private_sg_id         = module.vpc.private_sg_id
     public_subnets        = module.vpc.public_subnets
     private_subnets       = module.vpc.private_subnets
     
