@@ -10,7 +10,8 @@ resource "aws_key_pair" "mykeypair" {
     public_key  = file("~/.ssh/id_rsa.pub")
 }
 
-/* -------- Create Template for user-data (for installing docker and codedeploy agent)-------------
+/* --------------------------------------------------------
+Create Template for user-data (for installing docker and codedeploy agent)-------------
  Inputs: 
  1) template file name 
  2) application name 
@@ -23,17 +24,6 @@ data "template_file" "user_data" {
     application = "docker"
   }
 }
-
-/* -------- Get Linux AMI name -------------
- Inputs: 
- 1) template file name 
- 2) application name 
- Outputs: 
- 1) user_data, basically a text formatted string 
------------------------------------------------------------ */ 
-/*data "aws_ssm_parameter" "linux-ami" {
-    name        = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
-} */ 
 
 # ****** This is sunsetted by AWS itself, using launch template instead 
 # Create Launch configuration (This one is common for both client and server)
@@ -53,10 +43,19 @@ data "template_file" "user_data" {
   #depends_on = [aws_iam_instance_profile.myinstanceprofile , aws_lb_listener.listener]
 } */
  
-# Create Launch template (This one is common for both client and server)
+/* --------------------------------------------------------
+Create Launch template (This one is common for both client and server)
+ Inputs: 
+ 1) template name  
+ 2) ami_id 
+ 3) instance type 
+ 4) key_name 
+ 5) private security group ID  
+ 6) user data 
+ 7) instance profile name 
+----------------------------------------------------------- */ 
 resource "aws_launch_template" "docker_template" {
-  name                    = "docker_and_codedeploy_agent"
-  #name_prefix             = "${terraform.workspace}_"
+  name                    = var.template_name
   image_id                = var.ami_id
   instance_type           = var.instance_type
   key_name                = var.key_name
@@ -71,7 +70,17 @@ resource "aws_launch_template" "docker_template" {
   } 
 }
 
-# Create Auto Scaling group 
+
+/* ------- Create Auto Scaling group for info-server ------- 
+ Inputs: 
+ 1) Application name  
+ 2) Launch template ID 
+ 3) Load Balancer ARN name 
+ 4) Private Subnet IDs 
+ 5) Health Check type   
+ 6) Min
+ 7) Max  
+----------------------------------------------------------- */ 
 resource "aws_autoscaling_group" "auto_scale_group" {
   name                 = var.app_name_server
   launch_template  {

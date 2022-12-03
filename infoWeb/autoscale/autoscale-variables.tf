@@ -25,3 +25,5 @@ variable "instance_profile_name" {}
 variable "autoscale_min" {} 
 
 variable "autoscale_max" {}
+
+variable "template_name" {}
