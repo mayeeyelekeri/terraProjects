@@ -41,7 +41,7 @@ resource "aws_launch_template" "docker_template" {
   image_id                = var.ami_id
   instance_type           = var.instance_type
   key_name                = var.key_name
-  vpc_security_group_ids  = [var.public_sg_id] 
+  vpc_security_group_ids  = [var.private_sg_id] 
   user_data               = "${base64encode(data.template_file.user_data.rendered)}"
   iam_instance_profile  {
         name =  var.instance_profile_name 
@@ -60,7 +60,7 @@ resource "aws_autoscaling_group" "auto_scale_group" {
         version = "$Latest" 
   } 
   target_group_arns    = [var.alb_tg_server_arn]
-  vpc_zone_identifier  = [var.public_subnets[0].id, var.public_subnets[1].id]
+  vpc_zone_identifier  = [var.private_subnets[0].id, var.private_subnets[1].id]
   health_check_type    = "EC2" 
   min_size             = var.autoscale_min
   max_size             = var.autoscale_max

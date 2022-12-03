@@ -12,3 +12,4 @@ variable "application_port" {}
 
 variable "app_health_check_path" {}
 
+variable "nat_gateway_id" {}
