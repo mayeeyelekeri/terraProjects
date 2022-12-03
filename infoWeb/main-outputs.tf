@@ -16,6 +16,10 @@ output "public" {
 	value = values(module.vpc.public)[*].cidr_block
 }
 
+output "array" { 
+	for s in values(module.vpc.public)[*]
+}
+
 # ------------ ALB outputs -------------------
 
 /* output "alb_tg_server_arn" { 
