@@ -13,7 +13,7 @@ output "public-subnet-ids" {
 }
 
 output "public" { 
-	value = values(module.vpc.public)[*]
+	value = values(module.vpc.public)[*].cidr_block
 }
 
 # ------------ ALB outputs -------------------
