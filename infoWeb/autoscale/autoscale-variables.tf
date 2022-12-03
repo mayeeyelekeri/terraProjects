@@ -4,6 +4,10 @@ variable "alb_tg_server_arn" {}
 
 variable "public_sg_id" {}
 
+variable "private_sg_id" {}
+
+variable "private_subnets" {}
+
 variable "public_subnets" {}
 
 variable "app_name_server" {}
