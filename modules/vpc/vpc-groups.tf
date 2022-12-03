@@ -41,7 +41,7 @@ resource "aws_security_group" "public_sg" {
 }
 
 # Private Security Group
-/* resource "aws_security_group" "private-sg" {
+resource "aws_security_group" "private-sg" {
   name        = "${terraform.workspace}-private-sg"
   description = "Allow all access from public subnet"
   vpc_id      = aws_vpc.myvpc.id
@@ -50,28 +50,28 @@ resource "aws_security_group" "public_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = [aws_subnet.public["public"].cidr_block]
+    cidr_blocks = [values(aws_subnet.public)[*].cidr_block]
   } 
   ingress {
     description = "Allow http from public subnet"
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = [aws_subnet.mysubnet["public"].cidr_block]
+    cidr_blocks = [values(aws_subnet.public)[*].cidr_block]
   } 
   ingress {
     description = "Allow ssh from  public subnet"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [aws_subnet.mysubnet["public"].cidr_block]
+    cidr_blocks = [values(aws_subnet.public)[*].cidr_block]
   } 
   ingress {
     description = "Allow ping  from public subnet"
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
-    cidr_blocks = [aws_subnet.mysubnet["public"].cidr_block]
+    cidr_blocks = [avalues(aws_subnet.public)[*].cidr_block]
   } 
   # ------- By default terraform doesn't create this block ----- 
   # ------- I spent lot of time to investigate this ------------
@@ -88,5 +88,5 @@ resource "aws_security_group" "public_sg" {
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_vpc.myvpc , aws_route_table.internet_route, aws_subnet.private_subnets ]
-} */ 
+  depends_on = [aws_vpc.vpc , aws_route_table.internet_route, aws_subnet.private]
+}  
