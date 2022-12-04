@@ -14,6 +14,8 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup_client" {
   service_role_arn      = aws_iam_role.my_code_deploy_role.arn
   autoscaling_groups    = [var.auto_scale_group_name_client ]
 
+  deployment_config_name = "CodeDeployDefault.OneAtATime"
+
   tags = {
     Name = "${terraform.workspace}-deploygroup-client"
     Environment = "${terraform.workspace}"
