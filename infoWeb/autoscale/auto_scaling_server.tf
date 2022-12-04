@@ -82,7 +82,7 @@ resource "aws_launch_template" "docker_template_server" {
  7) Max  
 ----------------------------------------------------------- */ 
 resource "aws_autoscaling_group" "auto_scale_group" {
-  name                 = var.app_name_server
+  name                 = "${var.app_name_server}-autoscale-group-server"
   launch_template  {
         id      = aws_launch_template.docker_template_server.id 
         version = "$Latest" 
