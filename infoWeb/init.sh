@@ -2,7 +2,7 @@
 --- Create an S3 bucket for strong terraform state 
 aws s3 mb s3://terraprojects --region us-east-1
 
---- In database directory, execute script to create creds in secrets manager 
+--- In database directory, execute script to create mysql creds in secrets manager 
 . ~/INFO/secrets/aws_secrets.sh 
 
 --- Make sure the web application source directory exists at this location where the terraform is running from 
@@ -70,5 +70,6 @@ terraform apply -var-file=dev/terraform.tfvars
  **** Below tasks are performed for both client and server 
  Create codedeploy application 
   Create codedeploy deployment group 
-  Upload file to bucket 
+     group name is the one created in autoscaling module 
+  Upload application zipfile to bucket 
   Initiate deploy 
