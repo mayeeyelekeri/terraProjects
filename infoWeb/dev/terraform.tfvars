@@ -42,7 +42,7 @@ template_name_client = "docker_and_codedeploy_agent_client"
 #  Database properties 
 #......................................
 # All the information coming from AWS Secrets variables
-mysql_creds = "db_creds"
+mysql_creds = "db_creds1"
 
 #......................................
 #  Info-Server properties 	
