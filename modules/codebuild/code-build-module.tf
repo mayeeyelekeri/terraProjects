@@ -29,6 +29,22 @@ resource "aws_iam_role" "codebuildrole" {
 EOF
 }
 
+#.................................................
+resource "random_integer" "suffix" {
+  min = 100
+  max = 999
+}
+
+# Create s3 bucket 
+resource "aws_s3_bucket" "codebuildbucket" {
+  bucket = "${var.buildbucket_name}-${random_integer.suffix.result}"
+
+  tags = {
+    Name        = var.codebucket
+    Environment = "dev"
+  }
+}
+
 # Create Code build server project
 resource "aws_codebuild_project" "server_project" {
   name          = var.server_project_name
@@ -62,7 +78,7 @@ resource "aws_codebuild_project" "server_project" {
 
     s3_logs {
       status   = "ENABLED"
-      location = "${var.codebucket_name}/server"
+      location = "${aws_s3_bucket.codebuildbucket.id}/server"
     } 
   }
 
@@ -116,7 +132,7 @@ resource "aws_codebuild_project" "client_project" {
 
     s3_logs {
       status   = "ENABLED"
-      location = "${var.codebucket_name}/client"
+      location = "${aws_s3_bucket.codebuildbucket.id}/client"
     } 
   }
 
