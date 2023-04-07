@@ -71,10 +71,11 @@ resource "aws_codebuild_project" "server_project" {
   }
 
   logs_config {
-    /*cloudwatch_logs {
+    cloudwatch_logs {
       group_name  = "log-group"
       stream_name = "log-stream"
-    } */
+      status      = "DISABLED"
+    } 
 
     s3_logs {
       status   = "ENABLED"
@@ -125,10 +126,11 @@ resource "aws_codebuild_project" "client_project" {
   }
 
   logs_config {
-    /*cloudwatch_logs {
+    cloudwatch_logs {
       group_name  = "log-group"
       stream_name = "log-stream"
-    } */
+      status      = "DISABLED"
+    } 
 
     s3_logs {
       status   = "ENABLED"
