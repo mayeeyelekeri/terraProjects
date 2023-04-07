@@ -60,10 +60,10 @@ resource "aws_codebuild_project" "server_project" {
       stream_name = "log-stream"
     }
 
-    /* s3_logs {
+    s3_logs {
       status   = "ENABLED"
-      location = "${aws_s3_bucket.hello-world.id}/build-log"
-    } */
+      location = "${var.codebucket_name}/server/build-log"
+    } 
   }
 
   source {
