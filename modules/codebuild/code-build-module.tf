@@ -110,7 +110,7 @@ POLICY
 # attach the policy
 resource "aws_iam_role_policy_attachment" "codebuild_myapp_build_policy_att" {
     role       = "${aws_iam_role.codebuildrole.name}"
-    policy_arn = "${aws_iam_policy.codebuild_myapp_build_policy.arn}"
+    policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
 
