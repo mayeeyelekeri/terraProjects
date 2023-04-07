@@ -31,12 +31,13 @@ module "vpc" {
 /* --------------------------------------------
  Following actions are perfomed in "codebuild" module 
  1) New service Role for codebuild
+ 2) New build to copy artifacts 
  2) Create codebuild project 
  3) Initiate Build 
  4) Artifacts are copied to S3 bucket
 -------------------------------------------------------- */ 
 module "codebuild" { 
-    source      = "./codebuild"
+    source      = "../modules/codebuild"
 
     codebucket_name               = var.codebucket_name
     git_creds                     = var.git_creds
