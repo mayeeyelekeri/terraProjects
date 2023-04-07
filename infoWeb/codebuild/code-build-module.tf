@@ -85,7 +85,7 @@ resource "aws_codebuild_project" "server_project" {
 
 # Create Code build Client project
 resource "aws_codebuild_project" "client_project" {
-  name          = var.client_client_name
+  name          = var.client_project_name
   description   = var.client_project_description
   build_timeout = "5"
   service_role  = aws_iam_role.codebuildrole.arn
