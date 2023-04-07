@@ -97,7 +97,7 @@ resource "aws_codebuild_project" "client_project" {
 
   cache {
     type     = "S3"
-    location = var.codebucket_name
+    location = "codedeploy-245/server"
   }
 
   environment {
@@ -116,7 +116,7 @@ resource "aws_codebuild_project" "client_project" {
 
     s3_logs {
       status   = "ENABLED"
-      location = var.codebucket_name
+      location = "codedeploy-245/client"
     } 
   }
 
