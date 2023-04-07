@@ -72,3 +72,10 @@ codebucket_name = "codedeploy"
 
 webapp_src_location_client = "/home/vagrant/Client/codedeploy"
 zip_file_client = "client.zip"
+
+#......................................
+# codebuild properties  
+#......................................
+server_project_name = "SpringDataTest"
+server_project_description = "server project" 
+source_provider = "github"
