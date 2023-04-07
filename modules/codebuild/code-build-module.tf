@@ -82,7 +82,7 @@ resource "aws_iam_policy" "codebuild_myapp_build_policy" {
                 "s3:PutObject",
                 "s3:GetObject",
                 "logs:CreateLogStream",
-                "codecommit:GitPull",
+                "github:GitPull",
                 "logs:PutLogEvents",
                 "s3:GetObjectVersion"
             ],
