@@ -55,10 +55,10 @@ resource "aws_codebuild_project" "server_project" {
   }
 
   logs_config {
-    cloudwatch_logs {
+    /*cloudwatch_logs {
       group_name  = "log-group"
       stream_name = "log-stream"
-    }
+    } */
 
     s3_logs {
       status   = "ENABLED"
