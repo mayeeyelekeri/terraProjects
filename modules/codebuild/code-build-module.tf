@@ -45,6 +45,15 @@ resource "aws_s3_bucket" "codebuildbucket" {
   }
 }
 
+/* Codebuild only allows a single credential per given server type in a given region. 
+   Therefore, when you define aws_codebuild_source_credential, aws_codebuild_project resource defined in the same module will use it. 
+*/ 
+resource "aws_codebuild_source_credential" "example" {
+  auth_type   = "PERSONAL_ACCESS_TOKEN"
+  server_type = "GITHUB"
+  token       = local.git_creds.token
+}
+
 # Create Code build server project
 resource "aws_codebuild_project" "server_project" {
   name          = var.server_project_name
