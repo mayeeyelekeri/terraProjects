@@ -54,6 +54,66 @@ resource "aws_codebuild_source_credential" "example" {
   token       = local.git_creds.token
 }
 
+
+# IAM policy for the CodeBuild role
+resource "aws_iam_policy" "codebuild_myapp_build_policy" {
+  name = "mycompany-codebuild-policy-myapp-build-us-east-1"
+  description = "Managed by Terraform"
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:CompleteLayerUpload",
+                "ecr:GetAuthorizationToken",
+                "ecr:InitiateLayerUpload",
+                "ecr:PutImage",
+                "ecr:UploadLayerPart"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "logs:CreateLogStream",
+                "codecommit:GitPull",
+                "logs:PutLogEvents",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-east-1:000000000000:log-group:/aws/codebuild/myapp-build",
+                "arn:aws:logs:us-east-1:000000000000:log-group:/aws/codebuild/myapp-build:*",
+                "arn:aws:s3:::codepipeline-us-east-1-*",
+                "arn:aws:codecommit:us-east-1:000000000000:mycompany-devops-us-east-1"
+            ]
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": [
+                "arn:aws:logs:us-east-1:000000000000:log-group:/aws/codebuild/myapp-build",
+                "arn:aws:logs:us-east-1:000000000000:log-group:/aws/codebuild/myapp-build:*"
+            ]
+        }
+    ]
+}
+POLICY
+}
+
+# attach the policy
+resource "aws_iam_role_policy_attachment" "codebuild_myapp_build_policy_att" {
+    role       = "${aws_iam_role.codebuildrole.name}"
+    policy_arn = "${aws_iam_policy.codebuild_myapp_build_policy.arn}"
+}
+
+
 # Create Code build server project
 resource "aws_codebuild_project" "server_project" {
   name          = var.server_project_name
