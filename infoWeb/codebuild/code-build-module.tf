@@ -52,11 +52,6 @@ resource "aws_codebuild_project" "server_project" {
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
     privileged_mode             = true
-
-    environment_variable {
-      name  = "AWS_ACCOUNT_ID"
-      value = data.aws_caller_identity.current.account_id
-    }
   }
 
   logs_config {
