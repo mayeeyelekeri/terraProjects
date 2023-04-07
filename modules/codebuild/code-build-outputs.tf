@@ -1,3 +1,3 @@
-/*output "create_client_package_id" {
-	value = null_resource.create_client_package.id 
-} */
+output "codebuild_bucket_id" {
+	value = aws_s3_bucket.codebuildbucket.id
+} 
