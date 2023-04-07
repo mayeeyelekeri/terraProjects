@@ -54,3 +54,9 @@ variable "src_properties_file_server" {}
 variable "mysql_creds" {}
 variable "git_creds" {}
 variable "info_client_port" {} 
+
+# Codebuild 
+variable "git_creds" {}
+variable "server_project_name" {} 
+variable "server_project_description" {} 
+variable "source_provider" {}
