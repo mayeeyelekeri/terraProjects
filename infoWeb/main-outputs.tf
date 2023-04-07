@@ -21,6 +21,13 @@ output "nat_gateway_id" {
 	value = module.vpc.nat_gateway_id
 } 
 
+# ------------ CodeBuild outputs -------------------
+
+output "codebuild_bucket_id" { 
+	value = module.codebuild.codebuild_bucket_id
+}
+
+
 # ------------ ALB outputs -------------------
 
 /* output "alb_tg_server_arn" { 
