@@ -43,7 +43,7 @@ resource "aws_codebuild_project" "server_project" {
 
   cache {
     type     = "S3"
-    location = var.bucket
+    location = var.codebucket_name
   }
 
   environment {
@@ -68,7 +68,7 @@ resource "aws_codebuild_project" "server_project" {
 
   source {
     type            = "GITHUB"
-    location        = var.git_repo
+    location        = local.git_creds.repo
     git_clone_depth = 1
 
     git_submodules_config {
