@@ -40,7 +40,7 @@ resource "aws_s3_bucket" "codebuildbucket" {
   bucket = "${var.buildbucket_name}-${random_integer.suffix.result}"
 
   tags = {
-    Name        = var.codebucket_name
+    Name        = var.buildbucket_name
     Environment = "dev"
   }
 }
@@ -54,12 +54,12 @@ resource "aws_codebuild_project" "server_project" {
 
   artifacts {
     type     = "S3"
-    location = var.codebucket_name
+    location = var.buildbucket_name
   }
 
   cache {
     type     = "S3"
-    location = var.codebucket_name
+    location = var.buildbucket_name
   }
 
   environment {
