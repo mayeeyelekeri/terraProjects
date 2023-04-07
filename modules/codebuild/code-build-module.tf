@@ -160,7 +160,7 @@ resource "aws_codebuild_project" "server_project" {
     }
   }
 
-  source_version = "master"
+  source_version = "main"
 
   tags = {
     Environment = "dev"
@@ -213,7 +213,7 @@ resource "aws_codebuild_project" "client_project" {
     }
   }
 
-  source_version = "master"
+  source_version = "main"
 
   tags = {
     Environment = "dev"
