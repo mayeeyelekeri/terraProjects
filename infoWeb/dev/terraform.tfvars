@@ -43,7 +43,7 @@ template_name_client = "docker_and_codedeploy_agent_client"
 #......................................
 # All the information coming from AWS Secrets variables
 mysql_creds = "db_creds"
-git_creds   = "git_creds1"
+git_creds   = "git_creds3"
 
 #......................................
 #  Info-Server properties 	
@@ -78,4 +78,6 @@ zip_file_client = "client.zip"
 #......................................
 server_project_name = "SpringDataTest"
 server_project_description = "server project" 
+client_project_name = "Client"
+client_project_description = "client project" 
 source_provider = "github"

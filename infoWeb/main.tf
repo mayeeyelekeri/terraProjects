@@ -108,6 +108,8 @@ module "codebuild" {
     git_creds                     = var.git_creds
     server_project_name           = var.server_project_name
     server_project_description    = var.server_project_description
+    client_project_name           = var.client_project_name
+    client_project_description    = var.client_project_description
     source_provider               = var.source_provider
 } 
 

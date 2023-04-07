@@ -68,7 +68,61 @@ resource "aws_codebuild_project" "server_project" {
 
   source {
     type            = "GITHUB"
-    location        = local.git_creds.repository
+    location        = local.git_creds.server_git_repository
+    git_clone_depth = 1
+
+    git_submodules_config {
+      fetch_submodules = true
+    }
+  }
+
+  source_version = "master"
+
+  tags = {
+    Environment = "dev"
+  }
+}  # End of server project 
+
+# Create Code build Client project
+resource "aws_codebuild_project" "client_project" {
+  name          = var.client_client_name
+  description   = var.client_project_description
+  build_timeout = "5"
+  service_role  = aws_iam_role.codebuildrole.arn
+
+  artifacts {
+    type     = "S3"
+    location = var.codebucket_name
+  }
+
+  cache {
+    type     = "S3"
+    location = var.codebucket_name
+  }
+
+  environment {
+    compute_type                = "BUILD_GENERAL1_SMALL"
+    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:3.0"
+    type                        = "LINUX_CONTAINER"
+    image_pull_credentials_type = "CODEBUILD"
+    privileged_mode             = true
+  }
+
+  logs_config {
+    cloudwatch_logs {
+      group_name  = "log-group"
+      stream_name = "log-stream"
+    }
+
+    /* s3_logs {
+      status   = "ENABLED"
+      location = "${aws_s3_bucket.hello-world.id}/build-log"
+    } */
+  }
+
+  source {
+    type            = "GITHUB"
+    location        = local.git_creds.client_git_repository
     git_clone_depth = 1
 
     git_submodules_config {
