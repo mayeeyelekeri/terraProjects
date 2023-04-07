@@ -118,7 +118,7 @@ resource "aws_iam_role_policy_attachment" "codebuild_myapp_build_policy_att" {
 resource "aws_codebuild_project" "server_project" {
   name          = var.server_project_name
   description   = var.server_project_description
-  build_timeout = "2"
+  build_timeout = "5"
   service_role  = aws_iam_role.codebuildrole.arn
 
   artifacts {
@@ -171,7 +171,7 @@ resource "aws_codebuild_project" "server_project" {
 resource "aws_codebuild_project" "client_project" {
   name          = var.client_project_name
   description   = var.client_project_description
-  build_timeout = "2"
+  build_timeout = "5"
   service_role  = aws_iam_role.codebuildrole.arn
 
   artifacts {
