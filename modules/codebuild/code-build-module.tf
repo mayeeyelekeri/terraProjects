@@ -40,7 +40,7 @@ resource "aws_s3_bucket" "codebuildbucket" {
   bucket = "${var.buildbucket_name}-${random_integer.suffix.result}"
 
   tags = {
-    Name        = var.codebucket
+    Name        = var.codebucket_name
     Environment = "dev"
   }
 }
