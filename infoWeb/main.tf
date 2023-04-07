@@ -93,6 +93,25 @@ module "autoscale" {
     #  auto_scale_group_name_client, auto_scale_group_name_server 
 }
  
+
+/* --------------------------------------------
+ Following actions are perfomed in "codebuild" module 
+ 1) New service Role for codebuild
+ 2) Create codebuild project 
+ 3) Initiate Build 
+ 4) Artifacts are copied to S3 bucket
+-------------------------------------------------------- */ 
+module "codebuild" { 
+    source      = "./codebuild"
+
+    codebucket_name               = var.codebucket_name
+    git_creds                     = var.git_creds
+    server_project_name           = var.server_project_name
+    server_project_description    = var.server_project_description
+    source_provider               = var.source_provider
+} 
+
+
 /* --------------------------------------------
  Following actions are perfomed in "codedeploy"" module 
  1) New codedeploy bucket (random postfix)
