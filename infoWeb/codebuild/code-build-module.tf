@@ -68,7 +68,7 @@ resource "aws_codebuild_project" "server_project" {
 
   source {
     type            = "GITHUB"
-    location        = local.git_creds.repo
+    location        = local.git_creds.repository
     git_clone_depth = 1
 
     git_submodules_config {
