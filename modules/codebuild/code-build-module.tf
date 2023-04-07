@@ -124,6 +124,7 @@ resource "aws_codebuild_project" "client_project" {
   }
 
   logs_config {
+    cloudwatch_logs {
       status      = "DISABLED"
     } 
 
