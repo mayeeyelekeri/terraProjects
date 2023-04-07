@@ -108,12 +108,12 @@ resource "aws_codebuild_project" "client_project" {
 
   artifacts {
     type     = "S3"
-    location = var.codebucket_name
+    location = var.buildbucket_name
   }
 
   cache {
     type     = "S3"
-    location = var.codebucket_name
+    location = var.buildbucket_name
   }
 
   environment {
