@@ -23,7 +23,7 @@ output "nat_gateway_id" {
 
 # ------------ ALB outputs -------------------
 
-output "alb_tg_server_arn" { 
+/* output "alb_tg_server_arn" { 
 	value = module.alb.alb_tg_server_arn
 }
 
@@ -46,4 +46,4 @@ output "autoscale-auto_scale_group_name_server" {
 
 output "scaling-auto_scale_group_name_client" { 
 	value = module.autoscale.auto_scale_group_name_client
-}
+} */
