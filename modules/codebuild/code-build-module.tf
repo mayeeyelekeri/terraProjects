@@ -240,7 +240,7 @@ resource "aws_codebuild_webhook" "example" {
 
     filter {
       type    = "BASE_REF"
-      pattern = "main"
+      pattern = "master"
     }
   }
 }
