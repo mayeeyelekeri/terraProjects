@@ -125,7 +125,7 @@ resource "aws_codebuild_project" "server_project" {
     type      = "S3"
     location  = aws_s3_bucket.codebuildbucket.id
     packaging = "ZIP"
-    name      = "${var.client_project_name}.zip"
+    name      = "${var.server_project_name}.zip"
   }
 
   cache {
