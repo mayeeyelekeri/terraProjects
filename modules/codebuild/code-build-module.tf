@@ -109,10 +109,10 @@ POLICY
 */
 
 # attach the policy
-resource "aws_iam_role_policy_attachment" "codebuild_myapp_build_policy_att" {
+/*resource "aws_iam_role_policy_attachment" "codebuild_myapp_build_policy_att" {
     role       = "${aws_iam_role.codebuildrole.name}"
     #policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-}
+} */
 
 
 # Create Code build server project
