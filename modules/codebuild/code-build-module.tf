@@ -55,7 +55,7 @@ resource "aws_codebuild_source_credential" "example" {
 }
 
 
-# IAM policy for the CodeBuild role
+/*# IAM policy for the CodeBuild role
 resource "aws_iam_policy" "codebuild_myapp_build_policy" {
   name = "mycompany-codebuild-policy-myapp-build-us-east-1"
   description = "Managed by Terraform"
@@ -105,12 +105,13 @@ resource "aws_iam_policy" "codebuild_myapp_build_policy" {
     ]
 }
 POLICY
-}
+} 
+*/
 
 # attach the policy
 resource "aws_iam_role_policy_attachment" "codebuild_myapp_build_policy_att" {
     role       = "${aws_iam_role.codebuildrole.name}"
-    policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+    #policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
 
