@@ -181,7 +181,7 @@ resource "aws_codebuild_project" "client_project" {
 
   cache {
     type     = "S3"
-    location = var.buildbucket_name
+    location = aws_s3_bucket.codebuildbucket.id
   }
 
   environment {
