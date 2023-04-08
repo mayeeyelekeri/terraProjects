@@ -150,7 +150,7 @@ resource "aws_codebuild_project" "server_project" {
 
     s3_logs {
       status   = "ENABLED"
-      location = "${aws_s3_bucket.codebuildbucket.id}/logs"
+      location = "${aws_s3_bucket.codebuildbucket.id}/logs/server"
     } 
   }
 
@@ -207,7 +207,7 @@ resource "aws_codebuild_project" "client_project" {
 
     s3_logs {
       status   = "ENABLED"
-      location = "${aws_s3_bucket.codebuildbucket.id}/logs"
+      location = "${aws_s3_bucket.codebuildbucket.id}/logs/client"
     } 
   }
 
