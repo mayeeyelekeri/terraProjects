@@ -122,9 +122,10 @@ resource "aws_codebuild_project" "server_project" {
   service_role  = aws_iam_role.codebuildrole.arn
 
   artifacts {
-    type     = "S3"
-    location = aws_s3_bucket.codebuildbucket.id
+    type      = "S3"
+    location  = aws_s3_bucket.codebuildbucket.id
     packaging = "ZIP"
+    name      = "${var.client_project_name}.zip"
   }
 
   cache {
