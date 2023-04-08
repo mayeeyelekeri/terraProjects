@@ -123,7 +123,7 @@ resource "aws_codebuild_project" "server_project" {
 
   artifacts {
     type     = "S3"
-    location = var.buildbucket_name
+    location = aws_s3_bucket.codebuildbucket.id
   }
 
   cache {
@@ -176,7 +176,7 @@ resource "aws_codebuild_project" "client_project" {
 
   artifacts {
     type     = "S3"
-    location = var.buildbucket_name
+    location = aws_s3_bucket.codebuildbucket.id
   }
 
   cache {
