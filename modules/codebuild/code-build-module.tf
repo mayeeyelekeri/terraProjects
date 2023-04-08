@@ -124,11 +124,12 @@ resource "aws_codebuild_project" "server_project" {
   artifacts {
     type     = "S3"
     location = aws_s3_bucket.codebuildbucket.id
+    packaging = "ZIP"
   }
 
   cache {
     type     = "S3"
-    location = var.buildbucket_name
+    location = aws_s3_bucket.codebuildbucket.id
   }
 
   environment {
@@ -141,7 +142,9 @@ resource "aws_codebuild_project" "server_project" {
 
   logs_config {
     cloudwatch_logs {
-      status      = "DISABLED"
+      status      = "ENABLED"
+      group_name  = "log-group"
+      stream_name = "log-stream"
     } 
 
     s3_logs {
@@ -177,6 +180,7 @@ resource "aws_codebuild_project" "client_project" {
   artifacts {
     type     = "S3"
     location = aws_s3_bucket.codebuildbucket.id
+    packaging = "ZIP"
   }
 
   cache {
