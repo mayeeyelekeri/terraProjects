@@ -228,3 +228,19 @@ resource "aws_codebuild_project" "client_project" {
     Environment = "dev"
   }
 } 
+
+resource "aws_codebuild_webhook" "example" {
+  project_name = aws_codebuild_project.client_project.name
+  build_type   = "BUILD"
+  filter_group {
+    filter {
+      type    = "EVENT"
+      pattern = "PUSH"
+    }
+
+    filter {
+      type    = "BASE_REF"
+      pattern = "main"
+    }
+  }
+}
