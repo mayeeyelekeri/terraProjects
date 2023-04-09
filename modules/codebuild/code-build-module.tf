@@ -244,3 +244,40 @@ resource "aws_codebuild_project" "client_project" {
     }
   }
 } */
+
+#.................................................
+# Start codebuild for Server project  
+resource "null_resource" "start_server_build" { 
+
+  # This timestamps makes this resource to run all time, even if there is no change
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
+  provisioner "local-exec" {
+    command = <<EOF
+aws codebuild start-build --project-name ${var.server_project_name}
+EOF
+  } # End of provisioner
+
+  depends_on = [aws_codebuild_project.server_project]
+} # end of "null_resource" "start_server_build"
+
+
+#.................................................
+# Start codebuild for Client project  
+resource "null_resource" "start_client_build" { 
+
+  # This timestamps makes this resource to run all time, even if there is no change
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
+  provisioner "local-exec" {
+    command = <<EOF
+aws codebuild start-build --project-name ${var.client_project_name}
+EOF
+  } # End of provisioner
+
+  depends_on = [aws_codebuild_project.client_project , null_resource.start_server_build]
+} # end of "null_resource" "start_client_build"
