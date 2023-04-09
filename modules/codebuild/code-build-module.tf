@@ -229,13 +229,13 @@ resource "aws_codebuild_project" "client_project" {
   }
 } 
 
-resource "aws_codebuild_webhook" "example" {
+/*resource "aws_codebuild_webhook" "example" {
   project_name = aws_codebuild_project.client_project.name
   build_type   = "BUILD"
   filter_group {
     filter {
       type    = "EVENT"
-      pattern = "PULL"
+      pattern = "PUSH"
     }
 
     filter {
@@ -243,4 +243,4 @@ resource "aws_codebuild_webhook" "example" {
       pattern = "master"
     }
   }
-}
+} */
