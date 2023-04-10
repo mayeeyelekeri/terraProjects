@@ -38,6 +38,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup_client" {
   depends_on = [aws_codedeploy_app.myapp_client ]
 }
 
+/* 
 #.................................................
 # upload zip file to S3 object 
 resource "null_resource" "upload_file_client" { 
@@ -59,6 +60,7 @@ EOF
 
   depends_on = [aws_s3_bucket.codebucket, aws_codedeploy_deployment_group.mydeploygroup_client, null_resource.perform_deploy_server, null_resource.create_client_package]
 } # end of "null_resource" "upload_file"
+*/ 
 
 #.................................................
 # This resource is to make wait for build of client to complete 
