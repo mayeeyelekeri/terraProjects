@@ -20,3 +20,5 @@ variable "alb_server_dns" {}
 
 variable "server_project_name" {} 
 
+variable "client_project_name" {} 
+
