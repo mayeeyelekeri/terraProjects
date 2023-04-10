@@ -125,8 +125,8 @@ resource "aws_codebuild_project" "server_project" {
   artifacts {
     type      = "S3"
     location  = aws_s3_bucket.codebuildbucket.id
-    packaging = "ZIP"
-    name      = "${var.server_project_name}.zip"
+    #packaging = "ZIP"
+    #name      = "${var.server_project_name}.zip"
   }
 
   cache {
@@ -182,8 +182,8 @@ resource "aws_codebuild_project" "client_project" {
   artifacts {
     type      = "S3"
     location  = aws_s3_bucket.codebuildbucket.id
-    packaging = "ZIP"
-    name      = "${var.client_project_name}.zip"
+    #packaging = "ZIP"
+    #name      = "${var.client_project_name}.zip"
   }
 
   cache {
