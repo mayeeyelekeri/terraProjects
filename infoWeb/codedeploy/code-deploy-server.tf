@@ -79,7 +79,7 @@ aws deploy create-deployment \
   --application-name ${var.app_name_server} \
   --deployment-config-name CodeDeployDefault.OneAtATime \
   --deployment-group-name ${aws_codedeploy_deployment_group.mydeploygroup.deployment_group_name} \
-  --s3-location bucket=${var.codebucket_name},bundleType=zip,key=SpringDataTest/${var.zip_file_server}
+  --s3-location bucket=${var.codebucket_name},bundleType=zip,key=${var.server_project_name}/${var.zip_file_server}
 EOF
   } # End of provisioner
 

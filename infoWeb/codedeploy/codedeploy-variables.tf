@@ -18,3 +18,5 @@ variable "zip_file_client" {}
 
 variable "alb_server_dns" {} 
 
+variable "server_project_name" {} 
+
