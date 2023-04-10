@@ -209,6 +209,10 @@ resource "aws_codebuild_project" "client_project" {
       value = aws_s3_bucket.codebuildbucket.id
     }
 
+    environment_variable { 
+      name  = "ALB_SERVER_DNS"
+      value = var.alb_server_dns
+    }
   }
 
   logs_config {
