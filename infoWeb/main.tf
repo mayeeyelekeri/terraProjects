@@ -92,6 +92,8 @@ module "autoscale" {
     instance_profile_name = var.instance_profile_name
     autoscale_min         = var.autoscale_min 
     autoscale_max         = var.autoscale_max 
+    template_name_server  = var.template_name_server
+    template_name_client  = var.template_name_client
 
     # from VPC module 
     public_sg_id          = module.vpc.public_sg_id
