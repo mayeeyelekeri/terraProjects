@@ -256,7 +256,7 @@ resource "null_resource" "start_server_build" {
 
   provisioner "local-exec" {
     command = <<EOF
-aws codebuild start-build --project-name ${var.server_project_name}
+../modules/codebuild/start-codebuild-project.sh ${var.server_project_name}
 EOF
   } # End of provisioner
 
@@ -275,7 +275,7 @@ resource "null_resource" "start_client_build" {
 
   provisioner "local-exec" {
     command = <<EOF
-aws codebuild start-build --project-name ${var.client_project_name}
+../modules/codebuild/start-codebuild-project.sh ${var.client_project_name}
 EOF
   } # End of provisioner
 
