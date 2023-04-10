@@ -200,7 +200,7 @@ resource "aws_codebuild_project" "client_project" {
 
     environment_variable {
       name  = "BUCKET_NAME"
-      value = var.buildbucket_name
+      value = aws_s3_bucket.codebuildbucket.id
     }
 
   }
