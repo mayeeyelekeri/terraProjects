@@ -121,7 +121,7 @@ module "autoscale" {
  5) Upload file to bucket 
  6) Initiate deploy 
 -------------------------------------------------------- */ 
-/* module "codedeploy" { 
+module "codedeploy" { 
     source      = "./codedeploy"
 
     codebucket_name               = var.codebucket_name
@@ -159,5 +159,5 @@ module "autoscale" {
     #  from ALB module 
     #alb_server_dns               = module.alb.alb_server_dns
 
-} */
+}
 

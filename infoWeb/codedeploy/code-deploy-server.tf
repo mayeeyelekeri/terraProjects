@@ -39,7 +39,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   depends_on = [aws_codedeploy_app.myapp]
 }
  
-#.................................................
+/* #.................................................
 # upload zip file to S3 object 
 resource "null_resource" "upload_file_server" { 
 
@@ -61,6 +61,8 @@ EOF
   depends_on = [aws_codedeploy_deployment_group.mydeploygroup]
 } # end of "null_resource" "upload_file"
 
+*/ 
+
 #.................................................
 # Create Deployment and point to S3 object 
 # Deployment log located at /opt/codedeploy-agent/deployment-root/deployment-logs/codedeploy-agent-deployments.log on ec2 server 
@@ -81,6 +83,6 @@ aws deploy create-deployment \
 EOF
   } # End of provisioner
 
-  depends_on = [null_resource.upload_file_server]
+  depends_on = [aws_codedeploy_deployment_group.mydeploygroup]
 } # end of "null_resource" "perform_deploy"
  
