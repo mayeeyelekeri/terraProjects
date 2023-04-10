@@ -197,6 +197,12 @@ resource "aws_codebuild_project" "client_project" {
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
     privileged_mode             = true
+
+    environment_variable {
+      name  = "BUCKET_NAME"
+      value = var.buildbucket_name
+    }
+
   }
 
   logs_config {
