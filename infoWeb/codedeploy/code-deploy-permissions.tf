@@ -1,4 +1,4 @@
-# Create s3 bucket 
+/* # Create s3 bucket 
 resource "aws_s3_bucket" "codebucket" {
   bucket = "${var.codebucket_name}-${random_integer.suffix.result}"
 
@@ -7,6 +7,8 @@ resource "aws_s3_bucket" "codebucket" {
     Environment = "${terraform.workspace}"
   }
 }
+*/ 
+
 
 #.................................................
 resource "random_integer" "suffix" {

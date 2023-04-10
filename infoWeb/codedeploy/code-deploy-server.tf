@@ -51,7 +51,7 @@ resource "null_resource" "upload_file_server" {
     command = <<EOF
 ansible-playbook --extra-vars "passed_in_hosts=localhost \
     app_name=${var.app_name_server} \
-    bucket=${aws_s3_bucket.codebucket.id} \
+    bucket=${var.codebucket_name} \
     zip_file=${var.app_name_server} \
     webapp_src_location=${var.webapp_src_location_server}" \
   ansible_templates/aws_cmd_execution.yaml
@@ -79,7 +79,7 @@ aws deploy create-deployment \
   --application-name ${var.app_name_server} \
   --deployment-config-name CodeDeployDefault.OneAtATime \
   --deployment-group-name ${aws_codedeploy_deployment_group.mydeploygroup.deployment_group_name} \
-  --s3-location bucket=${aws_s3_bucket.codebucket.id},bundleType=zip,key=SpringDataTest/${var.zip_file_server}
+  --s3-location bucket=${var.codebucket_name},bundleType=zip,key=SpringDataTest/${var.zip_file_server}
 EOF
   } # End of provisioner
 
