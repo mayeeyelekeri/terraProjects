@@ -98,6 +98,8 @@ module "autoscale" {
     # from VPC module 
     public_sg_id          = module.vpc.public_sg_id
     public_subnets        = module.vpc.public_subnets
+    private_sg_id         = module.vpc.private_sg_id
+    private_subnets       = module.vpc.private_subnets
     
     # from ALB module 
     alb_tg_server_arn     = module.alb.alb_tg_server_arn 
