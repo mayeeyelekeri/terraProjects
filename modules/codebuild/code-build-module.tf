@@ -279,5 +279,5 @@ resource "null_resource" "start_client_build" {
 EOF
   } # End of provisioner
 
-  depends_on = [aws_codebuild_project.client_project , null_resource.start_server_build]
+  depends_on = [aws_codebuild_project.client_project]
 } # end of "null_resource" "start_client_build"
