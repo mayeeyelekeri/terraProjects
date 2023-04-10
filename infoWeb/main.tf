@@ -47,7 +47,9 @@ module "codebuild" {
     client_project_name           = var.client_project_name
     client_project_description    = var.client_project_description
     source_provider               = var.source_provider
-    alb_server_dns                = var.alb_server_dns
+
+    # from alb 
+    alb_server_dns                = module.alb.alb_server_dns
 } 
 
 /* --------------------------------------------
