@@ -140,6 +140,12 @@ resource "aws_codebuild_project" "server_project" {
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
     privileged_mode             = true
+
+    environment_variable {
+      name  = "BUCKET_NAME"
+      value = aws_s3_bucket.codebuildbucket.id
+    }
+
   }
 
   logs_config {
