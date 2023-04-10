@@ -143,7 +143,7 @@ resource "aws_codebuild_project" "server_project" {
 
     environment_variable {
       name  = "BUCKET_NAME"
-      value = aws_s3_bucket.codebuildbucket.id
+      value = var.state_bucket_name
     }
 
   }

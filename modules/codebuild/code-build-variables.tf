@@ -6,3 +6,4 @@ variable "client_project_name" {}
 variable "client_project_description" {} 
 variable "source_provider" {}
 variable "buildbucket_name" {} 
+variable "state_bucket_name" {} 
