@@ -48,3 +48,60 @@ module "codebuild" {
     source_provider               = var.source_provider
 } 
 
+/* --------------------------------------------
+ Following actions are perfomed in "ALB"" module for both client and server 
+ 1) Create Load balancer target group 
+ 2) Create Application Load Balancer 
+ 3) Create Listener and attach it to ALB 
+-------------------------------------------------------- */ 
+# Create Application Load Balancer 
+module "alb" {
+    source = "./alb"
+
+    # all these information coming VPC module 
+    vpc_id                = module.vpc.vpc_id
+    public_sg_id          = module.vpc.public_sg_id
+    public_subnets        = module.vpc.public_subnets
+    application_port      = var.info_client_port
+    app_health_check_path = var.app_health_check_path
+
+    # ------ OUTPUTS ------ 
+    # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
+}
+
+/* --------------------------------------------
+ Following actions are perfomed in "autoscaling" module 
+ 1) Import local key to AWS 
+ 2) Create an Instance profile for EC2 
+ 3) Create Launch configuration based on Amazon Linux ami
+    Attach instanceprofile 
+    Add "user_data" to install docker and codedeploy agent 
+
+ 4) Create Auto-scaling group (**** for both client and server)
+    Attach launch configuration
+    Attach target group create in ALB module 
+-------------------------------------------------------- */ 
+module "autoscale" {
+    source = "./autoscale"
+
+    app_name_server       = var.app_name_server
+    app_name_client       = var.app_name_client 
+    key_name              = var.key_name 
+    ami_id                = var.ami_id 
+    instance_type         = var.instance_type 
+    instance_profile_name = var.instance_profile_name
+    autoscale_min         = var.autoscale_min 
+    autoscale_max         = var.autoscale_max 
+
+    # from VPC module 
+    public_sg_id          = module.vpc.public_sg_id
+    public_subnets        = module.vpc.public_subnets
+    
+    # from ALB module 
+    alb_tg_server_arn     = module.alb.alb_tg_server_arn 
+    alb_tg_client_arn     = module.alb.alb_tg_client_arn     
+
+    # ------ OUTPUTS ------ 
+    #  auto_scale_group_name_client, auto_scale_group_name_server 
+}
+
