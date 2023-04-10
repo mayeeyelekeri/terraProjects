@@ -122,7 +122,7 @@ module "autoscale" {
  6) Initiate deploy 
 -------------------------------------------------------- */ 
 module "codedeploy" { 
-    source      = "./codedeploy"
+    source      = "../modules/codedeploy"
 
     codebucket_name               = module.codebuild.codebuild_bucket_id
     app_name_server               = var.app_name_server 
