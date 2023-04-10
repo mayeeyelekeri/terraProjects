@@ -143,7 +143,7 @@ module "codedeploy" {
     # create_client_package_id      = module.build.create_client_package_id
             
     #  from ALB module 
-    #alb_server_dns               = module.alb.alb_server_dns
+    alb_server_dns               = module.alb.alb_server_dns
 
 }
 
