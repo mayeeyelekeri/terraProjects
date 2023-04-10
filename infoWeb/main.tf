@@ -132,6 +132,7 @@ module "codedeploy" {
     webapp_src_location_server    = var.webapp_src_location_server
     webapp_src_location_client    = var.webapp_src_location_client
     server_project_name           = var.server_project_name 
+    client_project_name           = var.client_project_name 
 
     # from autoscaling module 
     auto_scale_group_name_client  = module.autoscale.auto_scale_group_name_client
