@@ -1,0 +1,1991 @@
+    1  sudo yum update -y 
+    2  sudo yum install epel-release -y 
+    3  sudo yum install ansible -y 
+    4  sudo vi /etc/ansible/hosts 
+    5  id addr 
+    6  ip addr 
+    7  sudo vi /etc/ansible/hosts 
+    8  ansible all -m ping 
+    9  sudo vi /etc/ansible/hosts
+   10  ansible all -m ping 
+   11  ssh-keygen 
+   12  ansible all -m ping 
+   13  v ~/.ssh/known_hosts 
+   14  vi  ~/.ssh/known_hosts 
+   15  ansible all -m ping 
+   16  vi  ~/.ssh/known_hosts 
+   17  sudo vi /etc/ansible/hosts
+   18  ansible all -m ping 
+   19  ansible localhost -m ping 
+   20  clear
+   21  sudo yum update -y 
+   22  sudo yum install wget unzip -y 
+   23  sudo vi /etc/ansible/hosts
+   24  ansible -m ping 
+   25  ansible all -m ping 
+   26  sudo yum install wget unzip -y 
+   27  wget https://releases.hashicorp.com/terraform/1.3.4/terraform_1.3.4_linux_amd64.zip 
+   28  unzip terraform_1.3.4_linux_amd64.zip 
+   29  ls -lrt 
+   30  sudo mv terraform /usr/local/bin
+   31  terraform version 
+   32  which git 
+   33  pwd
+   34  git clone https://github.com/mayeeyelekeri/terraProjects.git 
+   35  pwd
+   36  ls -lrt 
+   37  rm -rf terraform_1.3.4_linux_amd64.zip 
+   38  cd terraProjects/
+   39  ls -lrt 
+   40  cd applicationLBPrivatePublic/
+   41  pwd
+   42  cd ..
+   43  git clone https://github.com/xchangebit/ansible-aws-cli 
+   44  cd ansible-aws-cli/
+   45  ls -lrt 
+   46  cat playbook.yml 
+   47  pwd
+   48  cd ..
+   49  ls -lrt 
+   50  vi .bashrc 
+   51  source ~/.bashrc 
+   52  ls -lrt 
+   53  vi .bashrc 
+   54  source ~/.bashrc 
+   55  cd ansible-aws-cli/
+   56  ls -lrt 
+   57  ap playbook.yml --check 
+   58  su
+   59  sudo - 
+   60  sudo su 
+   61  vi playbook.yml 
+   62  ap playbook.yml --check 
+   63  vi playbook.yml 
+   64  ap playbook.yml --check 
+   65  vi playbook.yml 
+   66  ap playbook.yml --check 
+   67  ap playbook.yml
+   68  sudo su 
+   69  ls -lrt 
+   70  ap playbook.yml
+   71  sudo yum install python 
+   72  ls -lrt 
+   73  cp playbook.yml myplaybook.yml
+   74  vi myplaybook.yml 
+   75  ap myplaybook.yml 
+   76  vi myplaybook.yml 
+   77  ap myplaybook.yml 
+   78  vi myplaybook.yml 
+   79  ap myplaybook.yml 
+   80  python -version 
+   81  python
+   82  which python
+   83  which python39
+   84  pwd
+   85  ls -lrt 
+   86  ls -lrt /usr/bin/python 
+   87  ls -lrt /usr/local/bin/python 
+   88  ls -lrt /usr/local/bin/python*
+   89  which unzip 
+   90  v myplaybook.yml 
+   91  vi  myplaybook.yml 
+   92  ap myplaybook.yml 
+   93  vi  myplaybook.yml 
+   94  ap myplaybook.yml 
+   95  aws 
+   96  which awscli 
+   97  ls -lrt /usr/bin 
+   98  ls -lrt /usr/bin/aws 
+   99  wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip dest=/tmp/awscli-bundle.zip 
+  100  ls -lrt 
+  101  unzip awscli-bundle.zip 
+  102  cd awscli-bundle/
+  103  ls -lrt 
+  104  which python3 
+  105  sudo 
+  106  sudo ln -l /usr/bin/python /usr/bin/python3 
+  107  sudo ln /usr/bin/python /usr/bin/python3 
+  108  sudo ln /usr/bin/python3 /usr/bin/python 
+  109  which pythong 
+  110  which python
+  111  ls -lrt 
+  112  python install -i /usr/local/aws -b /usr/bin/aws 
+  113  which aws 
+  114  sudo yum install python
+  115  sudo yum install python39 
+  116  which python 
+  117  python -v 
+  118  pwd
+  119  ls -lrt 
+  120  python install -i /usr/local/aws -b /usr/bin/aws 
+  121  rm -rf /usr/bin/python 
+  122  sudo rm -rf /usr/bin/python 
+  123  ls -lrt /usr/bin/python*
+  124  sudo ln /usr/bin/python3.9 /usr/bin/python
+  125  python version 
+  126  python ver
+  127  python -version 
+  128  python -ver
+  129  python -v
+  130  sudo python install -i /usr/local/aws -b /usr/bin/aws 
+  131  aws -version 
+  132  aws version
+  133  aws configure 
+  134  pwd
+  135  cd ..
+  136  pwd
+  137  cd ..
+  138  ls -lrt 
+  139  cd terraProjects/
+  140  ls
+  141  cd applicationLBPrivatePublic/
+  142  ls -lrt 
+  143  cat awsStorage.tf 
+  144  cat init.sh 
+  145  aws s3 mb s3://myterraprojects1 --region us-east-1
+  146  t -version 
+  147  pwd
+  148  ls -lrt 
+  149  tinit 
+  150  tdev
+  151  ls dev 
+  152  tplan -var-file=dev/terraform.tfvars 
+  153  tapply -var-file=dev/terraform.tfvars 
+  154  history 
+  155  exit
+  156  pwd
+  157  ls -lrt 
+  158  cd terraProjects/applicationLBPrivatePublic/
+  159  ls -lrt 
+  160  ssh ec2-user@44.193.214.16
+  161  pwd
+  162  ls -lrt 
+  163  ls -lrt /
+  164  ls /srv 
+  165  ls -lrt /src 
+  166  exit
+  167  ls -lrt /src 
+  168  pwd
+  169  ls -lrt 
+  170  cd /src
+  171  ls -lrt 
+  172  cd terraProjects/
+  173  ls -lrt 
+  174  cd
+  175  pwd
+  176  ls -lrt 
+  177  cd terraProjects/
+  178  h
+  179  history 
+  180  tdestroy -var-file=dev/terraform.tfvars 
+  181  cd applicationLBPrivatePublic/
+  182  tdestroy -var-file=dev/terraform.tfvars 
+  183  pwd
+  184  cd /sc
+  185  ls -lrt 
+  186  pwd
+  187  cd /src
+  188  ls
+  189  cd terraProjects/
+  190  cd applicationLBPrivatePublic/
+  191  ls -lrt 
+  192  tinit  
+  193  tdev
+  194  pwd
+  195  ls dev
+  196  tapply -var-file=dev/terraform.tfvars
+  197  pwd
+  198  ls -lrt 
+  199  pwd
+  200  chmod -R 777 . 
+  201  tapply -var-file=dev/terraform.tfvars
+  202  chmod -R 755 . 
+  203  tapply -var-file=dev/terraform.tfvars
+  204  pwd
+  205  ls -lrt 
+  206  chmod o-w . 
+  207  tapply -var-file=dev/terraform.tfvars
+  208  pwd
+  209  ls -lrt 
+  210  ls -ld . 
+  211  pwd
+  212  ls -lrt 
+  213  mkdir ansible
+  214  ls -lrt 
+  215  chmod 755 ansile 
+  216  chmod 755 ansible
+  217  ls -lrt 
+  218  sudo chmod o-w ansible 
+  219  ls -lrt 
+  220  tdestroy  -var-file=dev/terraform.tfvars
+  221  tapply  -var-file=dev/terraform.tfvars
+  222  ansible-playbook --extra-vars 'ANSIBLE_CONFIG=ansible.cfg passed_in_hosts=jenkinsserver' ansible_templates/install_jenkins.yaml 
+  223  ANSIBLE_CONFIG=ansible.cfg
+  224  ansible-playbook --extra-vars 'ANSIBLE_CONFIG=ansible.cfg passed_in_hosts=jenkinsserver' ansible_templates/install_jenkins.yaml 
+  225  echo $ANSIBLE_CONFIG
+  226  ls
+  227  exit
+  228  ssh ec2-user@34.200.228.91
+  229  ssh ec2-user@3.221.163.66
+  230  pwd
+  231  ls -lrt 
+  232  cd terraProjects/
+  233  cd applicationLBPrivatePublic/
+  234  ls -lrt 
+  235  ab -help 
+  236  ansible-playbook -h 
+  237  ansible-playbook -h  | grep extra 
+  238  ssh ec2-user@44.192.9.62
+  239  exit
+  240  cd /src
+  241  ls
+  242  ls -lrt 
+  243  cd terraProjects/
+  244  ls
+  245  cd applicationLBPrivatePublic/
+  246  ls -lrt 
+  247  ls -ld . 
+  248  exit
+  249  cd /src 
+  250  ls
+  251  cd terraProjects/
+  252  ls
+  253  ls -lrt 
+  254  cd applicationLBPrivatePublic/
+  255  ansible-playbook --extra-vars 'ANSIBLE_CONFIG=ansible.cfg passed_in_hosts=jenkinsserver' ansible_templates/install_jenkins.yaml 
+  256  tapply -var-file=dev/terraform.tfvars
+  257  exit
+  258  cd /src/
+  259  ls
+  260  cd terraProjects/applicationLBPrivatePublic/
+  261  tapply -var-file=dev/terraform.tfvars
+  262  exit
+  263  cd /src/terraProjects/applicationLBPrivatePublic/
+  264  tapply -var-file=dev/terraform.tfvars
+  265  exit
+  266  pwd
+  267  cd /src 
+  268  ls -lrt 
+  269  cd terraProjects/
+  270  ls
+  271  ls -lrt 
+  272  cd
+  273  pwd
+  274  ls -lrt 
+  275  cd terraProjects/
+  276  cd applicationLBPrivatePublic/
+  277  cat in
+  278  cat init.sh 
+  279  aws s3 mb s3://myterraprojects1 --region us-east-1
+  280  aws s3 mb s3://myterraprojects --region us-east-1
+  281  aws configure 
+  282  aws s3 mb s3://myterraprojects1 --region us-east-1
+  283  cat awsStorage.tf 
+  284  tinit 
+  285  tdev
+  286  tplan -var-file=dev/terraform.tfvars
+  287  tapply -var-file=dev/terraform.tfvars
+  288  tdestroy -var-file=dev/terraform.tfvars
+  289  git pull origin main 
+  290  ls -lrt 
+  291  cd ansible_templates/
+  292  cd ..
+  293  cd ansibleTest/
+  294  tinit 
+  295  tdev
+  296  tplan -var-file=dev/terraform.tfvars
+  297  git pull origin main 
+  298  tplan -var-file=dev/terraform.tfvars
+  299  tapply -var-file=dev/terraform.tfvars
+  300  ansible-playbook --extra-vars 'ANSIBLE_CONFIG=ansible.cfg passed_in_hosts=jenkinsserver' ansible_templates/install_jenkins.yaml 
+  301  sudo /usr/bin/python -m easy_install pip 
+  302  sudo /usr/bin/python -m pip install boto 
+  303  ansible-playbook --extra-vars 'ANSIBLE_CONFIG=ansible.cfg passed_in_hosts=jenkinsserver' ansible_templates/install_jenkins.yaml 
+  304  sudo /usr/bin/python -m pip install boto3 
+  305  ansible-playbook --extra-vars 'ANSIBLE_CONFIG=ansible.cfg passed_in_hosts=jenkinsserver' ansible_templates/install_jenkins.yaml 
+  306  ansible-playbook --extra-vars 'passed_in_hosts=jenkinsserver' ansible_templates/install_jenkins.yaml 
+  307  tapply -var-file=dev/terraform.tfvars
+  308  t taint aws_instance.jenkins-server 
+  309  tapply -var-file=dev/terraform.tfvars
+  310  ls -lrt 
+  311  t taint aws_instance.jenkins-server 
+  312  tapply -var-file=dev/terraform.tfvars
+  313  t taint aws_instance.jenkins-server 
+  314  tapply -var-file=dev/terraform.tfvars
+  315  ansible-playbook --extra-vars 'ANSIBLE_HOST_KEY_CHECKING=False  passed_in_hosts=jenkinsserver' ansible_templates/install_jenkins.yaml
+  316  ansible-playbook --extra-vars 'ANSIBLE_HOST_KEY_CHECKING=False  passed_in_hosts=jenkinsserver' -i jenkinsserver ansible_templates/install_jenkins.yaml
+  317  ansible-playbook --extra-vars 'ANSIBLE_HOST_KEY_CHECKING=False  passed_in_hosts=jenkinsserver' -i 3.94.134.51 ansible_templates/install_jenkins.yaml
+  318  ansible-playbook --extra-vars 'ANSIBLE_HOST_KEY_CHECKING=False  passed_in_hosts=3.94.134.51' ansible_templates/install_jenkins.yaml
+  319  aws configure
+  320  cat init.sh 
+  321  aws s3 mb s3://myterraprojects --region us-east-1
+  322  vi awsStorage.tf 
+  323  tinit 
+  324  tdev
+  325  tapply -var-file=dev/terraform.tfvars
+  326  t taint aws_instance.jenkins-server
+  327  tapply -var-file=dev/terraform.tfvars
+  328  t taint aws_instance.jenkins-server
+  329  tapply -var-file=dev/terraform.tfvars
+  330  ping google.com
+  331  exit
+  332  ssh ec2-user@35.175.236.198
+  333  pwd
+  334  cd terraProjects/
+  335  git pull origin main 
+  336  aws configure
+  337  cd applicationLBPrivatePublic/
+  338  cat init.sh 
+  339  aws s3 mb s3://myterraprojects --region us-east-1
+  340  cd ../ansibleTest/
+  341  aws s3 mb s3://myterraprojects --region us-east-1
+  342  exit
+  343  ssh ec2-user@44.203.213.208
+  344  ssh ec2-user@100.25.40.106
+  345  ssh ec2-user@34.201.205.103
+  346  pwd
+  347  exit
+  348  which docker 
+  349  docker -version 
+  350  vi .bashrc 
+  351  exit
+  352  cd /c/dev/
+  353  ls
+  354  cd 
+  355  pwd
+  356  cd terraProjects/
+  357  cd codePipeline/
+  358  ls -lrt 
+  359  tinit 
+  360  cat init.sh 
+  361  aws s3 mb s3://terraprojects1 --region us-east-1
+  362  tinit 
+  363  tdev
+  364  git pull origin main; tapply -var-file=dev/terraform.tfvars 
+  365  aws configure
+  366  cat init.sh 
+  367  aws s3 mb s3://terraprojects --region us-east-1
+  368  tinit
+  369  git pull origin main
+  370  tinit
+  371  tdev
+  372  git pull origin main; tapply -var-file=dev/terraform.tfvars 
+  373  git remote -v 
+  374  aws configure
+  375  which docker 
+  376  uname -a 
+  377  sudo yum install -y yum-utils -y 
+  378  sudo yum-config-manager     --add-repo     https://download.docker.com/linux/centos/docker-ce.repo 
+  379  sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y 
+  380  sudo systemctl start docker 
+  381  docket run hello-world 
+  382  docker run hello-world 
+  383  id 
+  384  sudo usermod -aG docker vagrant 
+  385  docker run hello-world 
+  386  curl localhost
+  387  curl localhost:8080
+  388  ps -ef 
+  389  ps -ef  | grep docker 
+  390  d logs 7191b79cf9aa 
+  391  exit
+  392  d run hello-world 
+  393  which javac 
+  394  sudo yum update -y 
+  395  sudo yum install java-11-openjdk-devel -y 
+  396  javac -version 
+  397  pwd
+  398  ls -lrt 
+  399  git clone  https://github.com/mayeeyelekeri/springdemo.git 
+  400  cd springdemo/
+  401  ls -lrt 
+  402  which mvn 
+  403  sudo yum install maven 
+  404  mvn clean package 
+  405  vi pom.xml 
+  406  javac -version 
+  407  vi pom.xml 
+  408  mvn clean package 
+  409  pwd
+  410  ls -lrt 
+  411  mkdir docker
+  412  cd docker 
+  413  vi Dockerfile
+  414  cp ../target/springdemo-0.0.1-SNAPSHOT.jar . 
+  415  echo ../target/springdemo-0.0.1-SNAPSHOT.jar >> Dockerfile 
+  416  vi Dockerfile 
+  417  d run . 
+  418  docker build . 
+  419  docker run . 
+  420  docker images 
+  421  d run 305cd3e3d217 
+  422  vi Dockerfile 
+  423  d build . 
+  424  d images 
+  425  d run 7191b79cf9aa 
+  426  cat Dockerfile 
+  427  vi Dockerfile 
+  428  d run . 
+  429  d build . 
+  430  d run bb6857c08b9c 
+  431  dir
+  432  cat do
+  433  cat Dockerfile 
+  434  cd ..
+  435  vi pom.xml 
+  436  java -jar target/springdemo-0.0.1-SNAPSHOT.jar 
+  437  cd docker/
+  438  vi Dockerfile 
+  439  d build . 
+  440  d run f7e18cf941e7 
+  441  vi Dockerfile 
+  442  d build . 
+  443  d run daf8889c6d27 
+  444  d run -p 80:8080 daf8889c6d27  
+  445  d run -p 8080:8080 daf8889c6d27  
+  446  pwd
+  447  cd ..
+  448  cd src 
+  449  ls
+  450  cd main
+  451  ls
+  452  cd java/
+  453  ls
+  454  cd com/example/demo/
+  455  ls
+  456  cat HelloController.java 
+  457  history 
+  458  d run -p 8080:8080 daf8889c6d27 
+  459  pwd
+  460  cd ../../../../../..
+  461  pwd
+  462  ls -lrt 
+  463  cd docker/
+  464  ls -lrt 
+  465  vi info.txt 
+  466  vi Dockerfile 
+  467  d build . 
+  468  d run 46d2b1b16514 
+  469  d run 46d2b1b16514 -p :8080 
+  470  d run 46d2b1b16514 -p 8080:8080 
+  471  d run -p :8080  46d2b1b16514 
+  472  d run -p 8080:8080  46d2b1b16514 
+  473  cat Dockerfile 
+  474  vi Dockerfile 
+  475  d run .
+  476  d build . 
+  477  d run -p 8080:8080  ebefed76077f 
+  478  cd. .
+  479  cd ..
+  480  vi pom.xml 
+  481  mvn clean package 
+  482  ls -lrt target/
+  483  cp target/springdemo-0.0.1-SNAPSHOT.war docker
+  484  cd docker 
+  485  ls -lrt 
+  486  rm springdemo-0.0.1-SNAPSHOT.jar 
+  487  vi Dockerfile 
+  488  d build . 
+  489  d run -p 8080:8080  692fd78fc5ae
+  490  vi docker-compose.yml 
+  491  d up 
+  492  docker-compose up 
+  493  sudo yum install docker-compose 
+  494  sudo curl -L "https://github.com/docker/compose/releases/download/2.12.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  495  ls -lrt 
+  496  sudo chmod +x /usr/local/bin/docker-compose 
+  497  docker-compose up 
+  498  vi /usr/local/bin/docker-compose 
+  499  sudo rm -rf /usr/local/bin/docker-compose 
+  500  sudo pip install docker-compose -y 
+  501  curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o hello
+  502  cat hello 
+  503  1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c1;0c
+  504  clear
+  505  d logs 7191b79cf9aa 
+  506  d images 
+  507  d ps 
+  508  d logs 865b1b36ba26 
+  509  curl localhost:8080 
+  510  curl localhost 
+  511  curl localhost:8080 
+  512  curl localhost:8080/greetings
+  513  curl localhost:8080/hello 
+  514  curl localhost:8080
+  515  curl localhost:8080/
+  516  curl localhost:8080
+  517  curl localhost:8080/
+  518  curl localhost:8080
+  519  curl localhost
+  520  curl localhost:8080/
+  521  curl localhost:8080
+  522  pwd
+  523  cd springdemo/
+  524  ls
+  525  cd docker/
+  526  ls -lrt 
+  527  vi hello
+  528  sudo mv hello /usr/local/bin/docker-compose 
+  529  sudo chmod +x /usr/local/bin/docker-compose 
+  530  docker-compose up 
+  531  pwd
+  532  ls -lrt 
+  533  d build . 
+  534  pwd
+  535  ls -lrt 
+  536  vi Dockerfile 
+  537  ls -lrt 
+  538  mv spring.war springdemo.war 
+  539  d build . 
+  540  dc up 
+  541  d build . 
+  542  d run -p 8080:8080 baac0fd747bd 
+  543  d build . 
+  544  d run 0d1a062d1606 
+  545  d run -p 8080:8080  0d1a062d1606 
+  546  dc up --build 
+  547  curl localhost:8080 
+  548  curl localhost:8080/sample 
+  549  curl localhost:8080/sample/
+  550  curl localhost:8080/sample/index?name=mahesh
+  551  d ps 
+  552  d exec -it 8e402e4cf160 bash 
+  553  d images 
+  554  pwd
+  555  aws configure 
+  556  aws s3 ls 
+  557  aws configure 
+  558  aws configure
+  559  exit
+  560  curl localhost:8080
+  561  curl localhost:8080/
+  562  curl localhost:8080/springdemo 
+  563  curl localhost:8080/springdemo-0.0.1-SNAPSHOT
+  564  curl localhost:8080/springdemo-0.0.1-SNAPSHOT/
+  565  curl localhost:8080/springdemo-0.0.1-SNAPSHOT/hello
+  566  pwd
+  567  cd springdemo/docker/
+  568  vi Dockerfile 
+  569  curl localhost:8080
+  570  d images 
+  571  d ps 
+  572  d ssh bdbc9000c7ab 
+  573  alias 
+  574  d exec bdbc9000c7ab 
+  575  d exec bdbc9000c7ab /bin/bash 
+  576  d exec -it bdbc9000c7ab /bin/bash 
+  577  vi 
+  578  vi Dockerfile 
+  579  ls -lrt 
+  580  mv springdemo-0.0.1-SNAPSHOT.war spring.war
+  581  curl localhost:8080 
+  582  d ps 
+  583  d exec -it bdbc9000c7ab bash 
+  584  ls
+  585  vi docker-compose.yml 
+  586  cat Dockerfile 
+  587  d ps 
+  588  curl localhost:8080 
+  589  d ps 
+  590  d exec -it bdbc9000c7ab bash 
+  591  pwd
+  592  curl localhost:8080 
+  593  curl localhost:8080/
+  594  vi Dockerfile 
+  595  curl localhost:8080/
+  596  curl localhost:8080
+  597  vi Dockerfile 
+  598  pwd
+  599  cd ..
+  600  git clone https://github.com/iamvickyav/spring-boot-docker-tomcat.git 
+  601  cd spring-boot-docker-tomcat/
+  602  curl localhost:8080
+  603  dc up --build 
+  604  mvn clean package 
+  605  vi pom.xml 
+  606  mvn clean package 
+  607  dc up --build 
+  608  pwd
+  609  ls -lrt 
+  610  d images 
+  611  dc up --image 
+  612  dc up --build 
+  613  aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o8c6k4x5 
+  614  docker build -t mahrepo .
+  615  docker tag mahrepo:latest public.ecr.aws/o8c6k4x5/mahrepo:latest
+  616  docker push public.ecr.aws/o8c6k4x5/mahrepo:latest
+  617  pwd
+  618  ls -lrt 
+  619  tar cvf myweb.tar . 
+  620  aws s3 mb myweb
+  621  aws s3 
+  622  aws s3 help 
+  623  aws s3 --help 
+  624  aws s3 mb mywebbucket1234
+  625  aws s3 mb s3://mywebbucket1234
+  626  aws s3 ls 
+  627  ls -lrt 
+  628  aws s3 copy myweb.tar s3://mywebbucket1234 
+  629  aws s3 cp myweb.tar s3://mywebbucket1234 
+  630  pwd
+  631  ls -lrt ~/webapp
+  632  ls -lrt ~/webapp/scripts/
+  633  pwd
+  634  ls -lrt 
+  635  pwd
+  636  ls -lrt 
+  637  pwd
+  638  cd ..
+  639  ls -lrt 
+  640  cd springdemo/
+  641  ls
+  642  ls target/
+  643  pwd
+  644  ls -lrt 
+  645  cd src 
+  646  ls
+  647  cd main 
+  648  ls
+  649  cd resources/
+  650  ls
+  651  vi application.properties 
+  652  pwd
+  653  cd ../../..
+  654  mvn clean package 
+  655  pwd
+  656  ls -lrt 
+  657  cd src 
+  658  ;s
+  659  ls
+  660  cd main 
+  661  ls
+  662  cd resources/
+  663  ls
+  664  cd ..
+  665  pwd
+  666  ls -lrt 
+  667  cd java
+  668  ls
+  669  cd com/example/demo/
+  670  ls
+  671  ls -lrt 
+  672  vi HelloController.java 
+  673  pwd
+  674  cd ../../../..
+  675  pwd
+  676  cd ../../
+  677  mvn clean package 
+  678  vi ~/.bashrc 
+  679  pwd
+  680  ls -lrt 
+  681  pwd
+  682  cd ..
+  683  ls -lrt 
+  684  cd webapp
+  685  ls 
+  686  ls -lrt 
+  687  cat index.html 
+  688  pwd
+  689  ls -lrt 
+  690  cat scripts/
+  691  ls scripts/
+  692  cd scripts/
+  693  ls -lrt 
+  694  cat stop_server.sh 
+  695  pwd
+  696  cd ..
+  697  ls -lrt 
+  698  cd springdemo
+  699  ls
+  700  cd src
+  701  ls
+  702  cd main 
+  703  ls
+  704  cd resources/
+  705  vi application.properties 
+  706  pwd
+  707  cd ../../../
+  708  mvn clean package 
+  709  ls -lrt target
+  710  pwd
+  711  cd ..
+  712  ls -lrt 
+  713  cd webapp
+  714  ls -lrt 
+  715  pwd
+  716  ls
+  717  cd ..
+  718  ls
+  719  ls -lrt 
+  720  cd myweb/
+  721  ls
+  722  cd ..
+  723  cd springdemo/
+  724  ls
+  725  ls -lrt 
+  726  cd docker
+  727  ls
+  728  ls -lrt 
+  729  cat docker-compose.yml 
+  730  cat Dockerfile 
+  731  pwd
+  732  ls -lrt 
+  733  scp springdemo.war ec2-user@18.212.99.84 
+  734  scp springdemo.war ec2-user@18.212.99.84:~
+  735  pwd
+  736  ls -lrt 
+  737  pwd
+  738  cd ..
+  739  pwd
+  740  cd ..
+  741  ls -lrt 
+  742  git clone https://github.com/mayeeyelekeri/SpringDataTest.git 
+  743  cd SpringDataTest/
+  744  ls -lrt 
+  745  mvn clean package 
+  746  scp -p 2224 root@localhost:~/infoDatabase.sql . 
+  747  exit
+  748  aws configure 
+  749  aws configure
+  750  pwd
+  751  cd terraProjects/
+  752  ls
+  753  ls -lrt 
+  754  aws s3 mb s3://terraprojects --region us-east-1 
+  755  tinit
+  756  cd elasticBeanStack
+  757  git pull origin main 
+  758  pwd
+  759  ls -lrt 
+  760  git status 
+  761  rm -rf ansibleTest/
+  762  ls -la 
+  763  cd elasticBeanStack/
+  764  tinit 
+  765  tdev 
+  766  alias 
+  767  tapply 
+  768  git pull origin main; tapply 
+  769  t taint aws_elastic_beanstalk_application.mywebapp 
+  770  git pull origin main; tapply 
+  771  t untaint aws_elastic_beanstalk_application.mywebapp 
+  772  t taint aws_elastic_beanstalk_environment.myapp-env 
+  773  git pull origin main; tapply 
+  774  t taint aws_elastic_beanstalk_environment.myapp-env 
+  775  git pull origin main; tapply 
+  776  t taint aws_elastic_beanstalk_environment.myapp-env 
+  777  git pull origin main; tapply 
+  778  aws configure 
+  779  cat init.sh 
+  780  aws s3 mb s3://terraprojects1 --region us-east-1
+  781  tinit
+  782  pwd
+  783  pull
+  784  source ~/.bashrc 
+  785  pull
+  786  tinit
+  787  tdev 
+  788  pull; tapply 
+  789  t taint aws_elastic_beanstalk_environment.myapp-env 
+  790  pull; tapply 
+  791  t taint aws_elastic_beanstalk_environment.myapp-env 
+  792  pull; tapply 
+  793  pull
+  794  pull; tapply 
+  795  t taint aws_elastic_beanstalk_environment.dockerapp-env 
+  796  pull; tapply 
+  797  aws configure
+  798  cat awsStorage.tf 
+  799  cat init.sh 
+  800  aws s3 mb s3://terraprojects1 --region us-east-1
+  801  tinit
+  802  tdev
+  803  tapply 
+  804  pwd
+  805  cd ..
+  806  pull
+  807  pwd
+  808  ls -lrt 
+  809  cd springBoot/
+  810  tinit
+  811  cat init.sh 
+  812  aws s3 mb s3://terraprojects --region us-east-1 
+  813  cat init.sh 
+  814  tinit
+  815  tdev
+  816  pull; tapply 
+  817  pwd
+  818  cd ..
+  819  cd elasticBeanStack/
+  820  tdestroy
+  821  pwd
+  822  cd ..
+  823  cd springBoot/
+  824  pull; tapply 
+  825  aws configure
+  826  cat init.sh 
+  827  aws s3 mb s3://terraprojects --region us-east-1 
+  828  aws s3 mb s3://terraprojects1 --region us-east-1
+  829  aws s3 mb s3://terraprojects2 --region us-east-1
+  830  tinit
+  831  pull; tinit
+  832  ls -lrt ansible_templates/files/docker/Dockerfile 
+  833  tdev
+  834  pull; tapply 
+  835  ls -lrt ~
+  836  scp /home/vagrant/mysqldump_april282020.txt ec2-user@3.216.30.152:~
+  837  scp /home/vagrant/mysqldump_april282020.txt ec2-user@34.227.77.196:~
+  838  aws configure 
+  839  cat init.sh 
+  840  aws s3 mb s3://terraprojects --region us-east-1 
+  841  pull
+  842  tinit
+  843  tdev
+  844  pull; tapply 
+  845  sudo yum install mysql -y 
+  846  mysql -uadmin -hterraform-20221123004152550100000003.cahq9xo5btqw.us-east-1.rds.amazonaws.com info 
+  847  mysql -uadmin -hterraform-20221123004152550100000003.cahq9xo5btqw.us-east-1.rds.amazonaws.com  -p info 
+  848  tdestroy 
+  849  pwd
+  850  cd ../mysql
+  851  pwd
+  852  cd mysql
+  853  pull
+  854  cd ..
+  855  cd mysql/
+  856  ls -lrt 
+  857  tinit 
+  858  tdev
+  859  pull; tapply 
+  860  curl localhost:8080
+  861  curl localhost:8080/infos
+  862  cd ..
+  863  pwd
+  864  cd info
+  865  pull 
+  866  cd info
+  867  tinit 
+  868  tdev
+  869  pull; tapply 
+  870  tdestroy 
+  871  cd ../mysql
+  872  tdestroy
+  873  aws configure 
+  874  cat init.sh 
+  875  cat awsStorage.tf 
+  876  aws s3 mb s3://terraprojects --region us-east-1 
+  877  aws s3 mb s3://terraprojects5 --region us-east-1 
+  878  tinit
+  879  pull; tinit
+  880  tdev
+  881  pull; tapply 
+  882  cd ..
+  883  cd info
+  884  tinit
+  885  pull; tinit 
+  886  tdev
+  887  pull; tapply 
+  888  curl localhost:8080
+  889  curl localhost:8080/infos
+  890  pull; tapply 
+  891  aws configure
+  892  pwd
+  893  cat init.sh 
+  894  aws s3 mb s3://terraprojects --region us-east-1
+  895  aws s3 ls 
+  896  exit
+  897  pwd
+  898  ls -lrt 
+  899  mkdir db
+  900  mv mysqldump_april282020.txt db 
+  901  mv db infodb 
+  902  ls -lrt 
+  903  ls -lrt infodb 
+  904  pwd
+  905  cd terraProjects/
+  906  ls -lrt 
+  907  pwd
+  908  cd ..
+  909  cd infodb/
+  910  ls
+  911  mysql --host=terraform-20221123010720817000000001.cahq9xo5btqw.us-east-1.rds.amazonaws.com --port=3306 --user=admin 
+  912  mysql --host=terraform-20221123011741560100000001.cahq9xo5btqw.us-east-1.rds.amazonaws.com --port=3306 --user=admin 
+  913  mysql --host=terraform-20221123011741560100000001.cahq9xo5btqw.us-east-1.rds.amazonaws.com --port=3306 -p --user=admin 
+  914  mysql --host=terraform-20221123011741560100000001.cahq9xo5btqw.us-east-1.rds.amazonaws.com --port=3306 -p --user=admin <mysqldump_april282020.txt 
+  915  mysql --host=terraform-20221123011741560100000001.cahq9xo5btqw.us-east-1.rds.amazonaws.com --port=3306 -p info --user=admin <mysqldump_april282020.txt 
+  916  mysql --host=terraform-20221123011741560100000001.cahq9xo5btqw.us-east-1.rds.amazonaws.com --port=3306 -p --user=admin info
+  917  pwd
+  918  cd ..
+  919  ls -lrt 
+  920  cd SpringDataTest/
+  921  ls -lrt 
+  922  cd src 
+  923  ls
+  924  cd main 
+  925  ls
+  926  cd resources/
+  927  ls
+  928  vi application.properties 
+  929  ls
+  930  cat application-dev.properties 
+  931  ls -lrt 
+  932  cat application-dd.properties 
+  933  ls -lrt 
+  934  grep aws  * 
+  935  pwd
+  936  ls -lrt 
+  937  cat application-mayee0075c.properties 
+  938  cat application-mayee0075c.properties application-aws.properties
+  939  cp application-mayee0075c.properties application-aws.properties
+  940  vi application-aws.properties 
+  941  pwd
+  942  ls -lrt 
+  943  pwd
+  944  cd ..
+  945  pwd
+  946  cd ..
+  947  mvn clean package -P aws 
+  948  vi pom.xml 
+  949  grep prod * 
+  950  pwd
+  951  ls -lrt 
+  952  cd src
+  953  ls
+  954  cd main
+  955  ls
+  956  cd resources/
+  957  ls
+  958  vi application.properties 
+  959  cd ../..
+  960  pwd
+  961  cd ..
+  962  mvn clean package 
+  963  pwd
+  964  ls -lrt 
+  965  cd target/
+  966  ls -lrt 
+  967  mkdir test
+  968  cd test
+  969  jar xvf ../SpringDataTest-0.0.1-SNAPSHOT.jar 
+  970  find . -name application.properties 
+  971  cat ./BOOT-INF/classes/application.properties 
+  972  pwd
+  973  cd ..
+  974  pwd
+  975  mvn spring-boot:run -P aws 
+  976  pwd
+  977  ls -lrt 
+  978  ls target 
+  979  pwd
+  980  cd ..
+  981  cd infodb/
+  982  ls -lrt 
+  983  mysql -uadmin -hterraform-20221123024539809900000001.clqionsdj6ts.us-east-1.rds.amazonaws.com -p 
+  984  mysql -uadmin -hterraform-20221123024539809900000001.clqionsdj6ts.us-east-1.rds.amazonaws.com -p info <mysqldump_april282020.txt 
+  985  cd ..
+  986  pwd
+  987  cd SpringDataTest/
+  988  pwd
+  989  ls -lrt 
+  990  cd src 
+  991  ls
+  992  cd main 
+  993  ls
+  994  cd resources/
+  995  ls -lrt 
+  996  vi application-aws.properties 
+  997  pwd
+  998  cd ..
+  999  pwd
+ 1000  ls -lrt 
+ 1001  mvn clean package 
+ 1002  scp target/SpringDataTest-0.0.1-SNAPSHOT.jar ec2-user@44.202.77.200
+ 1003  scp target/SpringDataTest-0.0.1-SNAPSHOT.jar ec2-user@44.202.77.200:~
+ 1004  pwd
+ 1005  ls -lrt 
+ 1006  cd ..
+ 1007  ls -lrt 
+ 1008  pwd
+ 1009  cd SpringDataTest/
+ 1010  ls
+ 1011  cd ..
+ 1012  ls -lrt 
+ 1013  cd SpringDataTest/
+ 1014  git remote -v 
+ 1015  cd ..
+ 1016  git clone https://github.com/mayeeyelekeri/Client.git
+ 1017  pwd
+ 1018  ls -lrt 
+ 1019  cd Client/
+ 1020  ls -lrt 
+ 1021  cat HELP.md 
+ 1022  ls
+ 1023  cd src
+ 1024  ls
+ 1025  cd main 
+ 1026  ls
+ 1027  cd resources/
+ 1028  ls
+ 1029  ls -lrt 
+ 1030  vi application.properties 
+ 1031  cd ..
+ 1032  pwd
+ 1033  cd ..
+ 1034  mvn clean package 
+ 1035  java -jar target/Client-0.0.1-SNAPSHOT.jar 
+ 1036  vi src/main/resources/application.properties 
+ 1037  mvn clean package 
+ 1038  vi src/main/resources/application.properties 
+ 1039  mvn clean package 
+ 1040  aws s3 ls 
+ 1041  exit
+ 1042  aws s3 ls 
+ 1043  exit
+ 1044  cd infodb/
+ 1045  ls -lrt 
+ 1046  pwd
+ 1047  cd ..
+ 1048  cd terraProjects/RandD/
+ 1049  pull; tinit 
+ 1050  tdev
+ 1051  pull; tapply 
+ 1052  time t apply 
+ 1053  time tapply 
+ 1054  time tdestroy 
+ 1055  time tapply 
+ 1056  t refresh 
+ 1057  alias 
+ 1058  vi ~/.bashrc 
+ 1059  source  ~/.bashrc 
+ 1060  trefresh 
+ 1061  time tapply 
+ 1062  t show 
+ 1063  t show  aws_vpc.myvpc 
+ 1064  t state list 
+ 1065  pwd
+ 1066  cd ..
+ 1067  ls -lrt 
+ 1068  cd ..
+ 1069  ls -lrt 
+ 1070  pwd
+ 1071  exit
+ 1072  cd INFO/
+ 1073  ls
+ 1074  cd infodb/
+ 1075  ls -lrt 
+ 1076  cd dev 
+ 1077  vi terraform.tfvars 
+ 1078  ls -lrt /home/vagrant/infodb/nov24.txt 
+ 1079  pwd
+ 1080  ls -lrt 
+ 1081  pwd
+ 1082  ls -lrt 
+ 1083  cd ..
+ 1084  pwd
+ 1085  cd ..
+ 1086  ls -lrt 
+ 1087  pwd
+ 1088  mv ../infodb . 
+ 1089  mv ../infodb ../dbdumps  
+ 1090  mv ../dbdumps/ . 
+ 1091  ls -lrt 
+ 1092  cd infodb/
+ 1093  vi dev/terraform.tfvars 
+ 1094  pwd
+ 1095  ls -lrt 
+ 1096  tdev 
+ 1097  tplan
+ 1098  tapply 
+ 1099  tdestroy 
+ 1100  vi dev/terraform.tfvars 
+ 1101  tapply 
+ 1102  vi dev/terraform.tfvars 
+ 1103  tapply 
+ 1104  vi dev/terraform.tfvars 
+ 1105  tapply 
+ 1106  vi dev/terraform.tfvars 
+ 1107  tapply 
+ 1108  tinit
+ 1109  tdev
+ 1110  tapply 
+ 1111  tdestroy
+ 1112  tdestroy -var-file=dev/terraform.tfvars 
+ 1113  vi dev/terraform.tfvars 
+ 1114  tinit
+ 1115  tapply
+ 1116  exit
+ 1117  pwd
+ 1118  cd terraProjects/
+ 1119  ls
+ 1120  ls -lrt 
+ 1121  cd infoWeb/
+ 1122  ls -lrt 
+ 1123  tinit
+ 1124  tdev
+ 1125  pwd
+ 1126  pull; time tapply; 
+ 1127  pwd
+ 1128  cat init.sh 
+ 1129  . ~/INFO/secrets/aws_secrets.sh 
+ 1130  pull; time tapply; 
+ 1131  aws configure
+ 1132  cat init.sh 
+ 1133  aws s3 mb s3://terraprojects2 --region us-east-1
+ 1134  . ~/INFO/secrets/aws_secrets.sh 
+ 1135  pull; tinit
+ 1136  pwd
+ 1137  ls -lrt 
+ 1138  tdev
+ 1139  pull; time tapply 
+ 1140  aws configure
+ 1141  cat init.sh 
+ 1142  cat awsStorage.tf 
+ 1143  aws s3 mb s3://terraprojects2 --region us-east-1
+ 1144  pwd
+ 1145  . ~/INFO/secrets/aws_secrets.sh 
+ 1146  pwd
+ 1147  ls -lrt 
+ 1148  tinit
+ 1149  tdev
+ 1150  pull; tapply 
+ 1151  aws configure
+ 1152  cat init.sh 
+ 1153  aws s3 mb s3://terraprojects --region us-east-1 
+ 1154  . ~/INFO/secrets/aws_secrets.sh 
+ 1155  pull; tinit 
+ 1156  tdev
+ 1157  pull; tapply 
+ 1158  t taint aws_launch_configuration.al_conf aws_autoscaling_group.sc_group aws_launch_configuration.al_conf 
+ 1159  t taint aws_launch_configuration.al_conf 
+ 1160  t taint aws_autoscaling_group.sc_group 
+ 1161  pull; tapply 
+ 1162  pull; tinit
+ 1163  tdev
+ 1164  pull; tapply 
+ 1165  t taint aws_autoscaling_group.sc_group 
+ 1166  t taint aws_launch_configuration.al_conf 
+ 1167  pull; tapply 
+ 1168  aws configure
+ 1169  cat init.sh 
+ 1170  aws s3 mb s3://terraprojects --region us-east-1 
+ 1171  aws s3 mb s3://terraprojects1 --region us-east-1 
+ 1172  . ~/INFO/secrets/aws_secrets.sh
+ 1173  pull; tinit
+ 1174  pull; tapply
+ 1175  tdev
+ 1176  pull; tapply
+ 1177  t taint aws_autoscaling_group.sc_group,aws_launch_configuration.al_conf
+ 1178  t taint aws_autoscaling_group.sc_group
+ 1179  pull; tapply
+ 1180  t taint aws_autoscaling_group.sc_group
+ 1181  t taint aws_launch_configuration.al_conf 
+ 1182  pull; tapply
+ 1183  t taint aws_autoscaling_group.sc_group
+ 1184  t taint aws_launch_configuration.al_conf 
+ 1185  pull; tapply
+ 1186  history 
+ 1187  t taint aws_launch_configuration.al_conf 
+ 1188  t taint aws_autoscaling_group.sc_group 
+ 1189  pull; tapply
+ 1190  aws configure
+ 1191  pwd
+ 1192  cat init.sh 
+ 1193  cat awsStorage.tf 
+ 1194  aws s3 mb s3://terraprojects1 --region us-east-1
+ 1195  . ~/INFO/secrets/aws_secrets.sh 
+ 1196  pwd
+ 1197  tinit
+ 1198  exit
+ 1199  cd terraProjects/
+ 1200  cd infoWeb/
+ 1201  tinit 
+ 1202  cd terraProjects/
+ 1203  cd ..
+ 1204  ls -lrt 
+ 1205  pwd
+ 1206  ls -lrt 
+ 1207  cd INFO/infodb/
+ 1208  cat awsStorage.tf 
+ 1209  tinit
+ 1210  tplan 
+ 1211  time tapply 
+ 1212  pwd
+ 1213  ls -lrt 
+ 1214  cd ..
+ 1215  cd secrets/
+ 1216  ls -lrt 
+ 1217  vi aws_secrets_manager_infodb.yml 
+ 1218  pwd
+ 1219  ls -lrt 
+ 1220  pwd
+ 1221  cd ..
+ 1222  ls -lrt 
+ 1223  cd infodb 
+ 1224  vi awsStorage.tf 
+ 1225  tinit 
+ 1226  tdev
+ 1227  time tapply 
+ 1228  pwd
+ 1229  cd. .
+ 1230  cd ..
+ 1231  cd secrets/
+ 1232  ls -lrt 
+ 1233  vi aws_secrets_manager_infodb.yml 
+ 1234  pwd
+ 1235  cd ..
+ 1236  cd 
+ 1237  pwd
+ 1238  ls -lrt 
+ 1239  cd Client/
+ 1240  ls -lrt 
+ 1241  mkdir test
+ 1242  cd test
+ 1243  jar xvf ../target/Client-0.0.1-SNAPSHOT.jar 
+ 1244  find . -name application.properties 
+ 1245  cat ./BOOT-INF/classes/application.properties 
+ 1246  curl http://tf-lb-20221201181811493800000007-524991017.us-east-1.elb.amazonaws.com:8080/infos 
+ 1247  pwd
+ 1248  ls -lrt 
+ 1249  pwd
+ 1250  cd ..
+ 1251  ls -lrt 
+ 1252  cd codedeploy/
+ 1253  ls -lrt 
+ 1254  pwd
+ 1255  cd ..
+ 1256  cd test
+ 1257  rm -rf * 
+ 1258  jar xvf ../codedeploy/Client-0.0.1-SNAPSHOT.jar 
+ 1259  find . -name application.properties 
+ 1260  cat ./BOOT-INF/classes/application.properties 
+ 1261  pwd
+ 1262  ls -lrt 
+ 1263  cd ..
+ 1264  cd INFO/
+ 1265  ls -lrt 
+ 1266  cd infodb
+ 1267  ls -lrt 
+ 1268  cat awsStorage.tf 
+ 1269  pwd
+ 1270  ls -lrt 
+ 1271  tinit
+ 1272  cat init.sh 
+ 1273  aws s3 mb s3://infobucketmah --region us-east-1 
+ 1274  vi awsStorage.tf 
+ 1275  pwd
+ 1276  ls -lrt 
+ 1277  vi awsStorage.tf 
+ 1278  vi dev/terraform.tfvars 
+ 1279  tinit
+ 1280  tdev
+ 1281  tplan
+ 1282  tapply 
+ 1283  pwd
+ 1284  ls -lrt 
+ 1285  cd ..
+ 1286  ls -lrt 
+ 1287  cd secrets/
+ 1288  ls -lrt 
+ 1289  vi aws_secrets_manager_infodb.yml 
+ 1290  pwd
+ 1291  ls -lrt 
+ 1292  pwd
+ 1293  mysql -uadmin -p -hterraform-20221201210846632600000001.cnkx9gdlij0d.us-east-1.rds.amazonaws.com infodb 
+ 1294  pwd
+ 1295  cd 
+ 1296  cd SpringDataTest/
+ 1297  cd codedeploy/
+ 1298  exit
+ 1299  cd terraProjects/
+ 1300  cd infoWeb
+ 1301  ls -lrt 
+ 1302  pwd
+ 1303  ls -lrt 
+ 1304  tinit 
+ 1305  cat init.sh 
+ 1306  aws s3 mb s3://terraprojects7 --region us-east-1 
+ 1307  cat init.sh 
+ 1308  tinit 
+ 1309  pwd
+ 1310  cat init.sh 
+ 1311  . ~/INFO/secrets/aws_secrets.sh 
+ 1312  pwd
+ 1313  ls -lrt 
+ 1314  tdev
+ 1315  pull; tplan
+ 1316  pull; tapply 
+ 1317  pull; tplan
+ 1318  pull; tapply 
+ 1319  pull; tplan
+ 1320  pull; tapply 
+ 1321  pull; tplan
+ 1322  tinit
+ 1323  tdev
+ 1324  pull; tplan
+ 1325  pull; tapply 
+ 1326  aws configure 
+ 1327  pwd
+ 1328  ls -lrt 
+ 1329  cat init.sh 
+ 1330  aws s3 mb s3://terraprojects --region us-east-1 
+ 1331  tinit 
+ 1332  pull; tinit 
+ 1333  tdev
+ 1334  cat init.sh 
+ 1335  . ~/INFO/secrets/aws_secrets.sh 
+ 1336  pull; tplan 
+ 1337  pull; time tapply 
+ 1338  pull; tplan 
+ 1339  pull; time tapply 
+ 1340  pull; time tdestroy
+ 1341  pull; time tapply 
+ 1342  pull; time tdestroy
+ 1343  pull; tplan 
+ 1344  pull; time tapply 
+ 1345  pull; tplan 
+ 1346  pull; time tdestroy
+ 1347  pull; tplan 
+ 1348  pull; time tapply 
+ 1349  aws configure 
+ 1350  aws configure
+ 1351  pwd
+ 1352  ls -lrt 
+ 1353  cat init.sh 
+ 1354  pull; tdestroy
+ 1355  pull; tapply 
+ 1356  pwd
+ 1357  cd SpringDataTest/
+ 1358  cat src/main/resources/application-aws.properties 
+ 1359  exit
+ 1360  cd terraProjects/infoWeb/
+ 1361  pull; time tapply 
+ 1362  aws configure 
+ 1363  pwd
+ 1364  ls -lrt 
+ 1365  cat init.sh 
+ 1366  aws s3 mb s3://terraprojects1 --region us-east-1
+ 1367  . ~/INFO/secrets/aws_secrets.sh 
+ 1368  pull; tinit 
+ 1369  aws configure
+ 1370  cat init.sh 
+ 1371  aws s3 mb s3://terraprojects --region us-east-1 
+ 1372  cat awsStorage.tf 
+ 1373  aws s3 mb s3://terraprojects1 --region us-east-1 
+ 1374  . ~/INFO/secrets/aws_secrets.sh 
+ 1375  tinit
+ 1376  tdev
+ 1377  pull; tplan
+ 1378  pull; time tapply 
+ 1379  pull; time tplan
+ 1380  tinit
+ 1381  pull; tinit
+ 1382  pull; tplan 
+ 1383  pull; tapply 
+ 1384  pull; time  tapply 
+ 1385  pull; tplan 
+ 1386  pull; time  tapply 
+ 1387  pull; tinit 
+ 1388  tdev
+ 1389  pull; tplan 
+ 1390  pull; time tapply 
+ 1391  pwd
+ 1392  ls -lrt 
+ 1393  pwd
+ 1394  ls -lrt 
+ 1395  cat info-outputs.tf 
+ 1396  grep vpc_id * 
+ 1397  pwd
+ 1398  dc alb 
+ 1399  grep vpc_id * 
+ 1400  pwd
+ 1401  ls -lrt 
+ 1402  cd alb 
+ 1403  grep vpc_id * 
+ 1404  vi alb-module-client.tf 
+ 1405  pwd
+ 1406  cd ..
+ 1407  pwd
+ 1408  cd ..
+ 1409  ls -lrt 
+ 1410  cd infoWeb/
+ 1411  pull ; tinit 
+ 1412  pull ; tdestroy 
+ 1413  pull ; tapply 
+ 1414  pull ; time tapply 
+ 1415  pull ; tdestroy 
+ 1416  pull ; time tapply 
+ 1417  pull ; time tinit 
+ 1418  tdev
+ 1419  pull ; time tapply 
+ 1420  aws configure
+ 1421  pwd
+ 1422  ls -lrt 
+ 1423  pwd
+ 1424  ls -lrt 
+ 1425  cat init.sh 
+ 1426  . ~/INFO/secrets/aws_secrets.sh 
+ 1427  aws s3 mb s3://terraprojects2 --region us-east-1 
+ 1428  pull; tinit 
+ 1429  pull; time tapply 
+ 1430  pull; time tdestroy 
+ 1431  pull; time tapply 
+ 1432  exit
+ 1433  pwd
+ 1434  ls -lrt 
+ 1435  pwd
+ 1436  vi .bashrc 
+ 1437  source .bashrc 
+ 1438  pwd
+ 1439  cd terraProjects/
+ 1440  cd ..
+ 1441  pwd
+ 1442  ls -lrt 
+ 1443  cd Client/
+ 1444  ls -lrt 
+ 1445  cd src 
+ 1446  ls
+ 1447  cd main 
+ 1448  ls
+ 1449  cd resources/
+ 1450  cat application.properties 
+ 1451  vi .bashrc 
+ 1452  vi ~/.bashrc 
+ 1453  source .bashrc 
+ 1454  pwd
+ 1455  ls -lrt 
+ 1456  cd terraProjects/
+ 1457  ls -lrt 
+ 1458  cd infoWeb/
+ 1459  ls -lrt 
+ 1460  pull; time tapply 
+ 1461  pull; time tdestroy 
+ 1462  pull; time tapply 
+ 1463  pull; time tdestroy 
+ 1464  pull; time tapply 
+ 1465  t taint aws_lb_listener.listener_client 
+ 1466  pull; time tapply 
+ 1467  pwd 
+ 1468  pull; time tapply 
+ 1469  pull; tinit
+ 1470  pull; time tapply 
+ 1471  pull; time tdestroy 
+ 1472  pull; time tapply 
+ 1473  aws configure
+ 1474  pwd
+ 1475  ls -lrt 
+ 1476  cat init.sh 
+ 1477  aws s3 mb s3://terraprojects3 --region us-east-1
+ 1478  aws s3 mb s3://terraprojects2 --region us-east-1
+ 1479  . ~/INFO/secrets/aws_secrets.sh 
+ 1480  pull; tinit 
+ 1481  tdev
+ 1482  pull; time tapply 
+ 1483  tdev
+ 1484  pull; time tapply 
+ 1485  aws configure
+ 1486  cat init.sh 
+ 1487  aws s3 mb s3://terraprojects --region us-east-1
+ 1488  . ~/INFO/secrets/aws_secrets.sh 
+ 1489  tinit 
+ 1490  pull; tinit 
+ 1491  source ~/.bashrc 
+ 1492  tdev
+ 1493  tplan
+ 1494  tapply 
+ 1495  tinit 
+ 1496  tapply 
+ 1497  aws configure 
+ 1498  tinit
+ 1499  cat init.sh 
+ 1500  aws s3 mb s3://terraprojects1 --region us-east-1
+ 1501  . ~/INFO/secrets/aws_secrets.sh 
+ 1502  tinit
+ 1503  aws s3 mb s3://terraprojects5 --region us-east-1
+ 1504  tinit
+ 1505  cat awsStorage.tf 
+ 1506  pull
+ 1507  cat awsStorage.tf 
+ 1508  pwd
+ 1509  tinit 
+ 1510  tapply 
+ 1511  pwd
+ 1512  ls -lrt 
+ 1513  cat init.sh 
+ 1514  . ~/INFO/secrets/aws_secrets.sh 
+ 1515  tinit 
+ 1516  tapply 
+ 1517  tdestroy 
+ 1518  tapply 
+ 1519  tinit 
+ 1520  tapply 
+ 1521  aws configure
+ 1522  cat init.sh 
+ 1523  aws s3 mb s3://terraprojects --region us-east-1 
+ 1524  . ~/INFO/secrets/aws_secrets.sh 
+ 1525  tinit 
+ 1526  tdev 
+ 1527  tapply 
+ 1528  aws configure 
+ 1529  cat init.sh 
+ 1530  aws s3 mb s3://terraprojects --region us-east-1 
+ 1531  cd terraProjects/
+ 1532  cd infoWeb/
+ 1533  ls -lrt 
+ 1534  cat init.sh 
+ 1535  aws s3 mb s3://terraprojects --region us-east-1 
+ 1536  aws configure 
+ 1537  pwd
+ 1538  ls -lrt 
+ 1539  pwd
+ 1540  ls -lrt 
+ 1541  aws s3 mb s3://terraprojects --region us-east-1 
+ 1542  cat ~/INFO/secrets/aws_secrets.sh 
+ 1543  vi ~/INFO/secrets/aws_secrets.sh 
+ 1544  ~/INFO/secrets/aws_secrets.sh 
+ 1545  gre db_creds1 * 
+ 1546  grep db_creds1 * 
+ 1547  tinit 
+ 1548  tdev
+ 1549  tapply 
+ 1550  find . -name \*tf | xargs grep db_creds1 * 
+ 1551  cd codedeploy 
+ 1552  grep db_creds * 
+ 1553  ls
+ 1554  pwd
+ 1555  cd ../autoscale/
+ 1556  grep db_creds * 
+ 1557  pwd
+ 1558  ls -lrt 
+ 1559  cd ..
+ 1560  tapply 
+ 1561  aws s3 ls 
+ 1562  ls -lrt 
+ 1563  aws s3 cp main.tf s2://codedeploy-108
+ 1564  aws s3 cp main.tf s3://codedeploy-108
+ 1565  aws configure
+ 1566  pwd
+ 1567  ls -lrt 
+ 1568  cat init.sh 
+ 1569  aws s3 mb s3://terraprojects --region us-east-1 
+ 1570  . ~/INFO/secrets/aws_secrets.sh 
+ 1571  tinit
+ 1572  tdev
+ 1573  tapply 
+ 1574  pull
+ 1575  tapply 
+ 1576  aws configure 
+ 1577  cat init.sh 
+ 1578  aws s3 mb s3://terraprojects1 --region us-east-1
+ 1579  . ~/INFO/secrets/aws_secrets.sh 
+ 1580  tinit 
+ 1581  tdev
+ 1582  tapply 
+ 1583  v suspend 
+ 1584  exit
+ 1585  cd terraProjects/
+ 1586  cd infoWeb/
+ 1587  cat init.sh 
+ 1588  aws s3 mb s3://terraprojects --region us-east-1 
+ 1589  aws configure 
+ 1590  aws s3 mb s3://terraprojects --region us-east-1 
+ 1591  . ~/INFO/secrets/aws_secrets.sh 
+ 1592  tinit 
+ 1593  aws s3 mb s3://terraprojects1 --region us-east-1 
+ 1594  tinit 
+ 1595  tapply 
+ 1596  history 
+ 1597  aws configure 
+ 1598  cat ini
+ 1599  cd terraProjects/
+ 1600  cd infoWeb/
+ 1601  cat init.sh 
+ 1602  aws s3 mb s3://terraprojects --region us-east-1 
+ 1603  exit
+ 1604  aws configure 
+ 1605  ls -lrt 
+ 1606  cd terraProjects/
+ 1607  ls
+ 1608  ls -lrt 
+ 1609  cd infoWeb/
+ 1610  pwd
+ 1611  ls -lrt 
+ 1612  cat init.sh 
+ 1613  cat awsStorage.tf 
+ 1614  aws s3 mb s3://terraprojects --region us-east-1 
+ 1615  cat . ~/INFO/secrets/aws_secrets.sh 
+ 1616  cat ~/INFO/secrets/aws_secrets_manager_infodb.yml 
+ 1617  pwd
+ 1618  ls -lrt 
+ 1619  cat init.sh 
+ 1620  . ~/INFO/secrets/aws_secrets.sh
+ 1621  pull
+ 1622  tinit 
+ 1623  pwd
+ 1624  ls -lrt 
+ 1625  tapply 
+ 1626  alias tinit 
+ 1627  tapply 
+ 1628  cd terraProjects/
+ 1629  ls -lrt 
+ 1630  cd infoWeb/
+ 1631  ls -lrt 
+ 1632  aws configure 
+ 1633  cat init.sh 
+ 1634  aws s3 mb s3://terraprojects --region us-east-1 
+ 1635  . ~/INFO/secrets/aws_secrets.sh
+ 1636  pwd
+ 1637  tinit 
+ 1638  tapply 
+ 1639  cat  ~/INFO/secrets/aws_secrets.sh
+ 1640  cat ~/INFO/secrets/aws_secrets_manager_infodb.yml 
+ 1641  tverify
+ 1642  t help 
+ 1643  terraform -help 
+ 1644  tplan 
+ 1645  tinit 
+ 1646  tapply 
+ 1647  tdestroy
+ 1648  tapply 
+ 1649  tdestroy
+ 1650  aws configure 
+ 1651  pwd
+ 1652  cat init.sh 
+ 1653  aws s3 mb s3://terraprojects1 --region us-east-1 
+ 1654  pwd
+ 1655  tinit 
+ 1656  tapply 
+ 1657  t taint module.codebuild.aws_codebuild_project.client_project
+ 1658  tapply 
+ 1659  tinit
+ 1660  tapply 
+ 1661  terraform init -upgrade 
+ 1662  tapply 
+ 1663  aws configure 
+ 1664  cat init.sh 
+ 1665  aws s3 mb s3://terraprojects --region us-east-1
+ 1666  . ~/INFO/secrets/aws_secrets.sh
+ 1667  vi  ~/INFO/secrets/aws_secrets.sh
+ 1668  . ~/INFO/secrets/aws_secrets.sh
+ 1669  vi  ~/INFO/secrets/aws_secrets.sh
+ 1670  . ~/INFO/secrets/aws_secrets.sh
+ 1671  ls -lrt 
+ 1672  . ~/INFO/secrets/aws_secrets.sh
+ 1673  aws configure 
+ 1674  cat init.sh 
+ 1675  ws s3 mb s3://terraprojects --region us-east-1
+ 1676  aws s3 mb s3://terraprojects --region us-east-1
+ 1677  . ~/INFO/secrets/aws_secrets.sh
+ 1678  aws configure 
+ 1679  cat init.sh 
+ 1680  aws s3 mb s3://terraprojects --region us-east-1
+ 1681  . ~/INFO/secrets/aws_secrets.sh
+ 1682  tinit
+ 1683  aws s3 mb s3://terraprojects1 --region us-east-1
+ 1684  tinit
+ 1685  tapply 
+ 1686  tinit
+ 1687  tapply 
+ 1688  pwd
+ 1689  ls -lrt 
+ 1690  cd cd INFO/
+ 1691  ls -lrt 
+ 1692  cd INFO
+ 1693  cd secrets/
+ 1694  ls -lrt 
+ 1695  cat kms_store.sh 
+ 1696  pwd
+ 1697  ls -lrt 
+ 1698  pwd
+ 1699  cat aws_secrets.sh 
+ 1700  vi aws_secrets
+ 1701  vi aws_secrets.sh 
+ 1702  ls -lrt 
+ 1703  cat aws_secrets.sh 
+ 1704  vi application-aws.properties 
+ 1705  ls -lrt 
+ 1706  cat aws_secrets.sh 
+ 1707  cat aws_secrets_manager_infodb.yml
+ 1708  ls -lrt 
+ 1709  vi application-aws.properties 
+ 1710  pwd
+ 1711  ls -lrt 
+ 1712  cat aws_secrets.sh 
+ 1713  vi aws_secrets.sh
+ 1714  pwd
+ 1715  ls -lrt 
+ 1716  vi aws_secrets_manager_infodb.yml 
+ 1717  pwd
+ 1718  ls -lrt 
+ 1719  which zip 
+ 1720  sudo yum install zip 
+ 1721  pwd
+ 1722  ls -lrt 
+ 1723  pwd
+ 1724  cd ..
+ 1725  ls -lrt 
+ 1726  cd SpringDataTest/
+ 1727  ls -lrt 
+ 1728  ls -lrt target 
+ 1729  ls -lrt 
+ 1730  ls -lrt codedeploy/
+ 1731  zip -r test.zip codedeploy/
+ 1732  mkdir test
+ 1733  cd test
+ 1734  unzip ../test.zip 
+ 1735  ls -lrt 
+ 1736  pwd
+ 1737  rm -rf * 
+ 1738  cd ..
+ 1739  zip -r test.zip codedeploy/* 
+ 1740  cd test
+ 1741  unzip ../test.zip 
+ 1742  ls -lrt 
+ 1743  ls -lrt codedeploy/
+ 1744  pwd
+ 1745  rm -rf * 
+ 1746  pwd
+ 1747  cd ..
+ 1748  zip -j test.zip codedeploy/* 
+ 1749  ls -lrt codedeploy/
+ 1750  pwd
+ 1751  ls -lrt 
+ 1752  rm -rf test.zip 
+ 1753  pwd
+ 1754  ls -lrt 
+ 1755  ls -lrt codedeploy/
+ 1756  cd codedeploy && zip info.zip *  
+ 1757  ls -lrt 
+ 1758  pwd
+ 1759  rm -rf info.zip 
+ 1760  cat /home/vagrant/Client/src/main/resources/application.properties 
+ 1761  pwd
+ 1762  ls -lrt 
+ 1763  ls -lrt scripts/
+ 1764  pwd
+ 1765  ls -lrt 
+ 1766  zip ../info.zip * 
+ 1767  mkdir test
+ 1768  cd test
+ 1769  unzip ../../info.zip 
+ 1770  ls -lrt scripts/
+ 1771  pwd
+ 1772  rm -rf * 
+ 1773  cd ..
+ 1774  zip -r ../info.zip * 
+ 1775  pwd
+ 1776  ls -lrt 
+ 1777  pwd
+ 1778  cd ..
+ 1779  cd 
+ 1780  cd INFO/
+ 1781  ls
+ 1782  cd secrets/
+ 1783  ls -lrt 
+ 1784  vi aws_secrets_manager_infodb.yml 
+ 1785  cat aws_secrets_manager_infodb.yml 
+ 1786  cat aws_secrets.sh 
+ 1787  vi aws_secrets.sh 
+ 1788  exit
+ 1789  aws configure 
+ 1790  cd terraProjects/
+ 1791  ls -lrt 
+ 1792  cd infoWeb/
+ 1793  ls -lrt 
+ 1794  cat init.sh 
+ 1795  aws s3 mb s3://terraprojects --region us-east-1 
+ 1796  . ~/INFO/secrets/aws_secrets.sh 
+ 1797  pwd
+ 1798  ls -lrt 
+ 1799  tinit
+ 1800  tapply 
+ 1801  cat  ~/INFO/secrets/aws_secrets.sh 
+ 1802  tapply 
+ 1803  which aws 
+ 1804  aws codebuild start-build --project-name Client 
+ 1805  aws codebuild start-build --project-name SpringDataTest 
+ 1806  tapply 
+ 1807   terraform init -upgrade 
+ 1808  tapply 
+ 1809  aws codebuild batch-get-builds --ids 1253662303618026065 
+ 1810  aws codebuild batch-get-builds --ids Client  
+ 1811  aws codebuild batch-get-builds --ids Client:1253662303618026065   
+ 1812  aws codebuild batch-get-builds --ids SpringDataTest:1253662303618026065   
+ 1813  aws codebuild batch-get-builds --ids Client:c671a36d-c907-4e04-9b69-ec2fdbe8ac7a    
+ 1814   terraform init -upgrade 
+ 1815  tapply 
+ 1816  aws codebuild batch-get-builds --ids Client:16288247-d7b8-461b-a7a1-0c5829a1b9a1 
+ 1817  aws codebuild batch-get-builds --ids Client:c671a36d-c907-4e04-9b69-ec2fdbe8ac7a    
+ 1818  aws codebuild batch-get-builds --ids Client:16288247-d7b8-461b-a7a1-0c5829a1b9a1 
+ 1819  ls -lrt 
+ 1820  vi start_build.sh 
+ 1821  chmod a+x start_build.sh 
+ 1822  ./start_build.sh SpringDataTest 
+ 1823  tdestroy 
+ 1824  aws configure
+ 1825  pwd
+ 1826  ls -lrt 
+ 1827  cat init.sh 
+ 1828  aws s3 mb s3://terraprojects --region us-east-1 
+ 1829  aws s3 mb s3://terraprojects1 --region us-east-1 
+ 1830  . ~/INFO/secrets/aws_secrets.sh 
+ 1831  tinit
+ 1832  tapply 
+ 1833  ls -lrt 
+ 1834  ./start_build.sh Client 
+ 1835  sudo yum install jq 
+ 1836  which jq 
+ 1837  ./start_build.sh SpringDataTest
+ 1838  ls -lrt 
+ 1839  cat start_build.sh 
+ 1840  tapply
+ 1841  ../modules/codebuild/start-codebuild-project.sh SpringDataTest 
+ 1842  ls -lrt ../modules/codebuild/start-codebuild-project.sh 
+ 1843  tapply
+ 1844  terraform init
+ 1845  terraform init --upgrade 
+ 1846  terraform init --reconfigure 
+ 1847  tinit 
+ 1848  tapply 
+ 1849  aws configure
+ 1850  pwd
+ 1851  cat init.sh 
+ 1852  aws s3 mb s3://terraprojects --region us-east-1 
+ 1853  . ~/INFO/secrets/aws_secrets.sh 
+ 1854  tinit 
+ 1855  aws s3 mb s3://terraprojects1 --region us-east-1 
+ 1856  tinit 
+ 1857  . ~/INFO/secrets/aws_secrets.sh 
+ 1858  tapply 
+ 1859  aws configure 
+ 1860  cat init.sh 
+ 1861  aws s3 mb s3://terraprojects2 --region us-east-1
+ 1862  pwd
+ 1863  ls -lrt 
+ 1864  . ~/INFO/secrets/aws_secrets.sh
+ 1865  tinit
+ 1866  tapply 
+ 1867  tinit 
+ 1868  tapply 
+ 1869  aws configure 
+ 1870  cat init.sh 
+ 1871  aws s3 mb s3://terraprojects5 --region us-east-1 
+ 1872  . ~/INFO/secrets/aws_secrets.sh 
+ 1873  alias tinit 
+ 1874  pull
+ 1875  . ~/INFO/secrets/aws_secrets.sh 
+ 1876  tinit
+ 1877  tapply 
+ 1878  aws configure 
+ 1879  cat init.sh 
+ 1880  aws s3 mb s3://terraprojects --region us-east-1 
+ 1881  vi ~/INFO/secrets/aws_secrets.sh 
+ 1882  ./~/INFO/secrets/aws_secrets.sh
+ 1883  ~/INFO/secrets/aws_secrets.sh 
+ 1884  tinit 
+ 1885  tapply 
+ 1886  grep pem * 
+ 1887  pwd
+ 1888  ls -lrt 
+ 1889  cat ~/.ssh/id_rsa.pub 
+ 1890  aws configure 
+ 1891  pwd
+ 1892  cat init.sh 
+ 1893  aws s3 mb s3://terraprojects --region us-east-1 
+ 1894  . ~/INFO/secrets/aws_secrets.sh 
+ 1895  tinit 
+ 1896  tapply 
+ 1897  exit
+ 1898  aws configure 
+ 1899  cd terraProjects/
+ 1900  cd infoWeb
+ 1901  ls -lrt 
+ 1902  cat init.sh 
+ 1903  . ~/INFO/secrets/aws_secrets.sh 
+ 1904  tinit 
+ 1905  aws s3 mb s3://terraprojects --region us-east-1
+ 1906  tinit 
+ 1907  tapply 
+ 1908  pwd
+ 1909  ssh  3.236.178.163
+ 1910  ssh -i ~/.ssh/id_rsa.pub  3.236.178.163
+ 1911  cat ~/.ssh/id_rsa.pub
+ 1912  ssh  3.236.178.163
+ 1913  ssh  ec2-user@3.236.178.163
+ 1914  ssh -i ~/.ssh/id_rsa.pub  ec2-user@3.236.178.163
+ 1915  ssh -i ~/.ssh/id_rsa.pub  ubuntu@3.236.178.163
+ 1916  ssh -i ~/.ssh/id_rsa.pub  ec2-user@3.224.135.60
+ 1917  ssh -i ~/.ssh/id_rsa.pub  3.224.135.60
+ 1918  ssh 3.224.135.60
+ 1919  aws configure 
+ 1920  pwd
+ 1921  ls -lrt 
+ 1922  pwd
+ 1923  cd terraProjects/infoWeb/
+ 1924  cat init.sh 
+ 1925  aws s3 mb s3://terraprojects --region us-east-1
+ 1926  aws s3 mb s3://terraprojects1 --region us-east-1
+ 1927  aws s3 mb s3://terraprojects5 --region us-east-1
+ 1928  aws configure 
+ 1929  aws s3 mb s3://terraprojects1 --region us-east-1
+ 1930  cat init.sh 
+ 1931  vi ~/INFO/secrets/aws_secrets.sh 
+ 1932  . ~/INFO/secrets/aws_secrets.sh 
+ 1933  tinit 
+ 1934  tapply 
+ 1935  aws configure 
+ 1936  pwd
+ 1937  ls -lrt 
+ 1938  pwd
+ 1939  cd terraProjects/
+ 1940  ls
+ 1941  ls -lrt 
+ 1942  cd infoWeb/
+ 1943  ls -lrt 
+ 1944  vi init.sh 
+ 1945  cp init.sh 
+ 1946  cp init.sh setup.txt 
+ 1947  vi setup.txt 
+ 1948  cat setup.txt 
+ 1949  aws s3 mb s3://terraprojects1 --region us-east-1 
+ 1950  aws s3 ls 
+ 1951  exit
+ 1952  ssh -i .ssh/id_rsa ec2-user@54.91.164.37 
+ 1953  pwd
+ 1954  ls rt-l
+ 1955  cd terraProjects/
+ 1956  cd infoWeb
+ 1957  cat setup.txt 
+ 1958  cat ~/INFO/secrets/aws_secrets.sh 
+ 1959  pwd
+ 1960  ls -lrt 
+ 1961  rm -rf setup.txt 
+ 1962  aws s3 ls 
+ 1963  pull
+ 1964  ls -lrt 
+ 1965  cat setup.sh 
+ 1966  cat init.sh 
+ 1967  aws s3 mb s3://terraprojects1 --region us-east-1
+ 1968  . ~/INFO/secrets/aws_secrets.sh 
+ 1969  tinit 
+ 1970  tapply 
+ 1971  ssh -i ~/.ssh/id_rsa.pub ec2-user@54.87.140.134
+ 1972  ls -lrt ~/.ssh/
+ 1973  ssh -i ~/.ssh/authorized_keys ec2-user@54.87.140.134
+ 1974  ssh -i ~/.ssh/id_rsa  ec2-user@54.87.140.134
+ 1975  tdestroy 
+ 1976  cd ../gitla
+ 1977  exit
+ 1978  curl localhost 
+ 1979  sudo yum install httpd -y 
+ 1980  sudo systemctl start httpd 
+ 1981  curl localhost 
+ 1982  ip addr 
+ 1983  exit
+ 1984  sudo systemctl start httpd 
+ 1985  curl localhost 
+ 1986  exit
+ 1987  pwd
+ 1988  ls -lrt 
+ 1989  which ansible 
+ 1990  history 
+ 1991  history >> history
