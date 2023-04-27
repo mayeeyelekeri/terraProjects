@@ -50,6 +50,7 @@ module "codebuild" {
 
     # from alb 
     #alb_server_dns                = module.alb.alb_server_dns
+    alb_server_dns                = "somevale"
 } 
 
 /* --------------------------------------------
