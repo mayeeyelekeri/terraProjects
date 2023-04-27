@@ -34,6 +34,7 @@ module "vpc" {
  2) New S3 bucket to copy artifacts 
  3) Create codebuild projects (both client and server )
  4) Initiate Builds (first server and then client)
+    *** Build commands are inside buildspec.yml file, in the source code main dir. 
  5) Build Artifacts are copied to S3 bucket 
 -------------------------------------------------------- */ 
 module "codebuild" { 
