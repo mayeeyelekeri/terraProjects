@@ -270,18 +270,18 @@ resource "null_resource" "start_server_build" {
     always_run = "${timestamp()}"
   }  
 
-  /*provisioner "local-exec" {
+  provisioner "local-exec" {
     command = <<EOF
 ../modules/codebuild/start-codebuild-project.sh ${var.server_project_name}
 EOF
   } # End of provisioner
-  */ 
-
+   
+  /* ************* commented ********* 
   provisioner "local-exec" {
     command = <<EOF
 echo *********** skipping server build **********  
 EOF
-  }
+  } */ 
 
   depends_on = [aws_codebuild_project.server_project]
 } # end of "null_resource" "start_server_build"
@@ -296,17 +296,16 @@ resource "null_resource" "start_client_build" {
     always_run = "${timestamp()}"
   }
 
-  /* provisioner "local-exec" {
+  provisioner "local-exec" {
     command = <<EOF
 ../modules/codebuild/start-codebuild-project.sh ${var.client_project_name}
 EOF
   } # End of provisioner
-  */ 
+  /* ********************* comments ************* 
   provisioner "local-exec" {
     command = <<EOF
 echo *********** skipping client build **********  
 EOF
-
-  }
+  } */ 
   depends_on = [aws_codebuild_project.client_project]
 } # end of "null_resource" "start_client_build"
