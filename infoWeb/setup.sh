@@ -11,6 +11,8 @@ aws s3 mb s3://terraprojects --region us-east-1
 --- Make sure "ansible" is installed 
 
 --- Key-pair is from the local machine
+  *** should be able to connect to EC2 instance using the command: 
+   ssh -i ~/.ssh/id_rsa  ec2-user@<instance> 
 
 --- This project is going to create 2 ec2s - one for server and other for client. 
 
