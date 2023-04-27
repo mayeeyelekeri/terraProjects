@@ -266,9 +266,9 @@ resource "aws_codebuild_project" "client_project" {
 resource "null_resource" "start_server_build" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
-  triggers = {
+  /*triggers = {
     always_run = "${timestamp()}"
-  }
+  } */ 
 
   provisioner "local-exec" {
     command = <<EOF
@@ -285,9 +285,9 @@ EOF
 resource "null_resource" "start_client_build" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
-  triggers = {
+  /* triggers = {
     always_run = "${timestamp()}"
-  }
+  } */
 
   provisioner "local-exec" {
     command = <<EOF
