@@ -87,7 +87,7 @@ module "alb" {
     Attach launch configuration
     Attach target group create in ALB module 
 -------------------------------------------------------- */ 
-/*module "autoscale" {
+module "autoscale" {
     source = "./autoscale"
 
     app_name_server       = var.app_name_server
@@ -113,7 +113,7 @@ module "alb" {
 
     # ------ OUTPUTS ------ 
     #  auto_scale_group_name_client, auto_scale_group_name_server 
-} */ 
+} 
 
 /* --------------------------------------------
  Following actions are perfomed in "codedeploy" module 
