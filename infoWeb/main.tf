@@ -114,7 +114,7 @@ module "codebuild" {
 } */ 
 
 /* --------------------------------------------
- Following actions are perfomed in "codedeploy"" module 
+ Following actions are perfomed in "codedeploy" module 
  1) New codedeploy bucket (random postfix)
  2) Instance profile for codedeploy 
 
