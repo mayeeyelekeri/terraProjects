@@ -86,7 +86,7 @@ module "alb" {
     Attach launch configuration
     Attach target group create in ALB module 
 -------------------------------------------------------- */ 
-/* module "autoscale" {
+module "autoscale" {
     source = "./autoscale"
 
     app_name_server       = var.app_name_server
@@ -103,7 +103,7 @@ module "alb" {
     # from VPC module 
     public_sg_id          = module.vpc.public_sg_id
     public_subnets        = module.vpc.public_subnets
-    private_sg_id         = module.vpc.private_sg_id
+    private_sg_id         = module.vpc.public_sg_id
     private_subnets       = module.vpc.private_subnets
     
     # from ALB module 
@@ -112,7 +112,7 @@ module "alb" {
 
     # ------ OUTPUTS ------ 
     #  auto_scale_group_name_client, auto_scale_group_name_server 
-}  */
+}  
 
 /* --------------------------------------------
  Following actions are perfomed in "codedeploy" module 
