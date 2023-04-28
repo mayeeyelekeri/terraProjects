@@ -60,7 +60,7 @@ module "codebuild" {
  3) Create Listener and attach it to ALB 
 -------------------------------------------------------- */ 
 # Create Application Load Balancer 
-module "alb" {
+/* module "alb" {
     source = "./alb"
 
     # all these information coming VPC module 
@@ -72,7 +72,7 @@ module "alb" {
 
     # ------ OUTPUTS ------ 
     # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
-} 
+} */  
 
 /* --------------------------------------------
  Following actions are perfomed in "autoscaling" module 
@@ -86,7 +86,7 @@ module "alb" {
     Attach launch configuration
     Attach target group create in ALB module 
 -------------------------------------------------------- */ 
-module "autoscale" {
+/* module "autoscale" {
     source = "./autoscale"
 
     app_name_server       = var.app_name_server
@@ -112,7 +112,7 @@ module "autoscale" {
 
     # ------ OUTPUTS ------ 
     #  auto_scale_group_name_client, auto_scale_group_name_server 
-} 
+}  */
 
 /* --------------------------------------------
  Following actions are perfomed in "codedeploy" module 
@@ -126,7 +126,7 @@ module "autoscale" {
  5) Upload file to bucket 
  6) Initiate deploy 
 -------------------------------------------------------- */ 
-module "codedeploy" { 
+/* module "codedeploy" { 
     source      = "../modules/codedeploy"
 
     codebucket_name               = module.codebuild.codebuild_bucket_id
@@ -152,5 +152,5 @@ module "codedeploy" {
     #  from ALB module 
     alb_server_dns               = module.alb.alb_server_dns
 
-}
+} */
 
