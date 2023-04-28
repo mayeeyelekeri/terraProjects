@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "terraprojects2" 
+    bucket = "terraprojects3" 
     key    = "infoweb.tfstate"
     region = "us-east-1"
   }
