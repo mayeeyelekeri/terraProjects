@@ -100,7 +100,7 @@ resource "aws_route_table_association" "public_route_table_association1" {
  Outputs: 
  1) Private subnets  
 ----------------------------------------------------------- */ 
-# Create Public Subnets 
+# Create Private Subnets 
 resource "aws_subnet" "private" {
   for_each = var.private_subnet_map
   vpc_id = aws_vpc.vpc.id
