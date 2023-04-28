@@ -96,7 +96,7 @@ resource "aws_route_table_association" "public_route_table_association1" {
  Inputs: 
  1) VPC ID
  2) Private Subnet map 
- 3) List of availbility zones 
+ 3) List of availability zones 
  Outputs: 
  1) Private subnets  
 ----------------------------------------------------------- */ 
@@ -106,7 +106,7 @@ resource "aws_subnet" "private" {
   vpc_id = aws_vpc.vpc.id
   cidr_block = each.value.cidr
   availability_zone = each.value.zone
-  map_public_ip_on_launch = "false"
+  # map_public_ip_on_launch = "false"
 
   tags = {
     Name = "${terraform.workspace}-${each.value.cidr} - ${each.value.zone} - private"
@@ -124,10 +124,10 @@ resource "aws_subnet" "private" {
  2) cidr infomation to provide access 
  3) Route table ID 
 ----------------------------------------------------------- */ 
-/*resource "aws_route_table_association" "public_route_table_association2" {
+resource "aws_route_table_association" "public_route_table_association2" {
   for_each       = aws_subnet.private
   subnet_id      = each.value.id
   route_table_id = aws_route_table.internet_route.id
 
   depends_on = [aws_route_table.internet_route, aws_subnet.private ]
-}*/
+}
