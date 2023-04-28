@@ -84,7 +84,7 @@ module "alb" {
 
  4) Create Auto-scaling group (**** for both client and server)
     Attach launch configuration
-    Attach target group create in ALB module 
+    Attach target group created in ALB module 
 -------------------------------------------------------- */ 
 module "autoscale" {
     source = "./autoscale"
