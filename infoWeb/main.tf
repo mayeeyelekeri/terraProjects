@@ -60,7 +60,7 @@ module "codebuild" {
  3) Create Listener and attach it to ALB 
 -------------------------------------------------------- */ 
 # Create Application Load Balancer 
-/* module "alb" {
+module "alb" {
     source = "./alb"
 
     # all these information coming VPC module 
@@ -72,7 +72,7 @@ module "codebuild" {
 
     # ------ OUTPUTS ------ 
     # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
-} */  
+}   
 
 /* --------------------------------------------
  Following actions are perfomed in "autoscaling" module 
