@@ -124,10 +124,10 @@ resource "aws_subnet" "private" {
  2) cidr infomation to provide access 
  3) Route table ID 
 ----------------------------------------------------------- */ 
-resource "aws_route_table_association" "public_route_table_association2" {
+/*resource "aws_route_table_association" "public_route_table_association2" {
   for_each       = aws_subnet.private
   subnet_id      = each.value.id
   route_table_id = aws_route_table.internet_route.id
 
   depends_on = [aws_route_table.internet_route, aws_subnet.private ]
-}
+}*/
