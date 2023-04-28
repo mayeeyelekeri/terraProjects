@@ -90,7 +90,7 @@ resource "aws_autoscaling_group" "auto_scale_group" {
   target_group_arns    = [var.alb_tg_server_arn]
 
   # Pickup all the private subnets 
-  vpc_zone_identifier  = var.private_subnets[*].id
+  vpc_zone_identifier  = var.public_subnets[*].id
   health_check_type    = "EC2" 
   min_size             = var.autoscale_min
   max_size             = var.autoscale_max
