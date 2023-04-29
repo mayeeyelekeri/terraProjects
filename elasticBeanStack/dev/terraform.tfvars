@@ -6,7 +6,7 @@ file-name = "springdemo-0.0.1-SNAPSHOT.war"
 file-path = "ansible_templates/files"
 app-name = "mywebapp"
 webapp-src-location = "/home/vagrant/springdemo/target"
-stack-name = ""64bit Amazon Linux 2 v3.4.7 running Corretto 17""
+stack-name = "64bit Amazon Linux 2 v3.4.7 running Corretto 17"
 instance-profile = "myinstanceprofile"
 
 
