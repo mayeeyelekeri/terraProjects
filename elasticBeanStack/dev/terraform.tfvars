@@ -12,7 +12,7 @@ instance-profile = "myinstanceprofile"
 
 #### beanstack platforms are located here 
 #### https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html
-dockerstack-name = "64bit Amazon Linux 2 v3.5.1 running Docker"
+dockerstack-name = "64bit Amazon Linux 2 v3.5.7 running Docker"
 
 
 dockerapp-name = "dockerapp"
