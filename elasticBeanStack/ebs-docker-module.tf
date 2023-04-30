@@ -17,7 +17,7 @@ resource "aws_elastic_beanstalk_application_version" "beanstalk_dockerapp_versio
 
 
 # Create environment 
-resource "aws_elastic_beanstalk_environment" "dockerapp-env" {
+/* resource "aws_elastic_beanstalk_environment" "dockerapp-env" {
   name = "dockerapp-env"
   application = aws_elastic_beanstalk_application.dockerapp.name
   solution_stack_name = var.dockerstack-name
@@ -35,16 +35,17 @@ resource "aws_elastic_beanstalk_environment" "dockerapp-env" {
    value = var.instance-profile
    #value = "aws-elasticbeanstalk-ec2-role"  # **** this gets created automatically from aws console when an app is created 
   }
-
+  */
   /* setting {
     name = "SERVER_PORT"
     namespace = "aws:elasticbeanstalk:application:environment"
     value = "5000"
   } */
-
+  /*
   depends_on = [aws_iam_role.beanstackrole, aws_iam_instance_profile.myinstanceprofile]
-}
+} */ 
 
+/* 
 #.................................................
 # upload war file to S3 object 
 resource "null_resource" "upload_dockerfile" { 
@@ -59,17 +60,6 @@ aws s3 cp "${var.dockerwebapp-src-location}/${var.dockerfile-name}" s3://"${aws_
 EOF
   } # End of provisioner
  
-
-  /* provisioner "local-exec" {
-    command = <<EOF
-ansible-playbook --extra-vars "passed_in_hosts=localhost \
-    app_name=${var.app-name} \
-    bucket=${aws_s3_bucket.codebucket.id} \
-    zip_file=${var.app-name} \
-    webapp_src_location=${var.webapp-src-location}" \
-  ansible_templates/aws_cmd_execution.yaml
-EOF
-  } # End of provisioner
-  */ 
   depends_on = [aws_s3_bucket.codebucket]
 } # end of "null_resource" "upload_file"
+*/
