@@ -14,20 +14,20 @@ variable "instance-type" {
 	default = "t3.micro"
 }
 
-variable "key-pair-path" { 
-	default = "../../awsKeyPairDir"
-}
-
 variable "project-name" { 
 	default = "applicationLBPrivatePublic"
 }
 
-variable "key-file-name" { 
-	default = "../../awsKeyPairDir/applicationLBPrivatePublic.pem"
+variable "key-file-name-public" { 
+	default = "~/.ssh/id_rsa.pub"
+}
+
+variable "key-file-name-private" { 
+	default = "~/.ssh/id_rsa"
 }
 
 variable "key-name" { 
-	default = "applicationLBPrivatePublic"
+	default = "mykey"
 }
 
 variable "ec2-data" {
