@@ -36,7 +36,7 @@ resource "aws_instance" "webserver" {
     }
   }
   tags = {
-    Name = "${terraform.workspace}-webserver-${each.key}"
+    Name = "${terraform.workspace}-webserver"
     Environment = "${terraform.workspace}"
   }
 
