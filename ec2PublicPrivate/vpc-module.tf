@@ -21,8 +21,8 @@ resource "aws_internet_gateway" "igw" {
 
 # ---------------------------- PUBLIC --------------------------
 # Create Public and Private Subnet 
-resource "aws_subnet" "mysubnet-public" {
-  for_each = var.subnet-map-public 
+resource "aws_subnet" "mysubnet" {
+  for_each = var.subnet-map 
   vpc_id = aws_vpc.myvpc.id
   cidr_block = each.value.cidr
   availability_zone = each.value.zone
@@ -60,7 +60,7 @@ resource "aws_eip" "my-eip" {
 
 # Create NAT Gateway in public subnet 
 resource "aws_nat_gateway" "nat-gateway" {
-  subnet_id     = aws_subnet.mysubnet-public.id
+  subnet_id     = aws_subnet.mysubnet["public"].id
   allocation_id = aws_eip.my-eip.id
   tags = {
     Name = "${terraform.workspace}-My public NAT Gateway"
@@ -73,19 +73,6 @@ resource "aws_nat_gateway" "nat-gateway" {
 }
 
 # ---------------------------- PRIVATE --------------------------
-resource "aws_subnet" "mysubnet-private" {
-  for_each = var.subnet-map-private 
-  vpc_id = aws_vpc.myvpc.id
-  cidr_block = each.value.cidr
-  availability_zone = each.value.zone
-  map_public_ip_on_launch = "false"
-
-  tags = {
-    Name = "${terraform.workspace}-${each.value.cidr} - ${each.value.zone} - private"
-    Environment = "${terraform.workspace}"
-  }
-}
-
 # Create private route table and attach NAT Gateway to it
 resource "aws_default_route_table" "private-route" {
   default_route_table_id = aws_vpc.myvpc.default_route_table_id  
@@ -103,10 +90,10 @@ resource "aws_default_route_table" "private-route" {
 
 # Associate private subnet to route table 
 resource "aws_route_table_association" "private-route-table-association" {
-  subnet_id      = aws_subnet.mysubnet-private.id
+  subnet_id      = aws_subnet.mysubnet["private"].id
   route_table_id = aws_default_route_table.private-route.id
 
-  depends_on = [aws_subnet.mysubnet-private,  aws_default_route_table.private-route]
+  depends_on = [aws_subnet.mysubnet,  aws_default_route_table.private-route]
 }
 
 # -------------------- Security Groups --------------
