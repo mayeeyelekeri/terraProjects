@@ -18,5 +18,6 @@ instance-type = "t2.micro"
 project-name = "ec2PublicPrivate"
 
 #key-pair-path = "../../.ssh"
-key-file-name = "../../.ssh/id_rsa"
+key-file-name-public = "~/.ssh/id_rsa.pub"
+key-file-name-private = "~/.ssh/id_rsa"
 key-name = "keyfile"

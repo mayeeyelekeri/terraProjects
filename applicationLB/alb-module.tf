@@ -1,4 +1,17 @@
 # Create EC2 web servers in different subnets 
+/* -------- Create Public Key -------------
+ Inputs: 
+ 1) Location of local public key 
+ 2) key name  
+ Outputs: 
+ 1) key-pair 
+----------------------------------------------------------- */ 
+resource "aws_key_pair" "mykeypair" {
+    key_name    = var.key-name
+    public_key  = file(key-file-name-public)
+}
+
+# Create EC2's 
 resource "aws_instance" "webserver1" {
   ami                         = var.ami-id
   instance_type               = var.instance-type
@@ -18,7 +31,7 @@ resource "aws_instance" "webserver1" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file(var.key-file-name)
+      private_key = file(var.key-file-name-private)
       host        = self.public_ip
     }
   }
@@ -49,7 +62,7 @@ resource "aws_instance" "webserver2" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file(var.key-file-name)
+      private_key = file(var.key-file-name-private)
       host        = self.public_ip
     }
   }
@@ -78,7 +91,7 @@ resource "aws_instance" "webserver3" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file(var.key-file-name)
+      private_key = file(var.key-file-name-private)
       host        = self.public_ip
     }
   }
@@ -170,16 +183,4 @@ resource "aws_lb_listener" "listener" {
         type = "forward"
         target_group_arn = aws_lb_target_group.tg.arn
     }
-}
-
-/* -------- Create Public Key -------------
- Inputs: 
- 1) Location of local public key 
- 2) key name  
- Outputs: 
- 1) key-pair 
------------------------------------------------------------ */ 
-resource "aws_key_pair" "mykeypair" {
-    key_name    = var.key-name
-    public_key  = file("~/.ssh/id_rsa.pub")
 }
