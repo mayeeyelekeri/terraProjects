@@ -6,14 +6,14 @@ resource "aws_elastic_beanstalk_application" "dockerapp" {
   depends_on = [null_resource.upload_file, aws_iam_role_policy.ebs_policy]
 }
 
-resource "aws_elastic_beanstalk_application_version" "beanstalk_dockerapp_version" {
+/*resource "aws_elastic_beanstalk_application_version" "beanstalk_dockerapp_version" {
   application = aws_elastic_beanstalk_application.dockerapp.name
   bucket = aws_s3_bucket.codebucket.id
   key = var.dockerfile-name
   name = "${var.dockerapp-name}-1.0.0"
 
   depends_on = [aws_elastic_beanstalk_application.dockerapp]
-}
+} */
 
 
 # Create environment 
