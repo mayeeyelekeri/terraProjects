@@ -180,6 +180,6 @@ resource "aws_lb_listener" "listener" {
  1) key-pair 
 ----------------------------------------------------------- */ 
 resource "aws_key_pair" "mykeypair" {
-    key_name    = var.key_name
+    key_name    = var.key-name
     public_key  = file("~/.ssh/id_rsa.pub")
 }
