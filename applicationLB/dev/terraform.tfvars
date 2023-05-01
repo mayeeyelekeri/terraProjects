@@ -17,7 +17,7 @@ subnet-map = { "subnet1" =  { cidr = "10.0.1.0/24",
 ami-id = "ami-09d3b3274b6c5d4aa"
 instance-type = "t2.micro"
 key-pair-path = "../../.ssh"
-key-file-name = "../../.ssh/id_rsa.pem"
+key-file-name = "../../.ssh/id_rsa.pub"
 key-name = "id_rsa"
 
 # ALB Related variables 
