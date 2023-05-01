@@ -36,7 +36,7 @@ resource "aws_instance" "webserver1" {
     }
   }
   tags = {
-    Name = join("-", ["${terraform.workspace}", "webserver", aws_subnet.mysubnet1.id])
+    Name = join("-", ["${terraform.workspace}", "webserver1", aws_subnet.mysubnet1.id])
     Environment = "${terraform.workspace}"
   }
 
@@ -67,7 +67,7 @@ resource "aws_instance" "webserver2" {
     }
   }
   tags = {
-    Name = join("-", ["${terraform.workspace}", "webserver", aws_subnet.mysubnet2.id])
+    Name = join("-", ["${terraform.workspace}", "webserver2", aws_subnet.mysubnet2.id])
     Environment = "${terraform.workspace}"
   }
 } 
@@ -96,7 +96,7 @@ resource "aws_instance" "webserver3" {
     }
   }
   tags = {
-    Name = join("-", ["${terraform.workspace}", "webserver", aws_subnet.mysubnet3.id])
+    Name = join("-", ["${terraform.workspace}", "webserver3", aws_subnet.mysubnet3.id])
     Environment = "${terraform.workspace}"
   }
 } 
