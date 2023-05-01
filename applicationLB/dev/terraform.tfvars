@@ -16,8 +16,8 @@ subnet-map = { "subnet1" =  { cidr = "10.0.1.0/24",
 # EC2 Related variables 
 ami-id = "ami-09d3b3274b6c5d4aa"
 instance-type = "t2.micro"
-key-pair-path = "../../awsKeyPairDir"
-key-file-name = "../../awsKeyPairDir/id_rsa.pem"
+key-file-name-public = "~/.ssh/id_rsa.pub"
+key-file-name-private = "~/.ssh/id_rsa"
 key-name = "id_rsa"
 
 # ALB Related variables 

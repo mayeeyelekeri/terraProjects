@@ -17,7 +17,6 @@ ami-id = "ami-09d3b3274b6c5d4aa"
 instance-type = "t2.micro"
 project-name = "ec2PublicPrivate"
 
-#key-pair-path = "../../.ssh"
 key-file-name-public = "~/.ssh/id_rsa.pub"
 key-file-name-private = "~/.ssh/id_rsa"
 key-name = "keyfile"
