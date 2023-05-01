@@ -17,3 +17,7 @@ variable "key-name" {
 variable "key-file-name-private" { 
 	default = "~/.ssh/id_rsa"
 }
+
+variable "key-file-name-public" { 
+	default = "~/.ssh/id_rsa.pub"
+}
