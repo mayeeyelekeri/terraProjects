@@ -24,7 +24,7 @@ resource "aws_instance" "webserver" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file(var.key-file-name)
+      private_key = file(var.key-file-name-private)
       host        = self.public_ip
     }
   }

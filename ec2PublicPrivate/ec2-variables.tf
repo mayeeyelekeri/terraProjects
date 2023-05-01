@@ -6,16 +6,8 @@ variable "instance-type" {
 	default = "t3.micro"
 }
 
-variable "key-pair-path" { 
-	default = "../../awsKeyPairDir"
-}
-
 variable "project-name" { 
 	default = "ec2PublicPrivate"
-}
-
-variable "key-file-name" { 
-	default = "../../awsKeyPairDir/ec2PublicPrivate.pem"
 }
 
 variable "key-name" { 
