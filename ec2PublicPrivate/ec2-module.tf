@@ -1,4 +1,11 @@
 
+# Import public key to aws 
+resource "aws_key_pair" "mykeypair" {
+    #provider    = var.aws_region
+    key_name    = var.key-name
+    public_key  = file(var.key-file-name-public)
+}
+
 /*# Get Linux AMI ID using SSM Parameter endpoint in us-east-1
 data "aws_ssm_parameter" "webserver-ami" {
   name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
@@ -32,6 +39,8 @@ resource "aws_instance" "webserver" {
     Name = "${terraform.workspace}-webserver"
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_key_pair.mykeypair]
 } 
 
 # Create EC2 server in Private subnet clear
