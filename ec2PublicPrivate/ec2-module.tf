@@ -53,7 +53,9 @@ resource "aws_instance" "dbserver" {
   subnet_id                   = aws_subnet.mysubnet["private"].id
   
   tags = {
-    Name = "${terraform.workspace}-dbserver"
+    Name = "${terraform.workspace}-dbserver-private"
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_key_pair.mykeypair]
 }
