@@ -70,6 +70,8 @@ resource "aws_instance" "webserver2" {
     Name = join("-", ["${terraform.workspace}", "webserver2", aws_subnet.mysubnet2.id])
     Environment = "${terraform.workspace}"
   }
+
+  depends_on =  [aws_key_pair.mykeypair]
 } 
 
 resource "aws_instance" "webserver3" {
@@ -99,6 +101,8 @@ resource "aws_instance" "webserver3" {
     Name = join("-", ["${terraform.workspace}", "webserver3", aws_subnet.mysubnet3.id])
     Environment = "${terraform.workspace}"
   }
+
+  depends_on =  [aws_key_pair.mykeypair]
 } 
 
 # ------------- Create ALB Target Group ----------
