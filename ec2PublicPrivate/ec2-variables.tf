@@ -13,3 +13,7 @@ variable "project-name" {
 variable "key-name" { 
 	default = "ec2PublicPrivate"
 }
+
+variable "key-file-name-private" { 
+	default = "~/.ssh/id_rsa"
+}
