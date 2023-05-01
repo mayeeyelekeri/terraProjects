@@ -15,6 +15,7 @@ instance-profile = "myinstanceprofile"
 dockerstack-name = "64bit Amazon Linux 2 v3.5.7 running Docker"
 
 
+
 dockerapp-name = "dockerapp"
 dockerwebapp-src-location = "ansible_templates/files"
 dockerfile-name = "Dockerrun.aws.zip"

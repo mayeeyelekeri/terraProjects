@@ -26,6 +26,8 @@ resource "aws_instance" "webserver1" {
     Name = join("-", ["${terraform.workspace}", "webserver", aws_subnet.mysubnet1.id])
     Environment = "${terraform.workspace}"
   }
+
+  depends_on =  [aws_key_pair.mykeypair]
 } 
 
 resource "aws_instance" "webserver2" {
@@ -168,4 +170,16 @@ resource "aws_lb_listener" "listener" {
         type = "forward"
         target_group_arn = aws_lb_target_group.tg.arn
     }
+}
+
+/* -------- Create Public Key -------------
+ Inputs: 
+ 1) Location of local public key 
+ 2) key name  
+ Outputs: 
+ 1) key-pair 
+----------------------------------------------------------- */ 
+resource "aws_key_pair" "mykeypair" {
+    key_name    = var.key_name
+    public_key  = file("~/.ssh/id_rsa.pub")
 }
