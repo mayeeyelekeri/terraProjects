@@ -18,6 +18,6 @@ ami-id = "ami-09d3b3274b6c5d4aa"
 instance-type = "t2.micro"
 key-file-name-public = "~/.ssh/id_rsa.pub"
 key-file-name-private = "~/.ssh/id_rsa"
-key-name = "id_rsa"
+key-name = "mykeyname"
 
 # ALB Related variables 

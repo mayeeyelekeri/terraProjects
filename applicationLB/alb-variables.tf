@@ -14,10 +14,14 @@ variable "project-name" {
 	default = "ec2PublicPrivate"
 }
 
-variable "key-file-name" { 
-	default = "../../awsKeyPairDir/ec2PublicPrivate.pem"
+variable "key-file-name-private" { 
+	default = "~/.ssh/id_rsa"
+}
+
+variable "key-file-name-public" { 
+	default = "~/.ssh/id_rsa.pub"
 }
 
 variable "key-name" { 
-	default = "ec2PublicPrivate"
+	default = "keyname"
 }
