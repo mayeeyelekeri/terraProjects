@@ -19,7 +19,7 @@ ami-id-ubuntu = "ami-08c40ec9ead489470"
 myimage = "ami-09d3b3274b6c5d4aa"
 instance-type = "t2.micro"
 key-pair-path = "../../awsKeyPairDir"
-key-file-name = "../../awsKeyPairDir/applicationLBPrivatePublic.pem"
+key-file-name = "../../awsKeyPairDir/id_rsa.pem"
 key-name = "applicationLBPrivatePublic"
 
 # ALB Related variables 
