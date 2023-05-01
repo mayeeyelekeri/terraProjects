@@ -1,10 +1,10 @@
 terraform {
   backend "s3" {
-    bucket = "myterraprojects1"
+    bucket = "myterraprojects2"
     key    = "codePipeline.tfstate"
     region = "us-east-1"
   }
-  #required_version = ">= 1.3.3"
+  required_version = "= 1.4.6"
 }
 
 provider "aws" {
