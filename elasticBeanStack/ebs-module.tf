@@ -42,7 +42,7 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
     value = "5000"
   }
 
-  depends_on = [aws_iam_role.beanstackrole, aws_iam_instance_profile.myinstanceprofile]
+  depends_on = [aws_iam_role.beanstackrole, aws_iam_instance_profile.myinstanceprofile, aws_elastic_beanstalk_application.mywebapp]
 }
 
 # Create s3 bucket 
