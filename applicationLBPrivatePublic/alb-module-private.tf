@@ -12,6 +12,8 @@ resource "aws_instance" "private-webservers" {
     Name = join("-", ["${terraform.workspace}", "webserver", each.value.id])
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_key_pair.mykeypair]
 }
 
 

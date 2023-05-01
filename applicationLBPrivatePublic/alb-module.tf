@@ -2,7 +2,7 @@
 resource "aws_key_pair" "mykeypair" {
     #provider    = var.aws_region
     key_name    = var.key-name
-    public_key  = file("~/.ssh/id_rsa.pub")
+    public_key  = file(var.key-file-name-public)
 }
 
 # Get Linux AMI ID 
@@ -34,7 +34,7 @@ resource "aws_instance" "webservers" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file("~/.ssh/id_rsa")
+      private_key = file(var.key-file-name-private)
       host        = self.public_ip
     }
   } 
@@ -43,6 +43,8 @@ resource "aws_instance" "webservers" {
     Name = join("-", ["${terraform.workspace}", "webserver" ])
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_key_pair.mykeypair]
 } 
 
 # Create Jenkins server on any subnet 

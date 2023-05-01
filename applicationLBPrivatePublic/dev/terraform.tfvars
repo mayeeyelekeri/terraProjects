@@ -18,9 +18,10 @@ ami-id = "ami-09d3b3274b6c5d4aa"
 ami-id-ubuntu = "ami-08c40ec9ead489470"
 myimage = "ami-09d3b3274b6c5d4aa"
 instance-type = "t2.micro"
-#key-pair-path = "../../awsKeyPairDir"
-#key-file-name = "../../awsKeyPairDir/id_rsa.pem"
-key-name = "mykey"
+
+key-file-name-public = "~/.ssh/id_rsa.pub"
+key-file-name-private = "~/.ssh/id_rsa"
+key-name = "mykeyname"
 
 # ALB Related variables 
 private-subnets = { "subnet1" =  { cidr = "10.0.4.0/24", 
