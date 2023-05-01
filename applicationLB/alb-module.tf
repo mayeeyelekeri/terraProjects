@@ -8,7 +8,7 @@
 ----------------------------------------------------------- */ 
 resource "aws_key_pair" "mykeypair" {
     key_name    = var.key-name
-    public_key  = file(key-file-name-public)
+    public_key  = file(var.key-file-name-public)
 }
 
 # Create EC2's 
