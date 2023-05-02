@@ -18,9 +18,9 @@ Bucket for storing state files.
 | ALB        | ../modules | ALB                                | 
 | codebuild  | ../modules |                                    | 
 | codedeploy | ../modules |                                    | 
-| autoscale  | ../modules |                                    | 
+| autoscale  | autoscale  |                                    | 
 
-## Resources
+### Resources
 
 | Name | Type |
 |------|------|
@@ -30,7 +30,7 @@ Bucket for storing state files.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-|  | ARN of the codepipeline IAM role | `string` | n/a | yes |
+
 
 
 ## Outputs
