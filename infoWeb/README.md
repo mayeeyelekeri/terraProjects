@@ -20,7 +20,7 @@ Bucket for storing state files.
 | codedeploy | ../modules |                                    | 
 | autoscale  | autoscale  |                                    | 
 
-### Resources
+## Resources
 
 | Name | Type |
 |------|------|
