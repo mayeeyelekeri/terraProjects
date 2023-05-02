@@ -12,11 +12,13 @@ Bucket for storing state files.
 
 ## Modules
 
-VPC
-alb
-codebuild
-codedeploy 
-autoscale 
+|    Name    | Location   | Description                        |
+|----------  | ---------- | -----------------------------------|
+| VPC        | ../modules | VPC, subnets, security groups      | 
+| ALB        | ../modules | ALB                                | 
+| codebuild  | ../modules |                                    | 
+| codedeploy | ../modules |                                    | 
+| autoscale  | ../modules |                                    | 
 
 ## Resources
 
