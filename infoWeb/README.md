@@ -1,0 +1,39 @@
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+Source code for project Client and SpringDataTest
+Bucket for storing state files. 
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+
+## Modules
+
+VPC
+alb
+codebuild
+codedeploy 
+autoscale 
+
+## Resources
+
+| Name | Type |
+|------|------|
+| none | 
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+|  | ARN of the codepipeline IAM role | `string` | n/a | yes |
+
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+
+<!-- END_TF_DOCS -->
