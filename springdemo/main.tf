@@ -14,7 +14,7 @@
  11) Attach NAT gateway to all private route  
 -------------------------------------------------------- */ 
 module "vpc" {
-    source = "../modules/vpc"
+    source = "../vpc"
     
     # Pass all the variable values to the vpc module 
     aws_region         = var.aws_region
