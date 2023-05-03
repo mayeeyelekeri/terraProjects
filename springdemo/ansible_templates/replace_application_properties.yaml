@@ -1,9 +1,0 @@
----
-- hosts: "{{ passed_in_hosts }}"
-  become: no
-  tasks:
-    - name: replace app properties 
-      template:
-        src: "{{ src_file }}"
-        dest: "{{ dest_file }}"
-      
