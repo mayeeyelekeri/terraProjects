@@ -45,7 +45,7 @@ module "codebuild" {
     server_project_name           = var.server_project_name
     server_project_description    = var.server_project_description
     source_provider               = var.source_provider
-    zip_file_server               = var.zip_file_server
+    
     # from alb 
     alb_server_dns                = module.alb.alb_server_dns    
 } 
