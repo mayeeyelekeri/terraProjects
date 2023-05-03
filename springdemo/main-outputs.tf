@@ -16,11 +16,6 @@ output "public" {
 	value = values(module.vpc.public)[*].cidr_block
 }
 
-
-output "nat_gateway_id" { 
-	value = module.vpc.nat_gateway_id
-} 
-
 # ------------ CodeBuild outputs -------------------
 
 output "codebuild_bucket_id" { 
