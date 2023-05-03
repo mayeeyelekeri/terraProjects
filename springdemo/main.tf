@@ -21,8 +21,7 @@ module "vpc" {
     open_cidr          = var.open_cidr 
     vpc_cidr           = var.vpc_cidr 
     public_subnet_map  = var.public_subnet_map
-    private_subnet_map = var.private_subnet_map
-
+    
     # ----- OUTPUTS ------ 
     # vpc_id,vpc_name, public_subnets, private_subnets, public_sg_id, private_sg_id, nat_gateway_id
 }
