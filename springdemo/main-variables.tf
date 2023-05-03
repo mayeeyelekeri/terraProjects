@@ -43,3 +43,4 @@ variable "server_project_name" {}
 variable "server_project_description" {} 
 variable "source_provider" {}
 variable "buildbucket_name" {}
+variable "zip_file_server" {}

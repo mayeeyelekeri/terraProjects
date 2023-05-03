@@ -49,7 +49,7 @@ docker_file_server = "docker/Dockerfile"
 #info_server_workspace = "/home/vagrant/springdemo"
 #jar_file_server = "springdemo-0.0.1-SNAPSHOT.jar"
 #webapp_src_location_server = "/home/vagrant/SpringDataTest/codedeploy"
-#zip_file_server = "springdemo.zip"
+zip_file_server = "springdemo.zip"
 
 codebucket_name = "codedeploy"
 
