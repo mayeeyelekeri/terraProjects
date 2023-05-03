@@ -42,13 +42,6 @@ template_name_server = "docker_and_codedeploy_agent_server"
 #......................................
 #  Info-Server properties 	
 #......................................
-#war_file_server = "/home/vagrant/springdemo/target/springdemo-0.0.1-SNAPSHOT.jar"
-docker_file_server = "docker/Dockerfile"
-#src_properties_file_server = "files/application-aws.properties.j2"
-#dest_properties_file_server = "/home/vagrant/springdemo/src/main/resources/application-aws.properties"
-#info_server_workspace = "/home/vagrant/springdemo"
-#jar_file_server = "springdemo-0.0.1-SNAPSHOT.jar"
-#webapp_src_location_server = "/home/vagrant/SpringDataTest/codedeploy"
 zip_file_server = "springdemo.zip"
 
 codebucket_name = "codedeploy"
