@@ -24,7 +24,7 @@ private_subnet_map = {
 			     } # end of subnet_map private 
 
 git_creds   = "git_creds"
-state_bucker = "terraprojects5"
+state_bucket = "terraprojects5"
 
 #......................................
 # EC2 Related variables 
