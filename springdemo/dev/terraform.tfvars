@@ -23,6 +23,8 @@ private_subnet_map = {
 						   }
 			     } # end of subnet_map private 
 
+git_creds   = "git_creds"
+
 #......................................
 # EC2 Related variables 
 #......................................
