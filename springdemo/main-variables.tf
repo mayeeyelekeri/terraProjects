@@ -35,7 +35,6 @@ variable "jar_file_server" {}
 variable "info_server_workspace" {} 
 
 variable "src_properties_file_server" {}
-variable "mysql_creds" {}
 
 # Codebuild 
 variable "git_creds" {}
