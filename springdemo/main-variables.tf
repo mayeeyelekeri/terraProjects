@@ -5,7 +5,6 @@ variable "open_cidr" {}
 variable "vpc_cidr" {}
 variable "public_subnet_map" {}
 variable "private_subnet_map" {}
-variable "state_bucket" {} 
 
 # ALB related 
 #variable "app_health_check_path" {} 
