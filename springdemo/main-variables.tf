@@ -31,11 +31,11 @@ variable "codebucket_name" {}
 #variable "zip_file_server" {}
 #variable "docker_file_server" {}
 #variable "dest_properties_file_server" {}
-variable "jar_file_server" {}
-variable "info_server_workspace" {} 
+#variable "jar_file_server" {}
+#variable "info_server_workspace" {} 
 variable "state_bucket" {}
 
-variable "src_properties_file_server" {}
+#variable "src_properties_file_server" {}
 
 # Codebuild 
 variable "git_creds" {}
