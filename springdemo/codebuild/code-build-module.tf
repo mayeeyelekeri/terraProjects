@@ -163,7 +163,7 @@ resource "aws_codebuild_project" "server_project" {
 
   source {
     type            = "GITHUB"
-    location        = local.git_creds.server_git_repository
+    location        = local.git_creds.springdemo_git_repository
     git_clone_depth = 1
 
     git_submodules_config {
