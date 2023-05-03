@@ -46,7 +46,7 @@ module "codebuild" {
     server_project_name           = var.server_project_name
     server_project_description    = var.server_project_description
     source_provider               = var.source_provider
-
+    state_bucket_name             = var.state_bucket 
     # from alb 
     alb_server_dns                = module.alb.alb_server_dns    
 } 
@@ -65,7 +65,6 @@ module "alb" {
     vpc_id                = module.vpc.vpc_id
     public_sg_id          = module.vpc.public_sg_id
     public_subnets        = module.vpc.public_subnets
-    application_port      = var.info_client_port
     app_health_check_path = var.app_health_check_path
 
     # ------ OUTPUTS ------ 
