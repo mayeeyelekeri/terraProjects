@@ -124,7 +124,7 @@ module "codedeploy" {
     codebucket_name               = module.codebuild.codebuild_bucket_id
     app_name_server               = var.app_name_server 
     server_project_name           = var.server_project_name 
-
+    zip_file_server               = var.zip_file_server 
     # from autoscaling module 
     auto_scale_group_name_server  = module.autoscale.auto_scale_group_name_server 
     
