@@ -33,6 +33,7 @@ variable "docker_file_server" {}
 variable "dest_properties_file_server" {}
 variable "jar_file_server" {}
 variable "info_server_workspace" {} 
+variable "state_bucket" {}
 
 variable "src_properties_file_server" {}
 
