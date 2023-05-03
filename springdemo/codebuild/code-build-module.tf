@@ -191,7 +191,7 @@ resource "null_resource" "start_server_build" {
    
   provisioner "local-exec" {
     command = <<EOF
-./start-codebuild-project.sh ${var.server_project_name}
+./codebuild/start-codebuild-project.sh ${var.server_project_name}
 EOF
   } # End of provisioner
   /*
