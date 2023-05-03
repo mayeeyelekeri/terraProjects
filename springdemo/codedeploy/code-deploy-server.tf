@@ -83,6 +83,6 @@ aws deploy create-deployment \
 EOF
   } # End of provisioner
 
-  depends_on = [aws_codedeploy_deployment_group.mydeploygroup]
+  depends_on = [aws_codedeploy_deployment_group.mydeploygroup , module.codebuild.null_resource.start_server_build]
 } # end of "null_resource" "perform_deploy"
  
