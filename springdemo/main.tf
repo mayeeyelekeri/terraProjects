@@ -139,5 +139,7 @@ module "codedeploy" {
     #  from ALB module 
     alb_server_dns               = module.alb.alb_server_dns
 
+    # Make ab explicit dependency on codebuild module 
+    depends_on = [module.codebuild]
 } 
 
