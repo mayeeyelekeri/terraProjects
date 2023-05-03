@@ -47,7 +47,9 @@ module "codebuild" {
     source_provider               = var.source_provider
     
     # from alb 
-    alb_server_dns                = module.alb.alb_server_dns    
+    alb_server_dns                = module.alb.alb_server_dns 
+    
+    depends_on = [module.vpc]
 } 
 
 /* --------------------------------------------
