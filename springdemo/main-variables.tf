@@ -22,15 +22,15 @@ variable "template_name_server" {}
 
 # Code Deploy 
 variable "codebucket_name" {}
-variable "zip_file_server" {}
-variable "webapp_src_location_server" {}
+#variable "zip_file_server" {}
+#variable "webapp_src_location_server" {}
 
 # Build 
-variable "war_file_server" {}
+#variable "war_file_server" {}
 #variable "app_name_server" {}
 #variable "zip_file_server" {}
-variable "docker_file_server" {}
-variable "dest_properties_file_server" {}
+#variable "docker_file_server" {}
+#variable "dest_properties_file_server" {}
 variable "jar_file_server" {}
 variable "info_server_workspace" {} 
 variable "state_bucket" {}
