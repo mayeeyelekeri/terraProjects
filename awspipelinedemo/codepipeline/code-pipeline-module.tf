@@ -37,7 +37,7 @@ resource "aws_codepipeline" "web_pipeline" {
         "Branch"               = "main"
         "Owner"                = var.repository_owner
         "PollForSourceChanges" = "false"
-        "Repo"                 = ${var.server_project_name}
+        "Repo"                 = var.server_project_name
       }
       input_artifacts = []
       name            = "Source"
