@@ -191,12 +191,12 @@ resource "aws_codebuild_project" "static_web_build" {
   queued_timeout = 480
   service_role   = aws_iam_role.codebuildrole.arn
   tags = {
-    Environment = ${terraform.workspace}
+    Environment = "dev"
   }
 
   artifacts {
     encryption_disabled    = false
-    name                   = "static-web-build-${terraform.workspace}"
+    name                   = "static-web-build-dev"
     override_artifact_name = false
     packaging              = "NONE"
     type                   = "CODEPIPELINE"
