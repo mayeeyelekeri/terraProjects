@@ -18,7 +18,7 @@ resource "aws_codebuild_source_credential" "example" {
 
 resource "aws_codepipeline" "web_pipeline" {
   name     = "web-pipeline"
-  role_arn = data.aws_iam_role.pipeline_role.arn
+  #role_arn = data.aws_iam_role.pipeline_role.arn
   tags     = {
     Environment = var.env
   }
