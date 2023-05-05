@@ -251,7 +251,7 @@ EOF
     command = <<EOF
 echo *********** skipping server build **********  
 EOF
-  }    */
+  }    
 
   depends_on = [aws_codebuild_project.server_project]
 } # end of "null_resource" "start_server_build" */
