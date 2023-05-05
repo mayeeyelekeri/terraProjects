@@ -143,3 +143,22 @@ module "codedeploy" {
     depends_on = [module.codebuild]
 } 
 
+/* --------------------------------------------
+ Following actions are perfomed in "codebuild" module 
+ 1) New service Role for codebuild
+ 2) New S3 bucket to copy artifacts 
+ 3) Create codebuild projects (both client and server )
+ 4) Initiate Builds (first server and then client)
+    *** Build commands are inside buildspec.yml file, in the source code main dir. 
+ 5) Build Artifacts are copied to S3 bucket 
+-------------------------------------------------------- */ 
+module "codepipeline" { 
+    source      = "./codepipeline"
+
+    buildbucket_name              = var.buildbucket_name
+    git_creds                     = var.git_creds
+    server_project_name           = var.server_project_name
+    source_provider               = var.source_provider
+    
+    depends_on = [module.codebuild]
+} 
