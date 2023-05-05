@@ -38,7 +38,7 @@ resource "aws_codepipeline" "web_pipeline" {
                 #OAuthToken = local.git_creds.token
                 #PersonalToken = local.git_creds.token
                 Repo = "awspipelinedemo.git"
-                #Branch = "main"
+                Branch = "main"
                 PollForSourceChanges = "true"
       }
 
