@@ -178,11 +178,62 @@ resource "aws_codebuild_project" "server_project" {
   }
 }  # End of server project 
 
+
+data "template_file" "buildspec" {
+  template = "${file("buildspec.yml")}"
+}
+
 # Create Code build Client project
+resource "aws_codebuild_project" "static_web_build" {
+  badge_enabled  = false
+  build_timeout  = 60
+  name           = ${var.server_project_name}
+  queued_timeout = 480
+  service_role   = aws_iam_role.codebuildrole.arn
+  tags = {
+    Environment = var.env
+  }
+
+  artifacts {
+    encryption_disabled    = false
+    name                   = "static-web-build-${var.env}"
+    override_artifact_name = false
+    packaging              = "NONE"
+    type                   = "CODEPIPELINE"
+  }
+
+  environment {
+    compute_type                = "BUILD_GENERAL1_SMALL"
+    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:2.0"
+    image_pull_credentials_type = "CODEBUILD"
+    privileged_mode             = false
+    type                        = "LINUX_CONTAINER"
+  }
+
+  logs_config {
+    cloudwatch_logs {
+      status = "ENABLED"
+    }
+
+    s3_logs {
+      encryption_disabled = false
+      status              = "DISABLED"
+    }
+  }
+
+  source {
+    buildspec           = data.template_file.buildspec.rendered
+    git_clone_depth     = 0
+    insecure_ssl        = false
+    report_build_status = false
+    type                = "CODEPIPELINE"
+  }
+}
+
 
 #.................................................
 # Start codebuild for Server project  
-resource "null_resource" "start_server_build" { 
+/* resource "null_resource" "start_server_build" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
   triggers = {
@@ -203,4 +254,4 @@ EOF
   }    */
 
   depends_on = [aws_codebuild_project.server_project]
-} # end of "null_resource" "start_server_build"
+} # end of "null_resource" "start_server_build" */
