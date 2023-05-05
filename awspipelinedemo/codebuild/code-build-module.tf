@@ -180,7 +180,7 @@ resource "aws_codebuild_project" "server_project" {
 
 
 data "template_file" "buildspec" {
-  template = "${file("buildspec.yml")}"
+  template = "${file("codebuild/buildspec.yml")}"
 }
 
 # Create Code build Client project
