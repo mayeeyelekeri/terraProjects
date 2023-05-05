@@ -123,10 +123,11 @@ resource "aws_codebuild_project" "server_project" {
   service_role  = aws_iam_role.codebuildrole.arn
 
   artifacts {
-    type      = "S3"
-    location  = aws_s3_bucket.codebuildbucket.id
-    #packaging = "ZIP"
-    #name      = "${var.server_project_name}.zip"
+    type      = "CODEPIPELINE"
+    encryption_disabled    = false
+    name                   = "static-web-build-dev"
+    override_artifact_name = false
+    packaging              = "NONE"
   }
 
   cache {
@@ -162,13 +163,11 @@ resource "aws_codebuild_project" "server_project" {
   }
 
   source {
-    type            = "GITHUB"
-    location        = local.git_creds.awspipelinedemo_git_repository
-    git_clone_depth = 1
-
-    git_submodules_config {
-      fetch_submodules = true
-    }
+    buildspec           = data.template_file.buildspec.rendered
+    git_clone_depth     = 0
+    insecure_ssl        = false
+    report_build_status = false
+    type                = "CODEPIPELINE"
   }
 
   source_version = "main"
@@ -182,54 +181,6 @@ resource "aws_codebuild_project" "server_project" {
 data "template_file" "buildspec" {
   template = "${file("codebuild/buildspec.yml")}"
 }
-
-# Create Code build Client project
-resource "aws_codebuild_project" "static_web_build" {
-  badge_enabled  = false
-  build_timeout  = 60
-  name           = var.server_project_name
-  queued_timeout = 480
-  service_role   = aws_iam_role.codebuildrole.arn
-  tags = {
-    Environment = "dev"
-  }
-
-  artifacts {
-    encryption_disabled    = false
-    name                   = "static-web-build-dev"
-    override_artifact_name = false
-    packaging              = "NONE"
-    type                   = "CODEPIPELINE"
-  }
-
-  environment {
-    compute_type                = "BUILD_GENERAL1_SMALL"
-    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:2.0"
-    image_pull_credentials_type = "CODEBUILD"
-    privileged_mode             = false
-    type                        = "LINUX_CONTAINER"
-  }
-
-  logs_config {
-    cloudwatch_logs {
-      status = "ENABLED"
-    }
-
-    s3_logs {
-      encryption_disabled = false
-      status              = "DISABLED"
-    }
-  }
-
-  source {
-    buildspec           = data.template_file.buildspec.rendered
-    git_clone_depth     = 0
-    insecure_ssl        = false
-    report_build_status = false
-    type                = "CODEPIPELINE"
-  }
-}
-
 
 #.................................................
 # Start codebuild for Server project  
