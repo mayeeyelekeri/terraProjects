@@ -20,7 +20,7 @@ resource "aws_codepipeline" "web_pipeline" {
   name     = "web-pipeline"
   #role_arn = data.aws_iam_role.pipeline_role.arn
   tags     = {
-    Environment = var.env
+    Environment = "dev"
   }
 
   artifact_store {
@@ -35,7 +35,7 @@ resource "aws_codepipeline" "web_pipeline" {
       category = "Source"
       configuration = {
         "Branch"               = "main"
-        "Owner"                = var.repository_owner
+        "Owner"                = "mayee007"
         "PollForSourceChanges" = "false"
         "Repo"                 = var.server_project_name
       }
@@ -61,7 +61,7 @@ resource "aws_codepipeline" "web_pipeline" {
             {
               name  = "environment"
               type  = "PLAINTEXT"
-              value = var.env
+              value = "dev"
             },
           ]
         )
