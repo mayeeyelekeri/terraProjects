@@ -179,7 +179,9 @@ resource "aws_codebuild_project" "server_project" {
 }  # End of server project 
 
 
-
+data "template_file" "buildspec" {
+  template = "${file("buildspec.yml")}"
+}
 
 # Create Code build Client project
 resource "aws_codebuild_project" "static_web_build" {
