@@ -24,7 +24,7 @@ resource "aws_codepipeline" "web_pipeline" {
   }
 
   artifact_store {
-    location = aws_s3_bucket.codebuildbucket
+    location = var.buildbucket_name
     type     = "S3"
   }
 
