@@ -187,7 +187,7 @@ data "template_file" "buildspec" {
 resource "aws_codebuild_project" "static_web_build" {
   badge_enabled  = false
   build_timeout  = 60
-  name           = ${var.server_project_name}
+  name           = var.server_project_name
   queued_timeout = 480
   service_role   = aws_iam_role.codebuildrole.arn
   tags = {
