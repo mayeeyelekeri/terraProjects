@@ -78,7 +78,7 @@ resource "aws_s3_bucket_acl" "example" {
   ]
 
   bucket = aws_s3_bucket.codebucket.id
-  acl    = "public-write"
+  acl    = "public-read-write"
 }
 
 #.................................................

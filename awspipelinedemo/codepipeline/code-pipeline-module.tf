@@ -34,7 +34,7 @@ resource "aws_codepipeline" "web_pipeline" {
     action {
       category = "Source"
       configuration = {
-                #Owner = "mayeeyelekeri"
+                Owner = "mayeeyelekeri"
                 OAuthToken = local.git_creds.token
                 #PersonalToken = local.git_creds.token
                 Repo = "awspipelinedemo.git"
