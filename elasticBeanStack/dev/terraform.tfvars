@@ -5,7 +5,7 @@ codebucket = "elasticbeanstack"
 file-name = "springdemo-1.0.0-SNAPSHOT.jar"
 file-path = "ansible_templates/files"
 app-name = "mywebapp"
-webapp-src-location = "/home/vagrant/springdemo/target"
+webapp-src-location = "/home/vagrant/workspace/springdemo/target"
 stack-name = "64bit Amazon Linux 2 v3.4.7 running Corretto 17"
 instance-profile = "myinstanceprofile"
 
