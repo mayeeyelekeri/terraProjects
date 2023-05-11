@@ -10,9 +10,3 @@ variable "alb_server_dns" {}
 
 variable "server_project_name" {} 
 
-variable "branch" {}
-
-variable "repo_owner" {} 
-
-variable "repo_name" {} 
-

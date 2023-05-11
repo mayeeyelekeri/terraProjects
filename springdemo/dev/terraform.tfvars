@@ -53,3 +53,7 @@ server_project_name = "springdemo"
 server_project_description = "server project" 
 source_provider = "github"
 buildbucket_name = "codebuild"
+
+repo_name  = "springdemo"
+repo_owner = "mayeeyelekeri"
+branch     = "main"

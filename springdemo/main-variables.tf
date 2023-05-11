@@ -44,3 +44,6 @@ variable "server_project_description" {}
 variable "source_provider" {}
 variable "buildbucket_name" {}
 variable "zip_file_server" {}
+variable "repo_name" {} 
+variable "repo_owner" {} 
+variable "branch" {}
