@@ -170,7 +170,7 @@ module "codepipeline" {
     
 
     #  from ALB module 
-    #alb_server_dns               = module.alb.alb_server_dns
+    alb_server_dns               = module.alb.alb_server_dns
 
     # Make an explicit dependency on codebuild module 
     depends_on = [module.codedeploy]
