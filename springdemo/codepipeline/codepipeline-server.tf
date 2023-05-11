@@ -1,5 +1,5 @@
 resource "aws_codepipeline" "codepipeline" {
-  name     = car.server_project_name 
+  name     = var.server_project_name 
   role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {
