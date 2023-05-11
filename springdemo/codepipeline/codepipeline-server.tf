@@ -70,5 +70,5 @@ resource "aws_codepipeline" "codepipeline" {
         TemplatePath   = "build_output::sam-templated.yaml"
       }
     } */ 
-  }
+  
 }
