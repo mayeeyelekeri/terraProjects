@@ -29,6 +29,7 @@ Outputs:
  1) arn name  (used in "Listener") 
 -----------------------------------------------------------*/ 
 resource "aws_lb_target_group" "tg_server" {
+  name  = "${terraform.workspace}-tg-server"
   protocol = "HTTP"
 
   # The port where application is running on EC2 

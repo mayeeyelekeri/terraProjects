@@ -21,7 +21,7 @@ resource "aws_codepipeline" "codepipeline" {
       owner            = "ThirdParty"
       provider         = "GitHub"
       version          = "1"
-      output_artifacts = ["source_output"]
+      output_artifacts = ["code"]
 
       configuration = {
         OAuthToken           = var.github_oauth_token

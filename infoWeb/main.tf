@@ -49,7 +49,7 @@ module "codebuild" {
     client_project_description    = var.client_project_description
     source_provider               = var.source_provider
 
-    # from alb 
+    # from alb (this is required to perform client build)
     alb_server_dns                = module.alb.alb_server_dns    
 } 
 
