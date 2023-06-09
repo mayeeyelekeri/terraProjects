@@ -152,5 +152,6 @@ module "codedeploy" {
     #  from ALB module 
     alb_server_dns               = module.alb.alb_server_dns
 
+    depends_on = [autoscale, alb]
 } 
 
