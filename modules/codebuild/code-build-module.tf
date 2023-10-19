@@ -308,5 +308,5 @@ EOF
 echo *********** skipping client build **********  
 EOF
   } */ 
-  depends_on = [aws_codebuild_project.client_project]
+  depends_on = [aws_codebuild_project.client_project, null_resource.start_server_build]
 } # end of "null_resource" "start_client_build"
