@@ -42,9 +42,9 @@ template_name_client = "docker_and_codedeploy_agent_client"
 #  Database properties 
 #......................................
 # All the information coming from AWS Secrets variables
-mysql_creds = "db_creds1"
-git_creds   = "git_creds1"
-state_bucket = "terraprojects1"
+mysql_creds = "db_creds"
+git_creds   = "git_creds"
+state_bucket = "terraprojects"
 
 #......................................
 #  Info-Server properties 	
