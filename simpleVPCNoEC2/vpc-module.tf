@@ -17,6 +17,28 @@ resource "aws_internet_gateway" "igw" {
     Name = "${terraform.workspace}-My IG"
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_vpc.myvpc]
+}
+
+# Create route table and attach IG to it
+resource "aws_route_table" "internet-route" {
+  vpc_id = aws_vpc.myvpc.id
+  route {
+    cidr_block = var.open-cidr
+    gateway_id = aws_internet_gateway.igw.id
+  }
+  tags = {
+    Name = "${terraform.workspace}-Terraform-Public-RouteTable"
+    Environment = "${terraform.workspace}"
+  }
+
+  depends_on = [aws_route_table.internet-route]
+}
+
+# Create an Elastic IP Address for NAT Gateway use
+resource "aws_eip" "my-eip" {
+  domain = "vpc"
 }
 
 # ---------------------------- PUBLIC --------------------------
@@ -32,31 +54,17 @@ resource "aws_subnet" "mysubnet" {
     Name = "${terraform.workspace}-${each.value.cidr} - ${each.value.zone}"
     Environment = "${terraform.workspace}"
   }
-}
 
-# Create route table and attach IG to it
-resource "aws_route_table" "internet-route" {
-  vpc_id = aws_vpc.myvpc.id
-  route {
-    cidr_block = var.open-cidr
-    gateway_id = aws_internet_gateway.igw.id
-  }
-  tags = {
-    Name = "${terraform.workspace}-Terraform-Public-RouteTable"
-    Environment = "${terraform.workspace}"
-  }
 }
 
 # Associate public subnet to route table 
 resource "aws_route_table_association" "public-route-table-association" {
   subnet_id      = aws_subnet.mysubnet["public"].id
   route_table_id = aws_route_table.internet-route.id
+
+  depends_on = [aws_subnet.mysubnet , aws_route_table.internet-route]
 }
 
-# Create and Elastic IP Address fot NAT Gateway use
-resource "aws_eip" "my-eip" {
-  domain = "vpc"
-}
 
 # Create NAT Gateway in public subnet 
 resource "aws_nat_gateway" "nat-gateway" {
@@ -69,7 +77,7 @@ resource "aws_nat_gateway" "nat-gateway" {
 
   # To ensure proper ordering, it is recommended to add an explicit dependency
   # on the Internet Gateway for the VPC.
-  depends_on = [aws_internet_gateway.igw]
+  depends_on = [aws_internet_gateway.igw, aws_subnet.mysubnet, aws_route_table_association.public-route-table-association]
 }
 
 # ---------------------------- PRIVATE --------------------------
@@ -85,7 +93,7 @@ resource "aws_default_route_table" "private-route" {
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_nat_gateway.nat-gateway]
+  depends_on = [aws_nat_gateway.nat-gateway, aws_subnet.mysubnet]
 } 
 
 # Associate private subnet to route table 
@@ -127,6 +135,8 @@ resource "aws_security_group" "public-sg" {
     Name = "${terraform.workspace}-Public-Sec-Group"
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_subnet.mysubnet]
 }
 
 # Private Security Group
@@ -169,4 +179,6 @@ resource "aws_security_group" "private-sg" {
     Name = "${terraform.workspace}-Private-Security-Group"
     Environment = "${terraform.workspace}"
   }
+
+  depends_on = [aws_subnet.mysubnet]
 } 
