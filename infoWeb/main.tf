@@ -37,7 +37,7 @@ module "vpc" {
     *** Build commands are inside buildspec.yml file, in the source code main dir. 
  5) Build Artifacts are copied to S3 bucket 
 -------------------------------------------------------- */ 
-/* module "codebuild" { 
+module "codebuild" { 
     source      = "../modules/codebuild"
 
     state_bucket_name             = var.state_bucket
@@ -51,7 +51,7 @@ module "vpc" {
 
     # from alb (this is required to perform client build)
     alb_server_dns                = module.alb.alb_server_dns    
-} */ 
+} 
 
 /* --------------------------------------------
  Following actions are perfomed in "ALB"" module for both client and server 
@@ -60,7 +60,7 @@ module "vpc" {
  3) Create Listener and attach it to ALB 
 -------------------------------------------------------- */ 
 # Create Application Load Balancer 
-/* module "alb" {
+module "alb" {
     source = "./alb"
 
     # all these information coming VPC module 
@@ -72,7 +72,7 @@ module "vpc" {
 
     # ------ OUTPUTS ------ 
     # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
-}  */ 
+}  
 
 /* --------------------------------------------
  Following actions are perfomed in "autoscaling" module 
@@ -86,7 +86,7 @@ module "vpc" {
     Attach launch configuration
     Attach target group created in ALB module 
 -------------------------------------------------------- */ 
-/* module "autoscale" {
+module "autoscale" {
     source = "./autoscale"
 
     app_name_server       = var.app_name_server
@@ -112,7 +112,7 @@ module "vpc" {
 
     # ------ OUTPUTS ------ 
     #  auto_scale_group_name_client, auto_scale_group_name_server 
-}  */ 
+}  
 
 /* --------------------------------------------
  Following actions are perfomed in "codedeploy" module 
@@ -126,7 +126,7 @@ module "vpc" {
  5) Upload file to bucket 
  6) Initiate deploy 
 -------------------------------------------------------- */ 
-/* module "codedeploy" { 
+module "codedeploy" { 
     source      = "../modules/codedeploy"
 
     codebucket_name               = module.codebuild.codebuild_bucket_id
@@ -153,5 +153,5 @@ module "vpc" {
     alb_server_dns               = module.alb.alb_server_dns
 
     depends_on = [module.autoscale, module.alb, module.codebuild]
-} */
+}
 
