@@ -4,7 +4,7 @@ resource "aws_vpc" "myvpc" {
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
-    Name = "${terraform.workspace}-${var.vpc-cidr}"
+    Name = "${terraform.workspace}-${var.vpc-cidr} - myvpc"
     Environment = "${terraform.workspace}"
   }
 }
@@ -17,7 +17,10 @@ resource "aws_internet_gateway" "igw" {
     Name = "${terraform.workspace}-My IG"
     Environment = "${terraform.workspace}"
   }
-
+  tags = {
+    Name = "${terraform.workspace} - myIG"
+    Environment = "${terraform.workspace}"
+  }
   depends_on = [aws_vpc.myvpc]
 }
 
