@@ -1,0 +1,25 @@
+<html>
+
+<body>
+
+    # Common steps 
+    Create a VPC
+    Create Internet Gateway
+    Create public Route Table and attache IG
+ 
+    # ---------------------------- PUBLIC --------------------------
+    Create Public Subnets 
+    Associate all public subnets to public route table
+    Create NAT Gateway in public subnet
+
+    # ---------------------------- PRIVATE --------------------------
+    Create private route table and attach NAT Gateway to it
+    Associate private subnet to route table
+
+    # ---------------------------- SECURITY GROUPS --------------------------
+    Create Security Group for allowing TCP/80 & TCP/22
+    Create Private Security Group to allow traffic from Public subnet
+
+
+</body>
+</html>
