@@ -51,7 +51,7 @@ resource "aws_subnet" "mysubnet" {
   map_public_ip_on_launch = "true"
 
   tags = {
-    Name = "${terraform.workspace}-${each.value.cidr} - ${each.value.zone}"
+    Name = "${terraform.workspace}-${each.value.cidr} - ${each.value.zone} - ${each.key}"
     Environment = "${terraform.workspace}"
   }
 
