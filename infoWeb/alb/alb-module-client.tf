@@ -7,6 +7,7 @@
  2) dns_name is exported outside the module 
 ----------------------------------------------------------- */ 
 resource "aws_lb" "alb_client" {
+  name               = "ALB_Private"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.public_sg_id]

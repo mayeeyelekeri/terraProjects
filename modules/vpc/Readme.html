@@ -3,24 +3,25 @@
 <body>
 
 
+    # --------------- Module VPC ------------------------
     Input Parameters:
-        vpc_cidr (ex: "10.0.0.0/24" )
-        open_cidr (ex: 0.0.0.0/0")
-        var.public_subnet_map  (ex: { "subnet1" =  { cidr = "10.0.0.0/26", zone = "us-east-1a"},
-                                      "subnet2" =  { cidr = "10.0.0.64/26",zone = "us-east-1b"} })
-        var.private_subnet_map  (ex: { "subnet1" =  { cidr = "10.0.0.128/26", zone = "us-east-1a"},
-                                       "subnet2" =  { cidr = "10.0.0.192/26",zone = "us-east-1b"} }
+    vpc_cidr (ex: "10.0.0.0/24" )
+    open_cidr (ex: 0.0.0.0/0")
+    var.public_subnet_map  (ex: { "subnet1" =  { cidr = "10.0.0.0/26", zone = "us-east-1a"},
+    "subnet2" =  { cidr = "10.0.0.64/26",zone = "us-east-1b"} })
+    var.private_subnet_map  (ex: { "subnet1" =  { cidr = "10.0.0.128/26", zone = "us-east-1a"},
+    "subnet2" =  { cidr = "10.0.0.192/26",zone = "us-east-1b"} }
 
-    Output Parameters: 
-        vpc_id
-        vpc_name 
-        public_subnets 
-        private_subnets
-        private_sg_id 
-        public_sg_id 
-        nat_gateway_id 
+    Output Parameters:
+    vpc_id
+    vpc_name
+    public_subnets
+    private_subnets
+    private_sg_id
+    public_sg_id
+    nat_gateway_id
 
-    # Code is structured across 3 files - vpc-module.tf, nat.tf, vpc-groups.tf 
+    # Code is structured across 3 files - vpc-module.tf, nat.tf, vpc-groups.tf
 
     # Common steps
     Create a VPC
@@ -42,6 +43,20 @@
     Create Security Group for allowing TCP/80 & TCP/22
     Create Private Security Group to allow traffic from Public subnet
 
+    # ------------------ Module Codebuild --------------------------
+    Following actions are perfomed in "codebuild" module
+    1) New service Role for codebuild
+    2) New S3 bucket to copy artifacts
+    3) Create codebuild projects (both client and server )
+    4) Initiate Builds (first server and then client)
+    *** Build commands are inside buildspec.yml file, in the source code main dir.
+    5) Build Artifacts are copied to S3 bucket
+
+    # ------------------ Module ALB --------------------------
+    Following actions are perfomed in "ALB"" module for both client and server
+    1) Create Load balancer target group
+    2) Create Application Load Balancer
+    3) Create Listener and attach it to ALB
 
 </body>
 </html>
