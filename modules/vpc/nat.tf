@@ -34,7 +34,7 @@ resource "aws_default_route_table" "private_route" {
   depends_on = [aws_nat_gateway.nat_gateway, aws_subnet.private]
 } 
 
-# Associate private subnet to route table 
+# Associate private subnets to route table 
 resource "aws_route_table_association" "private_route_table_association" {
   for_each       = aws_subnet.private
 

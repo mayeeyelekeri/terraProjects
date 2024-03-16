@@ -2,17 +2,39 @@
 
 <body>
 
-    # Common steps 
+
+    Input Parameters:
+        vpc_cidr (ex: "10.0.0.0/24" )
+        open_cidr (ex: 0.0.0.0/0")
+        var.public_subnet_map  (ex: { "subnet1" =  { cidr = "10.0.0.0/26", zone = "us-east-1a"},
+                                      "subnet2" =  { cidr = "10.0.0.64/26",zone = "us-east-1b"} })
+        var.private_subnet_map  (ex: { "subnet1" =  { cidr = "10.0.0.128/26", zone = "us-east-1a"},
+                                       "subnet2" =  { cidr = "10.0.0.192/26",zone = "us-east-1b"} }
+
+    Output Parameters: 
+        vpc_id
+        vpc_name 
+        public_subnets 
+        private_subnets
+        private_sg_id 
+        public_sg_id 
+        nat_gateway_id 
+
+    # Code is structured across 3 files - vpc-module.tf, nat.tf, vpc-groups.tf 
+
+    # Common steps
     Create a VPC
     Create Internet Gateway
-    Create public Route Table and attache IG
- 
+    Create Route Table and attache IG
+    Create an Elastic IP Address for NAT Gateway use
+
     # ---------------------------- PUBLIC --------------------------
-    Create Public Subnets 
-    Associate all public subnets to public route table
+    Create Public Subnets
+    Associate public subnet to route table
     Create NAT Gateway in public subnet
 
     # ---------------------------- PRIVATE --------------------------
+    Create Private Subnets
     Create private route table and attach NAT Gateway to it
     Associate private subnet to route table
 
