@@ -7,7 +7,7 @@
  2) dns_name is exported outside the module 
 ----------------------------------------------------------- */ 
 resource "aws_lb" "alb_server" {
-  name               = "ALB_Public"
+  name               = "ALB-Public"
   internal           = false
   load_balancer_type = "application"
 
