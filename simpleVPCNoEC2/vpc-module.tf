@@ -14,11 +14,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.myvpc.id
 
   tags = { 
-    Name = "${terraform.workspace}-My IG"
-    Environment = "${terraform.workspace}"
-  }
-  tags = {
-    Name = "${terraform.workspace} - myIG"
+    Name = "${terraform.workspace} - My IG"
     Environment = "${terraform.workspace}"
   }
   depends_on = [aws_vpc.myvpc]
