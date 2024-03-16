@@ -7,6 +7,7 @@ variable "public_subnet_map" {}
 variable "private_subnet_map" {}
 variable "state_bucket" {} 
 
+/* 
 # ALB related 
 #variable "app_health_check_path" {} 
 
@@ -62,4 +63,4 @@ variable "server_project_description" {}
 variable "client_project_name" {} 
 variable "client_project_description" {} 
 variable "source_provider" {}
-variable "buildbucket_name" {}
+variable "buildbucket_name" {} */
