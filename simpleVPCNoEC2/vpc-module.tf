@@ -55,7 +55,7 @@ resource "aws_route_table_association" "public-route-table-association" {
 
 # Create and Elastic IP Address fot NAT Gateway use
 resource "aws_eip" "my-eip" {
-  domain = vpc 
+  domain = "vpc"
 }
 
 # Create NAT Gateway in public subnet 
