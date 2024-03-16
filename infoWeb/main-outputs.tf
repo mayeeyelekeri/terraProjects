@@ -45,7 +45,7 @@ output "alb_server_dns" {
 output "alb_client_dns" { 
 	value = module.alb.alb_client_dns
 }
-*/ 
+ 
 /*# ----------- Autoscaling --------------------
 output "autoscale-auto_scale_group_name_server" { 
 	value = module.autoscale.auto_scale_group_name_server
