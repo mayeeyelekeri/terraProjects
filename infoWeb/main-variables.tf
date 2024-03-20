@@ -20,6 +20,7 @@ variable "instance_type" {}
 variable "instance_profile_name" {}
 variable "autoscale_min" {} 
 variable "autoscale_max" {}
+variable "autoscale_desired" {}
 variable "app_health_check_path" {}
 variable "template_name_server" {}
 variable "template_name_client" {}
