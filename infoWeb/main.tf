@@ -97,6 +97,7 @@ module "autoscale" {
     instance_profile_name = var.instance_profile_name
     autoscale_min         = var.autoscale_min 
     autoscale_max         = var.autoscale_max 
+    autoscale_desired     = var.autoscale_desired
     template_name_server  = var.template_name_server
     template_name_client  = var.template_name_client
 

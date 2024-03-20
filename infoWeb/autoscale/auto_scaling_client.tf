@@ -48,6 +48,7 @@ resource "aws_autoscaling_group" "auto_scale_group_client" {
   health_check_type    = "EC2" 
   min_size             = var.autoscale_min
   max_size             = var.autoscale_max
+  desired_capacity     = var.autoscale_desired
 
   tag {
     key                 = "Name"
