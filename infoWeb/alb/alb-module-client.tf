@@ -7,7 +7,7 @@
  2) dns_name is exported outside the module 
 ----------------------------------------------------------- */ 
 resource "aws_lb" "alb_client" {
-  name               = "ALB-Private"
+  name               = "ALB-Public"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.public_sg_id]
@@ -15,7 +15,7 @@ resource "aws_lb" "alb_client" {
   enable_deletion_protection = false
 
   tags = {
-    Name = "${terraform.workspace}-alb-client"
+    Name = "${terraform.workspace}-alb-client-Public"
     Environment = "${terraform.workspace}"
   }
 }
@@ -23,8 +23,8 @@ resource "aws_lb" "alb_client" {
 /* ------------- Create ALB Target Group -------------------
 Inputs: 
  1) VPC ID from VPC module 
-  2) Port where application is running 
-  3) Path for health check 
+ 2) Port where application is running 
+ 3) Path for health check 
 Outputs: 
  1) arn name  (used in "Listener") 
 -----------------------------------------------------------*/ 

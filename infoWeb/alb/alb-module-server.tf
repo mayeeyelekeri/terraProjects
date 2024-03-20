@@ -1,13 +1,13 @@
 /* -------- Create application load balancer (server)-------------
  Inputs: 
  1) security group from VPC module 
- 2) Public subnet IDs from VPC module 
+ 2) Private subnet IDs from VPC module 
  Outputs: 
  1) arn name  (used in "Listener") 
  2) dns_name is exported outside the module 
 ----------------------------------------------------------- */ 
 resource "aws_lb" "alb_server" {
-  name               = "ALB-Public"
+  name               = "ALB-Private"
   internal           = false
   load_balancer_type = "application"
 
@@ -16,7 +16,7 @@ resource "aws_lb" "alb_server" {
   enable_deletion_protection = false
 
   tags = {
-    Name = "${terraform.workspace}-alb-server-public"
+    Name = "${terraform.workspace}-alb-server-Private"
     Environment = "${terraform.workspace}"
   }
 }
