@@ -37,7 +37,7 @@ module "vpc" {
     *** Build commands are inside buildspec.yml file, in the source code main dir. 
  5) Build Artifacts are copied to S3 bucket 
 -------------------------------------------------------- */ 
-module "codebuild" { 
+/* module "codebuild" { 
     source      = "./codebuild"
 
     state_bucket_name             = var.state_bucket
@@ -49,7 +49,7 @@ module "codebuild" {
 
     # from alb (this is required to perform client build)
     alb_server_dns                = module.alb.alb_server_dns    
-} 
+}  */ 
 
 /* --------------------------------------------
  Following actions are perfomed in "ALB"" module for both client and server 

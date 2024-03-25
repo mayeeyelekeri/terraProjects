@@ -8,6 +8,7 @@ variable "private_subnet_map" {}
 variable "state_bucket" {} 
 
 
+/* 
 # ALB related 
 #variable "app_health_check_path" {} 
 
@@ -48,4 +49,4 @@ variable "git_creds" {}
 variable "project_name" {} 
 variable "project_description" {} 
 variable "source_provider" {}
-variable "buildbucket_name" {} 
+variable "buildbucket_name" {} */  

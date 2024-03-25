@@ -23,6 +23,7 @@ private_subnet_map = {
 						   }
 			     } # end of subnet_map private 
 
+				 /* 
 #......................................
 # EC2 Related variables 
 #......................................
@@ -66,4 +67,4 @@ codebucket_name = "codedeploy"
 project_name = "springboot"
 project_description = "springboot project" 
 source_provider = "github"
-buildbucket_name = "codebuild"
+buildbucket_name = "codebuild" */ 
