@@ -2,7 +2,7 @@
 /* --------------------------------------------
  Following actions are perfomed in "VPC" module
  1) Create VPC  
- 2) Crete Internet gateway and attach it to VPC  
+ 2) Create Internet gateway and attach it to VPC  
  3) Create Public subnets (by default its private)
  4) Create Route table and attach IG to it 
  5) Associate all public subnets to Route table 
@@ -14,14 +14,15 @@
  11) Attach NAT gateway to all private route  
 -------------------------------------------------------- */ 
 module "vpc" {
-    source = "./vpc"
+    source = "../modules/vpc"
     
     # Pass all the variable values to the vpc module 
     aws_region         = var.aws_region
     open_cidr          = var.open_cidr 
     vpc_cidr           = var.vpc_cidr 
     public_subnet_map  = var.public_subnet_map
-    
+    private_subnet_map = var.private_subnet_map
+
     # ----- OUTPUTS ------ 
     # vpc_id,vpc_name, public_subnets, private_subnets, public_sg_id, private_sg_id, nat_gateway_id
 }
@@ -31,8 +32,8 @@ module "vpc" {
  Following actions are perfomed in "codebuild" module 
  1) New service Role for codebuild
  2) New S3 bucket to copy artifacts 
- 3) Create codebuild projects (both client and server )
- 4) Initiate Builds (first server and then client)
+ 3) Create codebuild projects 
+ 4) Initiate Builds 
     *** Build commands are inside buildspec.yml file, in the source code main dir. 
  5) Build Artifacts are copied to S3 bucket 
 -------------------------------------------------------- */ 
@@ -42,14 +43,12 @@ module "codebuild" {
     state_bucket_name             = var.state_bucket
     buildbucket_name              = var.buildbucket_name
     git_creds                     = var.git_creds
-    server_project_name           = var.server_project_name
-    server_project_description    = var.server_project_description
+    project_name                  = var.project_name
+    project_description           = var.project_description
     source_provider               = var.source_provider
-    
-    # from alb 
-    alb_server_dns                = module.alb.alb_server_dns 
-    
-    depends_on = [module.vpc]
+
+    # from alb (this is required to perform client build)
+    alb_server_dns                = module.alb.alb_server_dns    
 } 
 
 /* --------------------------------------------
@@ -59,19 +58,19 @@ module "codebuild" {
  3) Create Listener and attach it to ALB 
 -------------------------------------------------------- */ 
 # Create Application Load Balancer 
-module "alb" {
+/* module "alb" {
     source = "./alb"
 
     # all these information coming VPC module 
     vpc_id                = module.vpc.vpc_id
     public_sg_id          = module.vpc.public_sg_id
     public_subnets        = module.vpc.public_subnets
+    application_port      = var.info_client_port
     app_health_check_path = var.app_health_check_path
-    application_port      = "8080"
 
     # ------ OUTPUTS ------ 
     # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
-}   
+}  */
 
 /* --------------------------------------------
  Following actions are perfomed in "autoscaling" module 
@@ -85,29 +84,35 @@ module "alb" {
     Attach launch configuration
     Attach target group created in ALB module 
 -------------------------------------------------------- */ 
-module "autoscale" {
+/*module "autoscale" {
     source = "./autoscale"
 
     app_name_server       = var.app_name_server
+    app_name_client       = var.app_name_client 
     key_name              = var.key_name 
     ami_id                = var.ami_id 
     instance_type         = var.instance_type 
     instance_profile_name = var.instance_profile_name
     autoscale_min         = var.autoscale_min 
     autoscale_max         = var.autoscale_max 
+    autoscale_desired     = var.autoscale_desired
     template_name_server  = var.template_name_server
+    template_name_client  = var.template_name_client
 
     # from VPC module 
     public_sg_id          = module.vpc.public_sg_id
     public_subnets        = module.vpc.public_subnets
+    private_sg_id         = module.vpc.public_sg_id
+    private_subnets       = module.vpc.private_subnets
     
     # from ALB module 
     alb_tg_server_arn     = module.alb.alb_tg_server_arn 
+    alb_tg_client_arn     = module.alb.alb_tg_client_arn     
 
     # ------ OUTPUTS ------ 
     #  auto_scale_group_name_client, auto_scale_group_name_server 
 }  
-
+*/ 
 /* --------------------------------------------
  Following actions are perfomed in "codedeploy" module 
  1) New codedeploy bucket (random postfix)
@@ -120,14 +125,21 @@ module "autoscale" {
  5) Upload file to bucket 
  6) Initiate deploy 
 -------------------------------------------------------- */ 
-module "codedeploy" { 
-    source      = "./codedeploy"
+/* module "codedeploy" { 
+    source      = "../modules/codedeploy"
 
     codebucket_name               = module.codebuild.codebuild_bucket_id
     app_name_server               = var.app_name_server 
+    app_name_client               = var.app_name_client 
+    zip_file_server               = var.zip_file_server
+    zip_file_client               = var.zip_file_client
+    webapp_src_location_server    = var.webapp_src_location_server
+    webapp_src_location_client    = var.webapp_src_location_client
     server_project_name           = var.server_project_name 
-    zip_file_server               = var.zip_file_server 
+    client_project_name           = var.client_project_name 
+
     # from autoscaling module 
+    auto_scale_group_name_client  = module.autoscale.auto_scale_group_name_client
     auto_scale_group_name_server  = module.autoscale.auto_scale_group_name_server 
     
     # Not sure it works 
@@ -139,41 +151,6 @@ module "codedeploy" {
     #  from ALB module 
     alb_server_dns               = module.alb.alb_server_dns
 
-    # Make an explicit dependency on codebuild module 
-    depends_on = [module.codebuild]
-} 
-
-/* --------------------------------------------
- Following actions are perfomed in "codedeploy" module 
- 1) New codedeploy bucket (random postfix)
- 2) Instance profile for codedeploy 
-
- **** Below tasks are performed for both client and server 
-
- 3) Create codedeploy application 
- 4) Create codedeploy deployment group 
- 5) Upload file to bucket 
- 6) Initiate deploy 
--------------------------------------------------------- */ 
-module "codepipeline" { 
-    source      = "./codepipeline"
-
-    codebucket_name               = module.codebuild.codebuild_bucket_id
-    app_name_server               = var.app_name_server 
-    server_project_name           = var.server_project_name 
-    zip_file_server               = var.zip_file_server 
-    # from autoscaling module 
-    auto_scale_group_name_server  = module.autoscale.auto_scale_group_name_server 
-    repo_owner                    = var.repo_owner 
-    repo_name                     = var.repo_name 
-    branch                        = var.branch 
-    
-
-    #  from ALB module 
-    alb_server_dns               = module.alb.alb_server_dns
-
-    # Make an explicit dependency on codebuild module 
-    depends_on = [module.codedeploy]
-} 
-
+    depends_on = [module.autoscale, module.alb, module.codebuild]
+} */
 

@@ -23,37 +23,47 @@ private_subnet_map = {
 						   }
 			     } # end of subnet_map private 
 
-git_creds   = "git_creds"
-state_bucket = "terraprojects1"
-
 #......................................
 # EC2 Related variables 
 #......................................
 ami_id = "ami-09d3b3274b6c5d4aa"
 instance_type = "t2.micro"
-key_name = "springdemo"
-app_name_server = "springdemo"
+key_name = "info"
+app_name = "springdemo"
 instance_profile_name =  "myinstanceprofile"
-autoscale_min = 2
-autoscale_max = 3
+autoscale_min = 1
+autoscale_max = 1
+autoscale_desired = 1
 app_health_check_path = "/"
 template_name_server = "docker_and_codedeploy_agent_server"
 
 #......................................
+#  Database properties 
+#......................................
+# All the information coming from AWS Secrets variables
+git_creds   = "git_creds"
+state_bucket = "terraprojects"
+
+#......................................
 #  Info-Server properties 	
 #......................................
-zip_file_server = "springdemo.zip"
+# war_file = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
+docker_file = "docker/Dockerfile"
+src_properties_file_server = "files/application-aws.properties.j2"
+# dest_properties_file_server = "/home/vagrant/SpringDataTest/src/main/resources/application-aws.properties"
+#springboot_workspace = "/home/vagrant/SpringDataTest"
+jar_file_server = "SpringDataTest-0.0.1-SNAPSHOT.jar"
+# webapp_src_location_server = "/home/vagrant/SpringDataTest/codedeploy"
+zip_file_server = "springboot.zip"
 
+war_file = "springboot-0.0.1-SNAPSHOT.jar"
+springboot_port = "8080"
 codebucket_name = "codedeploy"
 
 #......................................
 # codebuild properties  
 #......................................
-server_project_name = "springdemo"
-server_project_description = "server project" 
+server_project_name = "springboot"
+server_project_description = "springboot project" 
 source_provider = "github"
 buildbucket_name = "codebuild"
-
-repo_name  = "springdemo"
-repo_owner = "mayeeyelekeri"
-branch     = "main"

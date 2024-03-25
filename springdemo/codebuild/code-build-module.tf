@@ -136,7 +136,7 @@ resource "aws_codebuild_project" "server_project" {
 
   environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
-    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:4.0"
+    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:3.0"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
     privileged_mode             = true
@@ -163,7 +163,7 @@ resource "aws_codebuild_project" "server_project" {
 
   source {
     type            = "GITHUB"
-    location        = local.git_creds.springdemo_git_repository
+    location        = local.git_creds.server_git_repository
     git_clone_depth = 1
 
     git_submodules_config {
@@ -179,6 +179,87 @@ resource "aws_codebuild_project" "server_project" {
 }  # End of server project 
 
 # Create Code build Client project
+resource "aws_codebuild_project" "client_project" {
+  name          = var.client_project_name
+  description   = var.client_project_description
+  build_timeout = "5"
+  service_role  = aws_iam_role.codebuildrole.arn
+
+  artifacts {
+    type      = "S3"
+    location  = aws_s3_bucket.codebuildbucket.id
+    #packaging = "ZIP"
+    #name      = "${var.client_project_name}.zip"
+  }
+
+  cache {
+    type     = "S3"
+    location = aws_s3_bucket.codebuildbucket.id
+  }
+
+  environment {
+    compute_type                = "BUILD_GENERAL1_SMALL"
+    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:3.0"
+    type                        = "LINUX_CONTAINER"
+    image_pull_credentials_type = "CODEBUILD"
+    privileged_mode             = true
+
+    environment_variable {
+      name  = "BUCKET_NAME"
+      value = aws_s3_bucket.codebuildbucket.id
+    }
+
+    environment_variable { 
+      name  = "ALB_SERVER_DNS"
+      value = var.alb_server_dns
+    }
+  }
+
+  logs_config {
+    cloudwatch_logs {
+      status      = "ENABLED"
+      group_name  = "log-group"
+      stream_name = "log-stream"
+    } 
+
+    s3_logs {
+      status   = "ENABLED"
+      location = "${aws_s3_bucket.codebuildbucket.id}/logs/client"
+    } 
+  }
+
+  source {
+    type            = "GITHUB"
+    location        = local.git_creds.client_git_repository
+    git_clone_depth = 1
+
+    git_submodules_config {
+      fetch_submodules = true
+    }
+  }
+
+  source_version = "main"
+
+  tags = {
+    Environment = "dev"
+  }
+} 
+
+/*resource "aws_codebuild_webhook" "example" {
+  project_name = aws_codebuild_project.client_project.name
+  build_type   = "BUILD"
+  filter_group {
+    filter {
+      type    = "EVENT"
+      pattern = "PUSH"
+    }
+
+    filter {
+      type    = "BASE_REF"
+      pattern = "master"
+    }
+  }
+} */
 
 #.................................................
 # Start codebuild for Server project  
@@ -191,7 +272,7 @@ resource "null_resource" "start_server_build" {
    
   provisioner "local-exec" {
     command = <<EOF
-./codebuild/start-codebuild-project.sh ${var.server_project_name}
+../modules/codebuild/start-codebuild-project.sh ${var.server_project_name}
 EOF
   } # End of provisioner
   /*
@@ -204,3 +285,28 @@ EOF
 
   depends_on = [aws_codebuild_project.server_project]
 } # end of "null_resource" "start_server_build"
+
+
+#.................................................
+# Start codebuild for Client project  
+resource "null_resource" "start_client_build" { 
+
+  # This timestamps makes this resource to run all time, even if there is no change
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+  
+  provisioner "local-exec" {
+    command = <<EOF
+../modules/codebuild/start-codebuild-project.sh ${var.client_project_name}
+EOF
+  } # End of provisioner
+  /*
+  # ********************* comments ************* 
+  provisioner "local-exec" {
+    command = <<EOF
+echo *********** skipping client build **********  
+EOF
+  } */ 
+  depends_on = [aws_codebuild_project.client_project, null_resource.start_server_build]
+} # end of "null_resource" "start_client_build"
