@@ -12,7 +12,6 @@ variable "state_bucket" {}
 #variable "app_health_check_path" {} 
 
 # Autoscaling 
-/* 
 variable "app_name" {}
 variable "key_name" {}
 variable "ami_id" {}
@@ -22,43 +21,27 @@ variable "autoscale_min" {}
 variable "autoscale_max" {}
 variable "autoscale_desired" {}
 variable "app_health_check_path" {}
-variable "template_name_server" {}
-variable "template_name_client" {}
+variable "template_name" {}
 
 
 # Code Deploy 
 variable "codebucket_name" {}
-#variable "app_name_server" {}
-#variable "app_name_client" {}
-variable "zip_file_server" {}
-variable "zip_file_client" {}
-variable "webapp_src_location_server" {}
-variable "webapp_src_location_client" {}
-#variable "auto_scale_group_name_server" {}
-#variable "auto_scale_group_name_client" {} */ 
+variable "zip_file" {}
+variable "webapp_src_location" {}
+variable "auto_scale_group_name" {}
 
 # Build 
-variable "war_file_server" {}
-#variable "app_name_server" {}
-#variable "zip_file_server" {}
-variable "docker_file_server" {}
-variable "dest_properties_file_server" {}
-variable "jar_file_server" {}
+variable "war_file" {}
+#variable "app_name" {}
+#variable "zip_file" {}
+variable "docker_file" {}
+variable "jar_file" {}
 variable "info_server_workspace" {} 
 
-/* 
-variable "war_file_client" {}
-#variable "app_name_client" {}
-#variable "zip_file_client" {}
-variable "docker_file_client" {}
-variable "dest_properties_file_client" {}
-variable "jar_file_client" {}
-variable "info_client_workspace" {} 
-variable "src_properties_file_client" {}
-variable "src_properties_file_server" {}
-variable "mysql_creds" {}
-variable "info_client_port" {} 
-*/ 
+variable "dest_properties_file" {}
+variable "springboot_workspace" {} 
+variable "src_properties_file" {}
+variable "springboot_port" {} 
 
 # Codebuild 
 variable "git_creds" {}

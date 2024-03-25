@@ -35,7 +35,7 @@ autoscale_min = 1
 autoscale_max = 1
 autoscale_desired = 1
 app_health_check_path = "/"
-template_name_server = "docker_and_codedeploy_agent_server"
+template_name = "docker_and_codedeploy_agent_server"
 
 #......................................
 #  Database properties 
@@ -49,21 +49,21 @@ state_bucket = "terraprojects"
 #......................................
 # war_file = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
 docker_file = "docker/Dockerfile"
-src_properties_file_server = "files/application-aws.properties.j2"
-# dest_properties_file_server = "/home/vagrant/SpringDataTest/src/main/resources/application-aws.properties"
-#springboot_workspace = "/home/vagrant/SpringDataTest"
-jar_file_server = "SpringDataTest-0.0.1-SNAPSHOT.jar"
+src_properties_file = "files/application-aws.properties.j2"
+dest_properties_file = "/home/vagrant/SpringDataTest/src/main/resources/application-aws.properties"
+app_workspace = "/home/vagrant/SpringDataTest"
+jar_file = "SpringDataTest-0.0.1-SNAPSHOT.jar"
 # webapp_src_location_server = "/home/vagrant/SpringDataTest/codedeploy"
-zip_file_server = "springboot.zip"
+zip_file = "springboot.zip"
 
 war_file = "springboot-0.0.1-SNAPSHOT.jar"
-springboot_port = "8080"
+application_port = "8080"
 codebucket_name = "codedeploy"
 
 #......................................
 # codebuild properties  
 #......................................
-server_project_name = "springboot"
-server_project_description = "springboot project" 
+project_name = "springboot"
+project_description = "springboot project" 
 source_provider = "github"
 buildbucket_name = "codebuild"
