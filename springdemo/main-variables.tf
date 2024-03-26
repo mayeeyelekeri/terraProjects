@@ -32,7 +32,6 @@ variable "template_name" {}
 
 
 # Code Deploy 
-variable "codebucket_name" {}
 variable "zip_file" {}
 
 /* 
