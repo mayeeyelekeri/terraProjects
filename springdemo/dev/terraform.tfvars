@@ -1,6 +1,6 @@
 # project_name = "springdemo"
 aws_region = "us-east-1"
-state_bucket = "terraprojects"
+state_bucket = "terraprojects2"
 
 #......................................
 # VPC Related variables 
