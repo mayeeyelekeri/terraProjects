@@ -63,7 +63,7 @@ module "alb" {
     public_sg_id          = module.vpc.public_sg_id
     public_subnets        = module.vpc.public_subnets
 
-    application_port      = var.info_client_port
+    application_port      = var.application_port
     app_health_check_path = var.app_health_check_path
 
     # ------ OUTPUTS ------ 
