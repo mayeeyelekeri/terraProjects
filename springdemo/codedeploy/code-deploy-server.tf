@@ -12,7 +12,7 @@ resource "aws_codedeploy_deployment_group" "mydeploygroup" {
   app_name              = aws_codedeploy_app.myapp.name
   deployment_group_name = "${var.app_name}-deploygroup"
   service_role_arn      = aws_iam_role.my_code_deploy_role.arn
-  autoscaling_groups    = [var.auto_scale_group_name ]
+  autoscaling_groups    = [var.autoscaling_group_name ]
 
   tags = {
     Name = "${terraform.workspace}-deploygroup"

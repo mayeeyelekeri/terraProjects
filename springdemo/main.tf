@@ -130,7 +130,7 @@ module "codedeploy" {
     alb_dns                       = module.alb.alb_dns
 
     # from autoscaling module 
-    auto_scale_group_name         = module.autoscale.auto_scale_group_name
+    autoscaling_group_name         = module.autoscale.autoscaling_group_name
     
     # from codebuild module 
     codebucket_name               = module.codebuild.codebuild_bucket_id
