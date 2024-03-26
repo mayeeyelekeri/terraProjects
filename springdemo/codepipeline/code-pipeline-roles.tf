@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "pipelinebucket" {
   bucket = "${var.pipeline_bucket}-${random_integer.pipeline-random.result}"
   
   tags = {
-    Name        = ${var.pipeline_bucket}
+    Name        = "${var.pipeline_bucket}"
     Environment = "dev"
   }
 }
