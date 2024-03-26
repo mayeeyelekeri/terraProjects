@@ -53,15 +53,12 @@ autoscale_max = 1
 autoscale_desired = 1
 template_name = "docker_and_codedeploy_agent"
 
-/* 
 #......................................
-#  Database properties 
+#  CodeDeploy properties 	
 #......................................
-# All the information coming from AWS Secrets variables
+zip_file = "springdemo2.zip"
 
-#......................................
-#  Info-Server properties 	
-#......................................
+/* 
 # war_file = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
 docker_file = "docker/Dockerfile"
 src_properties_file = "files/application-aws.properties.j2"
@@ -69,9 +66,9 @@ dest_properties_file = "/home/vagrant/SpringDataTest/src/main/resources/applicat
 app_workspace = "/home/vagrant/SpringDataTest"
 jar_file = "SpringDataTest-0.0.1-SNAPSHOT.jar"
 # webapp_src_location_server = "/home/vagrant/SpringDataTest/codedeploy"
-zip_file = "springdemo.zip"
+
 
 war_file = "springdemo-0.0.1-SNAPSHOT.jar"
 
 codebucket_name = "codedeploy"
-*/
+*/ 

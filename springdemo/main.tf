@@ -120,32 +120,19 @@ module "autoscale" {
  5) Upload file to bucket 
  6) Initiate deploy 
 -------------------------------------------------------- */ 
-/* module "codedeploy" { 
-    source      = "../modules/codedeploy"
+module "codedeploy" { 
+    source      = "./codedeploy"
 
     codebucket_name               = module.codebuild.codebuild_bucket_id
-    app_name_server               = var.app_name_server 
-    app_name_client               = var.app_name_client 
-    zip_file_server               = var.zip_file_server
-    zip_file_client               = var.zip_file_client
-    webapp_src_location_server    = var.webapp_src_location_server
-    webapp_src_location_client    = var.webapp_src_location_client
-    server_project_name           = var.server_project_name 
-    client_project_name           = var.client_project_name 
-
-    # from autoscaling module 
-    auto_scale_group_name_client  = module.autoscale.auto_scale_group_name_client
-    auto_scale_group_name_server  = module.autoscale.auto_scale_group_name_server 
+    app_name                      = var.app_name 
+    zip_file                      = var.zip_file
     
-    # Not sure it works 
-    # These variables are not being used in the module, created to make a dependency on "alb" and "build" module 
-    # Because, deploy to client is happening before the "mvm package", so its picking up old client.jar file 
-    # alb_server_dns                = module.alb.alb_server_dns
-    # create_client_package_id      = module.build.create_client_package_id
+    # from autoscaling module 
+    auto_scale_group_name         = module.autoscale.auto_scale_group_name
             
     #  from ALB module 
-    alb_server_dns               = module.alb.alb_server_dns
+    alb_dns                       = module.alb.alb_dns
 
     depends_on = [module.autoscale, module.alb, module.codebuild]
-} */
+} 
 
