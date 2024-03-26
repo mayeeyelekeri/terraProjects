@@ -186,13 +186,7 @@ resource "null_resource" "start_build" {
 ./codebuild/start-codebuild-project.sh ${var.project_name}
 EOF
   } # End of provisioner
-  /*
-  # ************* commented ********* 
-  provisioner "local-exec" {
-    command = <<EOF
-echo *********** skipping server build **********  
-EOF
-  }    */
+
 
   depends_on = [aws_codebuild_project.project]
 } # end of "null_resource" "start_build"
