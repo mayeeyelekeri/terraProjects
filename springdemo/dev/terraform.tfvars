@@ -1,4 +1,4 @@
-# project_name = "springdemo"
+
 aws_region = "us-east-1"
 state_bucket = "terraprojects2"
 
@@ -27,7 +27,7 @@ private_subnet_map = {
 #......................................
 # codebuild properties  
 #......................................
-project_name = "springdemo2"
+# project_name = "springdemo2"  
 project_description = "springdemo2 project" 
 source_provider = "github"
 buildbucket_name = "codebuild"  
@@ -57,18 +57,3 @@ template_name = "docker_and_codedeploy_agent"
 #  CodeDeploy properties 	
 #......................................
 zip_file = "springdemo2.zip"
-
-/* 
-# war_file = "/home/vagrant/SpringDataTest/target/SpringDataTest-0.0.1-SNAPSHOT.jar"
-docker_file = "docker/Dockerfile"
-src_properties_file = "files/application-aws.properties.j2"
-dest_properties_file = "/home/vagrant/SpringDataTest/src/main/resources/application-aws.properties"
-app_workspace = "/home/vagrant/SpringDataTest"
-jar_file = "SpringDataTest-0.0.1-SNAPSHOT.jar"
-# webapp_src_location_server = "/home/vagrant/SpringDataTest/codedeploy"
-
-
-war_file = "springdemo-0.0.1-SNAPSHOT.jar"
-
-codebucket_name = "codedeploy"
-*/ 

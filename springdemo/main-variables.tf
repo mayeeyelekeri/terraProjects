@@ -9,7 +9,7 @@ variable "state_bucket" {}
 
 # Codebuild 
 variable "git_creds" {}
-variable "project_name" {} 
+#variable "project_name" {} 
 variable "project_description" {} 
 variable "source_provider" {}
 variable "buildbucket_name" {}   
@@ -33,18 +33,3 @@ variable "template_name" {}
 
 # Code Deploy 
 variable "zip_file" {}
-
-/* 
-# Build 
-variable "war_file" {}
-#variable "app_name" {}
-#variable "zip_file" {}
-variable "docker_file" {}
-variable "jar_file" {}
-variable "info_server_workspace" {} 
-
-variable "dest_properties_file" {}
-variable "springboot_workspace" {} 
-variable "src_properties_file" {}
-
-*/ 

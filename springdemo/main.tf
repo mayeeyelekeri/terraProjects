@@ -40,10 +40,9 @@ module "vpc" {
  module "codebuild" { 
     source      = "./codebuild"
 
-    state_bucket_name             = var.state_bucket
     buildbucket_name              = var.buildbucket_name
     git_creds                     = var.git_creds
-    project_name                  = var.project_name
+    project_name                  = var.app_name
     project_description           = var.project_description
     source_provider               = var.source_provider
 }   

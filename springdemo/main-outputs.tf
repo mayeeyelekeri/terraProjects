@@ -37,8 +37,6 @@ output "alb_tg_arn" {
 output "alb_dns" { 
 	value = module.alb.alb_dns
 }
-
-
   
 # ----------- Autoscaling --------------------
 output "auto_scale_group_name" { 
