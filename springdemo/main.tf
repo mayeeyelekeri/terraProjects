@@ -126,15 +126,15 @@ module "codedeploy" {
     app_name                      = var.app_name 
     zip_file                      = var.zip_file
     
+    # from ALB module 
+    alb_dns                       = module.alb.alb_dns
+
     # from autoscaling module 
     auto_scale_group_name         = module.autoscale.auto_scale_group_name
     
     # from codebuild module 
     codebucket_name               = module.codebuild.codebuild_bucket_id
-                                       
-    #  from ALB module 
-    alb_dns                       = module.alb.alb_dns
-
+             
     depends_on = [module.autoscale, module.alb, module.codebuild]
 } 
 
