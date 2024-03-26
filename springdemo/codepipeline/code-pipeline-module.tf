@@ -1,13 +1,15 @@
 
-artifact_store {
-    location = aws_s3_bucket.pipelinebucket.bucket
-    type     = "S3"
-}
+
 
 resource "aws_codepipeline" "codepipeline" {
   name     = "${var.pipeline_name}"
   role_arn = aws_iam_role.my_code_pipeline_role.arn
  
+  artifact_store {
+        location = aws_s3_bucket.pipelinebucket.bucket
+        type     = "S3"
+  }
+
   stage {
     name = "Build"
 
