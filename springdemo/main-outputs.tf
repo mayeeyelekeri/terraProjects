@@ -41,6 +41,6 @@ output "alb_dns" {
 
   
 # ----------- Autoscaling --------------------
-output "autoscale-auto_scale_group_name" { 
+output "auto_scale_group_name" { 
 	value = module.autoscale.auto_scale_group_name
 }

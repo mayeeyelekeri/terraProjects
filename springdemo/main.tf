@@ -67,7 +67,7 @@ module "alb" {
     app_health_check_path = var.app_health_check_path
 
     # ------ OUTPUTS ------ 
-    # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
+    # alb_tg_arn, alb_dns
 }
 
 /* --------------------------------------------
@@ -123,13 +123,15 @@ module "autoscale" {
 module "codedeploy" { 
     source      = "./codedeploy"
 
-    codebucket_name               = module.codebuild.codebuild_bucket_id
     app_name                      = var.app_name 
     zip_file                      = var.zip_file
     
     # from autoscaling module 
     auto_scale_group_name         = module.autoscale.auto_scale_group_name
-            
+    
+    # from codebuild module 
+    codebucket_name               = module.codebuild.codebuild_bucket_id
+                                       
     #  from ALB module 
     alb_dns                       = module.alb.alb_dns
 
