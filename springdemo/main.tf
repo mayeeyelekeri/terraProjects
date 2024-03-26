@@ -153,14 +153,6 @@ module "codepipeline" {
     pipeline_bucket          = "codepipeline"
     project_name             = var.app_name
     
-    # from ALB module 
-    alb_dns                       = module.alb.alb_dns
-
-    # from autoscaling module 
-    autoscaling_group_name         = module.autoscale.autoscaling_group_name
-    
-    # from codebuild module 
-    codebucket_name               = module.codebuild.codebuild_bucket_id
              
     depends_on = [module.codedeploy]
 } 
