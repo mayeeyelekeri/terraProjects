@@ -82,11 +82,10 @@ module "alb" {
     Attach launch configuration
     Attach target group created in ALB module 
 -------------------------------------------------------- */ 
-/*module "autoscale" {
+module "autoscale" {
     source = "./autoscale"
 
-    app_name_server       = var.app_name_server
-    app_name_client       = var.app_name_client 
+    app_name              = var.app_name
     key_name              = var.key_name 
     ami_id                = var.ami_id 
     instance_type         = var.instance_type 
@@ -94,8 +93,7 @@ module "alb" {
     autoscale_min         = var.autoscale_min 
     autoscale_max         = var.autoscale_max 
     autoscale_desired     = var.autoscale_desired
-    template_name_server  = var.template_name_server
-    template_name_client  = var.template_name_client
+    template_name         = var.template_name
 
     # from VPC module 
     public_sg_id          = module.vpc.public_sg_id
@@ -104,13 +102,12 @@ module "alb" {
     private_subnets       = module.vpc.private_subnets
     
     # from ALB module 
-    alb_tg_server_arn     = module.alb.alb_tg_server_arn 
-    alb_tg_client_arn     = module.alb.alb_tg_client_arn     
+    alb_tg_arn            = module.alb.alb_tg_arn     
 
     # ------ OUTPUTS ------ 
-    #  auto_scale_group_name_client, auto_scale_group_name_server 
+    #  auto_scale_group_name
 }  
-*/ 
+
 /* --------------------------------------------
  Following actions are perfomed in "codedeploy" module 
  1) New codedeploy bucket (random postfix)

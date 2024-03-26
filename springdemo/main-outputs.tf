@@ -39,12 +39,8 @@ output "alb_dns" {
 }
 
 
-/*  
+  
 # ----------- Autoscaling --------------------
-output "autoscale-auto_scale_group_name_server" { 
-	value = module.autoscale.auto_scale_group_name_server
+output "autoscale-auto_scale_group_name" { 
+	value = module.autoscale.auto_scale_group_name
 }
-
-output "scaling-auto_scale_group_name_client" { 
-	value = module.autoscale.auto_scale_group_name_client
-}  */

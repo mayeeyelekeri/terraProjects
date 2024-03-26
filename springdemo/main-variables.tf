@@ -19,15 +19,6 @@ variable "buildbucket_name" {}
 variable "app_health_check_path" {} 
 variable "application_port" {} 
 
-/* 
-# Code Deploy 
-variable "codebucket_name" {}
-variable "zip_file" {}
-variable "webapp_src_location" {}
-variable "auto_scale_group_name" {}
-
-
-
 # Autoscaling 
 variable "app_name" {}
 variable "key_name" {}
@@ -38,6 +29,15 @@ variable "autoscale_min" {}
 variable "autoscale_max" {}
 variable "autoscale_desired" {}
 variable "template_name" {}
+
+
+/* 
+# Code Deploy 
+variable "codebucket_name" {}
+variable "zip_file" {}
+variable "webapp_src_location" {}
+variable "auto_scale_group_name" {}
+
 
 
 # Build 
