@@ -153,6 +153,8 @@ module "codepipeline" {
     pipeline_bucket          = "codepipeline"
     project_name             = var.app_name
     
+    # Codedeploy related values 
+    deploy_group_name        = "springdemo2-deploygroup"
              
     depends_on = [module.codedeploy]
 } 

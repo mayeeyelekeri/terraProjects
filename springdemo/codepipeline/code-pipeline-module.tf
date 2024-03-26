@@ -28,4 +28,21 @@ resource "aws_codepipeline" "codepipeline" {
     }
   } // end of stage "Build"
 
+  stage {
+    name = "Deploy"
+
+    action {
+      name            = "Deploy"
+      category        = "Deploy"
+      owner           = "AWS"
+      provider        = "CodeDeploy"
+      input_artifacts = ["build_output"]
+      version         = "1"
+
+      configuration = {
+        ApplicationName = ${var.project_name}
+        DeploymentGroupName = aws_codedeploy_deployment_group.hello-world.deployment_group_name
+      }
+    }
+  } // end of stage "Deploy" 
 } 
