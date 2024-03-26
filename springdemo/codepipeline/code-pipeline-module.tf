@@ -40,7 +40,7 @@ resource "aws_codepipeline" "codepipeline" {
       version         = "1"
 
       configuration = {
-        ApplicationName = ${var.project_name}
+        ApplicationName = "${var.project_name}"
         DeploymentGroupName = aws_codedeploy_deployment_group.hello-world.deployment_group_name
       }
     }
