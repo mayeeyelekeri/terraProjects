@@ -1,6 +1,6 @@
 
 resource "aws_codepipeline" "codepipeline" {
-  name     = "${var.pipeline_name}""
+  name     = "${var.pipeline_name}"
   role_arn = aws_iam_role.my_code_pipeline_role.arn
  
   stage {
