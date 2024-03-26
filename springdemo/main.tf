@@ -46,9 +46,6 @@ module "vpc" {
     project_name                  = var.project_name
     project_description           = var.project_description
     source_provider               = var.source_provider
-
-    # from alb (this is required to perform client build)
-    # alb_server_dns                = module.alb.alb_server_dns    
 }   
 
 /* --------------------------------------------
@@ -58,19 +55,20 @@ module "vpc" {
  3) Create Listener and attach it to ALB 
 -------------------------------------------------------- */ 
 # Create Application Load Balancer 
-/* module "alb" {
+module "alb" {
     source = "./alb"
 
     # all these information coming VPC module 
     vpc_id                = module.vpc.vpc_id
     public_sg_id          = module.vpc.public_sg_id
     public_subnets        = module.vpc.public_subnets
+
     application_port      = var.info_client_port
     app_health_check_path = var.app_health_check_path
 
     # ------ OUTPUTS ------ 
     # alb_tg_server_arn, alb_tg_client_arn, alb_server_dns, alb_client_dns
-}  */
+}
 
 /* --------------------------------------------
  Following actions are perfomed in "autoscaling" module 

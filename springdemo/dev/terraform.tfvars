@@ -28,10 +28,16 @@ private_subnet_map = {
 # codebuild properties  
 #......................................
 project_name = "springdemo2"
-project_description = "springdemo project" 
+project_description = "springdemo2 project" 
 source_provider = "github"
 buildbucket_name = "codebuild"  
 git_creds   = "git_creds"
+
+#......................................
+# ALB properties  
+#......................................
+application_port = "8080"
+app_health_check_path = "/"
 
 /* 
 #......................................
@@ -45,7 +51,7 @@ instance_profile_name =  "myinstanceprofile"
 autoscale_min = 1
 autoscale_max = 1
 autoscale_desired = 1
-app_health_check_path = "/"
+
 template_name = "docker_and_codedeploy_agent_server"
 
 #......................................
@@ -66,6 +72,6 @@ jar_file = "SpringDataTest-0.0.1-SNAPSHOT.jar"
 zip_file = "springdemo.zip"
 
 war_file = "springdemo-0.0.1-SNAPSHOT.jar"
-application_port = "8080"
+
 codebucket_name = "codedeploy"
 */
