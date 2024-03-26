@@ -141,10 +141,10 @@ resource "aws_codebuild_project" "project" {
     image_pull_credentials_type = "CODEBUILD"
     privileged_mode             = true
 
-    environment_variable {
+    /* environment_variable {
       name  = "BUCKET_NAME"
       value = var.state_bucket_name
-    }
+    } */ 
 
   }
 
