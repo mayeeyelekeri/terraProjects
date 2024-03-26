@@ -157,13 +157,13 @@ resource "aws_codebuild_project" "project" {
 
     s3_logs {
       status   = "ENABLED"
-      location = "${aws_s3_bucket.codebuildbucket.id}/logs/server"
+      location = "${aws_s3_bucket.codebuildbucket.id}/logs/${var.project_name}"
     } 
   }
 
   source {
     type            = "GITHUB"
-    location        = local.git_creds.server_git_repository
+    location        = local.git_creds.springboot_git_repository
     git_clone_depth = 1
 
     git_submodules_config {
@@ -176,11 +176,11 @@ resource "aws_codebuild_project" "project" {
   tags = {
     Environment = "dev"
   }
-}  # End of server project 
+}  # End of springboot project 
 
 #.................................................
 # Start codebuild for project  
-resource "null_resource" "start_server_build" { 
+resource "null_resource" "start_build" { 
 
   # This timestamps makes this resource to run all time, even if there is no change
   triggers = {
@@ -189,7 +189,7 @@ resource "null_resource" "start_server_build" {
    
   provisioner "local-exec" {
     command = <<EOF
-../modules/codebuild/start-codebuild-project.sh ${var.project_name}
+./codebuild/start-codebuild-project.sh ${var.project_name}
 EOF
   } # End of provisioner
   /*
@@ -201,4 +201,4 @@ EOF
   }    */
 
   depends_on = [aws_codebuild_project.project]
-} # end of "null_resource" "start_server_build"
+} # end of "null_resource" "start_build"
