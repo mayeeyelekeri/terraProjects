@@ -137,3 +137,32 @@ module "codedeploy" {
     depends_on = [module.autoscale, module.alb, module.codebuild]
 } 
 
+/* --------------------------------------------
+ Following actions are perfomed in "codedeploy" module 
+ 1) New codepipeline bucket (random postfix)
+ 2) Instance profile for codepipeline 
+
+ **** Below tasks are performed for both client and server 
+
+ 3) Create codepipeline application 
+-------------------------------------------------------- */ 
+module "codepipeline" { 
+    source      = "./codepipeline"
+
+    pipeline_name            = var.app_name 
+    pipeline_bucket          = "codepipeline"
+    project_name             = var.app_name
+    
+    # from ALB module 
+    alb_dns                       = module.alb.alb_dns
+
+    # from autoscaling module 
+    autoscaling_group_name         = module.autoscale.autoscaling_group_name
+    
+    # from codebuild module 
+    codebucket_name               = module.codebuild.codebuild_bucket_id
+             
+    depends_on = [module.codedeploy]
+} 
+
+
