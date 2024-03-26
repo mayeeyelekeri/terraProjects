@@ -39,9 +39,9 @@ git_creds   = "git_creds"
 application_port = "8080"
 app_health_check_path = "/"
 
-/* 
+ 
 #......................................
-# EC2 Related variables 
+# Autoscaling variables 
 #......................................
 ami_id = "ami-09d3b3274b6c5d4aa"
 instance_type = "t2.micro"
@@ -51,9 +51,9 @@ instance_profile_name =  "myinstanceprofile"
 autoscale_min = 1
 autoscale_max = 1
 autoscale_desired = 1
+template_name = "docker_and_codedeploy_agent"
 
-template_name = "docker_and_codedeploy_agent_server"
-
+/* 
 #......................................
 #  Database properties 
 #......................................
