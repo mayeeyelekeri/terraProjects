@@ -31,15 +31,13 @@ variable "autoscale_desired" {}
 variable "template_name" {}
 
 
-/* 
 # Code Deploy 
 variable "codebucket_name" {}
 variable "zip_file" {}
-variable "webapp_src_location" {}
 variable "auto_scale_group_name" {}
 
 
-
+/* 
 # Build 
 variable "war_file" {}
 #variable "app_name" {}
