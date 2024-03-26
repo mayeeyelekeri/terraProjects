@@ -1,5 +1,6 @@
 # project_name = "springdemo"
 aws_region = "us-east-1"
+state_bucket = "terraprojects"
 
 #......................................
 # VPC Related variables 
@@ -23,14 +24,23 @@ private_subnet_map = {
 						   }
 			     } # end of subnet_map private 
 
-				 /* 
+#......................................
+# codebuild properties  
+#......................................
+project_name = "springdemo2"
+project_description = "springdemo project" 
+source_provider = "github"
+buildbucket_name = "codebuild"  
+git_creds   = "git_creds"
+
+/* 
 #......................................
 # EC2 Related variables 
 #......................................
 ami_id = "ami-09d3b3274b6c5d4aa"
 instance_type = "t2.micro"
 key_name = "info"
-app_name = "springdemo"
+app_name = "springdemo2"
 instance_profile_name =  "myinstanceprofile"
 autoscale_min = 1
 autoscale_max = 1
@@ -42,8 +52,6 @@ template_name = "docker_and_codedeploy_agent_server"
 #  Database properties 
 #......................................
 # All the information coming from AWS Secrets variables
-git_creds   = "git_creds"
-state_bucket = "terraprojects"
 
 #......................................
 #  Info-Server properties 	
@@ -55,16 +63,9 @@ dest_properties_file = "/home/vagrant/SpringDataTest/src/main/resources/applicat
 app_workspace = "/home/vagrant/SpringDataTest"
 jar_file = "SpringDataTest-0.0.1-SNAPSHOT.jar"
 # webapp_src_location_server = "/home/vagrant/SpringDataTest/codedeploy"
-zip_file = "springboot.zip"
+zip_file = "springdemo.zip"
 
-war_file = "springboot-0.0.1-SNAPSHOT.jar"
+war_file = "springdemo-0.0.1-SNAPSHOT.jar"
 application_port = "8080"
 codebucket_name = "codedeploy"
-
-#......................................
-# codebuild properties  
-#......................................
-project_name = "springboot"
-project_description = "springboot project" 
-source_provider = "github"
-buildbucket_name = "codebuild" */ 
+*/

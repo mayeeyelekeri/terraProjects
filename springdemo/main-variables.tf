@@ -7,8 +7,21 @@ variable "public_subnet_map" {}
 variable "private_subnet_map" {}
 variable "state_bucket" {} 
 
+# Codebuild 
+variable "git_creds" {}
+variable "project_name" {} 
+variable "project_description" {} 
+variable "source_provider" {}
+variable "buildbucket_name" {}   
 
 /* 
+# Code Deploy 
+variable "codebucket_name" {}
+variable "zip_file" {}
+variable "webapp_src_location" {}
+variable "auto_scale_group_name" {}
+
+
 # ALB related 
 #variable "app_health_check_path" {} 
 
@@ -25,12 +38,6 @@ variable "app_health_check_path" {}
 variable "template_name" {}
 
 
-# Code Deploy 
-variable "codebucket_name" {}
-variable "zip_file" {}
-variable "webapp_src_location" {}
-variable "auto_scale_group_name" {}
-
 # Build 
 variable "war_file" {}
 #variable "app_name" {}
@@ -43,10 +50,4 @@ variable "dest_properties_file" {}
 variable "springboot_workspace" {} 
 variable "src_properties_file" {}
 variable "springboot_port" {} 
-
-# Codebuild 
-variable "git_creds" {}
-variable "project_name" {} 
-variable "project_description" {} 
-variable "source_provider" {}
-variable "buildbucket_name" {} */  
+*/ 
