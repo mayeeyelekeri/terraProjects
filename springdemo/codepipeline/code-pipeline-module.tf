@@ -23,7 +23,7 @@ resource "aws_codepipeline" "codepipeline" {
         OAuthToken = local.git_creds.token
         Owner = "https://github.com/mayeeyelekeri"
         // Repo = local.git_creds.springboot_git_repository
-        Repo = "springdemo2.git"
+        Repo = "springdemo2"
         Branch = "main"
       }
     }
