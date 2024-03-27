@@ -152,7 +152,8 @@ module "codepipeline" {
     pipeline_name            = var.app_name 
     pipeline_bucket          = "codepipeline"
     project_name             = var.app_name
-    
+    git_creds                = var.git_creds
+
     # Codedeploy related values 
     deploy_group_name        = "springdemo2-deploygroup"
              
