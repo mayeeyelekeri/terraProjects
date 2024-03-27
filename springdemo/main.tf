@@ -141,12 +141,9 @@ module "codedeploy" {
  Following actions are perfomed in "codedeploy" module 
  1) New codepipeline bucket (random postfix)
  2) Instance profile for codepipeline 
-
- **** Below tasks are performed for both client and server 
-
  3) Create codepipeline application 
 -------------------------------------------------------- */ 
-module "codepipeline" { 
+/* module "codepipeline" { 
     source      = "./codepipeline"
 
     pipeline_name            = var.app_name 
@@ -158,6 +155,6 @@ module "codepipeline" {
     deploy_group_name        = "springdemo2-deploygroup"
              
     depends_on = [module.codedeploy]
-} 
+} */ 
 
 
