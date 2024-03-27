@@ -20,7 +20,7 @@ resource "aws_codepipeline" "codepipeline" {
       output_artifacts = ["SourceArtifact"]
 
       configuration = {
-        //OAuthToken = "${local.github_token}"
+        OAuthToken = local.git_creds.token
         Owner = "mayeeyelekeri"
         Repo = local.git_creds.springboot_git_repository
         Branch = "main"
