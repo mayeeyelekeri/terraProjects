@@ -17,7 +17,7 @@ resource "aws_codepipeline" "codepipeline" {
       owner = "ThirdParty"
       provider = "GitHub"
       version = "1"
-      output_artifacts = ["SourceArtifact"]
+      output_artifacts = ["source_output"]
 
       configuration = {
         OAuthToken = local.git_creds.token
