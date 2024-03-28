@@ -21,7 +21,7 @@ resource "aws_codepipeline" "codepipeline" {
 
       configuration = {
         OAuthToken = local.git_creds.token
-        Owner = "https://github.com/mayeeyelekeri"
+        Owner = "mayeeyelekeri"
         // Repo = local.git_creds.springboot_git_repository
         Repo = "springdemo2"
         Branch = "main"
