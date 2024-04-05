@@ -9,3 +9,7 @@ variable "bucket_name" {
 variable "stack_name" {
   default = "myapp"
 }
+
+variable "instance_profile_name" {
+  default = ""
+}

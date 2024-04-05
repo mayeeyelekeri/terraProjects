@@ -167,9 +167,10 @@ module "codepipeline" {
 module "beanstalk" { 
     source      = "./beanstalk"
 
-    app_name            = var.app_name 
-    bucket_name         = module.codebuild.codebuild_bucket_id
-    
+    app_name               = var.app_name 
+    bucket_name            = module.codebuild.codebuild_bucket_id
+    instance_profile_name  = var.instance_profile_name
+
     # Codebuild values 
     stack_name          = var.stack_name
                  

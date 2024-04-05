@@ -33,3 +33,6 @@ variable "template_name" {}
 
 # Code Deploy 
 variable "zip_file" {}
+
+# Elastic Bean Stalk
+variable "stack_name" {} 

@@ -3,7 +3,7 @@ resource "aws_elastic_beanstalk_application" "mywebapp" {
   name        = "mywebapp"
   description = "mywebapp"
 
-  depends_on = [null_resource.upload_file, aws_iam_role_policy.ebs_policy]
+  depends_on = [aws_iam_role_policy.ebs_policy]
 }
 
 resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
@@ -73,7 +73,7 @@ EOF
 
 # Create a instance profile 
 resource "aws_iam_instance_profile" "myinstanceprofile" {
-  name = var.instance-profile
+  name = var.instance_profile_name
   role = aws_iam_role.beanstackrole.name
   path = "/"
 } # end of resource aws_iam_instance_profile
