@@ -32,7 +32,7 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
   setting {
    namespace = "aws:autoscaling:launchconfiguration"
    name = "IamInstanceProfile"
-   value = aws_iam_instance_profile.myinstanceprofile.name
+   value = var.instance_profile_name
    #value = "aws-elasticbeanstalk-ec2-role"  # **** this gets created automatically from aws console when an app is created 
   }
 
