@@ -164,7 +164,7 @@ module "codepipeline" {
  3) Create Environment 
  4) Start Deployment
 -------------------------------------------------------- */ 
-module "codepipeline" { 
+module "beanstalk" { 
     source      = "./beanstalk"
 
     app_name            = var.app_name 
