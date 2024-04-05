@@ -1,7 +1,7 @@
 # Create bean stack application 
 resource "aws_elastic_beanstalk_application" "mywebapp" {
-  name        = "mywebapp"
-  description = "mywebapp"
+  name        = "${var.app_name}"
+  description = "${var.app_name}"
 
 #  depends_on = [aws_iam_role_policy.ebs_policy]
 }
