@@ -61,5 +61,5 @@ zip_file = "springdemo2.zip"
 #......................................
 #  ElasticBeanStalk properties 	
 #......................................
-stack_name = "64bit Amazon Linux 2 v3.4.7 running Corretto 17"
+stack_name = "64bit Amazon Linux 2023 v4.2.2 running Corretto 21"
 file_name = "springdemo2-1.0.0-SNAPSHOT.jar"
