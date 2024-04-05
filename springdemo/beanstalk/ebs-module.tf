@@ -3,7 +3,7 @@ resource "aws_elastic_beanstalk_application" "mywebapp" {
   name        = "mywebapp"
   description = "mywebapp"
 
-  depends_on = [aws_iam_role_policy.ebs_policy]
+#  depends_on = [aws_iam_role_policy.ebs_policy]
 }
 
 resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
