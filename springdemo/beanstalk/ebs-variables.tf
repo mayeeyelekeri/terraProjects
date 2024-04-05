@@ -13,3 +13,6 @@ variable "stack_name" {
 variable "instance_profile_name" {
   default = ""
 }
+
+variable "file_name" {
+}
