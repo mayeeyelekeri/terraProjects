@@ -169,7 +169,7 @@ module "beanstalk" {
 
     app_name               = var.app_name 
     bucket_name            = module.codebuild.codebuild_bucket_id
-    file_name              = 
+    file_name              = var.file_name 
     instance_profile_name  = var.instance_profile_name
 
     # Codebuild values 
