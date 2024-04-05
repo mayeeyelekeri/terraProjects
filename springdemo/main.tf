@@ -157,4 +157,21 @@ module "codepipeline" {
     depends_on = [module.codedeploy]
 } 
 
+/* --------------------------------------------
+ Following actions are perfomed in "ElasticBeanStalk" module 
+ 1) New BeanStalk application
+ 2) Create beanstalk profile role  
+ 3) Create Environment 
+ 4) Start Deployment
+-------------------------------------------------------- */ 
+module "codepipeline" { 
+    source      = "./beanstalk"
 
+    app_name            = var.app_name 
+    bucket_name         = module.codebuild.codebuild_bucket_id
+    
+    # Codebuild values 
+    stack_name          = var.stack_name
+                 
+    depends_on = [module.codebuild]
+} 
