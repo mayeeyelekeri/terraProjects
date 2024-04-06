@@ -50,7 +50,7 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
    namespace = "aws:autoscaling:launchconfiguration"
    name = "IamInstanceProfile"
    #value = var.instance_profile_name
-   value = aws_iam_instance_profile.profile.name  
+   value = aws_iam_instance_profile.beanstalk_profile.name  
    #value = "AWSServiceRoleForElasticBeanstalk"  **** this gets created automatically from aws console when an app is created 
   }
 
