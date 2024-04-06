@@ -22,7 +22,21 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
   application = aws_elastic_beanstalk_application.mywebapp.name
   solution_stack_name = var.stack_name
   version_label = aws_elastic_beanstalk_application_version.beanstalk_myapp_version.name
- 
+
+  // set VPC  
+  setting {
+    namespace = "aws:ec2:vpc"
+    name      = "VPCId"
+    value     = var.vpc_id
+  }
+
+  // set subnet 
+  setting {
+    namespace = "aws:ec2:vpc"
+    name      = "Subnets"
+    value     = var.public_subnets
+  }
+
   setting {
     namespace = "aws:ec2:instances"
     name = "InstanceTypes"

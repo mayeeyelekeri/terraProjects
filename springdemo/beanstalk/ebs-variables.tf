@@ -19,3 +19,7 @@ variable "file_name" {
 
 variable "security_group" {
 }
+
+variable "public_subnets" {}
+
+variable "vpc_id" {}
