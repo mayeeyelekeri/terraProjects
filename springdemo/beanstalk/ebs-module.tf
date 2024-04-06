@@ -18,7 +18,7 @@ resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
 
 # Create environment 
 resource "aws_elastic_beanstalk_environment" "myapp-env" {
-  name = "mywebapp-env"
+  name = "mywebapp-env2"
   application = aws_elastic_beanstalk_application.mywebapp.name
   solution_stack_name = var.stack_name
   version_label = aws_elastic_beanstalk_application_version.beanstalk_myapp_version.name
