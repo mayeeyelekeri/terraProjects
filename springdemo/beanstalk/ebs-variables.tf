@@ -20,6 +20,8 @@ variable "file_name" {
 variable "security_group" {
 }
 
-variable "public_subnets" {}
+variable "public_subnet1" {}
+
+variable "public_subnet2" {}
 
 variable "vpc_id" {}
