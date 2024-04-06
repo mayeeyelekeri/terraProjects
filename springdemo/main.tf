@@ -160,26 +160,27 @@ module "codedeploy" {
 /* --------------------------------------------
  Following actions are perfomed in "ElasticBeanStalk" module 
  1) New BeanStalk application
- 2) Create beanstalk profile role  
- 3) Create Environment 
- 4) Start Deployment
+ 2) Create Environment 
+ 3) Create application version
 -------------------------------------------------------- */ 
 module "beanstalk" { 
     source      = "./beanstalk"
 
     app_name               = var.app_name 
-    bucket_name            = module.codebuild.codebuild_bucket_id
     file_name              = var.file_name 
     instance_profile_name  = var.instance_profile_name
-
-    # Codebuild values 
     stack_name             = var.stack_name
     app_version            = var.app_version        
-    # VPC Module 
+    
+    # From Codebuild (zip file location in s3 after build completes)
+    bucket_name            = module.codebuild.codebuild_bucket_id
+    
+    # From VPC Module (to create beanstalk env, otherwise beanstalk picks up any existing values)
     security_group         = module.vpc.public_sg_id
     vpc_id                 = module.vpc.vpc_id 
     public_subnet1         = module.vpc.public_subnets[0].id 
     public_subnet2         = module.vpc.public_subnets[1].id
 
+    # dependency is only one codebuild completion 
     depends_on             = [module.codebuild]
 } 

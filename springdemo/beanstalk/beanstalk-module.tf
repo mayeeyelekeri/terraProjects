@@ -6,6 +6,7 @@ resource "aws_elastic_beanstalk_application" "mywebapp" {
 #  depends_on = [aws_iam_role_policy.ebs_policy]
 }
 
+# Create application version  
 resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
   application = "${var.app_name}"
   bucket = "${var.bucket_name}"
@@ -30,11 +31,11 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
     value     = var.vpc_id
   }
 
-  // set subnets 
+  // set subnets, subnet names should be a command separated string  
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = "${var.public_subnet1} , ${var.public_subnet2}"
+    value     = "${var.public_subnet1} , ${var.public_subnet2}"  
   }
 
   // set instance type 
@@ -48,8 +49,9 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
   setting {
    namespace = "aws:autoscaling:launchconfiguration"
    name = "IamInstanceProfile"
-   value = var.instance_profile_name
-   #value = "aws-elasticbeanstalk-ec2-role"  # **** this gets created automatically from aws console when an app is created 
+   #value = var.instance_profile_name
+   value = aws_iam_instance_profile.profile.name  
+   #value = "AWSServiceRoleForElasticBeanstalk"  **** this gets created automatically from aws console when an app is created 
   }
 
   // set port (5000 is the proxy port, its better to overide it )
@@ -67,4 +69,37 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
   }
 
   depends_on = [aws_elastic_beanstalk_application.mywebapp]
+}
+
+#.................................................
+# Create a role for codedeploy 
+resource "aws_iam_role" "my_beanstalk_role" {
+  name = "MyBeanStalkRole"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "ec2.amazonaws.com"
+                ]
+            },
+            "Action": [
+                "sts:AssumeRole"
+            ]
+    }
+  ]
+}
+EOF
+
+}
+
+resource "aws_iam_instance_profile" "beanstalk_profile" {
+  name = "aws-elasticbeanstalk-ec2-role" # use the same name as the default instance profile
+
+  role = aws_iam_role.my_beanstalk_role.name
 }
