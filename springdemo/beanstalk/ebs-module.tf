@@ -9,7 +9,7 @@ resource "aws_elastic_beanstalk_application" "mywebapp" {
 resource "aws_elastic_beanstalk_application_version" "beanstalk_myapp_version" {
   application = "${var.app_name}"
   bucket = "${var.bucket_name}"
-  key = "${var.file_name}"
+  key = "${var.app_name}/${var.file_name}"
   name = "${var.app_name}-1.0.0"
 
   depends_on = [aws_elastic_beanstalk_application.mywebapp]
