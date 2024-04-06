@@ -178,7 +178,7 @@ module "beanstalk" {
     # VPC Module 
     security_group         = module.vpc.public_sg_id
     vpc_id                 = module.vpc.vpc_id 
-    public_subnets         = module.vpc.public_subnets[0].id
+    public_subnets         = module.vpc.public_subnets[0].id + "," +module.vpc.public_subnets[1].id
 
     depends_on             = [module.codebuild]
 } 
