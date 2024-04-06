@@ -30,19 +30,21 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
     value     = var.vpc_id
   }
 
-  // set subnet 
+  // set subnets 
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
     value     = "${var.public_subnet1} , ${var.public_subnet2}"
   }
 
+  // set instance type 
   setting {
     namespace = "aws:ec2:instances"
     name = "InstanceTypes"
     value = "t2.micro"
   }
 
+  // set launch configuration 
   setting {
    namespace = "aws:autoscaling:launchconfiguration"
    name = "IamInstanceProfile"
@@ -50,12 +52,14 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
    #value = "aws-elasticbeanstalk-ec2-role"  # **** this gets created automatically from aws console when an app is created 
   }
 
+  // set port (5000 is the proxy port, its better to overide it )
   setting {
     name = "SERVER_PORT"
     namespace = "aws:elasticbeanstalk:application:environment"
     value = "5000"
   }
 
+  // set security group for Load Balancer 
   setting {
     namespace = "aws:elbv2:loadbalancer"
     name      = "SecurityGroups"
