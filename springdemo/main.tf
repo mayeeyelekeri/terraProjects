@@ -143,7 +143,7 @@ module "codedeploy" {
  2) Instance profile for codepipeline 
  3) Create codepipeline application 
 -------------------------------------------------------- */ 
-module "codepipeline" { 
+/* module "codepipeline" { 
     source      = "./codepipeline"
 
     pipeline_name            = var.app_name 
@@ -155,7 +155,7 @@ module "codepipeline" {
     deploy_group_name        = "springdemo2-deploygroup"
              
     depends_on = [module.codedeploy]
-} 
+} */ 
 
 /* --------------------------------------------
  Following actions are perfomed in "ElasticBeanStalk" module 
