@@ -42,3 +42,9 @@ output "alb_dns" {
 output "auto_scale_group_name" { 
 	value = module.autoscale.autoscaling_group_name
 }
+
+ 
+# ----------- Elastic Bean stalk --------------------
+output "beanstalk_url" { 
+	value = module.beanstalk.aws_elastic_beanstalk_environment
+}
