@@ -42,5 +42,11 @@ resource "aws_elastic_beanstalk_environment" "myapp-env" {
     value = "5000"
   }
 
+  setting {
+    namespace = "aws:elbv2:loadbalancer"
+    name      = "SecurityGroups"
+    value     = var.security_group
+  }
+
   depends_on = [aws_elastic_beanstalk_application.mywebapp]
 }

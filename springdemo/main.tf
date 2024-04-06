@@ -173,7 +173,10 @@ module "beanstalk" {
     instance_profile_name  = var.instance_profile_name
 
     # Codebuild values 
-    stack_name          = var.stack_name
+    stack_name             = var.stack_name
                  
-    depends_on = [module.codebuild]
+    # VPC Module 
+    security_group         = module.vpc.public_sg_id
+
+    depends_on             = [module.codebuild]
 } 

@@ -16,3 +16,6 @@ variable "instance_profile_name" {
 
 variable "file_name" {
 }
+
+variable "security_group" {
+}
