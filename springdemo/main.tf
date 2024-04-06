@@ -174,7 +174,7 @@ module "beanstalk" {
 
     # Codebuild values 
     stack_name             = var.stack_name
-                 
+    app_version            = var.app_version        
     # VPC Module 
     security_group         = module.vpc.public_sg_id
     vpc_id                 = module.vpc.vpc_id 

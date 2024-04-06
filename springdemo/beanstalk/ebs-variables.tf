@@ -22,6 +22,8 @@ variable "security_group" {
 
 variable "public_subnet1" {}
 
+variable "app_version" {}
+
 variable "public_subnet2" {}
 
 variable "vpc_id" {}

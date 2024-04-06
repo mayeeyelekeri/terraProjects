@@ -37,3 +37,4 @@ variable "zip_file" {}
 # Elastic Bean Stalk
 variable "stack_name" {} 
 variable "file_name" {}
+variable "app_version" {}
