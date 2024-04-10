@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "terraprojects1" 
-    key    = "infoweb.tfstate"
+    bucket = "terraprojects" 
+    key    = "springdemo.tfstate"
     region = "us-east-1"
   }
   #required_version = ">= 1.3.3"
