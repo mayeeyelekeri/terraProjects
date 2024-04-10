@@ -4,7 +4,7 @@ import boto3
 
 from base64 import b64decode 
 aws_client = boto3.client('ssm')
-ssm_message_decrpyted = aws_client.get_parameter( Name='message', WithEncryption=True)
+ssm_message_decrpyted = aws_client.get_parameter( Name='message', WithDecryption=True)
 
 def lambda_handler(event, context):
     return {
