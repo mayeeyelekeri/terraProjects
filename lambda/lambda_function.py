@@ -9,6 +9,6 @@ import boto3
 def lambda_handler(event, context):
     return {
         'statusCode': 200,
-        'body': json.dumps('Hello to Lambda , Mr.' + os.environ['myname'])
+        'body': json.dumps('Welcome to Lambda , Mr.' + os.environ['myname'] + ' !!!')
         #'body': json.dumps('Hello to Lambda , Mr.' + os.environ['myname'] + ', this is the message from Systems Manager ....' + ssm_message_decrpyted)
     }
