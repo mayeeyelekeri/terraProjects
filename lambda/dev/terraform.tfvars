@@ -1,5 +1,4 @@
 aws_region = "us-east-1"
-state_bucket = "terraprojects"
 
 #......................................
 # VPC Related variables 
