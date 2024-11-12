@@ -29,8 +29,8 @@ data "template_file" "user_data" {
 
 # create an EC2 first 
 resource "aws_instance" "ami-server" {
-  	ami                         = var.ami-id
-  	instance_type               = var.instance-type
+  	ami                         = var.ami_id
+  	instance_type               = var.instance_type
   	associate_public_ip_address = true
   	key_name                    = var.key_name
   	vpc_security_group_ids      = [var.public_sg_id] 
