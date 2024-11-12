@@ -45,7 +45,7 @@ template_name_client = "docker_and_codedeploy_agent_client"
 # All the information coming from AWS Secrets variables
 mysql_creds = "db_creds"
 git_creds   = "git_creds"
-state_bucket = "terraprojects"
+state_bucket = "terraprojects1"
 
 #......................................
 #  Info-Server properties 	
@@ -88,6 +88,5 @@ buildbucket_name = "codebuild"
 #......................................
 # CodeArtifact properties  
 #......................................
-domain_name = "mydomain"
-repo_name = "myrepo" 
-upstream_repo_name = "myrepo_upstream"
+codeartifact_domain_name = "demo-domain"
+repo_name = "springdemo" 

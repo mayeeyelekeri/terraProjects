@@ -68,6 +68,5 @@ variable "source_provider" {}
 variable "buildbucket_name" {}
 
 # CodeArtifact 
-variable "domain_name" {}
+variable "codeartifact_domain_name" {}
 variable "repo_name" {}
-variable "upstream_repo_name" {} 

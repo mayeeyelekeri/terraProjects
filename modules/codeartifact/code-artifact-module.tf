@@ -1,16 +1,7 @@
-# Create CodeArtifact Domain  
-resource "aws_codeartifact_domain" "domain" {
-  domain = "${var.domain_name}"
-
-  tags = {
-    Name        = var.domain_name
-    Environment = "dev"
-  }
-}  # codeartifact domain 
-
 # Create CodeArtifact repository 
 resource "aws_codeartifact_repository" "repo" {
   repository = "${var.repo_name}"
+  domain = "${var.codeartifact_domain_name}"
 
   tags = {
     Name        = var.repo_name
@@ -18,14 +9,10 @@ resource "aws_codeartifact_repository" "repo" {
   }
 }  # code Repo   
 
-# Create CodeArtifact UpStream repository 
-resource "aws_codeartifact_repository" "upstream_repo" {
-  repository = "${var.upstream_repo_name}"
-
-  tags = {
-    Name        = var.upstream_repo_name
-    Environment = "dev"
-  }
-}  # code Upstream Repo   
+data "aws_codeartifact_repository_endpoint" "endpoint" {
+  domain = "${var.codeartifact_domain_name}"
+  repository = aws_codeartifact_repository.repo.repository
+  format     = "maven"
+}
 
 

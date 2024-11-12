@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-bucketName=terraprojects 
+bucketName=terraprojects1 
 echo bucketname $bucketName 
 
 if [ $1 ]; then 
@@ -21,3 +21,7 @@ aws s3 cp ~/INFO/secrets/application-aws.properties s3://$bucketName/
 
 # In database directory, execute script to create mysql creds in secrets manager 
 . ~/INFO/secrets/aws_secrets.sh 
+
+# Codeartifacts repos and creds 
+. ~/INFO/secrets/codeartifact_params.sh 
+
