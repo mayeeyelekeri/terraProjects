@@ -1,6 +1,6 @@
-# Create and Elastic IP Address fot NAT Gateway use
+# Create and Elastic IP Address for NAT Gateway use
 resource "aws_eip" "eip" {
-  vpc = true
+  domain = "vpc"
 }
 
 # Create NAT Gateway in public subnet 
@@ -31,15 +31,15 @@ resource "aws_default_route_table" "private_route" {
     Environment = "${terraform.workspace}"
   }
 
-  depends_on = [aws_nat_gateway.nat_gateway]
+  depends_on = [aws_nat_gateway.nat_gateway, aws_subnet.private]
 } 
 
-# Associate private subnet to route table 
-/* resource "aws_route_table_association" "private_route_table_association" {
+# Associate private subnets to route table 
+resource "aws_route_table_association" "private_route_table_association" {
   for_each       = aws_subnet.private
 
   subnet_id      = each.value.id
   route_table_id = aws_default_route_table.private_route.id
 
   depends_on = [aws_subnet.private,  aws_default_route_table.private_route]
-} */ 
+} 

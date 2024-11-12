@@ -32,8 +32,9 @@ key_name = "info"
 app_name_server = "info"
 app_name_client = "client"
 instance_profile_name =  "myinstanceprofile"
-autoscale_min = 2
-autoscale_max = 3
+autoscale_min = 1
+autoscale_max = 1
+autoscale_desired = 1
 app_health_check_path = "/infos"
 template_name_server = "docker_and_codedeploy_agent_server"
 template_name_client = "docker_and_codedeploy_agent_client"
@@ -90,4 +91,3 @@ buildbucket_name = "codebuild"
 domain_name = "mydomain"
 repo_name = "myrepo" 
 upstream_repo_name = "myrepo_upstream"
-

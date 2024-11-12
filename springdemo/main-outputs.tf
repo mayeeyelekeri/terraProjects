@@ -16,29 +16,35 @@ output "public" {
 	value = values(module.vpc.public)[*].cidr_block
 }
 
-# ------------ CodeBuild outputs -------------------
 
+output "nat_gateway_id" { 
+	value = module.vpc.nat_gateway_id
+} 
+
+# ------------ CodeBuild outputs -------------------
+ 
 output "codebuild_bucket_id" { 
 	value = module.codebuild.codebuild_bucket_id
-}
+}  
 
 
 # ------------ ALB outputs -------------------
-
-output "alb_tg_server_arn" { 
-	value = module.alb.alb_tg_server_arn
+ 
+output "alb_tg_arn" { 
+	value = module.alb.alb_tg_arn
 }
 
-output "alb_server_dns" { 
-	value = module.alb.alb_server_dns
+output "alb_dns" { 
+	value = module.alb.alb_dns
+}
+  
+# ----------- Autoscaling --------------------
+output "auto_scale_group_name" { 
+	value = module.autoscale.autoscaling_group_name
 }
 
-
-/*# ----------- Autoscaling --------------------
-output "autoscale-auto_scale_group_name_server" { 
-	value = module.autoscale.auto_scale_group_name_server
+ 
+# ----------- Elastic Bean stalk --------------------
+output "beanstalk_url" { 
+	value = module.beanstalk.aws_elastic_beanstalk_environment
 }
-
-output "scaling-auto_scale_group_name_client" { 
-	value = module.autoscale.auto_scale_group_name_client
-}  */

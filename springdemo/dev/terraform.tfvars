@@ -1,5 +1,6 @@
-# project_name = "springdemo"
+
 aws_region = "us-east-1"
+state_bucket = "terraprojects"
 
 #......................................
 # VPC Related variables 
@@ -23,37 +24,43 @@ private_subnet_map = {
 						   }
 			     } # end of subnet_map private 
 
-git_creds   = "git_creds"
-state_bucket = "terraprojects1"
-
-#......................................
-# EC2 Related variables 
-#......................................
-ami_id = "ami-09d3b3274b6c5d4aa"
-instance_type = "t2.micro"
-key_name = "springdemo"
-app_name_server = "springdemo"
-instance_profile_name =  "myinstanceprofile"
-autoscale_min = 2
-autoscale_max = 3
-app_health_check_path = "/"
-template_name_server = "docker_and_codedeploy_agent_server"
-
-#......................................
-#  Info-Server properties 	
-#......................................
-zip_file_server = "springdemo.zip"
-
-codebucket_name = "codedeploy"
-
 #......................................
 # codebuild properties  
 #......................................
-server_project_name = "springdemo"
-server_project_description = "server project" 
+# project_name = "springdemo2"  
+project_description = "springdemo2 project" 
 source_provider = "github"
-buildbucket_name = "codebuild"
+buildbucket_name = "codebuild"  
+git_creds   = "git_creds"
 
-repo_name  = "springdemo"
-repo_owner = "mayeeyelekeri"
-branch     = "main"
+#......................................
+# ALB properties  
+#......................................
+application_port = "8080"
+app_health_check_path = "/"
+
+ 
+#......................................
+# Autoscaling variables 
+#......................................
+ami_id = "ami-09d3b3274b6c5d4aa"
+instance_type = "t2.micro"
+key_name = "info"
+app_name = "springdemo2"
+instance_profile_name =  "myinstanceprofile"
+autoscale_min = 1
+autoscale_max = 1
+autoscale_desired = 1
+template_name = "docker_and_codedeploy_agent"
+
+#......................................
+#  CodeDeploy properties 	
+#......................................
+zip_file = "springdemo2.zip"
+
+#......................................
+#  ElasticBeanStalk properties 	
+#......................................
+stack_name = "64bit Amazon Linux 2023 v4.2.2 running Corretto 21"
+file_name = "springdemo2.zip"
+app_version = "1.0.1"

@@ -94,7 +94,8 @@ resource "aws_autoscaling_group" "auto_scale_group" {
   health_check_type    = "EC2" 
   min_size             = var.autoscale_min
   max_size             = var.autoscale_max
-  
+  desired_capacity     = var.autoscale_desired
+
   tag {
     key                 = "Name"
     value               = "${terraform.workspace}_${var.app_name_server}"

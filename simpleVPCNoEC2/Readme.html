@@ -1,0 +1,31 @@
+<html>
+
+<body>
+
+    In order to run this, execute "init.sh" script which would create a bucket to store state
+
+    Parameters for VPC and subnet are stored in dev/terraform.tfvars file 
+
+    # Common steps 
+    Create a VPC
+    Create Internet Gateway
+    Create Route Table and attache IG
+    Create an Elastic IP Address for NAT Gateway use
+    Create 2 Subnets
+
+    # ---------------------------- PUBLIC --------------------------
+    Create Public and Private Subnet
+    Associate public subnet to route table
+    Create NAT Gateway in public subnet
+
+    # ---------------------------- PRIVATE --------------------------
+    Create private route table and attach NAT Gateway to it
+    Associate private subnet to route table
+
+    # ---------------------------- SECURITY GROUPS --------------------------
+    Create Security Group for allowing TCP/80 & TCP/22
+    Create Private Security Group to allow traffic from Public subnet
+
+
+</body>
+</html>
