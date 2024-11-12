@@ -83,3 +83,11 @@ client_project_name = "Client"
 client_project_description = "client project" 
 source_provider = "github"
 buildbucket_name = "codebuild"
+
+#......................................
+# CodeArtifact properties  
+#......................................
+domain_name = "mydomain"
+repo_name = "myrepo" 
+upstream_repo_name = "myrepo_upstream"
+

@@ -63,3 +63,8 @@ variable "client_project_name" {}
 variable "client_project_description" {} 
 variable "source_provider" {}
 variable "buildbucket_name" {}
+
+# CodeArtifact 
+variable "domain_name" {}
+variable "repo_name" {}
+variable "upstream_repo_name" {} 
