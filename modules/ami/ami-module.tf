@@ -33,6 +33,6 @@ resource "aws_instance" "ami-server" {
     	Environment = "${terraform.workspace}"
   	}
 
-  	depends_on = [aws_key_pair.mykeypair]
+  	# depends_on = [aws_key_pair.mykeypair]
 } 
 
