@@ -44,13 +44,11 @@ module "vpc" {
 module "codeartifact" {
     source = "../modules/codeartifact"
     
-    # Pass all the variable values to the vpc module 
-    aws_region         = var.aws_region
-    open_cidr          = var.open_cidr 
-    vpc_cidr           = var.vpc_cidr 
-    public_subnet_map  = var.public_subnet_map
-    private_subnet_map = var.private_subnet_map
-
+    # Pass all the variable values to the CodeArtifact module 
+    domain_name         = var.domain_name
+    repo_name           = var.repo_name 
+    upstream_repo_name  = var.upstream_repo_name 
+    
     # ----- OUTPUTS ------ 
     # vpc_id,vpc_name, public_subnets, private_subnets, public_sg_id, private_sg_id, nat_gateway_id
 }
