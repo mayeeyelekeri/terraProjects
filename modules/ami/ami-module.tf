@@ -38,9 +38,7 @@ resource "aws_instance" "ami-server" {
   	
   	user_data               = "${base64encode(data.template_file.user_data.rendered)}"
   	
-  	iam_instance_profile  {
-        name =  var.instance_profile_name 
-  	}
+  	iam_instance_profile = var.instance_profile_name 
   	
   	tags = {
     	Name = "${terraform.workspace}-template"
