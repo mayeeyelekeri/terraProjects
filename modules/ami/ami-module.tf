@@ -34,7 +34,7 @@ resource "aws_instance" "ami-server" {
   	associate_public_ip_address = true
   	key_name                    = var.key_name
   	vpc_security_group_ids      = [var.public_sg_id] 
-  	subnet_id                   = var.public_subnets 
+  	subnet_id                   = var.public_subnets[*].id
   	
   	user_data               = "${base64encode(data.template_file.user_data.rendered)}"
   	
