@@ -36,3 +36,10 @@ resource "aws_instance" "ami-server" {
   	# depends_on = [aws_key_pair.mykeypair]
 } 
 
+# Create AMI from the instance 
+resource "aws_ami_from_instance" "myami" {
+  name               = "terraform-example"
+  source_instance_id = aws_instance.ami-server.id
+}
+
+
