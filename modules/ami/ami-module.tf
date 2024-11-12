@@ -33,6 +33,11 @@ resource "aws_instance" "ami-server" {
     	Environment = "${terraform.workspace}"
   	}
 
+	# Wait till this instance is created so that its works for other "depends_on" resources
+	provisioner "local-exec" {
+    	command = "aws ec2 wait instance-running --instance-ids ${self.id}"
+  	}
+  
   	# depends_on = [aws_key_pair.mykeypair]
 } 
 
