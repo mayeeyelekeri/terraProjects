@@ -1,6 +1,6 @@
 
 /* --------------------------------------------
- Following actions are perfomed in "VPC" module
+ Following actions are performed in "VPC" module
  1) Create VPC  
  2) Create Internet gateway and attach it to VPC  
  3) Create Public subnets (by default its private)
@@ -25,6 +25,27 @@ module "vpc" {
 
   # ----- OUTPUTS ------ 
   # vpc_id,vpc_name, public_subnets, private_subnets, public_sg_id, private_sg_id, nat_gateway_id
+}
+
+/* --------------------------------------------
+ Following actions are performed in "AMI" module 
+ 1) Create and EC2 instance  
+ 2) Once the instance is created, generate and AMI from that 
+-------------------------------------------------------- */
+module "ami" {
+  source = "../modules/ami"
+
+  key_name              = var.key_name
+  ami_id                = var.ami_id
+  instance_type         = var.instance_type
+  instance_profile_name = var.instance_profile_name
+
+  # from VPC module 
+  public_sg_id    = module.vpc.public_sg_id
+  public_subnet  = module.vpc.public_subnets
+
+  # ------ OUTPUTS ------ 
+  #  auto_scale_group_name_client, auto_scale_group_name_server 
 }
 
 

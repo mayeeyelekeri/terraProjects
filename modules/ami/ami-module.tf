@@ -1,0 +1,52 @@
+# Create and EC2 and create AMI from it 
+
+/* -------- Create Public Key -------------
+ Inputs: 
+ 1) Location of local public key 
+ 2) key name  
+ Outputs: 
+ 1) key-pair 
+----------------------------------------------------------- */ 
+resource "aws_key_pair" "mykeypair" {
+    key_name    = var.key_name
+    public_key  = file("~/.ssh/id_rsa.pub")
+}
+
+/* --------------------------------------------------------
+Create Template for user-data (for installing docker and codedeploy agent)-------------
+ Inputs: 
+ 1) template file name 
+ 2) application name 
+ Outputs: 
+ 1) user_data, basically a text formatted string 
+----------------------------------------------------------- */ 
+data "template_file" "user_data" {
+  template = "${file("install_docker_and_agent.tpl")}"
+  vars = {
+    application = "docker"
+  }
+}
+
+# create an EC2 first 
+resource "aws_instance" "ami-server" {
+  	ami                         = var.ami-id
+  	instance_type               = var.instance-type
+  	associate_public_ip_address = true
+  	key_name                    = var.key_name
+  	vpc_security_group_ids      = [var.public_sg_id] 
+  	subnet_id                   = var.public_subnets 
+  	
+  	user_data               = "${base64encode(data.template_file.user_data.rendered)}"
+  	
+  	iam_instance_profile  {
+        name =  var.instance_profile_name 
+  	}
+  	
+  	tags = {
+    	Name = "${terraform.workspace}-template"
+    	Environment = "${terraform.workspace}"
+  	}
+
+  	depends_on = [aws_key_pair.mykeypair]
+} 
+
