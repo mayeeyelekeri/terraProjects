@@ -42,7 +42,7 @@ module "ami" {
 
   # from VPC module 
   public_sg_id    = module.vpc.public_sg_id
-  public_subnet  = module.vpc.public_subnets
+  public_subnets  = module.vpc.public_subnets
 
   # ------ OUTPUTS ------ 
   #  auto_scale_group_name_client, auto_scale_group_name_server 
