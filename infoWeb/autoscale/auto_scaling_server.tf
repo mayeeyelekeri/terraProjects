@@ -18,10 +18,10 @@ Create Template for user-data (for installing docker and codedeploy agent)------
  Outputs: 
  1) user_data, basically a text formatted string 
 ----------------------------------------------------------- */ 
-data "template_file" "user_data" {
+/* data "template_file" "user_data" {
   #template = "${file("install_docker_and_agent.tpl")}"
   template = "${file("start_docker.tpl")}"
-}
+} */
 
 # ****** This is sunsetted by AWS itself, using launch template instead 
 # Create Launch configuration (This one is common for both client and server)
