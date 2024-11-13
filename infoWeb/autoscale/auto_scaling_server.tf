@@ -1,15 +1,3 @@
-/* -------- Create Public Key -------------
- Inputs: 
- 1) Location of local public key 
- 2) key name  
- Outputs: 
- 1) key-pair 
------------------------------------------------------------ */ 
-resource "aws_key_pair" "mykeypair" {
-    key_name    = var.key_name
-    public_key  = file("~/.ssh/id_rsa.pub")
-}
-
 /* --------------------------------------------------------
 Create Template for user-data (for installing docker and codedeploy agent)-------------
  Inputs: 
@@ -22,24 +10,6 @@ Create Template for user-data (for installing docker and codedeploy agent)------
   template = "${file("install_docker_and_agent.tpl")}"
 } */ 
 
-# ****** This is sunsetted by AWS itself, using launch template instead 
-# Create Launch configuration (This one is common for both client and server)
-/*resource "aws_launch_configuration" "al_conf" {
-  name_prefix          = "${terraform.workspace}_"
-  image_id             = var.ami_id
-  instance_type        = var.instance_type
-  key_name             = var.key_name
-  security_groups      = [var.public_sg_id] 
-  # user_data            = "${data.template_file.user_data.rendered}"
-  user_data            = filebase64("start_docker.sh")
-  iam_instance_profile = var.instance_profile_name 
-
-  lifecycle {
-    create_before_destroy = true
-  }
-
-  #depends_on = [aws_iam_instance_profile.myinstanceprofile , aws_lb_listener.listener]
-} */
  
 /* --------------------------------------------------------
 Create Launch template (This one is common for both client and server)

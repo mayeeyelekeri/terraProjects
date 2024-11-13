@@ -1,5 +1,17 @@
 # Create and EC2 and create AMI from it 
 
+/* -------- Create Public Key -------------
+ Inputs: 
+ 1) Location of local public key 
+ 2) key name  
+ Outputs: 
+ 1) key-pair 
+----------------------------------------------------------- */ 
+resource "aws_key_pair" "mykeypair" {
+    key_name    = var.key_name
+    public_key  = file("~/.ssh/id_rsa.pub")
+}
+
 /* --------------------------------------------------------
 Create Template for user-data (for installing docker and codedeploy agent)-------------
  Inputs: 

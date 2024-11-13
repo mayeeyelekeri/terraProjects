@@ -54,3 +54,8 @@ output "autoscale-auto_scale_group_name_server" {
 output "scaling-auto_scale_group_name_client" { 
 	value = module.autoscale.auto_scale_group_name_client
 }  */
+
+# ------------- AMI ---------------------------
+output "docker_ami_id" {
+  value = module.ami.docker_ami_id
+}
