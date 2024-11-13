@@ -18,10 +18,9 @@ Create Template for user-data (for installing docker and codedeploy agent)------
  Outputs: 
  1) user_data, basically a text formatted string 
 ----------------------------------------------------------- */ 
-/* data "template_file" "user_data" {
-  #template = "${file("install_docker_and_agent.tpl")}"
-  template = "${file("start_docker.tpl")}"
-} */
+data "template_file" "user_data" {
+  template = "${file("install_docker_and_agent.tpl")}"
+} 
 
 # ****** This is sunsetted by AWS itself, using launch template instead 
 # Create Launch configuration (This one is common for both client and server)
@@ -59,7 +58,8 @@ resource "aws_launch_template" "docker_template_server" {
   instance_type           = var.instance_type
   key_name                = var.key_name
   vpc_security_group_ids  = [var.public_sg_id] 
-  user_data               = "${base64encode(data.template_file.user_data.rendered)}"
+  # user_data               = "${base64encode(data.template_file.user_data.rendered)}"
+  user_data               = file("${path.module}/start_docker.sh")
   iam_instance_profile  {
         name =  var.instance_profile_name 
   }

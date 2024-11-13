@@ -15,7 +15,8 @@ resource "aws_launch_template" "docker_template_client" {
   instance_type           = var.instance_type
   key_name                = var.key_name
   vpc_security_group_ids  = [var.public_sg_id] 
-  user_data               = "${base64encode(data.template_file.user_data.rendered)}"
+  # user_data               = "${base64encode(data.template_file.user_data.rendered)}"
+  user_data               = file("${path.module}/start_docker.sh")
   iam_instance_profile  {
         name =  var.instance_profile_name 
   }
