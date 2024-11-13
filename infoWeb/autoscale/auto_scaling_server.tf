@@ -31,7 +31,7 @@ Create Template for user-data (for installing docker and codedeploy agent)------
   key_name             = var.key_name
   security_groups      = [var.public_sg_id] 
   # user_data            = "${data.template_file.user_data.rendered}"
-  user_data            = file("start_docker.sh")
+  user_data            = filebase64("start_docker.sh")
   iam_instance_profile = var.instance_profile_name 
 
   lifecycle {
