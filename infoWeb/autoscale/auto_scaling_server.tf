@@ -32,7 +32,7 @@ data "template_file" "user_data" {
   key_name             = var.key_name
   security_groups      = [var.public_sg_id] 
   # user_data            = "${data.template_file.user_data.rendered}"
-  user_data            = file("start_docker.tpl")
+  user_data            = file("${path.module}/start_docker.tpl")
   iam_instance_profile = var.instance_profile_name 
 
   lifecycle {
