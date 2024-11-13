@@ -19,7 +19,8 @@ Create Template for user-data (for installing docker and codedeploy agent)------
  1) user_data, basically a text formatted string 
 ----------------------------------------------------------- */ 
 data "template_file" "user_data" {
-  template = "${file("install_docker_and_agent.tpl")}"
+  #template = "${file("install_docker_and_agent.tpl")}"
+  template = "${file("start_docker.tpl")}"
   vars = {
     application = "docker"
   }

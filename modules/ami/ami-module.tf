@@ -29,7 +29,7 @@ resource "aws_instance" "ami-server" {
   	iam_instance_profile = var.instance_profile_name 
   	
   	tags = {
-    	Name = "${terraform.workspace}-template"
+    	Name = "${terraform.workspace}-Instance"
     	Environment = "${terraform.workspace}"
   	}
 
@@ -45,6 +45,11 @@ resource "aws_instance" "ami-server" {
 resource "aws_ami_from_instance" "myami" {
   name               = "terraform-example"
   source_instance_id = aws_instance.ami-server.id
+  
+  tags = {
+    	Name = "${terraform.workspace}-AMI"
+    	Environment = "${terraform.workspace}"
+  	}
 }
 
 

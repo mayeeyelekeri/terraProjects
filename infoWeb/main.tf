@@ -45,7 +45,7 @@ module "ami" {
   public_subnets  = module.vpc.public_subnets
 
   # ------ OUTPUTS ------ 
-  #  auto_scale_group_name_client, auto_scale_group_name_server 
+  docker_ami_id = module.ami.docker_ami_id
 }
 
 
@@ -113,7 +113,8 @@ module "autoscale" {
   app_name_server       = var.app_name_server
   app_name_client       = var.app_name_client
   key_name              = var.key_name
-  ami_id                = var.ami_id
+  #ami_id                = var.ami_id
+  ami_id                = module.ami.docker_ami_id
   instance_type         = var.instance_type
   instance_profile_name = var.instance_profile_name
   autoscale_min         = var.autoscale_min
