@@ -45,7 +45,7 @@ module "ami" {
   public_subnets  = module.vpc.public_subnets
 
   # ------ OUTPUTS ------ 
-  docker_ami_id = module.ami.docker_ami_id
+  # docker_ami_id 
 }
 
 
