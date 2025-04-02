@@ -44,7 +44,7 @@ resource "aws_instance" "webserver" {
   depends_on = [aws_key_pair.mykeypair]
 } 
 
-# Create EC2 server in Private subnet clear
+# Create EC2 server in Private subnet
 resource "aws_instance" "dbserver" {
   ami                         = var.ami-id
   instance_type               = var.instance-type

@@ -53,7 +53,7 @@ resource "aws_route_table_association" "public-route-table-association" {
   route_table_id = aws_route_table.internet-route.id
 }
 
-# Create and Elastic IP Address fot NAT Gateway use
+# Create and Elastic IP Address for NAT Gateway use
 resource "aws_eip" "my-eip" {
   vpc = true
 }
