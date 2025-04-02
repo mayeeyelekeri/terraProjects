@@ -30,6 +30,10 @@ variable "instance-profile" {
   default = "myapp"
 }
 
+variable "instance-profile-docker" {
+  default = "myapp"
+}
+
 variable "stack-name" {
 }
 

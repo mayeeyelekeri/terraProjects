@@ -42,7 +42,19 @@ resource "aws_elastic_beanstalk_environment" "dockerapp-env" {
     value = "5000"
   }
   
-  depends_on = [aws_iam_role.beanstackrole, aws_iam_instance_profile.myinstanceprofile]
+  setting {
+    namespace = "aws:elasticbeanstalk:environment"
+    name      = "EnvironmentType"
+    value     = "SingleInstance"
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:environment"
+    name      = "ServiceRole"
+    value     = aws_iam_role.beanstackrole_docker.arn
+  }
+
+  depends_on = [aws_iam_role.beanstackrole_docker, aws_iam_instance_profile.myinstanceprofile_docker]
 }  
 
  
@@ -62,3 +74,76 @@ EOF
  
   depends_on = [aws_s3_bucket.codebucket]
 } # end of "null_resource" "upload_file"
+
+
+# Create a role for bean stack
+resource "aws_iam_role" "beanstackrole_docker" {
+  name = "beanstackrole_docker"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "ec2.amazonaws.com"
+                ]
+            },
+            "Action": [
+                "sts:AssumeRole"
+            ]
+    }
+  ]
+}
+EOF
+} # end of my_code_pipeline_role
+
+# Create a instance profile
+resource "aws_iam_instance_profile" "myinstanceprofile_docker" {
+  name = var.instance-profile-docker
+  role = aws_iam_role.beanstackrole_docker.name
+  path = "/"
+} # end of resource aws_iam_instance_profile
+
+# Attach policy to role
+resource "aws_iam_role_policy" "ebs_policy_docker" {
+  name = "ebs_policy"
+  role = aws_iam_role.beanstackrole_docker.id
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "cloudwatch:PutMetricData",
+        "ds:CreateComputer",
+        "ds:DescribeDirectories",
+        "ec2:DescribeInstanceStatus",
+        "logs:*",
+        "ssm:*",
+        "ec2messages:*",
+        "ecr:GetAuthorizationToken",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetRepositoryPolicy",
+        "ecr:DescribeRepositories",
+        "ecr:ListImages",
+        "ecr:DescribeImages",
+        "ecr:BatchGetImage",
+        "s3:*",
+        "elasticbeanstalk:PutInstanceStatistics"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+
+  depends_on = [aws_iam_role.beanstackrole_docker]
+}
+

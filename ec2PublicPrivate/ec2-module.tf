@@ -13,6 +13,7 @@ data "aws_ssm_parameter" "webserver-ami" {
 
 # Create EC2 web server in public subnet 
 resource "aws_instance" "webserver" {
+  count                       = 2
   ami                         = var.ami-id
   instance_type               = var.instance-type
   associate_public_ip_address = true
@@ -36,7 +37,7 @@ resource "aws_instance" "webserver" {
     }
   }
   tags = {
-    Name = "${terraform.workspace}-webserver"
+    Name = "${terraform.workspace}-webserver ${count.index}"
     Environment = "${terraform.workspace}"
   }
 

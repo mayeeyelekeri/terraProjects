@@ -5,7 +5,7 @@ output "EC2-INSTANCE-ID" {
 
 output "EC2-INSTANCE-PUBLIC-IP" {
   description = "EC2 Instance Public IP Address"
-  value       = aws_instance.webserver.public_ip
+  value       = aws_instance.webserver[0].public_ip
 } 
 
 output "EC2-DB-INSTANCE-PRIVATE-IP" {
@@ -15,6 +15,6 @@ output "EC2-DB-INSTANCE-PRIVATE-IP" {
 
 output "EC2-KEY-NAME" {
   description = "EC2 Instance Key Name"
-  value       = aws_instance.webserver.key_name
-}
+  value       = aws_instance.webserver[0].key_name
+} 
 
